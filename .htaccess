@@ -1,0 +1,20 @@
+# Deny access to certain files and folders
+RedirectMatch 404 db/
+RedirectMatch 404 lib/
+<Files .htaccess>
+	Require all denied
+</Files>
+
+# Rewrites
+Options +FollowSymlinks
+RewriteEngine on
+
+# Nice links
+RewriteRule ^archives/([^/]+)/? res/template/archives/$1 [L,NC,R=301]
+RewriteRule ^about res/template/about.php [NC]
+RewriteRule ^portfolio res/template/portfolio.php [NC]
+RewriteRule ^games/([^/]+)/? res/template/games.php?game=$1 [NC]
+RewriteRule ^games res/template/games.php [NC]
+
+RewriteRule ^$ render.php?page=index [NC]
+RewriteRule ^blog render.php?page=blog [NC]

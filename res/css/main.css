@@ -1,0 +1,27 @@
+html {
+	overflow: -moz-scrollbars-vertical;
+	overflow-y: scroll;
+	min-height: 100%;
+	height: 100%;
+}
+
+body {
+	background-color: #282828;
+	min-height: 100%;
+	height: 100%;
+}
+
+h1 {
+	font-family: 'Iceland', cursive;
+	font-size: 3em;
+	color: #fff;
+}
+
+p {
+	font-family: 'Titillium Web', sans-serif;
+	font-size:1.2em;
+	line-height: 1.5em;
+	letter-spacing: .05em;
+	color: #eee;
+	padding: 0 0 1em 0;
+}

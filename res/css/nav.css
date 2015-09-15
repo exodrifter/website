@@ -1,0 +1,35 @@
+.nav {
+	z-index: 1;
+	width: 100%;
+	float: right;
+	list-style: none;
+	background-color: #347;
+	border-bottom: 3px solid #569;
+	margin: 0 0 3em 0;
+}
+
+.nav img {
+	float: left;
+	width: 1em;
+	height: 1em;
+	margin-right: .3em;
+}
+
+.nav li a {
+	font-family: 'Iceland', cursive;
+	text-decoration: none;
+	font-size: 1.5em;
+	color: #fff;
+	padding: .4em .5em;
+	display: block;
+	float: right;
+	transition: all 0.25s ease-in-out;
+}
+
+.nav li a:hover {
+	background-color: #569;
+}
+
+.nav li a.selected {
+	background-color: #569;
+}

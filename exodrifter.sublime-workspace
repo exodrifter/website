@@ -1,0 +1,555 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"size",
+				"font-size"
+			],
+			[
+				"de",
+				"text-decoration"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"stop",
+				"stopAtID"
+			],
+			[
+				"re",
+				"remoteUser"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "res/template/navbar.php",
+			"settings":
+			{
+				"buffer_size": 1525,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "res/template/blog.php",
+			"settings":
+			{
+				"buffer_size": 4599,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "res/template/index.php",
+			"settings":
+			{
+				"buffer_size": 719,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "res/css/nav.css",
+			"settings":
+			{
+				"buffer_size": 513,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"last_filter": "syntax hask",
+		"selected_items":
+		[
+			[
+				"syntax hask",
+				"Set Syntax: Haskell"
+			],
+			[
+				"tab",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"word ",
+				"Word Wrap: Toggle"
+			],
+			[
+				"tabi",
+				"Indentation: Convert to Tabs"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/A/workspace/web/exodrifter",
+		"/A/workspace/web/exodrifter/lib",
+		"/A/workspace/web/exodrifter/lib/pyrite",
+		"/A/workspace/web/exodrifter/res",
+		"/A/workspace/web/exodrifter/res/css",
+		"/A/workspace/web/exodrifter/res/js",
+		"/A/workspace/web/exodrifter/res/template"
+	],
+	"file_history":
+	[
+		"/A/workspace/web/exodrifter/res/template/index.php",
+		"/A/workspace/haskell/learn/vec.hs",
+		"/A/workspace/haskell/learn/test.hs",
+		"/A/workspace/haskell/learn/rate.hs",
+		"/A/workspace/haskell/learn/test.hc",
+		"/A/workspace/web/exodrifter/res/css/main.css",
+		"/A/workspace/web/exodrifter/res/css/nav.css",
+		"/A/workspace/web/exodrifter/blog.php",
+		"/A/workspace/web/exodrifter/render.php",
+		"/A/workspace/web/exodrifter/.htaccess",
+		"/A/workspace/web/exodrifter/res/template/blog.php",
+		"/A/workspace/web/exodrifter/lib/pyrite/pyrite-render.php",
+		"/A/workspace/web/dpek.net/.htaccess",
+		"/A/workspace/web/exodrifter/index.php",
+		"/A/workspace/web/exodrifter-flask/templates/index.html",
+		"/A/workspace/web/exodrifter/res/template/base.php",
+		"/A/workspace/web/exodrifter/res/css/index.css",
+		"/A/workspace/web/exodrifter/res/template/navbar.php",
+		"/A/workspace/web/exodrifter/robots.txt",
+		"/A/workspace/web/exodrifter-flask/templates/layout.html",
+		"/A/workspace/web/exodrifter-flask/static/css/nav.css",
+		"/A/workspace/web/exodrifter/res/js/skel.cfg.js",
+		"/A/workspace/web/exodrifter/pyrite.php",
+		"/A/workspace/web/exodrifter/lib/pyrite/pyrite-cfg.php",
+		"/A/workspace/web/exodrifter/lib/pyrite/pyrite-layout.php",
+		"/A/workspace/web/exodrifter/lib/pyrite/pyrite-map.php",
+		"/A/workspace/web/exodrifter/debug.php",
+		"/A/workspace/web/exodrifter/template/base.php",
+		"/A/workspace/web/exodrifter/templates/base.php",
+		"/A/workspace/web/exodrifter/templates/layout.php",
+		"/A/workspace/web/exodrifter/pyrite/pyrite-layout.php",
+		"/A/workspace/web/exodrifter/pyrite/pyrite-map.php",
+		"/A/workspace/web/exodrifter/pyrite/pyrite.php",
+		"/A/workspace/web/dpek.net/blog/.htaccess",
+		"/A/workspace/web/dpek.net/blog/pyrite.php",
+		"/A/workspace/web/exodrifter/exodrifter.sublime-project",
+		"/A/workspace/web/exodrifter-flask/main.py",
+		"/A/workspace/web/exodrifter/main.py",
+		"/C/Users/dpek/Desktop/announcement-work.txt",
+		"/A/workspace/web/exodrifter/templates/layout.html",
+		"/A/workspace/web/exodrifter/templates/index.html",
+		"/A/workspace/web/exodrifter/static/js/skel.cfg.js",
+		"/A/workspace/web/exodrifter/static/css/nav.css",
+		"/A/workspace/web/exodrifter/static/css/main.css",
+		"/A/workspace/web/exodrifter/static/js/skel.min.js",
+		"/A/workspace/web/exodrifter/static/js/video.js",
+		"/A/workspace/web/exodrifter/static/js/parallax.js",
+		"/A/workspace/web/exodrifter/static/css/bigvideo.css",
+		"/C/Users/dpek/Desktop/alchohol.txt",
+		"/A/workspace/web/noxfukurou/cache.py",
+		"/A/workspace/web/noxfukurou/main.py",
+		"/C/Users/dpek/Desktop/sizes.txt",
+		"/A/workspace/web/noxfukurou/archiver.py",
+		"/A/workspace/python/journal/main.py",
+		"/A/workspace/python/journal/entries/2014-04-06.txt",
+		"/A/workspace/python/journal/entries/2014-09-08.txt",
+		"/A/workspace/python/journal/entries/2014-12-02.txt",
+		"/A/workspace/python/journal/entries/2014-07-22.txt",
+		"/A/workspace/python/journal/entries/2014-07-29.txt",
+		"/A/workspace/python/journal/entries/2014-04-07.txt",
+		"/A/workspace/python/journal/entries/2014-04-16.txt",
+		"/A/workspace/python/journal/entries/2014-06-05.txt",
+		"/A/workspace/python/journal/entries/2014-05-06.txt",
+		"/A/workspace/python/journal/entries/2014-04-12.txt",
+		"/A/workspace/python/journal/lib/markdown2.py",
+		"/C/Users/dpek/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/A/workspace/web/noxfukurou/users.txt",
+		"/A/workspace/web/noxfukurou/templates/index.html",
+		"/A/workspace/web/noxfukurou/templates/members.html",
+		"/A/workspace/web/noxfukurou/static/css/main.css",
+		"/A/workspace/web/noxfukurou/templates/post.html",
+		"/A/workspace/web/noxfukurou/templates/layout.html",
+		"/A/workspace/web/noxfukurou/templates/member.html",
+		"/A/workspace/web/noxfukurou/about/evowings.txt",
+		"/A/workspace/web/noxfukurou/sites.txt",
+		"/C/Users/dpek/AppData/Roaming/.minecraft/mods/VoxelMods/voxelmap.properties",
+		"/C/Users/dpek/Downloads/server-forge/server.properties",
+		"/C/Users/dpek/Downloads/testserver/server.properties",
+		"/C/Users/dpek/Downloads/server/server.properties",
+		"/A/workspace/web/dpek.net/blog/theme/pyrite/index.php",
+		"/A/workspace/web/dpek.net/blog/theme/pyrite/post.php",
+		"/A/workspace/web/dpek.net/blog/theme/pyrite/css/style.css",
+		"/A/workspace/web/dpek.net/editor/index.php",
+		"/A/workspace/web/dpek.net/blog/theme/pyrite/post-summary.php",
+		"/A/workspace/web/dpek.net/blog/index.php",
+		"/A/workspace/web/dpek.net/index.php"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"z2",
+			"y2",
+			"x2",
+			"z1",
+			"y1",
+			"x1",
+			"x2, y2, z2",
+			"x1, y1, z1",
+			"a, a, a",
+			"template",
+			"false",
+			"style=\"float: none; display: block;\"",
+			"/>",
+			"30px",
+			"height='6'",
+			"height='4'",
+			"height=",
+			"/>",
+			"; ",
+			" ",
+			"title",
+			"<span style='padding-left:.5em' />",
+			"span",
+			"alt",
+			"2em",
+			"get",
+			"ourl",
+			"'",
+			"res",
+			"r",
+			"resource",
+			"'",
+			";\n",
+			"\"",
+			"tohtml",
+			"packdatabase",
+			"closedb",
+			"getdb",
+			"tohtml",
+			"”",
+			"“",
+			"–",
+			"'",
+			"–",
+			"'",
+			"-",
+			"–",
+			"“",
+			"”",
+			"“",
+			"’",
+			",",
+			"’",
+			"\"",
+			"’",
+			"):\n",
+			"the",
+			"site_post_id",
+			"text",
+			"int",
+			",",
+			", ",
+			";",
+			"%s",
+			"id",
+			"''",
+			"response",
+			"+",
+			"\"",
+			",",
+			"iconSkull",
+			")",
+			"Temple",
+			",y:",
+			",z:",
+			",x:",
+			"x:",
+			"Biome",
+			"-1#",
+			"int",
+			",",
+			";",
+			",",
+			"#define",
+			"GLFW_KEY_",
+			"#define",
+			"  ",
+			"//",
+			",",
+			"//",
+			"table"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "res/template/navbar.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1525,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1157,
+								1157
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 468.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "res/template/blog.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4599,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3182,
+								3182
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "res/template/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 719,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								719,
+								719
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "res/css/nav.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 513,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								146,
+								146
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "exodrifter.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"style",
+				"blog\\theme\\pyrite\\css\\style.css"
+			],
+			[
+				"inde",
+				"index.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 226.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
