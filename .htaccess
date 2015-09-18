@@ -18,3 +18,4 @@ RewriteRule ^games res/template/games.php [NC]
 
 RewriteRule ^$ render.php?page=index [NC]
 RewriteRule ^blog render.php?page=blog [NC]
+RewriteRule ^music render.php?page=music [NC]

@@ -63,8 +63,8 @@ EOT;
 <div class="not-small" style="display:flex">
 	<ul class="nav" style="padding: 0 10%">
 		<?php printLogo($LAYOUT->get("page"), $LAYOUT->url("logo.png"), false); ?>
-		<?php printLink("blog", "blog", $LAYOUT->get("page"), false); ?>
-		<?php printLink("games", "game", $LAYOUT->get("page"), false); ?>
 		<?php printLink("music", "music", $LAYOUT->get("page"), false); ?>
+		<?php printLink("games", "game", $LAYOUT->get("page"), false); ?>
+		<?php printLink("blog", "blog", $LAYOUT->get("page"), false); ?>
 	</ul>
 </div>

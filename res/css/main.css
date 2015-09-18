@@ -25,3 +25,13 @@ p {
 	color: #eee;
 	padding: 0 0 1em 0;
 }
+
+a {
+	color: #25f;
+	text-decoration: none;
+	transition: 0.2s all ease-in-out;
+}
+
+a:hover, a:active {
+	color: #38f;
+}

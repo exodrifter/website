@@ -21,7 +21,7 @@ if (null === $title) {
 		<script src="<?php $LAYOUT->purl("js/skel.min.js") ?>"></script>
 		<script src="<?php $LAYOUT->purl("js/skel.cfg.js") ?>"></script>
 	</head>
-	<body>
+	<body<?php if ($LAYOUT->get("page") !== "index") echo(" style=\"margin-bottom: 35%;\""); ?>>
 <?php include $LAYOUT->path("template/navbar.php"); ?>
 <?php $LAYOUT->pget("content"); ?>
 	</body>
