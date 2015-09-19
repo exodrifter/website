@@ -22,7 +22,7 @@ $content = <<<EOT
 EOT;
 $LAYOUT->set("content", $content);
 $LAYOUT->set("page", "index");
-$LAYOUT->set("css", "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$LAYOUT->url("css/index.css")."\" />");
+$LAYOUT->addcss("index");
 
 include $LAYOUT->path("template/base.php");
 ?>

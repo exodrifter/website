@@ -1,25 +1,107 @@
 <?php
+$pageSize = 3;
+if(isset($_GET["page"])) {
+	$page = (int)$_GET["page"];
+} else {
+	$page = 0;
+}
+
+$db = new \SQLite3($LAYOUT->path("../db/posts.sqlite"), SQLITE3_OPEN_READONLY);
+
+$statement = $db->prepare("SELECT COUNT(*) FROM posts");
+$maxPosts = $statement->execute()->fetchArray()[0];
+
+$statement = $db->prepare("SELECT * FROM posts ORDER BY date DESC LIMIT (:start),(:limit)");
+$statement->bindValue(":start", $page*$pageSize);
+$statement->bindValue(":limit", $pageSize);
+$posts = $statement->execute();
+
 $content = <<<EOT
-	<div class="container">
-		<div class="row">
-			<div class="9u 12u$(medium) 12u$(small)">
-				<h1>Heading One</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut volutpat ligula. Proin tincidunt, ante vel placerat porta, quam augue condimentum est, ut consectetur ligula lectus nec purus. Pellentesque quis dui magna. Maecenas molestie orci et dui consequat convallis. Sed tempus mollis finibus. Cras ut tortor varius, imperdiet nisi id, iaculis ex. Proin magna massa, tempor nec lectus sit amet, ornare consequat magna. Nam elementum auctor pellentesque. Nam porttitor viverra pulvinar. Aliquam sed purus in dui varius tristique. Aliquam sagittis malesuada est, non mollis tortor congue nec. Integer dui urna, dignissim quis enim vel, efficitur euismod justo. Proin at viverra libero, id accumsan lectus.</p>
-				<p>Nullam volutpat enim libero, id malesuada lectus egestas non. Duis efficitur fermentum lorem eu pretium. Etiam dapibus tristique ligula, vitae ultrices nisi rutrum sit amet. Vivamus tempus eget massa at elementum. Aenean sit amet laoreet massa. Pellentesque cursus tellus non ligula porta, consectetur mollis nunc lacinia. Nullam non ornare ligula, eu elementum neque. Donec faucibus, velit at suscipit consectetur, sapien augue fringilla lorem, eu posuere leo tortor at turpis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque ex erat, imperdiet ut sapien eu, faucibus scelerisque eros. Integer ac faucibus erat, sit amet ornare odio.</p>
-				<p>Praesent tempus aliquet massa id suscipit. Suspendisse ac mollis elit, vel vulputate mauris. In in tortor neque. Mauris auctor consequat mi sed ultricies. Etiam ornare, metus non tempor fermentum, nunc est finibus augue, quis vulputate magna velit in ligula. Morbi porta mi mauris, ut sollicitudin nunc efficitur et. Aliquam tempor vel odio a volutpat. Aenean non nibh magna. Maecenas eget leo dictum, fermentum est placerat, porta mi. Integer pretium enim sit amet turpis sodales volutpat eget eu massa. Nullam placerat nisl leo, quis molestie nisl ultricies in. Fusce mattis, nulla in tincidunt mollis, enim arcu sollicitudin sapien, quis porttitor nunc elit finibus urna. Quisque a vulputate ante, sit amet aliquam enim. Curabitur laoreet fringilla leo, eu placerat lacus.</p>
-				<p>Donec pellentesque dictum massa, sed molestie orci interdum in. Proin faucibus eleifend turpis, ut semper justo tristique vitae. Phasellus neque mauris, congue vitae congue at, porttitor in lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ultrices est ante, vitae congue velit iaculis quis. Phasellus ultrices, quam venenatis tempus laoreet, sem leo dapibus libero, id imperdiet arcu elit convallis magna. Vivamus bibendum vitae neque et ultricies. Proin imperdiet mattis tellus. Duis laoreet volutpat rhoncus. Quisque non porta ipsum, in scelerisque purus. Proin in dolor et metus fermentum placerat porttitor dapibus est. Proin lobortis pretium pretium. Donec quis tincidunt turpis, ut laoreet arcu. Mauris ornare non urna fermentum rhoncus.</p>
-				<p>Praesent congue laoreet erat, et interdum nisi viverra in. Suspendisse tincidunt non purus pharetra hendrerit. Suspendisse euismod malesuada orci vel tristique. Aenean vehicula sapien ac justo finibus sodales. Nulla ac finibus lorem. Sed dolor leo, sodales ultrices cursus in, consequat sed nunc. Cras sed iaculis neque. Sed at sodales nisi. Vestibulum tempor felis id tristique sagittis. Nullam purus ex, fringilla vel ante in, gravida placerat eros. Praesent luctus posuere magna, ut pulvinar sem efficitur nec.</p>
-			</div>
-			<div class="3u 12u$(medium) 12u$(small)">
-				<h1>Sidebar</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut volutpat ligula. Proin tincidunt, ante vel placerat porta, quam augue condimentum est, ut consectetur ligula lectus nec purus. Pellentesque quis dui magna. Maecenas molestie orci et dui consequat convallis. Sed tempus mollis finibus. Cras ut tortor varius, imperdiet nisi id, iaculis ex. Proin magna massa, tempor nec lectus sit amet, ornare consequat magna. Nam elementum auctor pellentesque. Nam porttitor viverra pulvinar. Aliquam sed purus in dui varius tristique. Aliquam sagittis malesuada est, non mollis tortor congue nec. Integer dui urna, dignissim quis enim vel, efficitur euismod justo. Proin at viverra libero, id accumsan lectus.</p>
-			</div>
-		</div>
-	</div>
+<div class="container">
+<div class="row">
+<div class="9u 12u$(medium) 12u$(small)">
 
 EOT;
+
+while($post = $posts->fetchArray())
+{
+	$datetime = new \DateTime($post["date"]);
+	$datetime->setTimezone(new \DateTimeZone("America/Chicago"));
+	$date = $datetime->format("Y-m-d H:i:s T");
+
+	// Parse post content
+	$parser = createBBCodeParser($LAYOUT);
+	$parser->parse($post["content"]);
+	$text = $parser->getAsText();
+
+	// Remove whitespace
+	$patterns = array("/\s+/", "/\s([?.!])/");
+	$replacer = array(" ","$1");
+	$text = preg_replace($patterns, $replacer, $text);
+
+	// Limit to 300 characters, but only cut at the nearest word
+	$text = preg_replace('/\s+?(\S+)?$/', '', substr($text, 0, 300));
+
+	$content .= <<<EOT
+<div class="post">
+	<h1><a href="{$LAYOUT->base()}archive/post/{$post["id_post"]}">{$post["title"]}</a></h1>
+	<p class='date'>{$date}</p>
+	<p class='summary'>{$text}
+	<a style='text-decoration:none' href='{$LAYOUT->base()}archive/post/{$post["id_post"]}'>[...]</a></p>
+</div>
+EOT;
+}
+
+// Navigation
+$url = $LAYOUT->base();
+if($page*$pageSize < $maxPosts-$pageSize) {
+	$content .= "<p style=\"float: left;\"><a href=\"".$url."archive/".($page+1)."\">&lt;- older</a></p>";
+}
+if($page > 0) {
+	if($page == 1) {
+		$content .= "<p style=\"float: right;\"><a href=\"".$url."blog/\">newer -&gt;</a></p>";
+	} else {
+		$content .= "<p style=\"float: right;\"><a href=\"".$url."archive/".($page-1)."\">newer -&gt;</a></p>";
+	}
+}
+
+// Sidebar
+$content .= <<<EOT
+</div>
+<div class="3u 12u$(medium) 12u$(small)">
+	<h1>Meta</h1>
+	<p><a href="{$LAYOUT->base()}archive/">Archive</a></p>
+	<!--<p><a href="{$LAYOUT->base()}rss">RSS</a></p>-->
+</div></div></div>
+
+EOT;
+
+// Key navigation
+$content .= <<<EOT
+<script>
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+	var url = false;
+	e = e || window.event;
+
+EOT;
+
+if($page*$pageSize < $maxPosts-$pageSize) {
+	$content .= "if(e.keyCode=='37'){url='".$url."archive/".($page+1)."';}";
+}
+if($page > 0) {
+	if($page == 1) {
+		$content .= "if(e.keyCode=='39'){url='".$url."blog/';}";
+	} else {
+		$content .= "if(e.keyCode=='39'){url='".$url."archive/".($page-1)."';}";
+	}
+}
+$content .= "if (url) { window.location = url; } } </script>";
+
 $LAYOUT->set("content", $content);
 $LAYOUT->set("page", "blog");
+$LAYOUT->addcss("blog");
 
 include $LAYOUT->path("template/base.php");
 ?>

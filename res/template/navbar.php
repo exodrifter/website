@@ -1,13 +1,12 @@
 <?php
-function printLink($text, $link, $page, $small)
+function printLink($text, $link, $selected, $small)
 {
 	$style = "";
 	if ($small) {
 		$style = " style=\"float: none; display: block;\"";
 	}
 
-	$selected = "";
-	if ($link === $page && !$small) {
+	if ($selected && !$small) {
 		$link = "";
 		$selected = " class=\"selected\"";
 	}
@@ -15,13 +14,10 @@ function printLink($text, $link, $page, $small)
 		$link = " href=\"".$link."\"";
 	}
 
-	echo <<<EOT
-		<li><a{$link}{$style} {$selected}>{$text}</a></li>
-
-EOT;
+	echo "<li><a$link$style $selected>$text</a></li>";
 }
 
-function printLogo($page, $url, $small)
+function printLogo($image, $link, $selected, $small)
 {
 	$li = "";
 	$style = "";
@@ -31,40 +27,46 @@ function printLogo($page, $url, $small)
 		$li = " style=\"float: left;\"";
 	}
 
-	$link = "/";
-	$selected = "";
-	if ("index" === $page && !$small) {
+	if ($selected && !$small) {
 		$link = "";
-		$selected .= " class=\"selected\"";
+		$selected = " class=\"selected\"";
 	}
 	else {
 		$link = " href=\"".$link."\"";
+		$selected = "";
 	}
 
-	echo <<<EOT
-		<li{$li}><a{$link}{$selected} style="font-family: 'Orbitron', sans-serif;{$style}">
-				<img src="{$url}" />
-				exodrifter
-			</a>
-		</li>
-
-EOT;
+	echo "<li$li><a$link$selected style=\"font-family: 'Orbitron', sans-serif;$style\">";
+	echo "<img src=\"$image\" />exodrifter</a></li>";
 }
-?>
 
+// Get navbar parameters
+$indexSelected = "index" === $LAYOUT->get("page");
+$blogSelected  = "blog"  === $LAYOUT->get("page");
+$gameSelected  = "game"  === $LAYOUT->get("page");
+$musicSelected = "music" === $LAYOUT->get("page");
+
+$img = $LAYOUT->url("logo.png");
+
+$indexUrl = $LAYOUT->base();
+$musicUrl = $LAYOUT->base()."music/";
+$gameUrl  = $LAYOUT->base()."game/";
+$blogUrl  = $LAYOUT->base()."blog/";
+
+// Print navbar ?>
 <div class="only-small" style="display:flex">
 	<ul class="nav" style="padding: 0 10%;">
-		<?php printLogo($LAYOUT->get("page"), $LAYOUT->url("logo.png"), true); ?>
-		<?php printLink("blog", "blog", $LAYOUT->get("page"), true); ?>
-		<?php printLink("games", "game", $LAYOUT->get("page"), true); ?>
-		<?php printLink("music", "music", $LAYOUT->get("page"), true); ?>
+		<?php printLogo($img,    $indexUrl, $indexSelected, true); ?>
+		<?php printLink("blog",  $blogUrl,  $blogSelected,  true); ?>
+		<?php printLink("games", $gameUrl,  $gameSelected,  true); ?>
+		<?php printLink("music", $musicUrl, $musicSelected, true); ?>
 	</ul>
 </div>
 <div class="not-small" style="display:flex">
 	<ul class="nav" style="padding: 0 10%">
-		<?php printLogo($LAYOUT->get("page"), $LAYOUT->url("logo.png"), false); ?>
-		<?php printLink("music", "music", $LAYOUT->get("page"), false); ?>
-		<?php printLink("games", "game", $LAYOUT->get("page"), false); ?>
-		<?php printLink("blog", "blog", $LAYOUT->get("page"), false); ?>
+		<?php printLogo($img,    $indexUrl, $indexSelected, false); ?>
+		<?php printLink("music", $musicUrl, $musicSelected, false); ?>
+		<?php printLink("games", $gameUrl,  $gameSelected,  false); ?>
+		<?php printLink("blog",  $blogUrl,  $blogSelected,  false); ?>
 	</ul>
 </div>

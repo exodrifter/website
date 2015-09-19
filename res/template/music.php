@@ -38,7 +38,7 @@ using the contact form on my bandcamp page.</p>
 EOT;
 $LAYOUT->set("content", $content);
 $LAYOUT->set("page", "music");
-$LAYOUT->set("css", "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$LAYOUT->url("css/music.css")."\" />");
+$LAYOUT->addcss("music");
 
 include $LAYOUT->path("template/base.php");
 ?>

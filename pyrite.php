@@ -2,6 +2,7 @@
 require_once("lib/pyrite/pyrite-cfg.php");
 require_once("lib/pyrite/pyrite-map.php");
 require_once("lib/pyrite/pyrite-layout.php");
+require_once("lib/bbcode.php");
 
 // Configuration
 \pyrite\cfg::$root = dirname(__FILE__)."/";

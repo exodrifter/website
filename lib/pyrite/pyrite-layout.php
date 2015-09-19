@@ -17,6 +17,14 @@ class layout
 	function get($key) { return $this->map->get($key); }
 	function pget($key) { echo $this->get($key); }
 
+	function addcss($style)
+	{
+		$url = $this->url("css/".$style.".css");
+		$css = $this->get("css");
+		$css .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$url."\" />";
+		$this->set("css", $css);
+	}
+
 	/**
 	 * Returns the filesystem path to the root of the layout.
 	 *
@@ -56,6 +64,18 @@ class layout
 			return \pyrite\cfg::$url_test.$folder.$resource;
 		} else {
 			return \pyrite\cfg::$url_live.$folder.$resource;
+		}
+	}
+
+	/**
+	 * Returns the URL to the root url of the website.
+	 */
+	function base()
+	{
+		if(file_exists (\pyrite\cfg::$root.".git/")) {
+			return \pyrite\cfg::$url_test;
+		} else {
+			return \pyrite\cfg::$url_live;
 		}
 	}
 
