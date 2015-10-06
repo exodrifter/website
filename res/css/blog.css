@@ -1,7 +1,78 @@
 .date {
 	font-family: "Courier New", Courier, monospace;
+	color: #999;
 }
 
 .post {
 	margin-bottom: 2em;
+}
+
+.focus {
+	width: 60%;
+	margin: 0 auto;
+}
+
+span.pre {
+	font-family: "Andale Mono", AndaleMono, monospace;
+	background-color: #444;
+	padding: 0.1em 0.25em 0.1em 0.25em;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+}
+
+.code, .code-line {
+	color: #eee;
+	background-color: #444;
+	padding: 1em 1em 1em 1em;
+	margin: 0 0 1em 0;
+	font-family: "Andale Mono", AndaleMono, monospace;
+	overflow: auto;
+	word-wrap: normal;
+	white-space: pre;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+}
+
+.line {
+	line-height: 1.2em;
+}
+
+.line-numbers {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.line-numbers:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float: left;
+	padding: 0 0.5em 0 0.5em;
+	margin-right:0.5em;
+	text-align: right;
+	width: 3em;
+	background: #555;
+	content: counter(lineNumber);
+	counter-increment: lineNumber;
+}
+
+.script {
+	background-color: #444;
+	margin: 1em 1em 1em 1em;
+	padding: 1em 1em 1em 1em;
+	font-family: "Andale Mono", AndaleMono, monospace;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
 }

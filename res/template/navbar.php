@@ -14,17 +14,17 @@ function printLink($text, $link, $selected, $small)
 		$link = " href=\"".$link."\"";
 	}
 
-	echo "<li><a$link$style $selected>$text</a></li>";
+	echo "<li style=\"margin-bottom: 0; margin-left: 0; list-style-type: none;\"><a$link$style $selected>$text</a></li>";
 }
 
 function printLogo($image, $link, $selected, $small)
 {
-	$li = "";
+	$li = "margin-bottom: 0; margin-left: 0; list-style-type: none;";
 	$style = "";
 	if ($small) {
 		$style = "float: none; display: block";
 	} else {
-		$li = " style=\"float: left;\"";
+		$li .= " float: left;";
 	}
 
 	if ($selected && !$small) {
@@ -36,7 +36,7 @@ function printLogo($image, $link, $selected, $small)
 		$selected = "";
 	}
 
-	echo "<li$li><a$link$selected style=\"font-family: 'Orbitron', sans-serif;$style\">";
+	echo "<li style=\"$li\"><a$link$selected style=\"font-family: 'Orbitron', sans-serif;$style\">";
 	echo "<img src=\"$image\" />exodrifter</a></li>";
 }
 

@@ -1,5 +1,5 @@
 <?php
-$pageSize = 3;
+$pageSize = 4;
 if(isset($_GET["page"])) {
 	$page = (int)$_GET["page"];
 } else {

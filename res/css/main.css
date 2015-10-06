@@ -23,15 +23,25 @@ p {
 	line-height: 1.5em;
 	letter-spacing: .05em;
 	color: #eee;
-	padding: 0 0 1em 0;
+	margin: 0 0 1em 0;
+}
+
+li {
+	font-family: 'Titillium Web', sans-serif;
+	font-size:1.2em;
+	line-height: 1.5em;
+	letter-spacing: .05em;
+	color: #eee;
+	margin: 0 0 1em 2.5em;
+	list-style-type: circle;
 }
 
 a {
-	color: #25f;
+	color: #38f;
 	text-decoration: none;
 	transition: 0.2s all ease-in-out;
 }
 
 a:hover, a:active {
-	color: #38f;
+	color: #5bf;
 }

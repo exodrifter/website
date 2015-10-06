@@ -7,3 +7,7 @@
 	padding: 1em;
 	float: left;
 }
+
+li {
+	list-style: none
+}
