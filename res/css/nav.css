@@ -3,8 +3,8 @@
 	width: 100%;
 	float: right;
 	list-style: none;
-	background-color: #413479;
-	border-bottom: 3px solid #5E519A;
+	background-color: #23172F;
+	border-bottom: 3px solid #452F5A;
 	margin: 0 0 3em 0;
 }
 
@@ -27,9 +27,9 @@
 }
 
 .nav li a:hover {
-	background-color: #5E519A;
+	background-color: #452F5A;
 }
 
 .nav li a.selected {
-	background-color: #5E519A;
+	background-color: #452F5A;
 }

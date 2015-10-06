@@ -7,11 +7,6 @@
 	margin-bottom: 2em;
 }
 
-.focus {
-	width: 60%;
-	margin: 0 auto;
-}
-
 span.pre {
 	font-family: "Andale Mono", AndaleMono, monospace;
 	background-color: #444;
@@ -76,3 +71,13 @@ span.pre {
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 }
+
+img {
+	max-width: 100%;
+}
+
+div.tumblr {
+	width: 25px; height: 25px;
+	background: url('../img/ico-tumblr.png') no-repeat left top;
+}
+div.tumblr:hover { background-position: -25px 0 }

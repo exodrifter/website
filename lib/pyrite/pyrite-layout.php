@@ -69,13 +69,20 @@ class layout
 
 	/**
 	 * Returns the URL to the root url of the website.
+	 *
+	 * \param  resource
+	 *           if non-null, the resource to get the URL to
 	 */
-	function base()
+	function base($resource = null)
 	{
+		if (null === $resource) {
+			$resource = "";
+		}
+
 		if(file_exists (\pyrite\cfg::$root.".git/")) {
-			return \pyrite\cfg::$url_test;
+			return \pyrite\cfg::$url_test.$resource;
 		} else {
-			return \pyrite\cfg::$url_live;
+			return \pyrite\cfg::$url_live.$resource;
 		}
 	}
 

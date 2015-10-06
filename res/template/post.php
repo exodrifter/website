@@ -11,11 +11,13 @@ $statement = $db->prepare("SELECT COUNT(*) FROM posts");
 $maxPosts = $statement->execute()->fetchArray()[0];
 
 $statement = $db->prepare("SELECT * FROM posts WHERE id_post=(:id)");
-$statement->bindValue(":id",$id);
+$statement->bindValue(":id", $id);
 $post = $statement->execute()->fetchArray();
 
 $content = <<<EOT
-<div class='focus'>
+<div class="container">
+<div class="row">
+<div class="12u">
 
 EOT;
 
@@ -46,26 +48,44 @@ $content .= <<<EOT
 EOT;
 
 // Category and tags
-/*echo("<p class='align-left'>");
+$statement = $db->prepare("SELECT * FROM categories WHERE id_category IN (SELECT id_category FROM posts WHERE id_post=(:id))");
+$statement->bindValue(":id",$id);
+$cat = $statement->execute()->fetchArray()["name"];
+
+$statement = $db->prepare("SELECT * FROM tags WHERE id_tag IN (SELECT id_tag FROM tagpairs WHERE id_post=(:id)) ORDER BY name ASC");
+$statement->bindValue(":id", $id);
+$tagResults = $statement->execute();
+
 $tags = "";
-while(nextTag()) {
-	$tag = getTagName();
+while($tag = $tagResults->fetchArray()["name"]) {
 	if($tags==="") {
-		$tags .= "<a href='".getURLBlog()."archive/tag/".$tag."'>".$tag."</a>";
+		$tags .= "<a href='".$LAYOUT->base("archive/tag/".$tag)."'>".$tag."</a>";
 	} else {
-		$tags .= ", <a href='".getURLBlog()."archive/tag/".$tag."'>".$tag."</a>";;
+		$tags .= ", <a href='".$LAYOUT->base("archive/tag/".$tag)."'>".$tag."</a>";;
 	}
 }
-echo "[<a href='".getURLBlog()."archive/category/".strtolower($cat)."'>".$cat."</a>] ".$tags;
-echo "</p>\n";
+
+$content .= <<<EOT
+<p style="float: left;">
+	[<a href="{$LAYOUT->base("archive/category/".strtolower($cat))}">{$cat}</a>] {$tags}
+</p>
+
+EOT;
 
 // Tumblr link
-if($id = getTumblrID())
+$statement = $db->prepare("SELECT * FROM ext_tumblr WHERE id_post=(:id)");
+$statement->bindValue(":id",$id);
+if($idtumblr = $statement->execute()->fetchArray()["id_tumblr"])
 {
-	echo("<a href='http://dpek.tumblr.com/post/".$id."'>");
-	echo("<div class='tumblr align-right' title='tumblr mirror' class=align-right></div>");
-	echo("</a>\n");
-}*/
+	$content .= <<<EOT
+	<a href="http://dpek.tumblr.com/post/{$idtumblr}">
+	<div class='tumblr' title='tumblr mirror' style="float: right;"></div>
+	</a>
+
+EOT;
+}
+
+$content .= "<div style=\"clear: both; margin-bottom: 3em;\"></div>";
 
 // Navigation
 $url = $LAYOUT->base();
@@ -77,7 +97,7 @@ if($id < $maxPosts) {
 }
 
 $content .= <<<EOT
-<div style="clear:both;"></div></div></div>
+<div style="clear:both; margin-bottom: 3em;"></div></div></div>
 
 EOT;
 

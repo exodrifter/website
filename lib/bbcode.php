@@ -222,7 +222,7 @@ function createBBCodeParser($layout) {
 	$builder->setUseOption(true);
 	$parser->addCodeDefinition($builder->build());
 
-	$builder = new \JBBCode\CodeDefinitionBuilder("img", "<img src='".$layout->url()."res/{option}' title=\"{param}\" />");
+	$builder = new \JBBCode\CodeDefinitionBuilder("img", "<img src='".$layout->url()."img/{option}' title=\"{param}\" />");
 	$builder->setUseOption(true);
 	$parser->addCodeDefinition($builder->build());
 

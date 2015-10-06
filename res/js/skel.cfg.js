@@ -4,7 +4,7 @@
 	breakpoints: {
 		large: {
 			media: '(min-width: 1000px)',
-			containers: '75%',
+			containers: '80%',
 			grid: {
 				gutters: "2.5em"
 			}
