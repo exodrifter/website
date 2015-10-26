@@ -23,6 +23,8 @@ RewriteRule ^archive/tag/([^/]+)/([1-9]\d*)$ render.php?template=archive-tag&tag
 RewriteRule ^archive/tag/([^/]+)/$ render.php?template=archive-tag&tag=$1&page=0 [NC]
 RewriteRule ^archive/category/([^/]+)/([1-9]\d*)$ render.php?template=archive-category&category=$1&page=$2 [NC]
 RewriteRule ^archive/category/([^/]+)/$ render.php?template=archive-category&category=$1&page=0 [NC]
+RewriteRule ^archive/year/([^/]+)/([1-9]\d*)$ render.php?template=archive-year&year=$1&page=$2 [NC]
+RewriteRule ^archive/year/([^/]+)/$ render.php?template=archive-year&year=$1&page=0 [NC]
 RewriteRule ^archive/([1-9]\d*)$ render.php?template=blog&page=$1 [NC]
 RewriteRule ^archive/post/([1-9]\d*)$ render.php?template=post&id=$1 [NC]
 RewriteRule ^music/$ render.php?template=music [NC]

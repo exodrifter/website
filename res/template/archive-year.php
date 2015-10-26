@@ -5,12 +5,12 @@ if(isset($_GET["page"])) {
 } else {
 	$page = 0;
 }
-$name = $_GET["category"];
+$year = $_GET["year"];
 
 $db = new \SQLite3($LAYOUT->path("../db/posts.sqlite"), SQLITE3_OPEN_READONLY);
 
-$statement = $db->prepare("SELECT COUNT(*) FROM posts WHERE id_category IN (SELECT id_category FROM categories WHERE name=(:name))");
-$statement->bindValue(":name",$name);
+$statement = $db->prepare("SELECT COUNT(*) FROM posts WHERE substr(date,1,4)=(:year) ORDER BY date DESC");
+$statement->bindValue(":year",$year);
 $maxPosts = $statement->execute()->fetchArray()[0];
 
 if ($maxPosts == 0) {
@@ -18,19 +18,15 @@ if ($maxPosts == 0) {
 	return;
 }
 
-$statement = $db->prepare("SELECT * FROM categories WHERE name=(:name)");
-$statement->bindValue(":name",$name);
-$result = $statement->execute()->fetchArray();
 $content = <<<EOT
 	<div class="container"><div class="row"><div class="12u">
 	<div style="background-color: #484848; padding: 1em; margin-bottom: 2em">
-	<p style="padding: 0; margin-bottom: .5em">You are viewing posts in the category "{$result["name"]}".</p>
-	<p style="padding: 0; margin: 0; font-style: italic">{$result["description"]}</p>
+	<p style="padding: 0; margin-bottom: 0">You are viewing posts from the year $year.</p>
 	</div>
 EOT;
 
-$statement = $db->prepare("SELECT * FROM posts WHERE id_category IN (SELECT id_category FROM categories WHERE name=(:name)) ORDER BY date DESC LIMIT (:start),(:limit)");
-$statement->bindValue(":name", $name);
+$statement = $db->prepare("SELECT * FROM posts WHERE substr(date,1,4)=(:year) ORDER BY date DESC LIMIT (:start),(:limit)");
+$statement->bindValue(":year", $year);
 $statement->bindValue(":start", $page*$pageSize);
 $statement->bindValue(":limit", $pageSize);
 $result = $statement->execute();
@@ -66,13 +62,13 @@ EOT;
 // Navigation
 $url = $LAYOUT->base();
 if($page*$pageSize < $maxPosts-$pageSize) {
-	$content .= "<p style=\"float: left;\"><a href=\"".$url."archive/category/$name/".($page+1)."\">&lt;- older</a></p>";
+	$content .= "<p style=\"float: left;\"><a href=\"".$url."archive/year/$year/".($page+1)."\">&lt;- older</a></p>";
 }
 if($page > 0) {
 	if($page == 1) {
-		$content .= "<p style=\"float: right;\"><a href=\"".$url."archive/category/$name/\">newer -&gt;</a></p>";
+		$content .= "<p style=\"float: right;\"><a href=\"".$url."archive/year/$year/\">newer -&gt;</a></p>";
 	} else {
-		$content .= "<p style=\"float: right;\"><a href=\"".$url."archive/category/$name/".($page-1)."\">newer -&gt;</a></p>";
+		$content .= "<p style=\"float: right;\"><a href=\"".$url."archive/year/$year/".($page-1)."\">newer -&gt;</a></p>";
 	}
 }
 
@@ -92,13 +88,13 @@ function checkKey(e) {
 EOT;
 
 if($page*$pageSize < $maxPosts-$pageSize) {
-	$content .= "if(e.keyCode=='37'){url='".$url."archive/category/$name/".($page+1)."';}";
+	$content .= "if(e.keyCode=='37'){url='".$url."archive/year/$year/".($page+1)."';}";
 }
 if($page > 0) {
 	if($page == 1) {
-		$content .= "if(e.keyCode=='39'){url='".$url."archive/category/$name/';}";
+		$content .= "if(e.keyCode=='39'){url='".$url."archive/year/$year/';}";
 	} else {
-		$content .= "if(e.keyCode=='39'){url='".$url."archive/category/$name/".($page-1)."';}";
+		$content .= "if(e.keyCode=='39'){url='".$url."archive/year/$year/".($page-1)."';}";
 	}
 }
 $content .= "if (url) { window.location = url; } } </script>";
