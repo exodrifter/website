@@ -5,6 +5,8 @@ RedirectMatch 404 lib/
 	Require all denied
 </Files>
 
+ErrorDocument 404 /render.php?template=404
+
 # Rewrites
 Options +FollowSymlinks
 RewriteEngine on
