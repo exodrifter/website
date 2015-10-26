@@ -10,7 +10,7 @@ $statement = $db->prepare("SELECT * FROM categories ORDER BY name ASC");
 $result = $statement->execute();
 $str = "<p>";
 while ($cat = $result->fetchArray()) {
-	$str .= "<a href=\"tag/".strtolower($cat["name"])."\">".$cat["name"]."</a>, ";
+	$str .= "<a href=\"category/".strtolower($cat["name"])."/\">".$cat["name"]."</a>, ";
 }
 $str = substr($str, 0, strlen($str)-2)."</p>";
 $content .= <<<EOT
@@ -22,7 +22,7 @@ $statement = $db->prepare("SELECT * FROM tags ORDER BY name ASC");
 $result = $statement->execute();
 $str = "<p>";
 while ($tag = $result->fetchArray()) {
-	$str .= "<a href=\"tag/".$tag["name"]."\">".$tag["name"]."</a>, ";
+	$str .= "<a href=\"tag/".$tag["name"]."/\">".$tag["name"]."</a>, ";
 }
 $str = substr($str, 0, strlen($str)-2)."</p>";
 $content .= <<<EOT
@@ -34,7 +34,7 @@ $statement = $db->prepare("SELECT DISTINCT strftime('%Y', date) as Year FROM pos
 $result = $statement->execute();
 $str = "<p>";
 while ($year = $result->fetchArray()["0"]) {
-	$str .= "<a href=\"year/$year\">".$year."</a>, ";
+	$str .= "<a href=\"year/$year/\">".$year."</a>, ";
 }
 $str = substr($str, 0, strlen($str)-2)."</p>";
 $content .= <<<EOT
