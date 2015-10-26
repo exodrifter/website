@@ -18,16 +18,29 @@ if ($maxPosts == 0) {
 	return;
 }
 
-$content = <<<EOT
-<div class="container">
-<div class="row">
-<div class="12u">
-
-<div style="background-color: #484848; padding: 1em; margin-bottom: 2em">
-<p style="padding: 0; margin: 0">You are viewing posts tagged "$name".</p>
-</div>
-
+$gdb = new \SQLite3($LAYOUT->path("../db/games.sqlite"), SQLITE3_OPEN_READONLY);
+$statement = $gdb->prepare("SELECT * FROM games WHERE shortname=(:shortname) ORDER BY date DESC");
+$statement->bindValue(":shortname",$name);
+$game = $statement->execute()->fetchArray();
+$url = $LAYOUT->base();
+if ($game) {
+	$content = <<<EOT
+	<div class="container"><div class="row"><div class="12u">
+	<a href="{$url}game/$name"><img style="width:100%" src="{$url}res/img/game/$name/banner.png" /></a>
+	<div style="background-color: #484848; padding: 1em; margin-bottom: 2em">
+	<p style="padding: 0; margin: 0">You are viewing posts tagged "$name".
+	Read more about {$game["name"]} <a href="{$url}game/$name">here</a>.</p>
+	</div>
 EOT;
+} else {
+	$content = <<<EOT
+	<div class="container"><div class="row"><div class="12u">
+
+	<div style="background-color: #484848; padding: 1em; margin-bottom: 2em">
+	<p style="padding: 0; margin: 0">You are viewing posts tagged "$name".</p>
+	</div>
+EOT;
+}
 
 $statement = $db->prepare("SELECT * FROM posts WHERE id_post IN (SELECT id_post FROM tagpairs WHERE id_tag IN (SELECT id_tag FROM tags WHERE name=(:name))) ORDER BY date DESC LIMIT (:start),(:limit)");
 $statement->bindValue(":name", $name);
