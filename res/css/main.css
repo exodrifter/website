@@ -23,13 +23,17 @@ h2 {
 	color: #fff;
 }
 
-p {
+p, tr {
 	font-family: 'Titillium Web', sans-serif;
 	font-size:1.2em;
 	line-height: 1.5em;
 	letter-spacing: .05em;
 	color: #eee;
 	margin: 0 0 1em 0;
+}
+
+td {
+	padding: .1em 1em .1em 1em;
 }
 
 li {
@@ -50,4 +54,8 @@ a {
 
 a:hover, a:active {
 	color: #D6ABFF;
+}
+
+hr, table {
+	margin-bottom: 1em;
 }
