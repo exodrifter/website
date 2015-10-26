@@ -73,6 +73,8 @@ span.pre {
 }
 
 img {
+	display:block;
+	margin:auto;
 	max-width: 100%;
 }
 
@@ -81,3 +83,17 @@ div.tumblr {
 	background: url('../img/ico-tumblr.png') no-repeat left top;
 }
 div.tumblr:hover { background-position: -25px 0 }
+
+.video {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.video iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

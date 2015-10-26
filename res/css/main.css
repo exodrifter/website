@@ -37,11 +37,11 @@ li {
 }
 
 a {
-	color: #00A579;
+	color: #AD57FF;
 	text-decoration: none;
 	transition: 0.2s all ease-in-out;
 }
 
 a:hover, a:active {
-	color: #00DBA0;
+	color: #D6ABFF;
 }
