@@ -59,15 +59,15 @@ $tagResults = $statement->execute();
 $tags = "";
 while($tag = $tagResults->fetchArray()["name"]) {
 	if($tags==="") {
-		$tags .= "<a href='".$LAYOUT->base("archive/tag/".$tag)."'>".$tag."</a>";
+		$tags .= "<a href='".$LAYOUT->base("archive/tag/".$tag)."/'>".$tag."</a>";
 	} else {
-		$tags .= ", <a href='".$LAYOUT->base("archive/tag/".$tag)."'>".$tag."</a>";;
+		$tags .= ", <a href='".$LAYOUT->base("archive/tag/".$tag)."/'>".$tag."</a>";;
 	}
 }
 
 $content .= <<<EOT
 <p style="float: left;">
-	[<a href="{$LAYOUT->base("archive/category/".strtolower($cat))}">{$cat}</a>] {$tags}
+	[<a href="{$LAYOUT->base("archive/category/".strtolower($cat))}/">{$cat}</a>] {$tags}
 </p>
 
 EOT;
