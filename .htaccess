@@ -12,11 +12,7 @@ Options +FollowSymlinks
 RewriteEngine on
 
 # Nice links
-RewriteRule ^archives/([^/]+)/? res/template/archives/$1 [L,NC,R=301]
 RewriteRule ^about res/template/about.php [NC]
-RewriteRule ^portfolio res/template/portfolio.php [NC]
-RewriteRule ^games/([^/]+)/? res/template/games.php?game=$1 [NC]
-RewriteRule ^games res/template/games.php [NC]
 
 RewriteRule ^$ render.php?template=index [NC]
 RewriteRule ^blog/$ render.php?template=blog [NC]
@@ -29,4 +25,6 @@ RewriteRule ^archive/year/([^/]+)/([1-9]\d*)$ render.php?template=archive-year&y
 RewriteRule ^archive/year/([^/]+)/$ render.php?template=archive-year&year=$1&page=0 [NC]
 RewriteRule ^archive/([1-9]\d*)$ render.php?template=blog&page=$1 [NC]
 RewriteRule ^archive/post/([1-9]\d*)$ render.php?template=post&id=$1 [NC]
+RewriteRule ^game/$ render.php?template=games [NC]
+RewriteRule ^game/([^/]+)/? render.php?template=game&game=$1 [NC]
 RewriteRule ^music/$ render.php?template=music [NC]

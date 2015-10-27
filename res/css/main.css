@@ -56,6 +56,9 @@ a:hover, a:active {
 	color: #D6ABFF;
 }
 
+i { font-style: italic; }
+b { font-weight: bold; }
+
 hr, table {
 	margin-bottom: 1em;
 }
