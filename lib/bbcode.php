@@ -214,11 +214,11 @@ function createBBCodeParser($layout) {
 	$builder->setUseOption(true);
 	$parser->addCodeDefinition($builder->build());
 
-	$builder = new \JBBCode\CodeDefinitionBuilder("post", "<a href='".$layout->url()."archive/post/{option}'>{param}</a>");
+	$builder = new \JBBCode\CodeDefinitionBuilder("post", "<a href='".$layout->base()."archive/post/{option}'>{param}</a>");
 	$builder->setUseOption(true);
 	$parser->addCodeDefinition($builder->build());
 
-	$builder = new \JBBCode\CodeDefinitionBuilder("game", "<a href='".$layout->url()."games/{option}'>{param}</a>");
+	$builder = new \JBBCode\CodeDefinitionBuilder("game", "<a href='".$layout->base()."games/{option}'>{param}</a>");
 	$builder->setUseOption(true);
 	$parser->addCodeDefinition($builder->build());
 
