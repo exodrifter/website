@@ -23,7 +23,7 @@ $statement = $gdb->prepare("SELECT * FROM games WHERE shortname=(:shortname) ORD
 $statement->bindValue(":shortname",$name);
 $game = $statement->execute()->fetchArray();
 $url = $LAYOUT->base();
-if ($game) {
+if ($game && $game["about"]) {
 	$content = <<<EOT
 	<div class="container"><div class="row"><div class="12u">
 	<a href="{$url}game/$name"><img style="width:100%" src="{$url}res/img/game/$name/banner.png" /></a>
