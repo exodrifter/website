@@ -44,10 +44,10 @@ while($post = $posts->fetchArray())
 
 	$content .= <<<EOT
 <div class="post">
-	<h1><a href="{$LAYOUT->base()}archive/post/{$post["id_post"]}">{$post["title"]}</a></h1>
+	<h1><a href="{$LAYOUT->base()}archive/post/{$post["id_post"]}/">{$post["title"]}</a></h1>
 	<p class='date'>{$date}</p>
 	<p class='summary'>{$text}
-	<a style='text-decoration:none' href='{$LAYOUT->base()}archive/post/{$post["id_post"]}'>[...]</a></p>
+	<a style='text-decoration:none' href='{$LAYOUT->base()}archive/post/{$post["id_post"]}/'>[...]</a></p>
 </div>
 EOT;
 }
