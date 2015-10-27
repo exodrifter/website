@@ -128,4 +128,3 @@ $LAYOUT->addcss("blog");
 include $LAYOUT->path("template/base.php");
 
 ?>
-</div>
