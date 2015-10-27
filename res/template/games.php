@@ -49,6 +49,7 @@ EOT;
 
 $LAYOUT->set("content", $content);
 $LAYOUT->set("page", "game");
+$LAYOUT->set("title", "Games");
 
 include $LAYOUT->path("template/base.php");
 ?>

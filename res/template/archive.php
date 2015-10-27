@@ -46,6 +46,7 @@ $content .= <<<EOT
 EOT;
 
 $LAYOUT->set("content", $content);
+$LAYOUT->set("title", "Archive");
 $LAYOUT->addcss("blog");
 
 include $LAYOUT->path("template/base.php");

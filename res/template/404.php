@@ -9,6 +9,7 @@ $content = <<<EOT
 
 EOT;
 $LAYOUT->set("content", $content);
+$LAYOUT->set("title", "404");
 
 include $LAYOUT->path("template/base.php");
 ?>

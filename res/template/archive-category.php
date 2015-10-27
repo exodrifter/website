@@ -104,6 +104,7 @@ if($page > 0) {
 $content .= "if (url) { window.location = url; } } </script>";
 
 $LAYOUT->set("content", $content);
+$LAYOUT->set("title", "Category \"$name\"");
 $LAYOUT->addcss("blog");
 
 include $LAYOUT->path("template/base.php");

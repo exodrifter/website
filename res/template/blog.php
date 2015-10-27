@@ -101,6 +101,7 @@ $content .= "if (url) { window.location = url; } } </script>";
 
 $LAYOUT->set("content", $content);
 $LAYOUT->set("page", "blog");
+$LAYOUT->set("title", "Blog");
 $LAYOUT->addcss("blog");
 
 include $LAYOUT->path("template/base.php");

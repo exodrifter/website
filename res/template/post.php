@@ -122,6 +122,7 @@ $content .= "if (url) { window.location = url; } } </script>";
 
 $LAYOUT->set("content", $content);
 $LAYOUT->set("page", "post");
+$LAYOUT->set("title", $post["title"]);
 $LAYOUT->addcss("blog");
 
 include $LAYOUT->path("template/base.php");
