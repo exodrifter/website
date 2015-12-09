@@ -1,0 +1,64 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+date_default_timezone_set ("America/Chicago");
+
+function initdb($mode=SQLITE3_OPEN_READONLY)
+{
+	return new \SQLite3(__DIR__."/std.sqlite", $mode);
+}
+
+// Update last seen
+if (isset($_SESSION['user'])) {
+	$db = initdb(SQLITE3_OPEN_READWRITE);
+	$statement = $db->prepare(
+		"UPDATE users SET last_seen=(:time) WHERE username=(:username)"
+	);
+	$statement->bindValue(":time", time(), SQLITE3_INTEGER);
+	$statement->bindValue(":username", $_SESSION['user']['name'], SQLITE3_TEXT);
+	$statement->execute();
+	$db->close();
+}
+unset($db);
+
+if(isset($TITLE))
+	$TITLE = "std - ".$TITLE;
+else
+	$TITLE = "std";
+
+echo("
+<!DOCTYPE html>
+<html>
+<head>
+<title>$TITLE</title>
+<link rel='stylesheet' type='text/css' href='/std/css/style.css'>
+</head>
+<body><div class='wrapper'>
+<div class='header'>
+<h1>
+<a href='/std' style='text-decoration:none;color:initial'>
+Super Terrible Decisions
+</a>
+</h1>
+<p style='font-style:italic;font-size:1em'>
+in which super terrible decisions are made
+<span style='opacity:.5;font-size:.8em'>(like this website)</span>
+</p>
+<div class='navbar'>
+<p style='padding:0 1.5em 0 1.5em;text-align:right;'>
+");
+if (isset($_SESSION['user'])) {
+	echo("<a href='/std/u/{$_SESSION['user']['name']}'>{$_SESSION['user']['name']}</a>");
+	echo(" | <a href='/std/user/logout.php'>logout</a>");
+}
+else {
+	echo("<a href='/std/user/login.php'>login</a>");
+}
+echo ("
+</p>
+</div>
+</div>
+");
+
+?>
