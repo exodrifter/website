@@ -1,4 +1,4 @@
-<?php
+<?php $TITLE="edit profile";
 include_once ("../init.php");
 include_once ("fn.php");
 

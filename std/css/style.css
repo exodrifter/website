@@ -8,6 +8,12 @@
 	padding: 0 2em 5em 2em;
 }
 
+.desc {
+	font-style: italic;
+	font-size: 1em;
+	color: gray;
+}
+
 .none {
 	font-style: italic;
 	color: gray;
@@ -23,6 +29,13 @@
 	padding: 1em;
 	color: red;
 	background-color: #fee;
+}
+
+a.nav {
+	text-decoration: none;
+	background-color: #fff;
+	padding: .3em .7em;
+	margin: 0 1em;
 }
 
 html {
@@ -79,4 +92,8 @@ td:nth-child(1) {
 
 th, td {
 	padding: .3em 1em .3em 1em;
+}
+
+li {
+	margin-bottom:1em;
 }

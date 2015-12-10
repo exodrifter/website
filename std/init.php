@@ -9,6 +9,14 @@ function isloggedin()
 	return isset($_SESSION['user']);
 }
 
+function validate($regex, $text)
+{
+	$regex = '(^'.$regex.'$)';
+	if (1 === preg_match ($regex, $text))
+		return $text;
+	return null;
+}
+
 // Check for a session
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();

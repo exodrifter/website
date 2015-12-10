@@ -27,6 +27,7 @@ in which super terrible decisions are made
 <p style='padding:0 1.5em 0 1.5em;text-align:right;'>
 ");
 if (isset($_SESSION['user'])) {
+	echo("<a class='nav' href='/std/register.php'>register</a>");
 	echo("<a href='/std/u/{$_SESSION['user']['name']}'>{$_SESSION['user']['name']}</a>");
 	echo(" | <a href='/std/user/logout.php'>logout</a>");
 }

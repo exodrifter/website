@@ -13,3 +13,4 @@ RewriteEngine on
 
 # Nice links
 RewriteRule ^u/([A-Za-z0-9\-\_\.]+)$ user.php?user=$1 [NC]
+RewriteRule ^g/([A-Za-z0-9\-]+)$ game.php?game=$1 [NC]

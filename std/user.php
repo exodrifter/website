@@ -1,6 +1,6 @@
 <?php
 include_once("init.php");
-$db = new \SQLite3("std.sqlite", SQLITE3_OPEN_READONLY);
+$db = initdb();
 
 $MAX_TOKENS = 7;
 

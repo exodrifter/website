@@ -84,12 +84,12 @@ function register($username, $password, $token)
 	$time = time();
 
 	$statement = $db->prepare(
-		"INSERT INTO user (username, hash, registered, last_seen)
-		 VALUES ((:username), (:hash), (:registered), (:last_seen))"
+		"INSERT INTO user (username, hash, created, last_seen)
+		 VALUES ((:username), (:hash), (:created), (:last_seen))"
 	);
 	$statement->bindValue(":username", $username, SQLITE3_TEXT);
 	$statement->bindValue(":hash", $hash, SQLITE3_TEXT);
-	$statement->bindValue(":registered", $time, SQLITE3_INTEGER);
+	$statement->bindValue(":created", $time, SQLITE3_INTEGER);
 	$statement->bindValue(":last_seen", $time, SQLITE3_INTEGER);
 	$result = $statement->execute();
 
