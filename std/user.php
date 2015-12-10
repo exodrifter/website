@@ -23,9 +23,12 @@ if ($arr = $result->fetchArray(SQLITE3_ASSOC))
 	$created = date("Y-M-d H:i:s T P", $arr['created']);
 	$last_seen = date("Y-M-d H:i:s T P", $arr['last_seen']);
 
+	$edit = null;
 	$tokens = null;
 	if (isloggedin() && $_SESSION['user']['name'] === $username)
 	{
+		$edit = "<a href='/std/user/edit.php'>edit profile</a>";
+
 		$statement = $db->prepare(
 			"SELECT token FROM registration_token WHERE id_user=(:id_user)"
 		);
@@ -60,6 +63,7 @@ if ($arr = $result->fetchArray(SQLITE3_ASSOC))
 	include_once("header.php");
 
 	echo("<h1>{$arr['username']}</h1>
+	<p>{$edit}</p>
 	<div style='margin-bottom:2em'>
 	<p>first: {$arr['first_name']}</p>
 	<p>last: {$arr['last_name']}</p>

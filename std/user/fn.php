@@ -9,6 +9,13 @@ function validate_username($username)
 	return null;
 }
 
+function validate_name($name) {
+	$regex = '(^[A-Za-z\ \.]+$)';
+	if (1 === preg_match ($regex, $name))
+		return $name;
+	return null;
+}
+
 function login($username, $password)
 {
 	$db = new \SQLite3("../std.sqlite", SQLITE3_OPEN_READWRITE);
@@ -54,6 +61,11 @@ function login($username, $password)
 
 function register($username, $password, $token)
 {
+	// Check if the password is valid
+	if (0 == preg_match('/^[A-Za-z0-9_!@#$%^&*()]{4,30}$/', $password)) {
+		return false;
+	}
+
 	$db = new \SQLite3("../std.sqlite", SQLITE3_OPEN_READWRITE);
 
 	// Delete the registration token if it exists
@@ -79,6 +91,31 @@ function register($username, $password, $token)
 	$statement->bindValue(":hash", $hash, SQLITE3_TEXT);
 	$statement->bindValue(":registered", $time, SQLITE3_INTEGER);
 	$statement->bindValue(":last_seen", $time, SQLITE3_INTEGER);
+	$result = $statement->execute();
+
+	$db->close();
+	unset ($db);
+	return $result;
+}
+
+function update_password($username, $old, $new)
+{
+	if (0 == preg_match('/^[A-Za-z0-9_!@#$%^&*()]{4,30}$/', $new)) {
+		return false;
+	}
+	if (!login($username, $old)) {
+		return false;
+	}
+
+	$hash = password_hash($new, PASSWORD_DEFAULT);
+
+	$db = new \SQLite3("../std.sqlite", SQLITE3_OPEN_READWRITE);
+
+	$statement = $db->prepare(
+		"UPDATE user SET hash=(:hash) WHERE username=(:username)"
+	);
+	$statement->bindValue(":username", $username, SQLITE3_TEXT);
+	$statement->bindValue(":hash", $hash, SQLITE3_TEXT);
 	$result = $statement->execute();
 
 	$db->close();
