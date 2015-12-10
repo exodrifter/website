@@ -8,6 +8,11 @@
 	padding: 0 2em 5em 2em;
 }
 
+.none {
+	font-style: italic;
+	color: gray;
+}
+
 .success {
 	padding: 1em;
 	color: green;
@@ -27,7 +32,7 @@ html {
 	height: 100%;
 }
 
-input {
+input, button {
 	font-family: monospace;
 }
 

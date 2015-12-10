@@ -1,5 +1,8 @@
 <?php
+include_once("init.php");
 $db = new \SQLite3("std.sqlite", SQLITE3_OPEN_READONLY);
+
+$MAX_TOKENS = 7;
 
 // Check if a user was defined
 if (!isset($_GET['user'])) {
@@ -8,19 +11,50 @@ if (!isset($_GET['user'])) {
 $username = $_GET['user'];
 
 $statement = $db->prepare(
-	"SELECT username, first_name, last_name, middle_name, created, last_seen
-	 FROM users WHERE username=(:username)"
+	"SELECT id_user, username, first_name, last_name, middle_name, created,
+	        last_seen
+	 FROM user WHERE username=(:username)"
 );
 $statement->bindValue(":username", $username, SQLITE3_TEXT);
 $result = $statement->execute();
 
 if ($arr = $result->fetchArray(SQLITE3_ASSOC))
 {
-	$db->close();
-	unset ($db);
-
 	$created = date("Y-M-d H:i:s T P", $arr['created']);
 	$last_seen = date("Y-M-d H:i:s T P", $arr['last_seen']);
+
+	$tokens = null;
+	if (isloggedin() && $_SESSION['user']['name'] === $username)
+	{
+		$statement = $db->prepare(
+			"SELECT token FROM registration_token WHERE id_user=(:id_user)"
+		);
+		$statement->bindValue(":id_user", $_SESSION['user']['id'], SQLITE3_INTEGER);
+		$result = $statement->execute();
+
+		$tokens = "<h1 id='tokens'>Registration Tokens</h1>";
+		if (isset($token_error)) {
+			$tokens .= "<p class='error'>{$token_error}</p>";
+		}
+		$number = 0;
+		while ($token = $result->fetchArray(SQLITE3_ASSOC))
+		{
+			$number++;
+			$token = $token["token"];
+			$tokens .= "<p>{$token} <a href='/std/user/delete_token.php?del={$token}'>delete</a></p>";
+		}
+		if ($number == 0) {
+			$tokens .= "<p class='none'>no tokens</p>";
+		}
+		if ($number < $MAX_TOKENS) {
+			$tokens .= "<form style='display:inline;'
+				action='/std/user/generate_token.php'>
+				<input type='submit' value='generate token'></form>";
+		}
+	}
+
+	$db->close();
+	unset ($db);
 
 	$TITLE = $arr['username'];
 	include_once("header.php");
@@ -32,7 +66,8 @@ if ($arr = $result->fetchArray(SQLITE3_ASSOC))
 	<p>middle: {$arr['middle_name']}</p>
 	</div>
 	<p>created: {$created}</p>
-	<p>last seen: {$last_seen}</p>");
+	<p>last seen: {$last_seen}</p>
+	{$tokens}");
 
 	include_once("footer.php");
 }
