@@ -5,7 +5,7 @@ include_once("fn.php");
 $SUCCESS_DESTINATION = "Location:/std";
 
 // Check if the user is already logged in
-if (isloggedin()) {
+if (is_logged_in()) {
 	header($SUCCESS_DESTINATION);
 	return;
 }

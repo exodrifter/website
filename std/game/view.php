@@ -1,6 +1,6 @@
 <?php
-include_once("init.php");
-$db = initdb();
+include_once("../init.php");
+$db = init_db();
 
 if (!isset($_GET['game'])) {
 	header("HTTP/1.0 404 Not Found");
@@ -29,7 +29,7 @@ $middle_name = $result['middle_name'];
 $db->close();
 unset($db);
 
-include_once("header.php");
+include_once("../header.php");
 
 echo("<h1>{$name}</h1>
 <p>created: {$created}</p>
@@ -37,5 +37,5 @@ echo("<h1>{$name}</h1>
 <p>description: {$description}</p>
 ");
 
-include_once("footer.php");
+include_once("../footer.php");
 ?>

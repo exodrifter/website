@@ -1,7 +1,7 @@
 <?php
 include_once("../header.php");
 
-if (!isloggedin()) {
+if (!is_logged_in()) {
 	include_once("../header.php");
 	echo("<p class='error'>you must be logged in to access this page</p>");
 	include_once("../footer.php");
@@ -20,7 +20,7 @@ if (isset($_POST['name']) && isset($_POST['description']))
 		$description == null;
 	}
 
-	$db = initdb(SQLITE3_OPEN_READWRITE);
+	$db = init_db(SQLITE3_OPEN_READWRITE);
 	$statement = $db->prepare(
 		"INSERT INTO game (created, id_mod, name, code, description)
 		 VALUES ((:created),(:id_mod),(:name),(:code),(:description))"
@@ -50,7 +50,7 @@ if (isset($_POST['name']) && isset($_POST['description']))
 <div style='margin-bottom:2em'>
 <p>description:</p>
 <textarea name='description' rows=10 style='width: 100%'></textarea>
-<p class='desc'>the description of the game</p>
+<p class='desc'>the description of the game. no newlines.</p>
 </div>
 <p><input type='submit' value='Submit'></p>
 </form>

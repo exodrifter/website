@@ -2,12 +2,12 @@
 include_once ("../init.php");
 include_once ("fn.php");
 
-if(!isloggedin()) {
+if(!is_logged_in()) {
 	header("Location:/std");
 }
 $username = $_SESSION['user']['name'];
 $id_user = $_SESSION['user']['id'];
-$db = initdb(SQLITE3_OPEN_READWRITE);
+$db = init_db(SQLITE3_OPEN_READWRITE);
 
 // Check if we want to update the profile
 $profile_msg = null;

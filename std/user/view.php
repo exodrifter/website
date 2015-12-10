@@ -1,6 +1,6 @@
 <?php
-include_once("init.php");
-$db = initdb();
+include_once("../init.php");
+$db = init_db();
 
 $MAX_TOKENS = 7;
 
@@ -25,7 +25,7 @@ if ($arr = $result->fetchArray(SQLITE3_ASSOC))
 
 	$edit = null;
 	$tokens = null;
-	if (isloggedin() && $_SESSION['user']['name'] === $username)
+	if (is_logged_in() && $_SESSION['user']['name'] === $username)
 	{
 		$edit = "<a href='/std/user/edit.php'>edit profile</a>";
 
@@ -60,7 +60,7 @@ if ($arr = $result->fetchArray(SQLITE3_ASSOC))
 	unset ($db);
 
 	$TITLE = $arr['username'];
-	include_once("header.php");
+	include_once("../header.php");
 
 	echo("<h1>{$arr['username']}</h1>
 	<p>{$edit}</p>
@@ -73,7 +73,7 @@ if ($arr = $result->fetchArray(SQLITE3_ASSOC))
 	<p>last seen: {$last_seen}</p>
 	{$tokens}");
 
-	include_once("footer.php");
+	include_once("../footer.php");
 }
 else
 {

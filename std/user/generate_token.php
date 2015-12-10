@@ -3,11 +3,11 @@ include_once("../init.php");
 
 $MAX_TOKENS = 7;
 
-if (!isloggedin()) {
+if (!is_logged_in()) {
 	header("Location:/std");
 }
 
-$db = initdb(SQLITE3_OPEN_READWRITE);
+$db = init_db(SQLITE3_OPEN_READWRITE);
 $username = $_SESSION['user']['name'];
 $SUCCESS_DESTINATION = "Location:/std/u/".$username;
 

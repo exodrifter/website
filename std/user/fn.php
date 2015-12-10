@@ -1,5 +1,5 @@
 <?php
-include_once("../fn.php");
+include_once("../init.php");
 
 function validate_username($username)
 {
@@ -18,7 +18,7 @@ function validate_name($name) {
 
 function login($username, $password)
 {
-	$db = new \SQLite3("../std.sqlite", SQLITE3_OPEN_READWRITE);
+	$db = init_db(SQLITE3_OPEN_READWRITE);
 
 	$statement = $db->prepare(
 		"SELECT id_user, hash FROM user WHERE username=(:username)"
@@ -66,7 +66,7 @@ function register($username, $password, $token)
 		return false;
 	}
 
-	$db = new \SQLite3("../std.sqlite", SQLITE3_OPEN_READWRITE);
+	$db = init_db(SQLITE3_OPEN_READWRITE);
 
 	// Delete the registration token if it exists
 	$statement = $db->prepare(
@@ -109,7 +109,7 @@ function update_password($username, $old, $new)
 
 	$hash = password_hash($new, PASSWORD_DEFAULT);
 
-	$db = new \SQLite3("../std.sqlite", SQLITE3_OPEN_READWRITE);
+	$db = init_db(SQLITE3_OPEN_READWRITE);
 
 	$statement = $db->prepare(
 		"UPDATE user SET hash=(:hash) WHERE username=(:username)"
