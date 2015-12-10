@@ -1,34 +1,12 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
-date_default_timezone_set ("America/Chicago");
-
-function initdb($mode=SQLITE3_OPEN_READONLY)
-{
-	return new \SQLite3(__DIR__."/std.sqlite", $mode);
-}
-
-// Update last seen
-if (isset($_SESSION['user'])) {
-	$db = initdb(SQLITE3_OPEN_READWRITE);
-	$statement = $db->prepare(
-		"UPDATE users SET last_seen=(:time) WHERE username=(:username)"
-	);
-	$statement->bindValue(":time", time(), SQLITE3_INTEGER);
-	$statement->bindValue(":username", $_SESSION['user']['name'], SQLITE3_TEXT);
-	$statement->execute();
-	$db->close();
-}
-unset($db);
+include_once("init.php");
 
 if(isset($TITLE))
 	$TITLE = "std - ".$TITLE;
 else
 	$TITLE = "std";
 
-echo("
-<!DOCTYPE html>
+echo("<!DOCTYPE html>
 <html>
 <head>
 <title>$TITLE</title>

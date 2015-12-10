@@ -1,10 +1,11 @@
 <?php $TITLE="login";
-include ("fn.php");
+include_once("../init.php");
+include_once("fn.php");
 
 $SUCCESS_DESTINATION = "Location:/std";
 
 // Check if the user is already logged in
-if (isset($_SESSION['user'])) {
+if (isloggedin()) {
 	header($SUCCESS_DESTINATION);
 	return;
 }
@@ -19,7 +20,7 @@ else {
 
 // Attempt login if the username and password input is set
 $attempted_login = false;
-if (isset($_POST["username"]) && isset($_POST["password"]) )
+if (isset($_POST["username"]) && isset($_POST["password"]))
 {
 	$attempted_login = true;
 
@@ -36,6 +37,13 @@ if (isset($_POST["username"]) && isset($_POST["password"]) )
 include_once("../header.php");
 
 echo("<h1>Login</h1>");
+
+if (isset($_GET["registered"]) && "true" === $_GET["registered"])
+{
+	echo ("<p class='success'>Registered! Please log in.</p>");
+}
+
+echo("<p>No account? Register <a href='/std/user/register.php'>here</a>.</p>");
 
 if ($attempted_login) {
 	echo("<p class='error'>could not login. try again.</p>");

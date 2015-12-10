@@ -8,6 +8,12 @@
 	padding: 0 2em 5em 2em;
 }
 
+.success {
+	padding: 1em;
+	color: green;
+	background-color: #efe;
+}
+
 .error {
 	padding: 1em;
 	color: red;
