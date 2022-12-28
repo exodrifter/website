@@ -58,12 +58,13 @@ include:
 
 # Plugins (previously gems:)
 plugins:
+  - jekyll-archives
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-include-cache
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
   - jemoji
-  - jekyll-include-cache
 
 author:
   avatar : "/assets/images/avatar.jpg"
@@ -90,33 +91,42 @@ footer:
   links:
 
 defaults:
+  - scope:
+      path: ""
+    values:
+      classes: wide
+      entries_layout: grid
+      author_profile: true
+      show_date: true
+
   # _posts
   - scope:
       path: ""
       type: posts
     values:
       layout: single
-      classes: wide
-      author_profile: true
-      read_time: false
       comments: false
+      read_time: false
+      related: false
       share: false
-      related: true
-  # _pages
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      entries_layout: grid
-      author_profile: true
 
+# jekyll-archives related settings
 category_archive:
-  type: liquid
-  path: /categories/
+  type: jekyll-archives
+  path: /category/
 tag_archive:
-  type: liquid
-  path: /tags/
+  type: jekyll-archives
+  path: /tag/
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: archive-taxonomy
+    tag: archive-taxonomy
+  permalinks:
+    category: /category/:name/
+    tag: /tag/:name/
 
 # Fixes Jekyll watch from failing locally
 # See: https://github.com/github/pages-gem/issues/399#issuecomment-301827749

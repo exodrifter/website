@@ -1,7 +1,7 @@
 main:
   - title: "year"
-    url: /years/
+    url: /year/
   - title: "category"
-    url: /categories/
+    url: /category/
   - title: "tag"
-    url: /tags/
+    url: /tag/

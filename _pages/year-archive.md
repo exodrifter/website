@@ -1,5 +1,5 @@
 ---
 title: "Posts by Year"
-permalink: /years/
+permalink: /year/
 layout: posts
 ---
