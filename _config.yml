@@ -39,7 +39,9 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 # Lunr indexing settings
 lunr:
-  search_within_pages: true
+  # JS files appear in search right now
+  # https://github.com/mmistakes/minimal-mistakes/pull/4000
+  search_within_pages: false
 
 include:
   - _pages
