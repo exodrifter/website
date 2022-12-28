@@ -1,6 +1,5 @@
 ---
 title: "Posts by Year"
-permalink: /posts/
+permalink: /years/
 layout: posts
-author_profile: true
 ---
