@@ -1,5 +1,5 @@
 ---
 title: "Posts by Year"
 permalink: /year/
-layout: posts
+layout: year-list
 ---

@@ -1,5 +1,5 @@
 ---
 title: "Posts by Tag"
 permalink: /tag/
-layout: tags
+layout: tag-list
 ---

@@ -119,12 +119,15 @@ tag_archive:
   path: /tag/
 jekyll-archives:
   enabled:
+    - year
     - categories
     - tags
   layouts:
-    category: archive-taxonomy
-    tag: archive-taxonomy
+    year: year-listing
+    category: category-listing
+    tag: tag-listing
   permalinks:
+    year: /:year/
     category: /category/:name/
     tag: /tag/:name/
 
