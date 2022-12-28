@@ -66,13 +66,25 @@ plugins:
   - jekyll-include-cache
 
 author:
+  avatar : "/assets/images/avatar.jpg"
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
+    - label: "website"
       url: "https://exodrifter.space"
-    - label: "Twitch"
+    - label: "bandcamp"
+      icon: "fab fa-fw fa-bandcamp"
+      url: "https://music.exodrifter.space"
+    - label: "itch.io"
+      icon: "fab fa-fw fa-itch-io"
+      url: "https://exodrifter.itch.io"
+    - label: "ko-fi"
+      icon: "fas fa-mug-hot"
+      url: "https://ko-fi.com/exodrifter"
+    - label: "patreon"
+      icon: "fab fa-fw fa-patreon"
+      url: "https://patreon.com/exodrifter"
+    - label: "twitch"
       icon: "fab fa-fw fa-twitch"
-      url: "https://twitch.tv/exodrifter_"
+      url: "https://www.twitch.tv/exodrifter_"
 
 footer:
   links:
