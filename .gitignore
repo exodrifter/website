@@ -1,3 +1,6 @@
+env.sh
+
+# Jekyll
 _site
 .sass-cache
 .jekyll-metadata
