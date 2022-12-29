@@ -20,4 +20,4 @@ video_id=$1
 # Fetch the video's metadata
 echo "Downloading metadata..."
 json=$(curl -sH "Authorization: bearer $access_token" "https://api.vimeo.com/videos/$video_id?fields=name,description,pictures.base_link")
-./shared/post.sh "$json" $2
+./shared/post.sh "$video_id" "$json" $2

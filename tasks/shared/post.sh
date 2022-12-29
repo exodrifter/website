@@ -1,23 +1,26 @@
 #!/bin/bash
 set -e
 
+video_id=$1
+json=$2
+
 # Parse the title of the video for streaming service and air date
-name=($(echo $1 | jq -r ".name"))
+name=($(echo $json | jq -r ".name"))
 service=${name[0]}
 date=${name[2]}
 time=${name[3]}
 
 # Get the title of the stream from the description
-description=$(echo $1 | jq -r ".description")
+description=$(echo $json | jq -r ".description")
 description=${description//|/&#124;}
 
 # Name for the post and thumbnail that can be written to the filesystem
 file_name="$date-${time//:/-}"
 
 # Download the thumbnail
-if [ "$2" != "--skip-thumb" ]; then
+if [ "$3" != "--skip-thumb" ]; then
   echo "Downloading thumbnail..."
-  base_link=$(echo $1 | jq -r ".pictures.base_link")
+  base_link=$(echo $json | jq -r ".pictures.base_link")
   thumb_path="../assets/thumbs/$file_name.jpg"
   curl -sH "Authorization: bearer $access_token" "$base_link.jpg" --output "$thumb_path"
 fi
