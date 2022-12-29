@@ -63,7 +63,7 @@ data UserResult =
     { totalResults :: Int
     , currentPage :: Int
     , resultsPerPage :: Int
-    , paging :: Paging
+    , pagingInfo :: Paging
     , results :: [Video]
     }
 
@@ -97,7 +97,7 @@ data Video =
     { uri :: Text
     , videoId :: Text
     , name :: Text
-    , description :: Text
+    , description :: Maybe Text
     , pictures :: Pictures
     , parentFolder :: Maybe Folder
     }
@@ -223,11 +223,13 @@ expectJust message fn = do
     Nothing -> die message
     Just a -> pure a
 
-getVideos secrets = do
+getVideos secrets page = do
   let url = https "api.vimeo.com" /: "users" /: "104901742" /: "videos"
-  runReq defaultHttpConfig $ req GET url NoReqBody jsonResponse $
+  response <- runReq defaultHttpConfig $ req GET url NoReqBody jsonResponse $
        headerRedacted "Authorization" ("bearer " <> accessToken secrets)
     <> "fields" =: ("uri,name,description,pictures.base_link,parent_folder.name" :: Text)
+    <> "page" =: (show page :: Text)
+  pure $ responseBody response
 
 getThumbnail manager url = do
   request <- HTTP.parseRequest $ T.unpack url
@@ -239,23 +241,29 @@ main = do
   manager <- HTTP.newManager HTTP.tlsManagerSettings
   secrets <- expectJust "Cannot parse env.json" $ decodeFileStrict "env.json"
 
-  rs <- results . responseBody <$> getVideos secrets
-  traverse (migrate manager) rs
+  rs <- getVideos secrets 1
+  traverse (migrate secrets manager rs) (results rs)
+  followPagination secrets manager rs
 
-  -- args <- getArgs
-  -- echo $ fromString $ List.intercalate ", " args
+followPagination secrets manager page =
+  case nextPage $ pagingInfo page of
+    Nothing -> pure ()
+    Just next -> do
+      rs <- getVideos secrets (currentPage page + 1)
+      traverse (migrate secrets manager rs) (results rs)
+      followPagination secrets manager rs
 
-migrate manager video =
+migrate secrets manager page video = do
   case folderName <$> parentFolder video of
     Just n | n == "Streams" -> do
       echo $ fromString . T.unpack $
         "Migrating " <> videoId video <> " - " <> name video
-      migrate' manager video
+      migrate' secrets manager page video
     _ ->
       echo $ fromString . T.unpack $
         "Skipping " <> videoId video <> " - " <> name video
 
-migrate' manager video = do
+migrate' secrets manager page video = do
   (service, date, time) <-
     case T.words $ name video of
       a:b:c:d:[] -> pure (T.toLower a, c, d)
@@ -264,11 +272,13 @@ migrate' manager video = do
   -- There's a bug in the minimal mistakes theme which treats the pipe character
   -- as table syntax for markdown only in some parts of the website.
   let desc = 
-        case T.replace "|" "&#124;" $ description video of
+        case T.replace "|" "&#124;" <$> description video of
           -- If there is no description, I didn't save the original title of the
           -- stream if there was one. Default to the date instead.
-          "" -> date <> " " <> time
-          a -> a
+          Nothing -> date <> " " <> time
+          Just "" -> date <> " " <> time
+
+          Just a -> a
       fileName = T.unpack $ T.replace ":" "-" $ date <> "-" <> time
 
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
