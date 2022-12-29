@@ -16,6 +16,7 @@
 
 import Relude hiding (die)
 
+import Control.Monad.Catch (MonadThrow)
 import Data.Aeson hiding ((<?>))
 import Data.Attoparsec.Text ((<?>))
 import Network.HTTP.Req
@@ -216,6 +217,30 @@ postToText p =
 -- Logic
 --------------------------------------------------------------------------------
 
+newtype Migration a = Migration (ReaderT MigrationContext IO a)
+  deriving
+    ( Applicative
+    , Functor
+    , Monad
+    , MonadIO
+    , MonadReader MigrationContext
+    , MonadThrow
+    )
+
+data MigrationContext =
+  MigrationContext
+    { migrationSecrets :: Secrets
+    , migrationManager :: HTTP.Manager
+    }
+
+runMigration :: Migration a -> IO a
+runMigration (Migration migration) = do
+  context <-
+    MigrationContext
+      <$> expectJust "Cannot parse env.json" (decodeFileStrict "env.json")
+      <*> HTTP.newManager HTTP.tlsManagerSettings
+  runReaderT migration context
+
 expectJust :: MonadIO io => Text -> io (Maybe a) -> io a
 expectJust message fn = do
   ma <- fn
@@ -223,47 +248,48 @@ expectJust message fn = do
     Nothing -> die message
     Just a -> pure a
 
-getVideos secrets page = do
+getVideos :: Int -> Migration UserResult
+getVideos page = do
+  auth <- asks (accessToken . migrationSecrets)
   let url = https "api.vimeo.com" /: "users" /: "104901742" /: "videos"
   response <- runReq defaultHttpConfig $ req GET url NoReqBody jsonResponse $
-       headerRedacted "Authorization" ("bearer " <> accessToken secrets)
+       headerRedacted "Authorization" ("bearer " <> auth)
     <> "fields" =: ("uri,name,description,pictures.base_link,parent_folder.name" :: Text)
     <> "page" =: (show page :: Text)
   pure $ responseBody response
 
-getThumbnail manager url = do
+getThumbnail :: Text -> Migration LBS.ByteString
+getThumbnail url = do
+  manager <- asks migrationManager
   request <- HTTP.parseRequest $ T.unpack url
   let req = request { HTTP.path = HTTP.path request <> "_640x360.jpg" }
-  response <- HTTP.httpLbs req manager
+  response <- liftIO $ HTTP.httpLbs req manager
   pure $ HTTP.responseBody response
 
-main = do
-  manager <- HTTP.newManager HTTP.tlsManagerSettings
-  secrets <- expectJust "Cannot parse env.json" $ decodeFileStrict "env.json"
+main = runMigration $ do
+  rs <- getVideos 1
+  traverse (migrate rs) (results rs)
+  followPagination rs
 
-  rs <- getVideos secrets 1
-  traverse (migrate secrets manager rs) (results rs)
-  followPagination secrets manager rs
-
-followPagination secrets manager page =
+followPagination page =
   case nextPage $ pagingInfo page of
     Nothing -> pure ()
     Just next -> do
-      rs <- getVideos secrets (currentPage page + 1)
-      traverse (migrate secrets manager rs) (results rs)
-      followPagination secrets manager rs
+      rs <- getVideos (currentPage page + 1)
+      traverse (migrate rs) (results rs)
+      followPagination rs
 
-migrate secrets manager page video = do
+migrate page video = do
   case folderName <$> parentFolder video of
     Just n | n == "Streams" -> do
       echo $ fromString . T.unpack $
         "Migrating " <> videoId video <> " - " <> name video
-      migrate' secrets manager page video
+      migrate' page video
     _ ->
       echo $ fromString . T.unpack $
         "Skipping " <> videoId video <> " - " <> name video
 
-migrate' secrets manager page video = do
+migrate' page video = do
   (service, date, time) <-
     case T.words $ name video of
       a:b:c:d:[] -> pure (T.toLower a, c, d)
@@ -284,8 +310,8 @@ migrate' secrets manager page video = do
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
   echo $ fromString . T.unpack $
     "  Downloading thumb for " <> videoId video <> " to " <> T.pack thumbPath
-  thumb <- getThumbnail manager (baseLink $ pictures video)
-  LBS.writeFile thumbPath thumb
+  thumb <- getThumbnail (baseLink $ pictures video)
+  liftIO $ LBS.writeFile thumbPath thumb
 
   let postPath = "_posts/" <> fileName <> ".md"
   postExists <- testpath $ decodeString postPath
@@ -293,10 +319,10 @@ migrate' secrets manager page video = do
   then do
       echo $ fromString . T.unpack $
         "  Updating " <> videoId video <> " at " <> T.pack postPath
-      t <- Text.readFile postPath
+      t <- liftIO $ Text.readFile postPath
       case postFromText t of
         Left err -> die $ "Failed to read post; " <> T.pack err
-        Right p -> Text.writeFile postPath . postToText $
+        Right p -> liftIO . Text.writeFile postPath . postToText $
           p { postTitle = desc
             , postDate = date <> "T" <> time
             , postTeaserPath = "/assets/thumbs/" <> T.pack fileName <> ".jpg"
@@ -306,7 +332,7 @@ migrate' secrets manager page video = do
   else do
     echo $ fromString . T.unpack $
       "  Creating " <> videoId video <> " at " <> T.pack postPath
-    Text.writeFile postPath . postToText $
+    liftIO . Text.writeFile postPath . postToText $
       Post
         { postTitle = desc
         , postDate = date <> "T" <> time
