@@ -99,7 +99,7 @@ instance FromJSON Paging where
 
 data Video =
   Video
-    { uri :: Text
+    { videoURI :: Text
     , videoId :: Text
     , name :: Text
     , description :: Maybe Text
@@ -121,13 +121,27 @@ instance FromJSON Video where
 
 data Pictures =
   Pictures
-    { baseLink :: Text
+    { pictureURI :: Maybe Text
+    , pictureId :: Maybe Text
+    , baseLink :: Text
     }
 
 instance FromJSON Pictures where
-  parseJSON = withObject "Pictures" $ \o ->
-    Pictures
-      <$> o .: "base_link"
+  parseJSON = withObject "Pictures" $ \o -> do
+    mUri <- o .: "uri"
+    case Safe.lastMay . T.splitOn "/" <$> mUri of
+      Just Nothing ->
+        fail "Could not parse picture id"
+      Just (Just a) ->
+        Pictures
+          <$> pure mUri
+          <*> pure (Just a)
+          <*> o .: "base_link"
+      Nothing ->
+        Pictures
+          <$> pure Nothing
+          <*> pure Nothing
+          <*> o .: "base_link"
 
 data Folder =
   Folder
@@ -147,7 +161,8 @@ data Post =
   Post
     { postTitle :: Text
     , postDate :: Time.ZonedTime
-    , postTeaserPath :: Text
+    , postThumbPath :: Text
+    , postThumbId :: Text
     , postCategories :: Set Text
     , postTags :: Set Text
     , postVideoId :: Text
@@ -168,7 +183,8 @@ postFromText = Atto.parseOnly p
       title <- "title:" *> takeLine <?> "title"
       date <- parseTime "%FT%T%z" =<< ("date:" *> takeLine <?> "date")
       "header:" *> skipTrailingSpace <?> "header"
-      teaser <- skipSpace *> "teaser:" *> takeLine <?> "teaser"
+      thumb <- skipSpace *> "teaser:" *> takeLine <?> "teaser"
+      thumbId <- (skipSpace *> "teaser_id:" *> takeLine) <|> pure ""
       "categories:" <?> "categories"
       categories <-
             (skipSpace *> "[]" *> pure [] <* skipTrailingSpace <?> "empty array")
@@ -191,7 +207,8 @@ postFromText = Atto.parseOnly p
       pure Post
         { postTitle = T.strip title
         , postDate = date
-        , postTeaserPath = T.strip teaser
+        , postThumbPath = T.strip thumb
+        , postThumbId = T.strip thumbId
         , postCategories = Set.fromList $ T.strip <$> categories
         , postTags = Set.fromList $ T.strip <$> tags
         , postVideoId = T.strip videoId
@@ -204,7 +221,8 @@ postToText p =
   <> "title: " <> postTitle p <> "\n"
   <> "date: " <> (formatTime "%FT%T%z" $ postDate p) <> "\n"
   <> "header:\n"
-  <> "  teaser: " <> postTeaserPath p <> "\n"
+  <> "  teaser: " <> postThumbPath p <> "\n"
+  <> "  teaser_id: " <> postThumbId p <> "\n"
   <> "categories:" <> (elements $ postCategories p)
   <> "tags:" <> (elements $ postTags p)
   <> "---\n"
@@ -258,8 +276,9 @@ getVideos page = do
   let url = https "api.vimeo.com" /: "users" /: "104901742" /: "videos"
   response <- runReq defaultHttpConfig $ req GET url NoReqBody jsonResponse $
        headerRedacted "Authorization" ("bearer " <> auth)
-    <> "fields" =: ("uri,name,description,pictures.base_link,parent_folder.name" :: Text)
+    <> "fields" =: ("uri,name,description,pictures.base_link,pictures.uri,parent_folder.name" :: Text)
     <> "page" =: (show page :: Text)
+    <> "per_page" =: (100 :: Int)
   pure $ responseBody response
 
 getThumbnail :: Text -> Migration LBS.ByteString
@@ -332,28 +351,25 @@ migrate' page video = do
           Just a -> a
       fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
 
-  let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
-  echo $ fromString . T.unpack $
-    "  Downloading thumb for " <> videoId video <> " to " <> thumbPath
-  thumb <- getThumbnail (baseLink $ pictures video)
-  liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
-
   let postPath = "_posts/" <> fileName <> ".md"
   postExists <- testpath $ decodeString (T.unpack postPath)
   if postExists
   then do
-      echo $ fromString . T.unpack $
-        "  Updating " <> videoId video <> " at " <> postPath
-      t <- liftIO $ Text.readFile (T.unpack postPath)
-      case postFromText t of
-        Left err -> die $ "Failed to read post; " <> T.pack err
-        Right p -> liftIO . Text.writeFile (T.unpack postPath) . postToText $
+    echo $ fromString . T.unpack $
+      "  Updating " <> videoId video <> " at " <> postPath
+    t <- liftIO $ Text.readFile (T.unpack postPath)
+    case postFromText t of
+      Left err -> die $ "Failed to read post; " <> T.pack err
+      Right p -> do
+        liftIO . Text.writeFile (T.unpack postPath) . postToText $
           p { postTitle = desc
             , postDate = zonedTime
-            , postTeaserPath = "/assets/thumbs/" <> fileName <> ".jpg"
+            , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
+            , postThumbId = fromMaybe "" $ pictureId $ pictures video
             , postCategories = Set.insert service $ postCategories p
             , postVideoId = videoId video
             }
+        downloadThumbIfNeeded fileName video (Just p)
   else do
     echo $ fromString . T.unpack $
       "  Creating " <> videoId video <> " at " <> postPath
@@ -361,9 +377,45 @@ migrate' page video = do
       Post
         { postTitle = desc
         , postDate = zonedTime
-        , postTeaserPath = "/assets/thumbs/" <> fileName <> ".jpg"
+        , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
+        , postThumbId = fromMaybe "" $ pictureId $ pictures video
         , postCategories = Set.singleton service
         , postTags = Set.empty
         , postVideoId = videoId video
         , postContent = ""
         }
+    downloadThumbIfNeeded fileName video Nothing
+
+downloadThumbIfNeeded fileName video oldPost = do
+  let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
+  thumbExists <- testpath $ decodeString (T.unpack thumbPath)
+  case (thumbExists, pictureId $ pictures video) of
+
+    -- Vimeo is sending us the default thumbnail and we have a thumbnail on
+    -- disk. We don't delete the thumb in case the user wants to keep it.
+    (True, Nothing) ->
+      echo $ fromString . T.unpack $
+        "  Warning: " <> videoId video <> " no longer has a thumbnail on Vimeo!"
+
+    -- Don't download the default thumbnail from Vimeo
+    (False, Nothing) -> pure ()
+
+    (True, Just pId) ->
+      case postThumbId <$> oldPost of
+
+        -- We don't have the thumbnail yet
+        Nothing -> downloadThumb video thumbPath
+
+        -- Download the thumbnail only if it is different
+        Just oldThumbId
+          | oldThumbId /= pId -> downloadThumb video thumbPath
+          | otherwise -> pure ()
+
+    -- We don't have the thumbnail yet
+    (False, Just pId) -> downloadThumb video thumbPath
+
+downloadThumb video thumbPath = do
+  echo $ fromString . T.unpack $
+    "  Downloading thumb for " <> videoId video <> " to " <> thumbPath
+  thumb <- getThumbnail (baseLink $ pictures video)
+  liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
