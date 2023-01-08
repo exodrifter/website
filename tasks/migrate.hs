@@ -170,7 +170,7 @@ data Post =
     , postCategories :: Set Text
     , postTags :: Set Text
     , postVideoId :: Maybe Text
-    , postContent :: Text
+    , postShorts :: [Short]
     }
 
 instance ToJSON Post where
@@ -183,7 +183,7 @@ instance ToJSON Post where
       , "categories" .= postCategories p
       , "tags" .= postTags p
       , "videoId" .= postVideoId p
-      , "content" .= postContent p
+      , "shorts" .= postShorts p
       ]
 
 instance FromJSON Post where
@@ -196,7 +196,58 @@ instance FromJSON Post where
       <*> o .: "categories"
       <*> o .: "tags"
       <*> o .: "videoId"
-      <*> o .: "content"
+      <*> o .: "shorts"
+
+data Short =
+  Short
+    { shortName :: Text
+    , shortLinks :: [ShortLink]
+    }
+
+instance ToJSON Short where
+  toJSON a =
+    object
+      [ "name" .= shortName a
+      , "links" .= shortLinks a
+      ]
+
+instance FromJSON Short where
+  parseJSON = withObject "Short" $ \o ->
+    Short
+      <$> o .: "name"
+      <*> o .: "links"
+
+data ShortLink =
+  ShortLink
+    { shortLinkService :: ShortService
+    , shortLinkId :: Text
+    }
+
+instance ToJSON ShortLink where
+  toJSON p =
+    object
+      [ "service" .= shortLinkService p
+      , "id" .= shortLinkId p
+      ]
+
+instance FromJSON ShortLink where
+  parseJSON = withObject "ShortLink" $ \o ->
+    ShortLink
+      <$> o .: "service"
+      <*> o .: "id"
+
+data ShortService = YouTube | Vimeo
+
+instance ToJSON ShortService where
+  toJSON a =
+    case a of
+      YouTube -> String "youtube"
+
+instance FromJSON ShortService where
+  parseJSON = withText "ShortService" $ \t ->
+    case t of
+      "youtube" -> pure YouTube
+      _ -> fail "Unknown short service"
 
 postToText :: Post -> Text
 postToText p =
@@ -209,7 +260,7 @@ postToText p =
   <> "tags:" <> (elements $ postTags p)
   <> "---\n"
   <> videoEmbed (postVideoId p)
-  <> postContent p
+  <> shortsText (postShorts p)
   where
     title =
       case postTitle p of
@@ -221,6 +272,17 @@ postToText p =
       case mId of
         Nothing -> "Unfortunately, this VOD has been lost to the sands of time."
         Just i -> "{% include video id=\"" <> i <> "\" provider=\"vimeo\" %}\n"
+    shortsText shorts =
+      case shorts of
+        [] -> ""
+        _ -> "\nSee also:\n" <> T.intercalate "\n" (shortText <$> shorts)
+    shortText short =
+      "* " <> shortName short <> ": " <>
+      T.intercalate ", " (shortLink <$> shortLinks short)
+    shortLink link =
+      case shortLinkService link of
+        YouTube ->
+          "[YouTube](https://www.youtube.com/watch?v=" <> shortLinkId link <> ")"
 
     elements arr =
       case Set.toList arr of
@@ -376,7 +438,7 @@ migrate' video = do
               , postCategories = Set.singleton service
               , postTags = Set.empty
               , postVideoId = Just $ videoId video
-              , postContent = ""
+              , postShorts = []
               }
   liftIO $ Text.writeFile (T.unpack dataPath)
                           (fromLBS . encodePretty $ newPost)

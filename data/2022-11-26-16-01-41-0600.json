@@ -3,7 +3,17 @@
         "game development",
         "twitch"
     ],
-    "content": "\nSee also:\n* number of rewrites: [YouTube](https://www.youtube.com/watch?v=gz-ACunh_Fo)\n",
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "gz-ACunh_Fo",
+                    "service": "youtube"
+                }
+            ],
+            "name": "number of rewrites"
+        }
+    ],
     "tags": [
         "code: csharp",
         "flambe"

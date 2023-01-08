@@ -3,7 +3,17 @@
         "gameplay",
         "twitch"
     ],
-    "content": "\nSee also:\n* snake pass is difficult: [YouTube](https://www.youtube.com/watch?v=Hv7SDtKKWoo)\n",
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "Hv7SDtKKWoo",
+                    "service": "youtube"
+                }
+            ],
+            "name": "snake pass is difficult"
+        }
+    ],
     "tags": [
         "snake pass"
     ],
