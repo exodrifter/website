@@ -3,7 +3,6 @@
     --resolver lts-20.4
     --package aeson
     --package aeson-pretty
-    --package attoparsec
     --package bytestring
     --package containers
     --package relude
@@ -25,7 +24,6 @@ import Data.Attoparsec.Text ((<?>))
 import Network.HTTP.Req
 import Safe
 import Turtle
-import qualified Data.Attoparsec.Text as Atto
 import qualified Data.ByteString.Char8 as BS8
 import qualified Data.ByteString.Lazy as LBS
 import qualified Data.Char as Char
@@ -196,52 +194,6 @@ instance FromJSON Post where
       <*> o .: "videoId"
       <*> o .: "content"
 
-postFromText :: Text -> Either String Post
-postFromText = Atto.parseOnly p
-  where
-    -- Atto.skipSpace also skips newlines
-    skipSpace = Atto.skipWhile (`elem` [' ', '\t'])
-    skipTrailingSpace =
-      Atto.skipWhile (\x -> x /= '\n' && Char.isSpace x) <* Atto.endOfLine
-    takeLine = Atto.takeTill (=='\n') <* Atto.endOfLine
-    element = skipSpace *> "- " *> takeLine <?> "element"
-    p = do
-      "---" *> skipTrailingSpace <?> "open meta"
-      title <- "title:" *> takeLine <?> "title"
-      date <- parseTime "%FT%T%z" =<< ("date:" *> takeLine <?> "date")
-      "header:" *> skipTrailingSpace <?> "header"
-      thumb <- skipSpace *> "teaser:" *> takeLine <?> "teaser"
-      thumbId <- (skipSpace *> "teaser_id:" *> takeLine) <|> pure ""
-      "categories:" <?> "categories"
-      categories <-
-            (skipSpace *> "[]" *> pure [] <* skipTrailingSpace <?> "empty array")
-        <|> (skipTrailingSpace *> Atto.many1 element <?> "element list")
-        <?> "category elements"
-      "tags:" <?> "tags"
-      tags <-
-            (skipSpace *> "[]" *> pure [] <* skipTrailingSpace <?> "empty array")
-        <|> (skipTrailingSpace *> Atto.many1 element <?> "element list")
-        <?> "tag elements"
-      "---" *> skipTrailingSpace <?> "close meta"
-
-      "{% include video id=" *> Atto.skipWhile (=='\"') <?> "vimeo start"
-      videoId <- Atto.takeTill (`elem` ['\"', ' ']) <?> "vimeo id"
-      Atto.skipWhile (=='\"') <* " provider=\"vimeo\" %}" <?> "vimeo end"
-      Atto.endOfLine
-
-      rest <- Atto.takeText <?> "rest"
-
-      pure Post
-        { postTitle = T.strip title
-        , postDate = date
-        , postThumbPath = T.strip thumb
-        , postThumbId = T.strip thumbId
-        , postCategories = Set.fromList $ T.strip <$> categories
-        , postTags = Set.fromList $ T.strip <$> tags
-        , postVideoId = T.strip videoId
-        , postContent = rest
-        }
-
 postToText :: Post -> Text
 postToText p =
      "---\n"
@@ -378,60 +330,49 @@ migrate' page video = do
           Just a -> a
       fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
 
+  let dataPath = "data/" <> fileName <> ".json"
+  postExists <- testpath $ decodeString (T.unpack dataPath)
+  post <-
+    if postExists
+    then do
+      echo $ fromString . T.unpack $
+        "  Updating " <> videoId video <> " at " <> dataPath
+      t <- liftIO $ Text.readFile (T.unpack dataPath)
+      case eitherDecode . LBS.fromStrict $ TE.encodeUtf8 t of
+        Left err -> die $ "Failed to read post; " <> T.pack err
+        Right p -> do
+          let newPost =
+                p { postTitle = desc
+                  , postDate = zonedTime
+                  , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
+                  , postThumbId = fromMaybe "" $ pictureId $ pictures video
+                  , postCategories = Set.insert service $ postCategories p
+                  , postVideoId = videoId video
+                  }
+          liftIO . Text.writeFile (T.unpack dataPath) . TE.decodeUtf8 . LBS.toStrict . encodePretty $ newPost
+          downloadThumbIfNeeded fileName video (Just p)
+          pure newPost
+    else do
+      echo $ fromString . T.unpack $
+        "  Creating " <> videoId video <> " at " <> dataPath
+      let newPost =
+            Post
+              { postTitle = desc
+              , postDate = zonedTime
+              , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
+              , postThumbId = fromMaybe "" $ pictureId $ pictures video
+              , postCategories = Set.singleton service
+              , postTags = Set.empty
+              , postVideoId = videoId video
+              , postContent = ""
+              }
+      liftIO . Text.writeFile (T.unpack dataPath) . TE.decodeUtf8 . LBS.toStrict . encodePretty $ newPost
+      downloadThumbIfNeeded fileName video Nothing
+      pure newPost
+
+  -- Write the post down
   let postPath = "_posts/" <> fileName <> ".md"
-      dataPath = "data/" <> fileName <> ".json"
-  postExists <- testpath $ decodeString (T.unpack postPath)
-  if postExists
-  then do
-    echo $ fromString . T.unpack $
-      "  Updating " <> videoId video <> " at " <> postPath
-    t <- liftIO $ Text.readFile (T.unpack postPath)
-    case postFromText t of
-      Left err -> die $ "Failed to read post; " <> T.pack err
-      Right p -> do
-        liftIO . Text.writeFile (T.unpack postPath) . postToText $
-          p { postTitle = desc
-            , postDate = zonedTime
-            , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
-            , postThumbId = fromMaybe "" $ pictureId $ pictures video
-            , postCategories = Set.insert service $ postCategories p
-            , postVideoId = videoId video
-            }
-        liftIO . Text.writeFile (T.unpack dataPath) . TE.decodeUtf8 . LBS.toStrict . encodePretty $
-          p { postTitle = desc
-            , postDate = zonedTime
-            , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
-            , postThumbId = fromMaybe "" $ pictureId $ pictures video
-            , postCategories = Set.insert service $ postCategories p
-            , postVideoId = videoId video
-            }
-        downloadThumbIfNeeded fileName video (Just p)
-  else do
-    echo $ fromString . T.unpack $
-      "  Creating " <> videoId video <> " at " <> postPath
-    liftIO . Text.writeFile (T.unpack postPath) . postToText $
-      Post
-        { postTitle = desc
-        , postDate = zonedTime
-        , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
-        , postThumbId = fromMaybe "" $ pictureId $ pictures video
-        , postCategories = Set.singleton service
-        , postTags = Set.empty
-        , postVideoId = videoId video
-        , postContent = ""
-        }
-    liftIO . Text.writeFile (T.unpack postPath) . TE.decodeUtf8 . LBS.toStrict . encodePretty $
-      Post
-        { postTitle = desc
-        , postDate = zonedTime
-        , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
-        , postThumbId = fromMaybe "" $ pictureId $ pictures video
-        , postCategories = Set.singleton service
-        , postTags = Set.empty
-        , postVideoId = videoId video
-        , postContent = ""
-        }
-    downloadThumbIfNeeded fileName video Nothing
+  liftIO . Text.writeFile (T.unpack postPath) . postToText $ post
 
 downloadThumbIfNeeded fileName video oldPost = do
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
