@@ -5,14 +5,14 @@
     ],
     "content": "",
     "tags": [
-        "'code: gdscript'",
-        "'code: rust'",
+        "code: gdscript",
+        "code: rust",
         "flambe",
         "godot"
     ],
     "thumbId": "1578117989",
     "thumbPath": "/assets/thumbs/2022-08-23-18-27-23-0500.jpg",
     "timestamp": "2022-08-23T18:27:23-05:00",
-    "title": "inventory system for a godot in rust &#124; maybe THIS time i'll finally finish the cursor code",
+    "title": "inventory system for a godot in rust | maybe THIS time i'll finally finish the cursor code",
     "videoId": "743531819"
 }

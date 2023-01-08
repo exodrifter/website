@@ -197,11 +197,10 @@ instance FromJSON Post where
 postToText :: Post -> Text
 postToText p =
      "---\n"
-  <> "title: " <> postTitle p <> "\n"
-  <> "date: " <> (formatTime "%FT%T%z" $ postDate p) <> "\n"
+  <> "title: \"" <> (encHtml $ postTitle p) <> "\"\n"
+  <> "date: \"" <> (formatTime "%FT%T%z" $ postDate p) <> "\"\n"
   <> "header:\n"
-  <> "  teaser: " <> postThumbPath p <> "\n"
-  <> "  teaser_id: " <> postThumbId p <> "\n"
+  <> "  teaser: \"" <> postThumbPath p <> "\"\n"
   <> "categories:" <> (elements $ postCategories p)
   <> "tags:" <> (elements $ postTags p)
   <> "---\n"
@@ -212,7 +211,13 @@ postToText p =
       case Set.toList arr of
         [] -> " []\n"
         xs -> "\n" <> (T.concat $ element <$> xs)
-    element a = "- " <> a <> "\n"
+    element a = "- \"" <> a <> "\"\n"
+
+encHtml :: Text -> Text
+encHtml =
+  -- There's a bug in the minimal mistakes theme which treats the pipe character
+  -- as table syntax for markdown only in some parts of the website.
+  T.replace "|" "&#124;"
 
 --------------------------------------------------------------------------------
 -- Logic
@@ -321,8 +326,8 @@ migrate' page video = do
 
   -- There's a bug in the minimal mistakes theme which treats the pipe character
   -- as table syntax for markdown only in some parts of the website.
-  let desc = 
-        case T.replace "|" "&#124;" <$> description video of
+  let desc =
+        case T.replace "&#124;" "|" <$> description video of
           -- If there is no description, I didn't save the original title of the
           -- stream if there was one. Default to the date instead.
           Nothing -> formatTime "%F %T%z" zonedTime
@@ -347,6 +352,7 @@ migrate' page video = do
                   , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
                   , postThumbId = fromMaybe "" $ pictureId $ pictures video
                   , postCategories = Set.insert service $ postCategories p
+                  , postTags = Set.fromList . fmap (T.replace "'" "") . fmap (T.replace "\"" "") . Set.toList $ postTags p
                   , postVideoId = videoId video
                   }
           liftIO . Text.writeFile (T.unpack dataPath) . TE.decodeUtf8 . LBS.toStrict . encodePretty $ newPost

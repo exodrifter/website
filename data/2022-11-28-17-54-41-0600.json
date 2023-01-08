@@ -6,8 +6,8 @@
     ],
     "content": "",
     "tags": [
-        "'code: csharp'",
-        "'code: gdscript'",
+        "code: csharp",
+        "code: gdscript",
         "flambe",
         "godot",
         "zachtronics solitaire collection"
@@ -15,6 +15,6 @@
     "thumbId": "1577355533",
     "thumbPath": "/assets/thumbs/2022-11-28-17-54-41-0600.jpg",
     "timestamp": "2022-11-28T17:54:41-06:00",
-    "title": "more monolithic class design &#124; inventory management game &#124; break from the thinkies",
+    "title": "more monolithic class design | inventory management game | break from the thinkies",
     "videoId": "777741157"
 }
