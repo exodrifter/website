@@ -2,6 +2,7 @@
 {- stack runghc
     --resolver lts-20.4
     --package aeson
+    --package aeson-pretty
     --package attoparsec
     --package bytestring
     --package containers
@@ -19,6 +20,7 @@ import Relude hiding (die)
 
 import Control.Monad.Catch (MonadThrow)
 import Data.Aeson hiding ((<?>))
+import Data.Aeson.Encode.Pretty
 import Data.Attoparsec.Text ((<?>))
 import Network.HTTP.Req
 import Safe
@@ -168,6 +170,31 @@ data Post =
     , postVideoId :: Text
     , postContent :: Text
     }
+
+instance ToJSON Post where
+  toJSON p =
+    object
+      [ "title" .= postTitle p
+      , "timestamp" .= postDate p
+      , "thumbPath" .= postThumbPath p
+      , "thumbId" .= postThumbId p
+      , "categories" .= postCategories p
+      , "tags" .= postTags p
+      , "videoId" .= postVideoId p
+      , "content" .= postContent p
+      ]
+
+instance FromJSON Post where
+  parseJSON = withObject "Post" $ \o ->
+    Post
+      <$> o .: "title"
+      <*> o .: "timestamp"
+      <*> o .: "thumbPath"
+      <*> o .: "thumbId"
+      <*> o .: "categories"
+      <*> o .: "tags"
+      <*> o .: "videoId"
+      <*> o .: "content"
 
 postFromText :: Text -> Either String Post
 postFromText = Atto.parseOnly p
@@ -352,6 +379,7 @@ migrate' page video = do
       fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
 
   let postPath = "_posts/" <> fileName <> ".md"
+      dataPath = "data/" <> fileName <> ".json"
   postExists <- testpath $ decodeString (T.unpack postPath)
   if postExists
   then do
@@ -369,11 +397,30 @@ migrate' page video = do
             , postCategories = Set.insert service $ postCategories p
             , postVideoId = videoId video
             }
+        liftIO . Text.writeFile (T.unpack dataPath) . TE.decodeUtf8 . LBS.toStrict . encodePretty $
+          p { postTitle = desc
+            , postDate = zonedTime
+            , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
+            , postThumbId = fromMaybe "" $ pictureId $ pictures video
+            , postCategories = Set.insert service $ postCategories p
+            , postVideoId = videoId video
+            }
         downloadThumbIfNeeded fileName video (Just p)
   else do
     echo $ fromString . T.unpack $
       "  Creating " <> videoId video <> " at " <> postPath
     liftIO . Text.writeFile (T.unpack postPath) . postToText $
+      Post
+        { postTitle = desc
+        , postDate = zonedTime
+        , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
+        , postThumbId = fromMaybe "" $ pictureId $ pictures video
+        , postCategories = Set.singleton service
+        , postTags = Set.empty
+        , postVideoId = videoId video
+        , postContent = ""
+        }
+    liftIO . Text.writeFile (T.unpack postPath) . TE.decodeUtf8 . LBS.toStrict . encodePretty $
       Post
         { postTitle = desc
         , postDate = zonedTime

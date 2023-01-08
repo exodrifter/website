@@ -1,0 +1,18 @@
+{
+    "categories": [
+        "game development",
+        "twitch"
+    ],
+    "content": "",
+    "tags": [
+        "'code: gdscript'",
+        "'code: rust'",
+        "flambe",
+        "godot"
+    ],
+    "thumbId": "1578444617",
+    "thumbPath": "/assets/thumbs/2022-03-07-17-54-44-0600.jpg",
+    "timestamp": "2022-03-07T17:54:44-06:00",
+    "title": "hooking up an inventory system in rust to godot",
+    "videoId": "686987258"
+}
