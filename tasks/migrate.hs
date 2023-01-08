@@ -5,6 +5,7 @@
     --package aeson-pretty
     --package bytestring
     --package containers
+    --package non-empty-text
     --package relude
     --package req
     --package safe
@@ -29,6 +30,7 @@ import qualified Data.ByteString.Lazy as LBS
 import qualified Data.Char as Char
 import qualified Data.List as List
 import qualified Data.Map as Map
+import qualified Data.NonEmptyText as NET
 import qualified Data.Set as Set
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
@@ -161,7 +163,7 @@ instance FromJSON Folder where
 
 data Post =
   Post
-    { postTitle :: Text
+    { postTitle :: Maybe NET.NonEmptyText
     , postDate :: Time.ZonedTime
     , postThumbPath :: Maybe Text
     , postThumbId :: Maybe Text
@@ -174,7 +176,7 @@ data Post =
 instance ToJSON Post where
   toJSON p =
     object
-      [ "title" .= postTitle p
+      [ "title" .= (NET.toText <$> postTitle p)
       , "timestamp" .= postDate p
       , "thumbPath" .= postThumbPath p
       , "thumbId" .= postThumbId p
@@ -187,7 +189,7 @@ instance ToJSON Post where
 instance FromJSON Post where
   parseJSON = withObject "Post" $ \o ->
     Post
-      <$> o .: "title"
+      <$> ((NET.fromText =<<) <$> o .: "title")
       <*> o .: "timestamp"
       <*> o .: "thumbPath"
       <*> o .: "thumbId"
@@ -199,7 +201,7 @@ instance FromJSON Post where
 postToText :: Post -> Text
 postToText p =
      "---\n"
-  <> "title: \"" <> (encHtml $ postTitle p) <> "\"\n"
+  <> "title: \"" <> title <> "\"\n"
   <> "date: \"" <> (formatTime "%FT%T%z" $ postDate p) <> "\"\n"
   <> "header:\n"
   <> "  teaser: \"" <> (fromMaybe "/assets/images/missing.png" $ postThumbPath p) <> "\"\n"
@@ -209,10 +211,17 @@ postToText p =
   <> videoEmbed (postVideoId p)
   <> postContent p
   where
+    title =
+      case postTitle p of
+        -- If there is no description, I didn't save the original title of the
+        -- stream if there was one. Default to the date instead.
+        Nothing -> encHtml $ formatTime "%F %T%z" $ postDate p
+        Just title -> encHtml $ NET.toText title
     videoEmbed mId =
       case mId of
         Nothing -> "Unfortunately, this VOD has been lost to the sands of time."
         Just i -> "{% include video id=\"" <> i <> "\" provider=\"vimeo\" %}\n"
+
     elements arr =
       case Set.toList arr of
         [] -> " []\n"
@@ -331,17 +340,9 @@ migrate' video = do
 
       _ -> nameParsingFail
 
-  let desc =
-        case description video of
-          -- If there is no description, I didn't save the original title of the
-          -- stream if there was one. Default to the date instead.
-          Nothing -> formatTime "%F %T%z" zonedTime
-          Just "" -> formatTime "%F %T%z" zonedTime
-          Just a -> a
-      fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
-
   -- Try to load the old data
-  let dataPath = "data/" <> fileName <> ".json"
+  let fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
+      dataPath = "data/" <> fileName <> ".json"
   postExists <- testpath $ decodeString (T.unpack dataPath)
   oldPost <-
     if postExists
@@ -353,6 +354,7 @@ migrate' video = do
     else pure Nothing
 
   -- Update the post
+  let desc = NET.fromText =<< description video
   echo $ fromString . T.unpack $
     "  Updating " <> videoId video <> " at " <> dataPath
   let newPost =
