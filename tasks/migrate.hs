@@ -40,6 +40,8 @@ import qualified Network.HTTP.Client as HTTP
 import qualified Network.HTTP.Client.TLS as HTTP
 
 toBS = TE.encodeUtf8
+toLBS = LBS.fromStrict . TE.encodeUtf8
+fromLBS = TE.decodeUtf8 . LBS.toStrict
 
 --------------------------------------------------------------------------------
 -- System Types
@@ -280,29 +282,29 @@ formatTime :: Time.FormatTime t => String -> t -> Text
 formatTime fmt = T.pack . Time.formatTime Time.defaultTimeLocale fmt
 
 main = runMigration $ do
-  rs <- getVideos 1
-  traverse (migrate rs) (results rs)
-  followPagination rs
+  page <- getVideos 1
+  traverse migrate (results page)
+  followPagination page
 
 followPagination page =
   case nextPage $ pagingInfo page of
     Nothing -> pure ()
-    Just next -> do
-      rs <- getVideos (currentPage page + 1)
-      traverse (migrate rs) (results rs)
-      followPagination rs
+    Just _ -> do
+      next <- getVideos (currentPage page + 1)
+      traverse migrate (results next)
+      followPagination next
 
-migrate page video = do
+migrate video = do
   case folderName <$> parentFolder video of
     Just n | n == "Streams" -> do
       echo $ fromString . T.unpack $
         "Migrating " <> videoId video <> " - " <> name video
-      migrate' page video
+      migrate' video
     _ ->
       echo $ fromString . T.unpack $
         "Skipping " <> videoId video <> " - " <> name video
 
-migrate' page video = do
+migrate' video = do
   let nameParsingFail = die $ "Could not parse name \"" <> name video <> "\""
   (service, zonedTime) <-
     case T.words $ name video of
@@ -324,8 +326,6 @@ migrate' page video = do
 
       _ -> nameParsingFail
 
-  -- There's a bug in the minimal mistakes theme which treats the pipe character
-  -- as table syntax for markdown only in some parts of the website.
   let desc =
         case description video of
           -- If there is no description, I didn't save the original title of the
@@ -335,32 +335,32 @@ migrate' page video = do
           Just a -> a
       fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
 
+  -- Try to load the old data
   let dataPath = "data/" <> fileName <> ".json"
   postExists <- testpath $ decodeString (T.unpack dataPath)
-  post <-
+  oldPost <-
     if postExists
     then do
-      echo $ fromString . T.unpack $
-        "  Updating " <> videoId video <> " at " <> dataPath
       t <- liftIO $ Text.readFile (T.unpack dataPath)
-      case eitherDecode . LBS.fromStrict $ TE.encodeUtf8 t of
+      case eitherDecode $ toLBS t of
         Left err -> die $ "Failed to read post; " <> T.pack err
-        Right p -> do
-          let newPost =
-                p { postTitle = desc
-                  , postDate = zonedTime
-                  , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
-                  , postThumbId = fromMaybe "" $ pictureId $ pictures video
-                  , postCategories = Set.insert service $ postCategories p
-                  , postVideoId = videoId video
-                  }
-          liftIO . Text.writeFile (T.unpack dataPath) . TE.decodeUtf8 . LBS.toStrict . encodePretty $ newPost
-          downloadThumbIfNeeded fileName video (Just p)
-          pure newPost
-    else do
-      echo $ fromString . T.unpack $
-        "  Creating " <> videoId video <> " at " <> dataPath
-      let newPost =
+        Right p -> pure $ Just p
+    else pure Nothing
+
+  -- Update the post
+  echo $ fromString . T.unpack $
+    "  Updating " <> videoId video <> " at " <> dataPath
+  let newPost =
+        case oldPost of
+          Just p ->
+            p { postTitle = desc
+              , postDate = zonedTime
+              , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
+              , postThumbId = fromMaybe "" $ pictureId $ pictures video
+              , postCategories = Set.insert service $ postCategories p
+              , postVideoId = videoId video
+              }
+          Nothing ->
             Post
               { postTitle = desc
               , postDate = zonedTime
@@ -371,13 +371,14 @@ migrate' page video = do
               , postVideoId = videoId video
               , postContent = ""
               }
-      liftIO . Text.writeFile (T.unpack dataPath) . TE.decodeUtf8 . LBS.toStrict . encodePretty $ newPost
-      downloadThumbIfNeeded fileName video Nothing
-      pure newPost
+  liftIO $ Text.writeFile (T.unpack dataPath)
+                          (fromLBS . encodePretty $ newPost)
+
+  downloadThumbIfNeeded fileName video oldPost
 
   -- Write the post down
   let postPath = "_posts/" <> fileName <> ".md"
-  liftIO . Text.writeFile (T.unpack postPath) . postToText $ post
+  liftIO . Text.writeFile (T.unpack postPath) . postToText $ newPost
 
 downloadThumbIfNeeded fileName video oldPost = do
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
