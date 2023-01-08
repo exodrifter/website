@@ -270,7 +270,7 @@ postToText p =
         Just title -> encHtml $ NET.toText title
     videoEmbed mId =
       case mId of
-        Nothing -> "Unfortunately, this VOD has been lost to the sands of time."
+        Nothing -> "&nbsp;\n\nUnfortunately, this VOD has been lost to the sands of time."
         Just i -> "{% include video id=\"" <> i <> "\" provider=\"vimeo\" %}\n"
     shortsText shorts =
       case shorts of
