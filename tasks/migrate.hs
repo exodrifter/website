@@ -167,7 +167,7 @@ data Post =
     , postThumbId :: Text
     , postCategories :: Set Text
     , postTags :: Set Text
-    , postVideoId :: Text
+    , postVideoId :: Maybe Text
     , postContent :: Text
     }
 
@@ -206,9 +206,13 @@ postToText p =
   <> "categories:" <> (elements $ postCategories p)
   <> "tags:" <> (elements $ postTags p)
   <> "---\n"
-  <> "{% include video id=\"" <> postVideoId p <> "\" provider=\"vimeo\" %}\n"
+  <> videoEmbed (postVideoId p)
   <> postContent p
   where
+    videoEmbed mId =
+      case mId of
+        Nothing -> "Unfortunately, this VOD has been lost to the sands of time."
+        Just i -> "{% include video id=\"" <> i <> "\" provider=\"vimeo\" %}\n"
     elements arr =
       case Set.toList arr of
         [] -> " []\n"
@@ -285,6 +289,7 @@ main = runMigration $ do
   page <- getVideos 1
   traverse migrate (results page)
   followPagination page
+  writePosts
 
 followPagination page =
   case nextPage $ pagingInfo page of
@@ -358,7 +363,7 @@ migrate' video = do
               , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
               , postThumbId = fromMaybe "" $ pictureId $ pictures video
               , postCategories = Set.insert service $ postCategories p
-              , postVideoId = videoId video
+              , postVideoId = Just $ videoId video
               }
           Nothing ->
             Post
@@ -368,17 +373,12 @@ migrate' video = do
               , postThumbId = fromMaybe "" $ pictureId $ pictures video
               , postCategories = Set.singleton service
               , postTags = Set.empty
-              , postVideoId = videoId video
+              , postVideoId = Just $ videoId video
               , postContent = ""
               }
   liftIO $ Text.writeFile (T.unpack dataPath)
                           (fromLBS . encodePretty $ newPost)
-
   downloadThumbIfNeeded fileName video oldPost
-
-  -- Write the post down
-  let postPath = "_posts/" <> fileName <> ".md"
-  liftIO . Text.writeFile (T.unpack postPath) . postToText $ newPost
 
 downloadThumbIfNeeded fileName video oldPost = do
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
@@ -413,3 +413,17 @@ downloadThumb video thumbPath = do
     "  Downloading thumb for " <> videoId video <> " to " <> thumbPath
   thumb <- getThumbnail (baseLink $ pictures video)
   liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
+
+writePosts =
+  sh $ do
+    filepath <- ls "data/"
+
+    t <- liftIO $ readTextFile filepath
+    p <- case eitherDecode $ toLBS t of
+      Left err -> die $ "Failed to read post; " <> T.pack err
+      Right p -> pure p
+
+    -- Write the post down
+    let fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" $ postDate p
+        postPath = "_posts/" <> fileName <> ".md"
+    liftIO . Text.writeFile (T.unpack postPath) . postToText $ p
