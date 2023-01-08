@@ -163,8 +163,8 @@ data Post =
   Post
     { postTitle :: Text
     , postDate :: Time.ZonedTime
-    , postThumbPath :: Text
-    , postThumbId :: Text
+    , postThumbPath :: Maybe Text
+    , postThumbId :: Maybe Text
     , postCategories :: Set Text
     , postTags :: Set Text
     , postVideoId :: Maybe Text
@@ -202,7 +202,7 @@ postToText p =
   <> "title: \"" <> (encHtml $ postTitle p) <> "\"\n"
   <> "date: \"" <> (formatTime "%FT%T%z" $ postDate p) <> "\"\n"
   <> "header:\n"
-  <> "  teaser: \"" <> postThumbPath p <> "\"\n"
+  <> "  teaser: \"" <> (fromMaybe "/assets/images/missing.png" $ postThumbPath p) <> "\"\n"
   <> "categories:" <> (elements $ postCategories p)
   <> "tags:" <> (elements $ postTags p)
   <> "---\n"
@@ -360,8 +360,8 @@ migrate' video = do
           Just p ->
             p { postTitle = desc
               , postDate = zonedTime
-              , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
-              , postThumbId = fromMaybe "" $ pictureId $ pictures video
+              , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
+              , postThumbId = pictureId $ pictures video
               , postCategories = Set.insert service $ postCategories p
               , postVideoId = Just $ videoId video
               }
@@ -369,8 +369,8 @@ migrate' video = do
             Post
               { postTitle = desc
               , postDate = zonedTime
-              , postThumbPath = "/assets/thumbs/" <> fileName <> ".jpg"
-              , postThumbId = fromMaybe "" $ pictureId $ pictures video
+              , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
+              , postThumbId = pictureId $ pictures video
               , postCategories = Set.singleton service
               , postTags = Set.empty
               , postVideoId = Just $ videoId video
@@ -395,7 +395,7 @@ downloadThumbIfNeeded fileName video oldPost = do
     (False, Nothing) -> pure ()
 
     (True, Just pId) ->
-      case postThumbId <$> oldPost of
+      case postThumbId =<< oldPost of
 
         -- We don't have the thumbnail yet
         Nothing -> downloadThumb video thumbPath
