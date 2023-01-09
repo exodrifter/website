@@ -10,6 +10,7 @@
     --package req
     --package safe
     --package text
+    --package timespan
     --package turtle
     --package tz
 -}
@@ -36,6 +37,7 @@ import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
 import qualified Data.Text.IO as Text
 import qualified Data.Time as Time
+import qualified Data.Time.TimeSpan as TimeSpan
 import qualified Data.Time.Zones as TZ
 import qualified Data.Time.Zones.All as TZ
 import qualified Network.HTTP.Client as HTTP
@@ -107,6 +109,7 @@ data Video =
     , videoId :: Text
     , name :: Text
     , description :: Maybe Text
+    , duration :: TimeSpan.TimeSpan
     , pictures :: Pictures
     , parentFolder :: Maybe Folder
     }
@@ -120,6 +123,7 @@ instance FromJSON Video where
                 (Safe.lastMay . T.splitOn "/" $ a)
       <*> o .: "name"
       <*> o .: "description"
+      <*> (TimeSpan.seconds <$> o .: "duration")
       <*> o .: "pictures"
       <*> o .: "parent_folder"
 
@@ -165,6 +169,7 @@ data Post =
   Post
     { postTitle :: Maybe NET.NonEmptyText
     , postDate :: Time.ZonedTime
+    , postDuration :: TimeSpan.TimeSpan
     , postThumbPath :: Maybe Text
     , postThumbId :: Maybe Text
     , postCategories :: Set Text
@@ -178,6 +183,7 @@ instance ToJSON Post where
     object
       [ "title" .= (NET.toText <$> postTitle p)
       , "timestamp" .= postDate p
+      , "duration" .= (TimeSpan.toSeconds $ postDuration p)
       , "thumbPath" .= postThumbPath p
       , "thumbId" .= postThumbId p
       , "categories" .= postCategories p
@@ -191,6 +197,7 @@ instance FromJSON Post where
     Post
       <$> ((NET.fromText =<<) <$> o .: "title")
       <*> o .: "timestamp"
+      <*> (TimeSpan.seconds <$> o .: "duration")
       <*> o .: "thumbPath"
       <*> o .: "thumbId"
       <*> o .: "categories"
@@ -337,7 +344,7 @@ getVideos page = do
   let url = https "api.vimeo.com" /: "users" /: "104901742" /: "videos"
   response <- runReq defaultHttpConfig $ req GET url NoReqBody jsonResponse $
        headerRedacted "Authorization" ("bearer " <> auth)
-    <> "fields" =: ("uri,name,description,pictures.base_link,pictures.uri,parent_folder.name" :: Text)
+    <> "fields" =: ("uri,name,description,duration,pictures.base_link,pictures.uri,parent_folder.name" :: Text)
     <> "page" =: (show page :: Text)
     <> "per_page" =: (100 :: Int)
   pure $ responseBody response
@@ -424,6 +431,7 @@ migrate' video = do
           Just p ->
             p { postTitle = desc
               , postDate = zonedTime
+              , postDuration = duration video
               , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
               , postThumbId = pictureId $ pictures video
               , postCategories = Set.insert service $ postCategories p
@@ -433,6 +441,7 @@ migrate' video = do
             Post
               { postTitle = desc
               , postDate = zonedTime
+              , postDuration = duration video
               , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
               , postThumbId = pictureId $ pictures video
               , postCategories = Set.singleton service
@@ -478,8 +487,9 @@ downloadThumb video thumbPath = do
   thumb <- getThumbnail (baseLink $ pictures video)
   liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
 
-writePosts =
-  sh $ do
+writePosts = do
+  let foldDuration = Fold (<>) (TimeSpan.seconds 0) id
+  totalDuration <- reduce foldDuration $ do
     filepath <- ls "data/"
 
     t <- liftIO $ readTextFile filepath
@@ -491,3 +501,7 @@ writePosts =
     let fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" $ postDate p
         postPath = "_posts/" <> fileName <> ".md"
     liftIO . Text.writeFile (T.unpack postPath) . postToText $ p
+
+    pure $ postDuration p
+
+  echo $ fromString $ "Total duration: " <> show (TimeSpan.toSeconds totalDuration)
