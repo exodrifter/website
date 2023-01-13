@@ -6,7 +6,17 @@
         "twitch"
     ],
     "duration": 33088,
-    "shorts": [],
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "XK5CC-6_vWs",
+                    "service": "youtube"
+                }
+            ],
+            "name": "vtuber handcam split"
+        }
+    ],
     "tags": [
         "code: csharp",
         "code: gdscript",
