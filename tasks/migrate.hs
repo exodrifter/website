@@ -429,8 +429,7 @@ migrate' video = do
   let newPost =
         case oldPost of
           Just p ->
-            p { postTitle = desc
-              , postDate = zonedTime
+            p { postDate = zonedTime
               , postDuration = duration video
               , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
               , postThumbId = pictureId $ pictures video
