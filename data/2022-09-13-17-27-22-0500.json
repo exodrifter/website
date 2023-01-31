@@ -4,7 +4,17 @@
         "twitch"
     ],
     "duration": 22138,
-    "shorts": [],
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "et-mfPKE3jo",
+                    "service": "youtube"
+                }
+            ],
+            "name": "thanks for the filename"
+        }
+    ],
     "tags": [
         "fl studio",
         "krita",
