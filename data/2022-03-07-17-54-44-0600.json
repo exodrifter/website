@@ -4,7 +4,17 @@
         "twitch"
     ],
     "duration": 11410,
-    "shorts": [],
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "jzbki8bkQIs",
+                    "service": "youtube"
+                }
+            ],
+            "name": "bad button"
+        }
+    ],
     "tags": [
         "code: gdscript",
         "code: rust",
