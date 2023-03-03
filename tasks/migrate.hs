@@ -1,6 +1,6 @@
 #!/usr/bin/env stack
 {- stack runghc
-    --resolver lts-20.4
+    --resolver lts-20.13
     --package aeson
     --package aeson-pretty
     --package bytestring
