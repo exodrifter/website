@@ -117,24 +117,15 @@ instance Aeson.FromJSON Video where
 
 data Pictures =
   Pictures
-    { pictureId :: Maybe Text
+    { pictureUri :: Maybe Text
     , baseLink :: Text
     }
 
 instance Aeson.FromJSON Pictures where
   parseJSON = Aeson.withObject "Pictures" $ \a -> do
-    mUri <- a .: "uri"
-    case Safe.lastMay . T.splitOn "/" <$> mUri of
-      Just Nothing ->
-        fail "Could not parse picture id"
-      Just (Just pictureId) ->
-        Pictures
-          <$> pure (Just pictureId)
-          <*> a .: "base_link"
-      Nothing ->
-        Pictures
-          <$> pure Nothing
-          <*> a .: "base_link"
+    Pictures
+      <$> a .: "uri"
+      <*> a .: "base_link"
 
 data Folder =
   Folder
@@ -156,7 +147,7 @@ data Post =
     , postDate :: Time.ZonedTime
     , postDuration :: TimeSpan.TimeSpan
     , postThumbPath :: Maybe Text
-    , postThumbId :: Maybe Text
+    , postThumbUri :: Maybe Text
     , postCategories :: Set Text
     , postTags :: Set Text
     , postVideoId :: Maybe Text
@@ -170,7 +161,7 @@ instance Aeson.ToJSON Post where
       , "timestamp" .= postDate p
       , "duration" .= (TimeSpan.toSeconds $ postDuration p)
       , "thumbPath" .= postThumbPath p
-      , "thumbId" .= postThumbId p
+      , "thumbUri" .= postThumbUri p
       , "categories" .= postCategories p
       , "tags" .= postTags p
       , "videoId" .= postVideoId p
@@ -184,7 +175,7 @@ instance Aeson.FromJSON Post where
       <*> a .: "timestamp"
       <*> (TimeSpan.seconds <$> a .: "duration")
       <*> a .: "thumbPath"
-      <*> a .: "thumbId"
+      <*> a .: "thumbUri"
       <*> a .: "categories"
       <*> a .: "tags"
       <*> a .: "videoId"
@@ -423,7 +414,7 @@ migrate' video = do
             p { postDate = zonedTime
               , postDuration = duration video
               , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
-              , postThumbId = pictureId $ pictures video
+              , postThumbUri = pictureUri $ pictures video
               , postCategories = Set.insert service $ postCategories p
               , postVideoId = Just $ videoId video
               }
@@ -433,7 +424,7 @@ migrate' video = do
               , postDate = zonedTime
               , postDuration = duration video
               , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
-              , postThumbId = pictureId $ pictures video
+              , postThumbUri = pictureUri $ pictures video
               , postCategories = Set.singleton service
               , postTags = Set.empty
               , postVideoId = Just $ videoId video
@@ -447,7 +438,7 @@ downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
 downloadThumbIfNeeded fileName video oldPost = do
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
   thumbExists <- Turtle.testpath $ Turtle.decodeString (T.unpack thumbPath)
-  case (thumbExists, pictureId $ pictures video) of
+  case (thumbExists, pictureUri $ pictures video) of
 
     -- Vimeo is sending us the default thumbnail and we have a thumbnail on
     -- disk. We don't delete the thumb in case the user wants to keep it.
@@ -458,15 +449,15 @@ downloadThumbIfNeeded fileName video oldPost = do
     -- Don't download the default thumbnail from Vimeo
     (False, Nothing) -> pure ()
 
-    (True, Just pId) ->
-      case postThumbId =<< oldPost of
+    (True, Just pUri) ->
+      case postThumbUri =<< oldPost of
 
         -- We don't have the thumbnail yet
         Nothing -> downloadThumb video thumbPath
 
         -- Download the thumbnail only if it is different
-        Just oldThumbId
-          | oldThumbId /= pId -> downloadThumb video thumbPath
+        Just oldThumbUri
+          | oldThumbUri /= pUri -> downloadThumb video thumbPath
           | otherwise -> pure ()
 
     -- We don't have the thumbnail yet
