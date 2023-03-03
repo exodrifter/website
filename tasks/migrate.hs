@@ -16,21 +16,18 @@
 -}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# OPTIONS_GHC -Wall #-}
 
 import Relude hiding (die)
 
 import Control.Monad.Catch (MonadThrow)
-import Data.Aeson hiding ((<?>))
+import Data.Aeson
 import Data.Aeson.Encode.Pretty
-import Data.Attoparsec.Text ((<?>))
 import Network.HTTP.Req
 import Safe
 import Turtle
 import qualified Data.ByteString.Char8 as BS8
 import qualified Data.ByteString.Lazy as LBS
-import qualified Data.Char as Char
-import qualified Data.List as List
-import qualified Data.Map as Map
 import qualified Data.NonEmptyText as NET
 import qualified Data.Set as Set
 import qualified Data.Text as T
@@ -43,8 +40,13 @@ import qualified Data.Time.Zones.All as TZ
 import qualified Network.HTTP.Client as HTTP
 import qualified Network.HTTP.Client.TLS as HTTP
 
+toBS :: Text -> BS8.ByteString
 toBS = TE.encodeUtf8
+
+toLBS :: Text -> LBS.ByteString
 toLBS = LBS.fromStrict . TE.encodeUtf8
+
+fromLBS :: LBS.ByteString -> Text
 fromLBS = TE.decodeUtf8 . LBS.toStrict
 
 --------------------------------------------------------------------------------
@@ -53,17 +55,13 @@ fromLBS = TE.decodeUtf8 . LBS.toStrict
 
 data Secrets =
   Secrets
-    { clientId :: ByteString
-    , clientSecret :: ByteString
-    , accessToken :: ByteString
+    { accessToken :: ByteString
     }
 
 instance FromJSON Secrets where
-  parseJSON = withObject "Secrets" $ \o ->
+  parseJSON = withObject "Secrets" $ \a ->
     Secrets
-      <$> (toBS <$> o .: "client_id")
-      <*> (toBS <$> o .: "client_secret")
-      <*> (toBS <$> o .: "access_token")
+      <$> (toBS <$> a .: "access_token")
 
 --------------------------------------------------------------------------------
 -- Vimeo Types
@@ -71,42 +69,31 @@ instance FromJSON Secrets where
 
 data UserResult =
   UserResult
-    { totalResults :: Int
-    , currentPage :: Int
-    , resultsPerPage :: Int
+    { currentPage :: Int
     , pagingInfo :: Paging
     , results :: [Video]
     }
 
 instance FromJSON UserResult where
-  parseJSON = withObject "UserResult" $ \o ->
+  parseJSON = withObject "UserResult" $ \a ->
     UserResult
-      <$> o .: "total"
-      <*> o .: "page"
-      <*> o .: "per_page"
-      <*> o .: "paging"
-      <*> o .: "data"
+      <$> a .: "page"
+      <*> a .: "paging"
+      <*> a .: "data"
 
 data Paging =
   Paging
     { nextPage :: Maybe Text
-    , previousPage :: Maybe Text
-    , firstPage :: Text
-    , lastPage :: Text
     }
 
 instance FromJSON Paging where
-  parseJSON = withObject "Paging" $ \o ->
+  parseJSON = withObject "Paging" $ \a ->
     Paging
-      <$> o .: "next"
-      <*> o .: "previous"
-      <*> o .: "first"
-      <*> o .: "last"
+      <$> a .: "next"
 
 data Video =
   Video
-    { videoURI :: Text
-    , videoId :: Text
+    { videoId :: Text
     , name :: Text
     , description :: Maybe Text
     , duration :: TimeSpan.TimeSpan
@@ -115,41 +102,37 @@ data Video =
     }
 
 instance FromJSON Video where
-  parseJSON = withObject "Video" $ \o -> do
-    a <- o .: "uri"
+  parseJSON = withObject "Video" $ \a -> do
+    uri <- a .: "uri"
     Video
-      <$> pure a
-      <*> maybe (fail "Could not parse video id") pure
-                (Safe.lastMay . T.splitOn "/" $ a)
-      <*> o .: "name"
-      <*> o .: "description"
-      <*> (TimeSpan.seconds <$> o .: "duration")
-      <*> o .: "pictures"
-      <*> o .: "parent_folder"
+      <$> maybe (fail "Could not parse video id") pure
+                (Safe.lastMay . T.splitOn "/" $ uri)
+      <*> a .: "name"
+      <*> a .: "description"
+      <*> (TimeSpan.seconds <$> a .: "duration")
+      <*> a .: "pictures"
+      <*> a .: "parent_folder"
 
 data Pictures =
   Pictures
-    { pictureURI :: Maybe Text
-    , pictureId :: Maybe Text
+    { pictureId :: Maybe Text
     , baseLink :: Text
     }
 
 instance FromJSON Pictures where
-  parseJSON = withObject "Pictures" $ \o -> do
-    mUri <- o .: "uri"
+  parseJSON = withObject "Pictures" $ \a -> do
+    mUri <- a .: "uri"
     case Safe.lastMay . T.splitOn "/" <$> mUri of
       Just Nothing ->
         fail "Could not parse picture id"
-      Just (Just a) ->
+      Just (Just pictureId) ->
         Pictures
-          <$> pure mUri
-          <*> pure (Just a)
-          <*> o .: "base_link"
+          <$> pure (Just pictureId)
+          <*> a .: "base_link"
       Nothing ->
         Pictures
           <$> pure Nothing
-          <*> pure Nothing
-          <*> o .: "base_link"
+          <*> a .: "base_link"
 
 data Folder =
   Folder
@@ -157,9 +140,9 @@ data Folder =
     }
 
 instance FromJSON Folder where
-  parseJSON = withObject "Folder" $ \o ->
+  parseJSON = withObject "Folder" $ \a ->
     Folder
-      <$> o .: "name"
+      <$> a .: "name"
 
 --------------------------------------------------------------------------------
 -- Jekyll Types
@@ -193,17 +176,17 @@ instance ToJSON Post where
       ]
 
 instance FromJSON Post where
-  parseJSON = withObject "Post" $ \o ->
+  parseJSON = withObject "Post" $ \a ->
     Post
-      <$> ((NET.fromText =<<) <$> o .: "title")
-      <*> o .: "timestamp"
-      <*> (TimeSpan.seconds <$> o .: "duration")
-      <*> o .: "thumbPath"
-      <*> o .: "thumbId"
-      <*> o .: "categories"
-      <*> o .: "tags"
-      <*> o .: "videoId"
-      <*> o .: "shorts"
+      <$> ((NET.fromText =<<) <$> a .: "title")
+      <*> a .: "timestamp"
+      <*> (TimeSpan.seconds <$> a .: "duration")
+      <*> a .: "thumbPath"
+      <*> a .: "thumbId"
+      <*> a .: "categories"
+      <*> a .: "tags"
+      <*> a .: "videoId"
+      <*> a .: "shorts"
 
 data Short =
   Short
@@ -219,10 +202,10 @@ instance ToJSON Short where
       ]
 
 instance FromJSON Short where
-  parseJSON = withObject "Short" $ \o ->
+  parseJSON = withObject "Short" $ \a ->
     Short
-      <$> o .: "name"
-      <*> o .: "links"
+      <$> a .: "name"
+      <*> a .: "links"
 
 data ShortLink =
   ShortLink
@@ -238,12 +221,12 @@ instance ToJSON ShortLink where
       ]
 
 instance FromJSON ShortLink where
-  parseJSON = withObject "ShortLink" $ \o ->
+  parseJSON = withObject "ShortLink" $ \a ->
     ShortLink
-      <$> o .: "service"
-      <*> o .: "id"
+      <$> a .: "service"
+      <*> a .: "id"
 
-data ShortService = YouTube | Vimeo
+data ShortService = YouTube
 
 instance ToJSON ShortService where
   toJSON a =
@@ -274,7 +257,7 @@ postToText p =
         -- If there is no description, I didn't save the original title of the
         -- stream if there was one. Default to the date instead.
         Nothing -> encHtml $ formatTime "%F %T%z" $ postDate p
-        Just title -> encHtml $ NET.toText title
+        Just t -> encHtml $ NET.toText t
     videoEmbed mId =
       case mId of
         Nothing -> "&nbsp;\n\nUnfortunately, this VOD has been lost to the sands of time."
@@ -353,8 +336,8 @@ getThumbnail :: Text -> Migration LBS.ByteString
 getThumbnail url = do
   manager <- asks migrationManager
   request <- HTTP.parseRequest $ T.unpack url
-  let req = request { HTTP.path = HTTP.path request <> "_640x360.jpg" }
-  response <- liftIO $ HTTP.httpLbs req manager
+  response <- liftIO $ flip HTTP.httpLbs manager $
+    request { HTTP.path = HTTP.path request <> "_640x360.jpg" }
   pure $ HTTP.responseBody response
 
 parseTime :: (Time.ParseTime t, MonadFail m) => String -> Text -> m t
@@ -363,20 +346,23 @@ parseTime fmt = Time.parseTimeM True Time.defaultTimeLocale fmt . T.unpack
 formatTime :: Time.FormatTime t => String -> t -> Text
 formatTime fmt = T.pack . Time.formatTime Time.defaultTimeLocale fmt
 
+main :: IO ()
 main = runMigration $ do
   page <- getVideos 1
-  traverse migrate (results page)
+  traverse_ migrate (results page)
   followPagination page
   writePosts
 
+followPagination :: UserResult -> Migration ()
 followPagination page =
   case nextPage $ pagingInfo page of
     Nothing -> pure ()
     Just _ -> do
       next <- getVideos (currentPage page + 1)
-      traverse migrate (results next)
+      traverse_ migrate (results next)
       followPagination next
 
+migrate :: Video -> Migration ()
 migrate video = do
   case folderName <$> parentFolder video of
     Just n | n == "Streams" -> do
@@ -387,23 +373,24 @@ migrate video = do
       echo $ fromString . T.unpack $
         "Skipping " <> videoId video <> " - " <> name video
 
+migrate' :: Video -> Migration ()
 migrate' video = do
   let nameParsingFail = die $ "Could not parse name \"" <> name video <> "\""
   (service, zonedTime) <-
-    case T.words $ name video of
-      a:b:c:d:[] ->
-        case parseTime "%F %T%z" (c <> " " <> d) of
-          Just zonedTime -> pure (T.toLower a, zonedTime)
+    case T.words (T.toLower (name video)) of
+      service:_:day:time':[] ->
+        case parseTime "%F %T%z" (day <> " " <> time') of
+          Just zonedTime -> pure (service, zonedTime)
           Nothing ->
 
             -- In this case, I had not yet started recording the time zone
             -- offset, but I know I was in Central Time.
-            case parseTime "%F %T" (c <> " " <> d) of
+            case parseTime "%F %T" (day <> " " <> time') of
               Nothing -> nameParsingFail
               Just localTime ->
                 case TZ.localTimeToUTCFull (TZ.tzByLabel TZ.America__Chicago) localTime of
                   TZ.LTUUnique _ tz ->
-                    pure (T.toLower a, Time.ZonedTime localTime tz)
+                    pure (service, Time.ZonedTime localTime tz)
                   _ ->
                     die $ "Could not determine offset for \"" <> name video <> "\""
 
@@ -418,7 +405,7 @@ migrate' video = do
     then do
       t <- liftIO $ Text.readFile (T.unpack dataPath)
       case eitherDecode $ toLBS t of
-        Left err -> die $ "Failed to read post; " <> T.pack err
+        Left reason -> die $ "Failed to read post; " <> T.pack reason
         Right p -> pure $ Just p
     else pure Nothing
 
@@ -452,6 +439,7 @@ migrate' video = do
                           (fromLBS . encodePretty $ newPost)
   downloadThumbIfNeeded fileName video oldPost
 
+downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
 downloadThumbIfNeeded fileName video oldPost = do
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
   thumbExists <- testpath $ decodeString (T.unpack thumbPath)
@@ -478,14 +466,16 @@ downloadThumbIfNeeded fileName video oldPost = do
           | otherwise -> pure ()
 
     -- We don't have the thumbnail yet
-    (False, Just pId) -> downloadThumb video thumbPath
+    (False, Just _) -> downloadThumb video thumbPath
 
+downloadThumb :: Video -> Text -> Migration ()
 downloadThumb video thumbPath = do
   echo $ fromString . T.unpack $
     "  Downloading thumb for " <> videoId video <> " to " <> thumbPath
   thumb <- getThumbnail (baseLink $ pictures video)
   liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
 
+writePosts :: Migration ()
 writePosts = do
   let foldDuration = Fold (<>) (TimeSpan.seconds 0) id
   totalDuration <- reduce foldDuration $ do
@@ -493,7 +483,7 @@ writePosts = do
 
     t <- liftIO $ readTextFile filepath
     p <- case eitherDecode $ toLBS t of
-      Left err -> die $ "Failed to read post; " <> T.pack err
+      Left reason -> die $ "Failed to read post; " <> T.pack reason
       Right p -> pure p
 
     -- Write the post down
