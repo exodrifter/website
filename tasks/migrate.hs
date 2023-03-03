@@ -18,14 +18,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# OPTIONS_GHC -Wall #-}
 
-import Relude hiding (die)
+import Relude
 
 import Control.Monad.Catch (MonadThrow)
-import Data.Aeson
-import Data.Aeson.Encode.Pretty
-import Network.HTTP.Req
-import Safe
-import Turtle
+import Data.Aeson ((.:), (.=))
+import Network.HTTP.Req ((/:), (=:))
+import qualified Data.Aeson as Aeson
+import qualified Data.Aeson.Encode.Pretty as Aeson
 import qualified Data.ByteString.Char8 as BS8
 import qualified Data.ByteString.Lazy as LBS
 import qualified Data.NonEmptyText as NET
@@ -39,6 +38,9 @@ import qualified Data.Time.Zones as TZ
 import qualified Data.Time.Zones.All as TZ
 import qualified Network.HTTP.Client as HTTP
 import qualified Network.HTTP.Client.TLS as HTTP
+import qualified Network.HTTP.Req as Req
+import qualified Safe
+import qualified Turtle
 
 toBS :: Text -> BS8.ByteString
 toBS = TE.encodeUtf8
@@ -58,8 +60,8 @@ data Secrets =
     { accessToken :: ByteString
     }
 
-instance FromJSON Secrets where
-  parseJSON = withObject "Secrets" $ \a ->
+instance Aeson.FromJSON Secrets where
+  parseJSON = Aeson.withObject "Secrets" $ \a ->
     Secrets
       <$> (toBS <$> a .: "access_token")
 
@@ -74,8 +76,8 @@ data UserResult =
     , results :: [Video]
     }
 
-instance FromJSON UserResult where
-  parseJSON = withObject "UserResult" $ \a ->
+instance Aeson.FromJSON UserResult where
+  parseJSON = Aeson.withObject "UserResult" $ \a ->
     UserResult
       <$> a .: "page"
       <*> a .: "paging"
@@ -86,8 +88,8 @@ data Paging =
     { nextPage :: Maybe Text
     }
 
-instance FromJSON Paging where
-  parseJSON = withObject "Paging" $ \a ->
+instance Aeson.FromJSON Paging where
+  parseJSON = Aeson.withObject "Paging" $ \a ->
     Paging
       <$> a .: "next"
 
@@ -101,8 +103,8 @@ data Video =
     , parentFolder :: Maybe Folder
     }
 
-instance FromJSON Video where
-  parseJSON = withObject "Video" $ \a -> do
+instance Aeson.FromJSON Video where
+  parseJSON = Aeson.withObject "Video" $ \a -> do
     uri <- a .: "uri"
     Video
       <$> maybe (fail "Could not parse video id") pure
@@ -119,8 +121,8 @@ data Pictures =
     , baseLink :: Text
     }
 
-instance FromJSON Pictures where
-  parseJSON = withObject "Pictures" $ \a -> do
+instance Aeson.FromJSON Pictures where
+  parseJSON = Aeson.withObject "Pictures" $ \a -> do
     mUri <- a .: "uri"
     case Safe.lastMay . T.splitOn "/" <$> mUri of
       Just Nothing ->
@@ -139,8 +141,8 @@ data Folder =
     { folderName :: Text
     }
 
-instance FromJSON Folder where
-  parseJSON = withObject "Folder" $ \a ->
+instance Aeson.FromJSON Folder where
+  parseJSON = Aeson.withObject "Folder" $ \a ->
     Folder
       <$> a .: "name"
 
@@ -161,9 +163,9 @@ data Post =
     , postShorts :: [Short]
     }
 
-instance ToJSON Post where
+instance Aeson.ToJSON Post where
   toJSON p =
-    object
+    Aeson.object
       [ "title" .= (NET.toText <$> postTitle p)
       , "timestamp" .= postDate p
       , "duration" .= (TimeSpan.toSeconds $ postDuration p)
@@ -175,8 +177,8 @@ instance ToJSON Post where
       , "shorts" .= postShorts p
       ]
 
-instance FromJSON Post where
-  parseJSON = withObject "Post" $ \a ->
+instance Aeson.FromJSON Post where
+  parseJSON = Aeson.withObject "Post" $ \a ->
     Post
       <$> ((NET.fromText =<<) <$> a .: "title")
       <*> a .: "timestamp"
@@ -194,15 +196,15 @@ data Short =
     , shortLinks :: [ShortLink]
     }
 
-instance ToJSON Short where
+instance Aeson.ToJSON Short where
   toJSON a =
-    object
+    Aeson.object
       [ "name" .= shortName a
       , "links" .= shortLinks a
       ]
 
-instance FromJSON Short where
-  parseJSON = withObject "Short" $ \a ->
+instance Aeson.FromJSON Short where
+  parseJSON = Aeson.withObject "Short" $ \a ->
     Short
       <$> a .: "name"
       <*> a .: "links"
@@ -213,28 +215,28 @@ data ShortLink =
     , shortLinkId :: Text
     }
 
-instance ToJSON ShortLink where
+instance Aeson.ToJSON ShortLink where
   toJSON p =
-    object
+    Aeson.object
       [ "service" .= shortLinkService p
       , "id" .= shortLinkId p
       ]
 
-instance FromJSON ShortLink where
-  parseJSON = withObject "ShortLink" $ \a ->
+instance Aeson.FromJSON ShortLink where
+  parseJSON = Aeson.withObject "ShortLink" $ \a ->
     ShortLink
       <$> a .: "service"
       <*> a .: "id"
 
 data ShortService = YouTube
 
-instance ToJSON ShortService where
+instance Aeson.ToJSON ShortService where
   toJSON a =
     case a of
-      YouTube -> String "youtube"
+      YouTube -> Aeson.String "youtube"
 
-instance FromJSON ShortService where
-  parseJSON = withText "ShortService" $ \t ->
+instance Aeson.FromJSON ShortService where
+  parseJSON = Aeson.withText "ShortService" $ \t ->
     case t of
       "youtube" -> pure YouTube
       _ -> fail "Unknown short service"
@@ -310,7 +312,7 @@ runMigration :: Migration a -> IO a
 runMigration (Migration migration) = do
   context <-
     MigrationContext
-      <$> expectJust "Cannot parse env.json" (decodeFileStrict "env.json")
+      <$> expectJust "Cannot parse env.json" (Aeson.decodeFileStrict "env.json")
       <*> HTTP.newManager HTTP.tlsManagerSettings
   runReaderT migration context
 
@@ -318,19 +320,20 @@ expectJust :: MonadIO io => Text -> io (Maybe a) -> io a
 expectJust message fn = do
   ma <- fn
   case ma of
-    Nothing -> die message
+    Nothing -> die $ T.unpack message
     Just a -> pure a
 
 getVideos :: Int -> Migration UserResult
 getVideos page = do
   auth <- asks (accessToken . migrationSecrets)
-  let url = https "api.vimeo.com" /: "users" /: "104901742" /: "videos"
-  response <- runReq defaultHttpConfig $ req GET url NoReqBody jsonResponse $
-       headerRedacted "Authorization" ("bearer " <> auth)
+  let url = Req.https "api.vimeo.com" /: "users" /: "104901742" /: "videos"
+  response <- Req.runReq Req.defaultHttpConfig
+    . Req.req Req.GET url Req.NoReqBody Req.jsonResponse
+    $ Req.headerRedacted "Authorization" ("bearer " <> auth)
     <> "fields" =: ("uri,name,description,duration,pictures.base_link,pictures.uri,parent_folder.name" :: Text)
     <> "page" =: (show page :: Text)
     <> "per_page" =: (100 :: Int)
-  pure $ responseBody response
+  pure $ Req.responseBody response
 
 getThumbnail :: Text -> Migration LBS.ByteString
 getThumbnail url = do
@@ -366,52 +369,53 @@ migrate :: Video -> Migration ()
 migrate video = do
   case folderName <$> parentFolder video of
     Just n | n == "Streams" -> do
-      echo $ fromString . T.unpack $
+      Turtle.echo $ fromString . T.unpack $
         "Migrating " <> videoId video <> " - " <> name video
       migrate' video
     _ ->
-      echo $ fromString . T.unpack $
+      Turtle.echo $ fromString . T.unpack $
         "Skipping " <> videoId video <> " - " <> name video
 
 migrate' :: Video -> Migration ()
 migrate' video = do
-  let nameParsingFail = die $ "Could not parse name \"" <> name video <> "\""
+  let nameParsingFail =
+        die $ "Could not parse name \"" <> T.unpack (name video) <> "\""
   (service, zonedTime) <-
     case T.words (T.toLower (name video)) of
-      service:_:day:time':[] ->
-        case parseTime "%F %T%z" (day <> " " <> time') of
+      service:_:day:time:[] ->
+        case parseTime "%F %T%z" (day <> " " <> time) of
           Just zonedTime -> pure (service, zonedTime)
           Nothing ->
 
             -- In this case, I had not yet started recording the time zone
             -- offset, but I know I was in Central Time.
-            case parseTime "%F %T" (day <> " " <> time') of
+            case parseTime "%F %T" (day <> " " <> time) of
               Nothing -> nameParsingFail
               Just localTime ->
                 case TZ.localTimeToUTCFull (TZ.tzByLabel TZ.America__Chicago) localTime of
                   TZ.LTUUnique _ tz ->
                     pure (service, Time.ZonedTime localTime tz)
                   _ ->
-                    die $ "Could not determine offset for \"" <> name video <> "\""
+                    die $ "Could not determine offset for \"" <> T.unpack (name video) <> "\""
 
       _ -> nameParsingFail
 
   -- Try to load the old data
   let fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
       dataPath = "data/" <> fileName <> ".json"
-  postExists <- testpath $ decodeString (T.unpack dataPath)
+  postExists <- Turtle.testpath $ Turtle.decodeString (T.unpack dataPath)
   oldPost <-
     if postExists
     then do
       t <- liftIO $ Text.readFile (T.unpack dataPath)
-      case eitherDecode $ toLBS t of
-        Left reason -> die $ "Failed to read post; " <> T.pack reason
+      case Aeson.eitherDecode $ toLBS t of
+        Left reason -> die $ "Failed to read post; " <> reason
         Right p -> pure $ Just p
     else pure Nothing
 
   -- Update the post
   let desc = NET.fromText =<< description video
-  echo $ fromString . T.unpack $
+  Turtle.echo $ fromString . T.unpack $
     "  Updating " <> videoId video <> " at " <> dataPath
   let newPost =
         case oldPost of
@@ -436,19 +440,19 @@ migrate' video = do
               , postShorts = []
               }
   liftIO $ Text.writeFile (T.unpack dataPath)
-                          (fromLBS . encodePretty $ newPost)
+                          (fromLBS . Aeson.encodePretty $ newPost)
   downloadThumbIfNeeded fileName video oldPost
 
 downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
 downloadThumbIfNeeded fileName video oldPost = do
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
-  thumbExists <- testpath $ decodeString (T.unpack thumbPath)
+  thumbExists <- Turtle.testpath $ Turtle.decodeString (T.unpack thumbPath)
   case (thumbExists, pictureId $ pictures video) of
 
     -- Vimeo is sending us the default thumbnail and we have a thumbnail on
     -- disk. We don't delete the thumb in case the user wants to keep it.
     (True, Nothing) ->
-      echo $ fromString . T.unpack $
+      Turtle.echo $ fromString . T.unpack $
         "  Warning: " <> videoId video <> " no longer has a thumbnail on Vimeo!"
 
     -- Don't download the default thumbnail from Vimeo
@@ -470,20 +474,20 @@ downloadThumbIfNeeded fileName video oldPost = do
 
 downloadThumb :: Video -> Text -> Migration ()
 downloadThumb video thumbPath = do
-  echo $ fromString . T.unpack $
+  Turtle.echo $ fromString . T.unpack $
     "  Downloading thumb for " <> videoId video <> " to " <> thumbPath
   thumb <- getThumbnail (baseLink $ pictures video)
   liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
 
 writePosts :: Migration ()
 writePosts = do
-  let foldDuration = Fold (<>) (TimeSpan.seconds 0) id
-  totalDuration <- reduce foldDuration $ do
-    filepath <- ls "data/"
+  let foldDuration = Turtle.Fold (<>) (TimeSpan.seconds 0) id
+  totalDuration <- Turtle.reduce foldDuration $ do
+    filepath <- Turtle.ls "data/"
 
-    t <- liftIO $ readTextFile filepath
-    p <- case eitherDecode $ toLBS t of
-      Left reason -> die $ "Failed to read post; " <> T.pack reason
+    t <- liftIO $ Turtle.readTextFile filepath
+    p <- case Aeson.eitherDecode $ toLBS t of
+      Left reason -> die $ "Failed to read post; " <> reason
       Right p -> pure p
 
     -- Write the post down
@@ -493,4 +497,4 @@ writePosts = do
 
     pure $ postDuration p
 
-  echo $ fromString $ "Total duration: " <> show (TimeSpan.toSeconds totalDuration)
+  Turtle.echo $ fromString $ "Total duration: " <> show (TimeSpan.toSeconds totalDuration)
