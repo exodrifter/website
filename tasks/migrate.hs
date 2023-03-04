@@ -51,6 +51,9 @@ toLBS = LBS.fromStrict . TE.encodeUtf8
 fromLBS :: LBS.ByteString -> Text
 fromLBS = TE.decodeUtf8 . LBS.toStrict
 
+showText :: Show a => a -> Text
+showText = T.pack . show
+
 --------------------------------------------------------------------------------
 -- System Types
 --------------------------------------------------------------------------------
@@ -360,12 +363,10 @@ migrate :: Video -> Migration ()
 migrate video = do
   case folderName <$> parentFolder video of
     Just n | n == "Streams" -> do
-      Turtle.echo $ fromString . T.unpack $
-        "Migrating " <> videoId video <> " - " <> name video
+      echo ("Migrating " <> videoId video <> " - " <> name video)
       migrate' video
     _ ->
-      Turtle.echo $ fromString . T.unpack $
-        "Skipping " <> videoId video <> " - " <> name video
+      echo ("Skipping " <> videoId video <> " - " <> name video)
 
 migrate' :: Video -> Migration ()
 migrate' video = do
@@ -406,8 +407,7 @@ migrate' video = do
 
   -- Update the post
   let desc = NET.fromText =<< description video
-  Turtle.echo $ fromString . T.unpack $
-    "  Updating " <> videoId video <> " at " <> dataPath
+  echo ("  Updating " <> videoId video <> " at " <> dataPath)
   let newPost =
         case oldPost of
           Just p ->
@@ -443,8 +443,7 @@ downloadThumbIfNeeded fileName video oldPost = do
     -- Vimeo is sending us the default thumbnail and we have a thumbnail on
     -- disk. We don't delete the thumb in case the user wants to keep it.
     (True, Nothing) ->
-      Turtle.echo $ fromString . T.unpack $
-        "  Warning: " <> videoId video <> " no longer has a thumbnail on Vimeo!"
+      echo ("  Warning: " <> videoId video <> " no longer has a thumbnail!")
 
     -- Don't download the default thumbnail from Vimeo
     (False, Nothing) -> pure ()
@@ -465,8 +464,7 @@ downloadThumbIfNeeded fileName video oldPost = do
 
 downloadThumb :: Video -> Text -> Migration ()
 downloadThumb video thumbPath = do
-  Turtle.echo $ fromString . T.unpack $
-    "  Downloading thumb for " <> videoId video <> " to " <> thumbPath
+  echo ("  Downloading thumb for " <> videoId video <> " to " <> thumbPath)
   thumb <- getThumbnail (baseLink $ pictures video)
   liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
 
@@ -488,4 +486,7 @@ writePosts = do
 
     pure $ postDuration p
 
-  Turtle.echo $ fromString $ "Total duration: " <> show (TimeSpan.toSeconds totalDuration)
+  echo ("Total duration: " <> showText (TimeSpan.toSeconds totalDuration))
+
+echo :: MonadIO m => Text -> m ()
+echo text = traverse_ Turtle.echo (Turtle.textToLines text)
