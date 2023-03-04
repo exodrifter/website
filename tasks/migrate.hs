@@ -395,11 +395,11 @@ migrate' video = do
   -- Try to load the old data
   let fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
       dataPath = "data/" <> fileName <> ".json"
-  postExists <- Turtle.testpath $ Turtle.decodeString (T.unpack dataPath)
+  postExists <- Turtle.testpath (Turtle.fromText dataPath)
   oldPost <-
     if postExists
     then do
-      t <- liftIO $ Text.readFile (T.unpack dataPath)
+      t <- liftIO $ Turtle.readTextFile (Turtle.fromText dataPath)
       case Aeson.eitherDecode $ toLBS t of
         Left reason -> die $ "Failed to read post; " <> reason
         Right p -> pure $ Just p
@@ -437,7 +437,7 @@ migrate' video = do
 downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
 downloadThumbIfNeeded fileName video oldPost = do
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
-  thumbExists <- Turtle.testpath $ Turtle.decodeString (T.unpack thumbPath)
+  thumbExists <- Turtle.testpath (Turtle.fromText thumbPath)
   case (thumbExists, pictureUri $ pictures video) of
 
     -- Vimeo is sending us the default thumbnail and we have a thumbnail on
