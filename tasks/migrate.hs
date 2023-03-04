@@ -251,24 +251,27 @@ postToText :: Post -> Text
 postToText p =
      "---\n"
   <> "title: \"" <> title <> "\"\n"
-  <> "date: \"" <> (formatTime "%FT%TZ" $ Time.zonedTimeToUTC $ postDate p) <> "\"\n"
+  <> "date: \"" <> (formatTime "%FT%TZ" utcTime) <> "\"\n"
   <> "header:\n"
-  <> "  teaser: \"" <> (fromMaybe "/assets/images/missing.png" $ postThumbPath p) <> "\"\n"
+  <> "  teaser: \"" <> thumbPath <> "\"\n"
   <> "categories:" <> (elements $ postCategories p)
   <> "tags:" <> (elements $ postTags p)
   <> "---\n"
   <> videoEmbed (postVideoId p)
   <> shortsText (postShorts p)
   where
+    utcTime = Time.zonedTimeToUTC (postDate p)
     title =
       case postTitle p of
         -- If there is no description, I didn't save the original title of the
         -- stream if there was one. Default to the date instead.
-        Nothing -> encHtml $ formatTime "%F %T" $ Time.zonedTimeToUTC $ postDate p
+        Nothing -> encHtml $ formatTime "%F %T" utcTime
         Just t -> encHtml $ NET.toText t
+    thumbPath = fromMaybe "/assets/images/missing.png" (postThumbPath p)
     videoEmbed mId =
       case mId of
-        Nothing -> "&nbsp;\n\nUnfortunately, this VOD has been lost to the sands of time."
+        Nothing -> "&nbsp;\n\n\
+                   \Unfortunately, this VOD has been lost to the sands of time."
         Just i -> "{% include video id=\"" <> i <> "\" provider=\"vimeo\" %}\n"
     shortsText shorts =
       case shorts of
@@ -280,7 +283,9 @@ postToText p =
     shortLink link =
       case shortLinkService link of
         YouTube ->
-          "[YouTube](https://www.youtube.com/watch?v=" <> shortLinkId link <> ")"
+             "[YouTube](https://www.youtube.com/watch?v="
+          <> shortLinkId link
+          <> ")"
 
     elements arr =
       case Set.toList arr of
@@ -336,7 +341,8 @@ getVideos page = do
   response <- Req.runReq Req.defaultHttpConfig
     . Req.req Req.GET url Req.NoReqBody Req.jsonResponse
     $ Req.headerRedacted "Authorization" ("bearer " <> auth)
-    <> "fields" =: ("uri,name,description,duration,pictures.base_link,pictures.uri,parent_folder.name" :: Text)
+    <> "fields" =: ("uri,name,description,duration,pictures.base_link,\
+                    \pictures.uri,parent_folder.name" :: Text)
     <> "page" =: (show page :: Text)
     <> "per_page" =: (100 :: Int)
   pure $ Req.responseBody response
@@ -395,11 +401,13 @@ migrate' video = do
             case parseTime "%F %T" (day <> " " <> time) of
               Nothing -> nameParsingFail
               Just localTime ->
-                case TZ.localTimeToUTCFull (TZ.tzByLabel TZ.America__Chicago) localTime of
-                  TZ.LTUUnique _ tz ->
-                    pure (service, Time.ZonedTime localTime tz)
-                  _ ->
-                    die $ "Could not determine offset for \"" <> T.unpack (name video) <> "\""
+                let knownTZ = TZ.tzByLabel TZ.America__Chicago
+                in  case TZ.localTimeToUTCFull knownTZ localTime of
+                      TZ.LTUUnique _ tz ->
+                        pure (service, Time.ZonedTime localTime tz)
+                      _ ->
+                        die $ "Could not determine offset for \""
+                           <> T.unpack (name video) <> "\""
 
       _ -> nameParsingFail
 
@@ -493,7 +501,8 @@ writePosts = do
       Right p -> pure p
 
     -- Write the post down
-    let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC $ postDate p
+    let utcTime = Time.zonedTimeToUTC (postDate p)
+        fileName = formatTime "%Y-%m-%d-%H-%M-%S" utcTime
         postPath = "_posts/" <> fileName <> ".md"
     liftIO $ Turtle.writeTextFile (Turtle.fromText postPath)
                                   (postToText p)
