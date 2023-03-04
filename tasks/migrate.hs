@@ -265,7 +265,7 @@ postToText p =
       case postTitle p of
         -- If there is no description, I didn't save the original title of the
         -- stream if there was one. Default to the date instead.
-        Nothing -> encHtml $ formatTime "%F %T%z" $ postDate p
+        Nothing -> encHtml $ formatTime "%F %T" $ Time.zonedTimeToUTC $ postDate p
         Just t -> encHtml $ NET.toText t
     videoEmbed mId =
       case mId of
