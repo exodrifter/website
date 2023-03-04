@@ -494,7 +494,7 @@ writePosts = do
       Right p -> pure p
 
     -- Write the post down
-    let fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" $ postDate p
+    let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC $ postDate p
         postPath = "_posts/" <> fileName <> ".md"
     liftIO . Text.writeFile (T.unpack postPath) . postToText $ p
 
