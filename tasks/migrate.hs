@@ -31,7 +31,6 @@ import qualified Data.NonEmptyText as NET
 import qualified Data.Set as Set
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
-import qualified Data.Text.IO as Text
 import qualified Data.Time as Time
 import qualified Data.Time.TimeSpan as TimeSpan
 import qualified Data.Time.Zones as TZ
@@ -443,8 +442,8 @@ migrate' video = do
               }
   when (oldPost /= Just newPost) $ do
     echo ("Updating " <> videoId video <> " at " <> dataPath)
-    liftIO $ Text.writeFile (T.unpack dataPath)
-                            (fromLBS . Aeson.encodePretty $ newPost)
+    liftIO $ Turtle.writeTextFile (Turtle.fromText dataPath)
+                                  (fromLBS . Aeson.encodePretty $ newPost)
 
   downloadThumbIfNeeded fileName video oldPost
 
@@ -496,7 +495,8 @@ writePosts = do
     -- Write the post down
     let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC $ postDate p
         postPath = "_posts/" <> fileName <> ".md"
-    liftIO . Text.writeFile (T.unpack postPath) . postToText $ p
+    liftIO $ Turtle.writeTextFile (Turtle.fromText postPath)
+                                  (postToText p)
 
     pure $ postDuration p
 
