@@ -405,13 +405,15 @@ migrate' video = do
       _ -> nameParsingFail
 
   -- Try to load the old data
-  let fileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
-      dataPath = "data/" <> fileName <> ".json"
-  postExists <- Turtle.testpath (Turtle.fromText dataPath)
+  let oldFileName = formatTime "%Y-%m-%d-%H-%M-%S%z" zonedTime
+      newFileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
+      oldDataPath = "data/" <> oldFileName <> ".json"
+      newDataPath = "data/" <> newFileName <> ".json"
+  postExists <- Turtle.testpath (Turtle.fromText oldDataPath)
   oldPost <-
     if postExists
     then do
-      t <- liftIO $ Turtle.readTextFile (Turtle.fromText dataPath)
+      t <- liftIO $ Turtle.readTextFile (Turtle.fromText oldDataPath)
       case Aeson.eitherDecode $ toLBS t of
         Left reason -> die $ "Failed to read post; " <> reason
         Right p -> pure $ Just p
@@ -424,7 +426,7 @@ migrate' video = do
           Just p ->
             p { postDate = zonedTime
               , postDuration = duration video
-              , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
+              , postThumbPath = Just $ "/assets/thumbs/" <> newFileName <> ".jpg"
               , postThumbUri = pictureUri $ pictures video
               , postCategories = Set.insert service $ postCategories p
               , postVideoId = Just $ videoId video
@@ -434,19 +436,19 @@ migrate' video = do
               { postTitle = desc
               , postDate = zonedTime
               , postDuration = duration video
-              , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
+              , postThumbPath = Just $ "/assets/thumbs/" <> newFileName <> ".jpg"
               , postThumbUri = pictureUri $ pictures video
               , postCategories = Set.singleton service
               , postTags = Set.empty
               , postVideoId = Just $ videoId video
               , postShorts = []
               }
-  when (oldPost /= Just newPost) $ do
-    echo ("Updating " <> videoId video <> " at " <> dataPath)
-    liftIO $ Text.writeFile (T.unpack dataPath)
-                            (fromLBS . Aeson.encodePretty $ newPost)
+  -- when (oldPost /= Just newPost) $ do
+  echo ("Updating " <> videoId video <> " at " <> newDataPath)
+  liftIO $ Text.writeFile (T.unpack newDataPath)
+                          (fromLBS . Aeson.encodePretty $ newPost)
 
-  downloadThumbIfNeeded fileName video oldPost
+  downloadThumbIfNeeded newFileName video oldPost
 
 downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
 downloadThumbIfNeeded fileName video oldPost = do
