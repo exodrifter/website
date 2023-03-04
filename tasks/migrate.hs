@@ -157,6 +157,18 @@ data Post =
     , postShorts :: [Short]
     }
 
+instance Eq Post where
+  (==) l r =
+       postTitle l == postTitle r
+    && Time.zonedTimeToUTC (postDate l) == Time.zonedTimeToUTC (postDate r)
+    && postDuration l == postDuration r
+    && postThumbPath l == postThumbPath r
+    && postThumbUri l == postThumbUri r
+    && postCategories l == postCategories r
+    && postTags l == postTags r
+    && postVideoId l == postVideoId r
+    && postShorts l == postShorts r
+
 instance Aeson.ToJSON Post where
   toJSON p =
     Aeson.object
@@ -188,7 +200,7 @@ data Short =
   Short
     { shortName :: Text
     , shortLinks :: [ShortLink]
-    }
+    } deriving Eq
 
 instance Aeson.ToJSON Short where
   toJSON a =
@@ -207,7 +219,7 @@ data ShortLink =
   ShortLink
     { shortLinkService :: ShortService
     , shortLinkId :: Text
-    }
+    } deriving Eq
 
 instance Aeson.ToJSON ShortLink where
   toJSON p =
@@ -223,6 +235,7 @@ instance Aeson.FromJSON ShortLink where
       <*> a .: "id"
 
 data ShortService = YouTube
+  deriving Eq
 
 instance Aeson.ToJSON ShortService where
   toJSON a =
@@ -363,10 +376,9 @@ migrate :: Video -> Migration ()
 migrate video = do
   case folderName <$> parentFolder video of
     Just n | n == "Streams" -> do
-      echo ("Migrating " <> videoId video <> " - " <> name video)
       migrate' video
     _ ->
-      echo ("Skipping " <> videoId video <> " - " <> name video)
+      pure ()
 
 migrate' :: Video -> Migration ()
 migrate' video = do
@@ -407,8 +419,7 @@ migrate' video = do
 
   -- Update the post
   let desc = NET.fromText =<< description video
-  echo ("  Updating " <> videoId video <> " at " <> dataPath)
-  let newPost =
+      newPost =
         case oldPost of
           Just p ->
             p { postDate = zonedTime
@@ -430,8 +441,11 @@ migrate' video = do
               , postVideoId = Just $ videoId video
               , postShorts = []
               }
-  liftIO $ Text.writeFile (T.unpack dataPath)
-                          (fromLBS . Aeson.encodePretty $ newPost)
+  when (oldPost /= Just newPost) $ do
+    echo ("Updating " <> videoId video <> " at " <> dataPath)
+    liftIO $ Text.writeFile (T.unpack dataPath)
+                            (fromLBS . Aeson.encodePretty $ newPost)
+
   downloadThumbIfNeeded fileName video oldPost
 
 downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
