@@ -252,7 +252,7 @@ postToText :: Post -> Text
 postToText p =
      "---\n"
   <> "title: \"" <> title <> "\"\n"
-  <> "date: \"" <> (formatTime "%FT%T%z" $ postDate p) <> "\"\n"
+  <> "date: \"" <> (formatTime "%FT%TZ" $ Time.zonedTimeToUTC $ postDate p) <> "\"\n"
   <> "header:\n"
   <> "  teaser: \"" <> (fromMaybe "/assets/images/missing.png" $ postThumbPath p) <> "\"\n"
   <> "categories:" <> (elements $ postCategories p)
