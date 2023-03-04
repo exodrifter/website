@@ -33,8 +33,6 @@ import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
 import qualified Data.Time as Time
 import qualified Data.Time.TimeSpan as TimeSpan
-import qualified Data.Time.Zones as TZ
-import qualified Data.Time.Zones.All as TZ
 import qualified Network.HTTP.Client as HTTP
 import qualified Network.HTTP.Client.TLS as HTTP
 import qualified Network.HTTP.Req as Req
@@ -387,29 +385,16 @@ migrate video = do
 
 migrate' :: Video -> Migration ()
 migrate' video = do
-  let nameParsingFail =
-        die $ "Could not parse name \"" <> T.unpack (name video) <> "\""
   (service, zonedTime) <-
     case T.words (T.toLower (name video)) of
       service:_:day:time:[] ->
         case parseTime "%F %T%z" (day <> " " <> time) of
           Just zonedTime -> pure (service, zonedTime)
           Nothing ->
+            die $ "Could not determine timezone for \""
+               <> T.unpack (name video) <> "\""
 
-            -- In this case, I had not yet started recording the time zone
-            -- offset, but I know I was in Central Time.
-            case parseTime "%F %T" (day <> " " <> time) of
-              Nothing -> nameParsingFail
-              Just localTime ->
-                let knownTZ = TZ.tzByLabel TZ.America__Chicago
-                in  case TZ.localTimeToUTCFull knownTZ localTime of
-                      TZ.LTUUnique _ tz ->
-                        pure (service, Time.ZonedTime localTime tz)
-                      _ ->
-                        die $ "Could not determine offset for \""
-                           <> T.unpack (name video) <> "\""
-
-      _ -> nameParsingFail
+      _ -> die $ "Could not parse name \"" <> T.unpack (name video) <> "\""
 
   -- Try to load the old data
   let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
