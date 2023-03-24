@@ -435,8 +435,8 @@ migrate' video = do
               }
   when (oldPost /= Just newPost) $ do
     echo ("Updating " <> videoId video <> " at " <> dataPath)
-    liftIO $ Turtle.writeTextFile (Turtle.fromText dataPath)
-                                  (fromLBS . Aeson.encodePretty $ newPost)
+  liftIO $ Turtle.writeTextFile (Turtle.fromText dataPath)
+                                (fromLBS . Aeson.encodePretty $ newPost)
 
   downloadThumbIfNeeded fileName video oldPost
 
