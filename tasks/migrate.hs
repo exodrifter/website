@@ -1,6 +1,6 @@
 #!/usr/bin/env stack
 {- stack runghc
-    --resolver lts-20.13
+    --resolver lts-21.1
     --package aeson
     --package aeson-pretty
     --package bytestring
@@ -30,6 +30,7 @@ import qualified Data.ByteString.Lazy as LBS
 import qualified Data.NonEmptyText as NET
 import qualified Data.Set as Set
 import qualified Data.Text as T
+import qualified Data.Text.IO as TIO
 import qualified Data.Text.Encoding as TE
 import qualified Data.Time as Time
 import qualified Data.Time.TimeSpan as TimeSpan
@@ -399,11 +400,11 @@ migrate' video = do
   -- Try to load the old data
   let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
       dataPath = "data/" <> fileName <> ".json"
-  postExists <- Turtle.testpath (Turtle.fromText dataPath)
+  postExists <- Turtle.testpath (T.unpack dataPath)
   oldPost <-
     if postExists
     then do
-      t <- liftIO $ Turtle.readTextFile (Turtle.fromText dataPath)
+      t <- liftIO $ TIO.readFile (T.unpack dataPath)
       case Aeson.eitherDecode $ toLBS t of
         Left reason -> die $ "Failed to read post; " <> reason
         Right p -> pure $ Just p
@@ -435,15 +436,15 @@ migrate' video = do
               }
   when (oldPost /= Just newPost) $ do
     echo ("Updating " <> videoId video <> " at " <> dataPath)
-  liftIO $ Turtle.writeTextFile (Turtle.fromText dataPath)
-                                (fromLBS . Aeson.encodePretty $ newPost)
+  liftIO $ TIO.writeFile (T.unpack dataPath)
+                         (fromLBS . Aeson.encodePretty $ newPost)
 
   downloadThumbIfNeeded fileName video oldPost
 
 downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
 downloadThumbIfNeeded fileName video oldPost = do
   let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
-  thumbExists <- Turtle.testpath (Turtle.fromText thumbPath)
+  thumbExists <- Turtle.testpath (T.unpack thumbPath)
   case (thumbExists, pictureUri $ pictures video) of
 
     -- Vimeo is sending us the default thumbnail and we have a thumbnail on
@@ -480,7 +481,7 @@ writePosts = do
   totalDuration <- Turtle.reduce foldDuration $ do
     filepath <- Turtle.ls "data/"
 
-    t <- liftIO $ Turtle.readTextFile filepath
+    t <- liftIO $ TIO.readFile filepath
     p <- case Aeson.eitherDecode $ toLBS t of
       Left reason -> die $ "Failed to read post; " <> reason
       Right p -> pure p
@@ -489,8 +490,8 @@ writePosts = do
     let utcTime = Time.zonedTimeToUTC (postDate p)
         fileName = formatTime "%Y-%m-%d-%H-%M-%S" utcTime
         postPath = "_posts/" <> fileName <> ".md"
-    liftIO $ Turtle.writeTextFile (Turtle.fromText postPath)
-                                  (postToText p)
+    liftIO $ TIO.writeFile (T.unpack postPath)
+                           (postToText p)
 
     pure $ postDuration p
 
