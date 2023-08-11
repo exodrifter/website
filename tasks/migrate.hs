@@ -232,17 +232,19 @@ instance Aeson.FromJSON ShortLink where
       <$> a .: "service"
       <*> a .: "id"
 
-data ShortService = YouTube
+data ShortService = Twitch | YouTube
   deriving Eq
 
 instance Aeson.ToJSON ShortService where
   toJSON a =
     case a of
+      Twitch -> Aeson.String "twitch"
       YouTube -> Aeson.String "youtube"
 
 instance Aeson.FromJSON ShortService where
   parseJSON = Aeson.withText "ShortService" $ \t ->
     case t of
+      "twitch" -> pure Twitch
       "youtube" -> pure YouTube
       _ -> fail "Unknown short service"
 
@@ -281,6 +283,10 @@ postToText p =
       T.intercalate ", " (shortLink <$> shortLinks short)
     shortLink link =
       case shortLinkService link of
+        Twitch ->
+             "[Twitch](https://www.twitch.tv/exodrifter_/clip/"
+          <> shortLinkId link
+          <> ")"
         YouTube ->
              "[YouTube](https://www.youtube.com/watch?v="
           <> shortLinkId link
