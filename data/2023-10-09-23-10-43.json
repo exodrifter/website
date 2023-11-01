@@ -4,7 +4,17 @@
         "twitch"
     ],
     "duration": 8993,
-    "shorts": [],
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "AdorableSplendidKleePMSTwin-9_cppimu0ik63UaS",
+                    "service": "twitch"
+                }
+            ],
+            "name": "PAIN AND SUFFERING"
+        }
+    ],
     "tags": [
         "audacity",
         "code: dialogue manager",

@@ -4,7 +4,17 @@
         "twitch"
     ],
     "duration": 8713,
-    "shorts": [],
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "HandsomeSuperLlamaFreakinStinkin-h3QbvRLYN-b4-jHS",
+                    "service": "twitch"
+                }
+            ],
+            "name": "i'm not stealing!!!"
+        }
+    ],
     "tags": [
         "code: dialogue manager",
         "code: gdscript",

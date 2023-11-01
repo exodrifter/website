@@ -4,7 +4,17 @@
         "twitch"
     ],
     "duration": 17219,
-    "shorts": [],
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "DaintyIgnorantLouseWTRuck-PVTQu5EJxuuWwP9C",
+                    "service": "twitch"
+                }
+            ],
+            "name": "She should have paused the game...."
+        }
+    ],
     "tags": [
         "openttd",
         "raiding: KamikazuHunter"

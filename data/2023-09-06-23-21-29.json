@@ -4,7 +4,17 @@
         "twitch"
     ],
     "duration": 12253,
-    "shorts": [],
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "PlumpDepressedPistachioDeIlluminati-VwD6BaBUzxIO4mEG",
+                    "service": "twitch"
+                }
+            ],
+            "name": "a ridiculous form"
+        }
+    ],
     "tags": [
         "code: dialogue manager",
         "code: gdscript",

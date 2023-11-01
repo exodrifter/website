@@ -5,7 +5,17 @@
         "twitch"
     ],
     "duration": 26593,
-    "shorts": [],
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "CooperativeCogentChinchillaTheRinger-4CGqDrOcbcvn5NMr",
+                    "service": "twitch"
+                }
+            ],
+            "name": "the blood draw"
+        }
+    ],
     "tags": [
         "code: dialogue manager",
         "code: gdscript",

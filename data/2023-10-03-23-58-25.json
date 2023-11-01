@@ -4,7 +4,17 @@
         "twitch"
     ],
     "duration": 10623,
-    "shorts": [],
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "GorgeousCulturedAlbatrossTF2John-2sCih56JHhRvh35X",
+                    "service": "twitch"
+                }
+            ],
+            "name": "GET SERVED A LAWSUIT"
+        }
+    ],
     "tags": [
         "code: dialogue manager",
         "code: gdscript",
