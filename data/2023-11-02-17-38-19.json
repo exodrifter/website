@@ -1,0 +1,29 @@
+{
+    "categories": [
+        "game development",
+        "music production",
+        "twitch"
+    ],
+    "duration": 25694,
+    "shorts": [],
+    "tags": [
+        "code: dialogue manager",
+        "code: gdscript",
+        "fl studio",
+        "godot",
+        "null",
+        "raiding: nme64_u",
+        "song: lemons paradise",
+        "song: machine shop",
+        "song: scarred piano",
+        "song: sea chanty",
+        "song: slowpoke",
+        "song: zo time",
+        "synthv"
+    ],
+    "thumbPath": "/assets/thumbs/2023-11-02-17-38-19.jpg",
+    "thumbUri": "/videos/881037100/pictures/1748452610",
+    "timestamp": "2023-11-02T12:38:19-05:00",
+    "title": "adding music to a narrative-focused godot game",
+    "videoId": "881037100"
+}
