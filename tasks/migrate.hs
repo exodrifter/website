@@ -425,7 +425,7 @@ migrate' video = do
               , postDuration = duration video
               , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
               , postThumbUri = pictureUri $ pictures video
-              , postCategories = Set.insert service (autoCategorize (postTags p) (postCategories p))
+              , postCategories = Set.insert service (postCategories p)
               , postVideoId = Just $ videoId video
               }
           Nothing ->
@@ -446,14 +446,6 @@ migrate' video = do
                          (fromLBS . Aeson.encodePretty $ newPost)
 
   downloadThumbIfNeeded fileName video oldPost
-
-autoCategorize :: Set.Set T.Text -> Set.Set T.Text -> Set.Set T.Text
-autoCategorize tags categories =
-  let addCollabTag acc =
-        if any (T.isPrefixOf "guest") tags
-        then Set.insert "collab" acc
-        else acc
-  in  addCollabTag categories
 
 downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
 downloadThumbIfNeeded fileName video oldPost = do
