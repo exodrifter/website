@@ -3,101 +3,209 @@
 	<head>
 		<title>exodrifter</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="exodrifter's personal website">
+		<meta name="description" content="exodrifter's website">
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
 			body {
 				display: flex;
-				justify-content: center;
+				flex-direction: column;
+				gap: 40pt;
 				background: #786f7e;
-				height: 100vh;
+				background-image: radial-gradient(#8c8392 1pt, transparent 0);
+				background-position: -10pt -10pt;
+				background-size: 20pt 20pt;
 				margin: 0;
-				padding: 0;
-				user-select: none;
-			}
-			main {
-				display: block;
-				background: rgba(0, 0, 0, 0.8);
-				width: 100%;
-				min-height: fit-content;
-				padding-top: 3em;
-				overflow: hidden auto;
-			}
-			img {
-				display: block;
-				align-self: center;
-				color: white;
-				width: 60vw;
-				max-width: 20em;
-				margin: auto;
-			}
-			i,a {
-				color: white;
+				padding: 40pt;
+				color: #fff;
 				font-family: 'Anonymous Pro', 'Courier New', monospace;
-				text-align: left;
-				text-decoration: none;
-				transition: color .5s;
-				font-size: 1.2em;
-				margin: .5em;
-				padding: 0;
-				white-space: nowrap;
-				vertical-align: middle;
 			}
-			a:hover {
-				color: #777;
-				transition: none;
-			}
-			video {
-				position: fixed;
-				object-fit: cover;
-				width: 100vw;
-				height: 100vh;
-				z-index: -1;
-			}
-			.links {
-				display: grid;
-				grid-template-columns: 1fr;
-				margin: 3em auto 0 auto;
-				width: fit-content;
-			}
-			@media only screen and (min-width: 600px) {
-				main {
+			header {
+				display: flex;
+				flex-direction: row;
+				gap: 20pt;
+				.container {
 					display: flex;
 					flex-direction: column;
-					justify-content: center;
-					width: auto;
-					height: auto;
-					margin: auto;
-					padding: 3em;
+					gap: 10pt;
 				}
 				.links {
-					grid-template-columns: 1fr 1fr 1fr;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+				}
+				.other-links {
+					display: none;
+				}
+			}
+			main {
+				display: flex;
+				flex-direction: column;
+				gap: 20pt;
+				max-width: 600pt;
+				.container {
+					margin-bottom: 20pt;
+				}
+				.feature {
+					margin: 20pt 0;
+					padding: 10pt;
+					background-color: #00000055;
+
+					.links {
+						display: flex;
+						justify-content: flex-end;
+					}
+				}
+				.other-features {
+					margin: 20pt 0;
+					padding: 10pt;
+					background-color: #00000022;
+				}
+				.subtitle {
+					font-style: italic;
+				}
+			}
+			footer {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			h1 {
+				font-size: 2.5em;
+				margin: 0;
+			}
+			h2 {
+				font-size: 1.8em;
+				margin: 0;
+			}
+			p {
+				font-size: 1em;
+				line-height: 1.5em;
+			}
+			a {
+				margin: .5em;
+				color: #fff;
+				text-decoration: none;
+				transition: color .5s;
+				white-space: nowrap;
+			}
+			a:hover {
+				color: #29262b;
+				transition: none;
+				i {
+					color: #29262b;
+					transition: none;
+				}
+			}
+			hr {
+				border: 0;
+				border-bottom: 1pt solid #958d9b;
+				width: 100%;
+			}
+			@media only screen and (min-width: 600pt) {
+				header {
+					flex-direction: column;
+					.links {
+						flex-direction: column;
+					}
+					.other-links {
+						display: flex;
+						flex-direction: column;
+					}
+				}
+				body {
+					flex-direction: row;
+					justify-content: center;
+				}
+				footer {
+					display: none;
 				}
 			}
 		</style>
 	</head>
 	<body>
+		<header>
+			<img src="logo.svg" style="max-width: 120pt" alt="exodrifter logo" draggable="false">
+			<div class="container">
+				<div class="links">
+					<a href="https://cohost.org/exodrifter"><i class="ri-discuss-fill"></i> cohost</a>
+					<a href="https://discord.gg/arqFQVt"><i class="ri-discord-fill"></i> discord</a>
+					<a href="https://www.twitch.tv/exodrifter_"><i class="ri-twitch-fill"></i> twitch</a>
+				</div>
+				<hr/>
+				<div class="other-links">
+					<a href="https://music.exodrifter.space"><i class="ri-album-fill"></i> bandcamp</a>
+					<a href="https://github.com/exodrifter"><i class="ri-github-fill"></i> github</a>
+					<a href="https://exodrifter.itch.io"><i class="ri-gamepad-fill"></i> itch.io</a>
+					<a href="https://ko-fi.com/exodrifter"><i class="ri-cup-fill"></i> ko-fi</a>
+					<a href="https://vt.social/@exodrifter" rel="me"><i class="ri-mastodon-fill"></i> mastodon</a>
+					<a href="https://patreon.com/exodrifter"><i class="ri-patreon-fill"></i> patreon</a>
+					<a href="https://soundcloud.com/exodrifter"><i class="ri-soundcloud-fill"></i> soundcloud</a>
+					<a href="https://store.steampowered.com/developer/exodrifter"><i class="ri-steam-fill"></i> steam</a>
+					<a href="https://twitter.com/exodrifter"><i class="ri-twitter-fill"></i> twitter</a>
+					<a href="https://vods.exodrifter.space"><i class="ri-video-fill"></i> vods</a>
+				</div>
+			</div>
+		</header>
 		<main>
-			<img src="l.svg" alt="exodrifter logo" draggable="false">
-			<div class="links">
+			<div class="container">
+				<h1>games</h1>
+				<div class="feature">
+					<h2>lost contact</h2>
+					<p class="subtitle">2024 | lost contact | in development</p>
+					<p>narrative-driven, hidden object adventure game about loneliness. you're stuck by yourself on a space station orbiting a black hole, trying to fix a busted comms array so you can go home. there's no one to call for help.</p>
+					<div class="links">
+						<a href="https://exodrifter.itch.io/lost-contact"><i class="ri-gamepad-fill"></i> itch.io</a>
+					</div>
+				</div>
+				<div class="feature">
+					<h2>voluntary commitment</h2>
+					<p class="subtitle">2024 | null | in development</p>
+					<p>you are committed to a mysterious institution populated by troubled and charming inhabitants. you are advised to consent to all applicable treatments proposed by the staff. you are now required to voluntarily sign this form...</p>
+				</div>
+				<div class="feature">
+					<h2>gender dysphoria</h2>
+					<p class="subtitle">2020 | gender dysphoria | released</p>
+					<p>short 20 minute non-linear kinetic novel about negative experiences after coming out as transgender.</p>
+					<div class="links">
+						<a href="https://store.steampowered.com/app/2310400/Gender_Dysphoria/"><i class="ri-steam-fill"></i> steam</a>
+						<a href="https://exodrifter.itch.io/gender-dysphoria"><i class="ri-gamepad-fill"></i> itch.io</a>
+					</div>
+				</div>
+				<div class="other-features">
+					<p>teknedia <span class="subtitle">(2021 | weldworks | released)</span> <a href="https://store.steampowered.com/app/354780/Teknedia/"><i class="ri-steam-fill"></i> steam</a></p>
+					<p>port of call <span class="subtitle">(2015 | styx | released)</span> <a href="https://store.steampowered.com/app/356520/Port_of_Call/"><i class="ri-steam-fill"></i> steam</a></p>
+				</div>
+			</div>
+			<div class="container">
+				<h1>tools</h1>
+				<div class="feature">
+					<h2>rumor</h2>
+					<p class="subtitle">2016 | rumor | in development</p>
+					<p>free and open source narrative scripting language that is easy to diff, easy to read, and flexible!</p>
+					<div class="links">
+						<a href="https://github.com/exodrifter/unity-rumor"><i class="ri-github-fill"></i> github</a>
+					</div>
+				</div>
+				<div class="other-features">
+					<p>unity-python <span class="subtitle">(2015 | unity-python | abandoned)</span> <a href="https://github.com/exodrifter/unity-python"><i class="ri-github-fill"></i> github</a></p>
+				</div>
+			</div>
+			<footer>
+				<hr/>
 				<a href="https://music.exodrifter.space"><i class="ri-album-fill"></i> bandcamp</a>
-				<a href="https://cohost.org/exodrifter"><i class="ri-discuss-fill"></i> cohost</a>
-				<a href="https://discord.gg/arqFQVt"><i class="ri-discord-fill"></i> discord</a>
 				<a href="https://github.com/exodrifter"><i class="ri-github-fill"></i> github</a>
 				<a href="https://exodrifter.itch.io"><i class="ri-gamepad-fill"></i> itch.io</a>
 				<a href="https://ko-fi.com/exodrifter"><i class="ri-cup-fill"></i> ko-fi</a>
 				<a href="https://vt.social/@exodrifter" rel="me"><i class="ri-mastodon-fill"></i> mastodon</a>
 				<a href="https://patreon.com/exodrifter"><i class="ri-patreon-fill"></i> patreon</a>
 				<a href="https://soundcloud.com/exodrifter"><i class="ri-soundcloud-fill"></i> soundcloud</a>
-				<a href="https://www.twitch.tv/exodrifter_"><i class="ri-twitch-fill"></i> twitch</a>
+				<a href="https://store.steampowered.com/developer/exodrifter"><i class="ri-steam-fill"></i> steam</a>
 				<a href="https://twitter.com/exodrifter"><i class="ri-twitter-fill"></i> twitter</a>
 				<a href="https://vods.exodrifter.space"><i class="ri-video-fill"></i> vods</a>
-			</div>
+			</footer>
 		</main>
-		<video preload="auto" autoplay muted loop>
-			<source src="rain.m4v" type="video/mp4">
-		</video>
 	</body>
 </html>
