@@ -7,55 +7,59 @@
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 		<style>
-			a,body {
-				background-color:#786f7e;
-				color:#fff;
-				font-family:'Courier New';
-				text-decoration:none;
-				transition:color .3s;
+			body {
+				display: flex;
+				justify-content: center;
+				background-color: #786f7e;
+				height: 100vh;
+				margin: 0;
+				padding: 0;
+			}
+			main {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			img {
+				color: white;
 				font-size: 1.2em;
+				align-self: center;
+			}
+			a {
+				color: white;
+				font-family: 'Courier New';
+				text-align: center;
+				text-decoration: none;
+				transition:color .3s;
+				font-size: 1.1em;
+				margin: .5em;
+				padding: 0;
 			}
 			a:hover {
-				color:#ccc
+				color: #aaa
 			}
-			td,th {
-				text-align:left;padding:1em
+			.links {
+				margin-top: 3em;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
 			}
 		</style>
 	</head>
 	<body>
 		<main>
-			<img src="l.svg" alt="exodrifter logo" style="margin: 1em; width: 20em">
-			<table>
-				<tr>
-					<th>donate://</th>
-					<td><a href="https://ko-fi.com/exodrifter"><i class="ri-cup-fill"></i> ko-fi</a></td>
-					<td><a href="https://patreon.com/exodrifter"><i class="ri-patreon-fill"></i> patreon</a></td>
-				</tr>
-				<tr>
-					<th>code://</th>
-					<td><a href="https://github.com/exodrifter"><i class="ri-github-fill"></i> github</a></td>
-				</tr>
-				<tr>
-					<th>games://</th>
-					<td><a href="https://exodrifter.itch.io"><i class="ri-gamepad-fill"></i> itch.io</a></td>
-				</tr>
-				<tr>
-					<th>music://</th>
-					<td><a href="https://music.exodrifter.space"><i class="ri-album-fill"></i> bandcamp</a></td>
-					<td><a href="https://soundcloud.com/exodrifter"><i class="ri-soundcloud-fill"></i> soundcloud</a></td>
-				</tr>
-				<tr>
-					<th>social://</th>
-					<td><a href="https://twitter.com/exodrifter"><i class="ri-twitter-fill"></i> twitter</a></td>
-					<td><a href="https://mastodon.online/@exodrifter" rel="me"><i class="ri-mastodon-fill"></i> mastodon</a></td>
-					<td><a href="https://discord.gg/arqFQVt"><i class="ri-discord-fill"></i> discord</a></td>
-				</tr>
-				<tr>
-					<th>stream://</th>
-					<td><a href="https://www.twitch.tv/exodrifter_"><i class="ri-twitch-fill"></i> twitch</a></td>
-				</tr>
-			</table>
+			<img src="l.svg" alt="exodrifter logo" style="width: 20rem">
+			<div class="links">
+				<a href="https://music.exodrifter.space"><i class="ri-album-fill"></i> bandcamp</a>
+				<a href="https://discord.gg/arqFQVt"><i class="ri-discord-fill"></i> discord</a>
+				<a href="https://github.com/exodrifter"><i class="ri-github-fill"></i> github</a>
+				<a href="https://exodrifter.itch.io"><i class="ri-gamepad-fill"></i> itch.io</a>
+				<a href="https://ko-fi.com/exodrifter"><i class="ri-cup-fill"></i> ko-fi</a>
+				<a href="https://mastodon.online/@exodrifter" rel="me"><i class="ri-mastodon-fill"></i> mastodon</a>
+				<a href="https://patreon.com/exodrifter"><i class="ri-patreon-fill"></i> patreon</a>
+				<a href="https://soundcloud.com/exodrifter"><i class="ri-soundcloud-fill"></i> soundcloud</a>
+				<a href="https://www.twitch.tv/exodrifter_"><i class="ri-twitch-fill"></i> twitch</a>
+				<a href="https://twitter.com/exodrifter"><i class="ri-twitter-fill"></i> twitter</a>
+			</div>
 		</main>
 	</body>
 </html>
