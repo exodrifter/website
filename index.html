@@ -36,7 +36,19 @@
 				padding: 0;
 			}
 			a:hover {
-				color: #aaa
+				color: #777
+			}
+			video {
+				position: absolute;
+				object-fit: cover;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+			}
+			.container {
+				margin: 0;
+				padding: 3em;
+				background: rgba(0, 0, 0, 0.8);
 			}
 			.links {
 				margin-top: 3em;
@@ -47,19 +59,24 @@
 	</head>
 	<body>
 		<main>
-			<img src="l.svg" alt="exodrifter logo" style="width: 20rem">
-			<div class="links">
-				<a href="https://music.exodrifter.space"><i class="ri-album-fill"></i> bandcamp</a>
-				<a href="https://discord.gg/arqFQVt"><i class="ri-discord-fill"></i> discord</a>
-				<a href="https://github.com/exodrifter"><i class="ri-github-fill"></i> github</a>
-				<a href="https://exodrifter.itch.io"><i class="ri-gamepad-fill"></i> itch.io</a>
-				<a href="https://ko-fi.com/exodrifter"><i class="ri-cup-fill"></i> ko-fi</a>
-				<a href="https://mastodon.online/@exodrifter" rel="me"><i class="ri-mastodon-fill"></i> mastodon</a>
-				<a href="https://patreon.com/exodrifter"><i class="ri-patreon-fill"></i> patreon</a>
-				<a href="https://soundcloud.com/exodrifter"><i class="ri-soundcloud-fill"></i> soundcloud</a>
-				<a href="https://www.twitch.tv/exodrifter_"><i class="ri-twitch-fill"></i> twitch</a>
-				<a href="https://twitter.com/exodrifter"><i class="ri-twitter-fill"></i> twitter</a>
+			<div class="container">
+				<img src="l.svg" alt="exodrifter logo" style="width: 20rem">
+				<div class="links">
+					<a href="https://music.exodrifter.space"><i class="ri-album-fill"></i> bandcamp</a>
+					<a href="https://discord.gg/arqFQVt"><i class="ri-discord-fill"></i> discord</a>
+					<a href="https://github.com/exodrifter"><i class="ri-github-fill"></i> github</a>
+					<a href="https://exodrifter.itch.io"><i class="ri-gamepad-fill"></i> itch.io</a>
+					<a href="https://ko-fi.com/exodrifter"><i class="ri-cup-fill"></i> ko-fi</a>
+					<a href="https://mastodon.online/@exodrifter" rel="me"><i class="ri-mastodon-fill"></i> mastodon</a>
+					<a href="https://patreon.com/exodrifter"><i class="ri-patreon-fill"></i> patreon</a>
+					<a href="https://soundcloud.com/exodrifter"><i class="ri-soundcloud-fill"></i> soundcloud</a>
+					<a href="https://www.twitch.tv/exodrifter_"><i class="ri-twitch-fill"></i> twitch</a>
+					<a href="https://twitter.com/exodrifter"><i class="ri-twitter-fill"></i> twitter</a>
+				</div>
 			</div>
 		</main>
+		<video preload="auto" autoplay muted loop>
+			<source src="rain.m4v" type="video/mp4">
+		</video>
 	</body>
 </html>
