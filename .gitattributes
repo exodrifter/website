@@ -1,0 +1,8 @@
+# Normalize EOL for all files that Git considers text files.
+* text=auto eol=lf
+
+# Mark generated files
+/logseq/* linguist-vendored
+
+# Files to store in LFS
+*.png filter=lfs diff=lfs merge=lfs -text
