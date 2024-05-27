@@ -1,9 +1,9 @@
 ---
 aliases:
-- Streaming Activity
+- Live Streaming history
 ---
 
-A history of my streaming activity.
+A history of my [live streaming](live-streaming.md) activity.
 
 Timeline:
 - Started streaming on [Picarto](picarto.md) sometime between 2016-02-01 and 2016-03-06 ([20221126_1732](../entries/20221126_1732.md), [20221123_1725](../entries/20221123_1725.md), [20240527_075216](../entries/20240527_075216.md))

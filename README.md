@@ -1,14 +1,13 @@
 # logbook
 
-This is my logbook, where notes are recorded and publicly shared.
+This is my logbook, where notes are recorded and publicly shared at [github.com/exodrifter/logbook](https://github.com/exodrifter/logbook).
 
-I'm a vtuber indie game developer who [streams](notes/streaming-activity.md) on [Twitch](notes/twitch.md). I love yuri, sci-fi, and heavy board games.
-
-If you like the work I do, you can support me on [Ko-fi](notes/ko-fi.md) or [Patreon](notes/patreon.md).
+I'm a vtuber indie game developer who [livestreams](notes/live-streaming.md) game development. I love yuri, sci-fi, and heavy board games. If you like the work I do, there are [a few ways you can support me](notes/crowdfunding.md).
 
 ## Projects
 
-- [no signal](notes/no-signal.md)
+- [hiking game](notes/hiking-game.md)
+- [no signal](notes/no-signal.md) **Current Project**
 - [t/suki](notes/tsuki.md)
 
 ## Indices
