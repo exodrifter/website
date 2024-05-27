@@ -15,5 +15,5 @@ The workaround for this is edit all key frames with null values to a value diffe
 
 ## History
 
-- ![20240527_095110](../journal/20240527_095110.md)
-- ![20240503_1856](../journal/20240503_1856.md)
+- ![20240527_095110](../entries/20240527_095110.md)
+- ![20240503_1856](../entries/20240503_1856.md)
