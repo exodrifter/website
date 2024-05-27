@@ -10,3 +10,8 @@ If you like the work I do, you can support me on [Ko-fi](notes/ko-fi.md) or [Pat
 
 - [no signal](notes/no-signal.md)
 - [t/suki](notes/tsuki.md)
+
+## Indices
+
+- [Books](notes/book.md)
+- [Films](notes/film.md)
