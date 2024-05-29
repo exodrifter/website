@@ -5,4 +5,4 @@ aliases:
 
 # Cormac McCarthy
 
-- [The Road](the-road.md)
+**Cormac McCarthy** is the author of [The Road](the-road.md)

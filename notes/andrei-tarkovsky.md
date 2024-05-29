@@ -6,3 +6,4 @@ aliases:
 # Andrei Tarkovsky
 
 - [Stalker (1979)](stalker.md)
+- [Solaris](solaris.md)
