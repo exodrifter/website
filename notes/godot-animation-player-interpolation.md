@@ -11,7 +11,7 @@ In [Godot](../notes/godot.md) 4.2.1, an [`AnimationPlayer`](../notes/godot-anima
 >
 > As noted in [#75125 (comment)](https://github.com/godotengine/godot/issues/75125#issuecomment-1568624735), as long as it is an initial value, the Variant type is not properly assigned, so keying to the initial value seems to insert Nil.
 
-The workaround for this is edit all key frames with null values to a value different from the initial value. This causes the type to be assigned properly. After this is done, the value can be set back to the default value.
+The workaround for this is edit all key frames in all animations with null values to a value different from the initial value. This causes the type to be assigned properly. After this is done, the value can be set back to the default value.
 
 ## History
 
