@@ -15,3 +15,4 @@ I'm a vtuber indie game developer who [livestreams](notes/live-streaming.md) gam
 - [Arcade Games](notes/arcade.md)
 - [Books](notes/book.md)
 - [Films](notes/film.md)
+- [Tools](notes/tools.md)
