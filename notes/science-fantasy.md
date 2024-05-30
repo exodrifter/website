@@ -1,6 +1,6 @@
 ---
 aliases:
-- Science Fantasy
+- science fantasy
 ---
 
 # Science Fantasy

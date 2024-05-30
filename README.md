@@ -12,7 +12,8 @@ I'm a vtuber indie game developer who [livestreams](notes/live-streaming.md) gam
 
 ## Indices
 
-- [Arcade Games](notes/arcade.md)
-- [Books](notes/book.md)
-- [Films](notes/film.md)
+- [Arcade Games](notes/arcade-games.md)
+- [Books](notes/books.md)
+- [Films](notes/films.md)
+- [Genres](notes/genres.md)
 - [Tools](notes/tools.md)

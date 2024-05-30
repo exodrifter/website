@@ -1,6 +1,7 @@
 ---
 aliases:
-- Films
+- film
+- films
 ---
 
 # Films

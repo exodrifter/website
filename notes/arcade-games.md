@@ -1,7 +1,7 @@
 ---
 aliases:
-- Arcade Game
-- Arcade Games
+- arcade game
+- arcade games
 ---
 
 # Arcade Games

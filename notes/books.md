@@ -1,6 +1,7 @@
 ---
 aliases:
-- Books
+- book
+- books
 ---
 
 # Books
