@@ -9,3 +9,4 @@ aliases:
 
 - [`AnimationPlayer`](godot-animation-player.md)
 - [GDShader](godot-gdshader.md)
+- [GUI](godot-gui.md)
