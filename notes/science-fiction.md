@@ -6,4 +6,5 @@ aliases:
 
 # Science Fiction
 
+- [no signal](no-signal.md)
 - [Solaris (1972)](solaris.md)

@@ -7,7 +7,7 @@ aliases:
 
 [itch.io](https://exodrifter.itch.io/no-signal) | [Steam](https://store.steampowered.com/app/2840590/no_signal/)
 
-_**no signal**_ is a narrative hidden object game about loneliness, fixing broken machinery, and reading old logs. You're stuck by yourself on a space station orbiting a black hole, trying to get home. There's no one to call for help.
+_**no signal**_ is a [science fiction](science-fiction.md) escape room game about loneliness, fixing broken machinery, and reading old logs. You're stuck by yourself on a space station orbiting a black hole, trying to get home. There's no one to call for help.
 
 The game is made in [Godot](godot.md).
 
