@@ -7,5 +7,5 @@ aliases:
 
 I use the following crowdfunding platforms:
 
-- [Ko-fi](ko-fi.md)
-- [Patreon](patreon.md)
+- [Ko-fi](../notes/ko-fi.md)
+- [Patreon](../notes/patreon.md)

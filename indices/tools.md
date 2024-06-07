@@ -7,6 +7,6 @@ aliases:
 
 An index of tools that I've used for making games.
 
-- [Blender](blender.md)
-- [Godot](godot.md)
-- [Krita](krita.md)
+- [Blender](../notes/blender.md)
+- [Godot](../notes/godot.md)
+- [Krita](../notes/krita.md)

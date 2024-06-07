@@ -7,6 +7,6 @@ aliases:
 # Genres
 
 - [Biography](../notes/biography.md)
-- [Science Fantasy](science-fantasy.md)
-- [Science Fiction](science-fiction.md)
-- [Post-Apocalyptic](post-apocalyptic.md)
+- [Science Fantasy](../notes/science-fantasy.md)
+- [Science Fiction](../notes/science-fiction.md)
+- [Post-Apocalyptic](../notes/post-apocalyptic.md)

@@ -6,4 +6,4 @@ aliases:
 
 # Arcade Games
 
-- [Dharma Doujo](dharma-doujo.md)
+- [Dharma Doujo](../notes/dharma-doujo.md)
