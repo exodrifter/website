@@ -3,5 +3,6 @@
   "showInlineTitle": false,
   "livePreview": false,
   "alwaysUpdateLinks": true,
-  "newLinkFormat": "relative"
+  "newLinkFormat": "relative",
+  "showRibbon": false
 }
