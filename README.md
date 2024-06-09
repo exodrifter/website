@@ -15,3 +15,4 @@ These notes are hosted at [github.com/exodrifter/logbook](https://github.com/exo
 - [Projects](indices/projects.md)
 - [Shows](indices/shows.md)
 - [Tools](indices/tools.md)
+- [Video Games](indices/video-games.md)
