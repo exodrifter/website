@@ -7,7 +7,7 @@ aliases:
 
 [`RichTextLabel`](godot-rich-text-label.md) uses [`TextParagraph`](godot-text-paragraph.md) internally to draw text, but since `TextParagraph` caches some information lazily there can be a lag spike when drawing the `RichTextLabel` for the first time.
 
-To get around this issue, you can use the [`TextParagraph`](godot-text-paragraph.md) class directly, and force it to cache the information it needs before the first draw call:
+To get around this issue, you can disable the use of system fonts as a fallback or use the [`TextParagraph`](godot-text-paragraph.md) class directly, and force it to cache the information it needs before the first draw call:
 
 ```gdscript
 @tool
@@ -48,3 +48,5 @@ Unfortunately, [`TextParagraph`](godot-text-paragraph.md) does not support BBCod
 ## History
 
 ![20240607_184945](../entries/20240607_184945.md)
+
+![20240611_220958](../entries/20240611_220958.md)
