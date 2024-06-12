@@ -1,6 +1,6 @@
 ---
 aliases:
-- AnimationPlayer
+- "`AnimationPlayer`"
 ---
 
 # `AnimationPlayer`

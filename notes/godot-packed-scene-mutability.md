@@ -1,6 +1,6 @@
 ---
 aliases:
-- `PackedScene` mutability
+- "`PackedScene` mutability"
 ---
 
 # `PackedScene` mutability

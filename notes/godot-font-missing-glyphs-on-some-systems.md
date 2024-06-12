@@ -1,6 +1,6 @@
 ---
 aliases:
-- Godot fonts are missing glyphs on some systems
+- Fonts are missing glyphs on some systems
 ---
 
 # Fonts are missing glyphs on some systems

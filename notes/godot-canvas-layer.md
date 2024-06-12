@@ -1,6 +1,6 @@
 ---
 aliases:
-- CanvasLayer
+- "`CanvasLayer`"
 ---
 
 # `CanvasLayer`

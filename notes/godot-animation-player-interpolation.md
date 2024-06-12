@@ -1,6 +1,6 @@
 ---
 aliases:
-- AnimationPlayer doesn't interpolate shader parameter
+- "`AnimationPlayer` doesn't interpolate shader parameter"
 ---
 
 # `AnimationPlayer` doesn't interpolate shader parameter

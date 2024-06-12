@@ -1,6 +1,6 @@
 ---
 aliases:
-- TextParagraph
+- "`TextParagraph`"
 ---
 
 # `TextParagraph`

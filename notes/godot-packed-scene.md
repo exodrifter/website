@@ -1,6 +1,6 @@
 ---
 aliases:
-- PackedScene
+- "`PackedScene`"
 ---
 
 # `PackedScene`

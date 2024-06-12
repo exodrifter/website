@@ -1,6 +1,6 @@
 ---
 aliases:
-- `RichTextLabel` lags on first draw
+- "`RichTextLabel` lags on first draw"
 ---
 
 # `RichTextLabel` lags on first draw
