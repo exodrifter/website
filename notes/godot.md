@@ -11,3 +11,4 @@ aliases:
 - [`Font`](godot-font.md)
 - [GDShader](godot-gdshader.md)
 - [GUI](godot-gui.md)
+- [Import](godot-import.md)

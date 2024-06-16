@@ -9,6 +9,7 @@ These notes are hosted at [github.com/exodrifter/logbook](https://github.com/exo
 - [Arcade Games](indices/arcade-games.md)
 - [Board Games](indices/board-games.md)
 - [Books](indices/books.md)
+- [Eroge](indices/eroge.md)
 - [Films](indices/films.md)
 - [Genres](indices/genres.md)
 - [Musicals](indices/musicals.md)
