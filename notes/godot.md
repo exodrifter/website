@@ -12,3 +12,4 @@ aliases:
 - [GDShader](godot-gdshader.md)
 - [GUI](godot-gui.md)
 - [Import](godot-import.md)
+- [`JSON`](godot-json.md)
