@@ -30,8 +30,10 @@ Value is String? true
 Value is Vector2i? false
 ```
 
-Instead, consider using `var_to_str` and `str_to_var`.
+Instead, consider using `store_var` and `get_var` in `FileAccess` (see also: [Arbitrary Code Execution in Godot serialization](../godot-serialize-arbitrary-code-execution.md))
 
 ## History
 
 ![20240617_214349](entries/20240617_214349.md)
+
+![20240619_243315](../entries/20240619_243315.md)
