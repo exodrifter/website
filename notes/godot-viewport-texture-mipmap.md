@@ -10,7 +10,7 @@ In both Godot 3 and 4, `ViewportTexture`s do not have mipmaps. To get around thi
 ```gdshader
 shader_type spatial;
 
-uniform sampler2D albedo_texture: filter_nearest;
+uniform sampler2D albedo_texture: filter_linear;
 
 vec4 sample(vec2 uv, int lod) {
 	ivec2 size = textureSize(albedo_texture, 0);
@@ -46,3 +46,5 @@ void fragment() {
 ![20240620_221253](../entries/20240620_221253.md)
 
 ![20240621_054605](../entries/20240621_054605.md)
+
+![20240621_214324](../entries/20240621_214324.md)
