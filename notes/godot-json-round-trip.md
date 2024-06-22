@@ -30,7 +30,7 @@ Value is String? true
 Value is Vector2i? false
 ```
 
-Instead, consider using `store_var` and `get_var` in `FileAccess` (see also: [Arbitrary Code Execution in Godot serialization](../godot-serialize-arbitrary-code-execution.md))
+Instead, consider using `store_var` and `get_var` in `FileAccess` (see also: [Arbitrary Code Execution in Godot serialization](godot-serialize-arbitrary-code-execution.md))
 
 ## History
 
