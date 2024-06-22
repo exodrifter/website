@@ -15,3 +15,4 @@ aliases:
 - [Import](godot-import.md)
 - [`JSON`](godot-json.md)
 - [Serialization](godot-serialization.md)
+- [`ViewportTexture`](godot-viewport-texture.md)
