@@ -9,7 +9,9 @@ aliases:
 
 - [`AnimationPlayer`](godot-animation-player.md)
 - [`Control`](godot-control.md)
+- [Crimes](godot-crimes.md)
 - [`Decal`](godot-decal.md)
+- [`float`](godot-float.md)
 - [`Font`](godot-font.md)
 - [GDShader](godot-gdshader.md)
 - [GUI](godot-gui.md)
