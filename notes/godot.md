@@ -23,4 +23,5 @@ aliases:
 - [`JSON`](godot-json.md)
 - [`PhysicsDirectBodyState3D`](godot-physics-direct-body-state-3d.md)
 - [Serialization](godot-serialization.md)
+- [`Transform3D`](godot-transform3d.md)
 - [`ViewportTexture`](godot-viewport-texture.md)
