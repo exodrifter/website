@@ -5,7 +5,7 @@ aliases:
 
 # `inverse` is an inferior version of `affine_inverse`
 
-In [Godot](godot.md) 4.2.2, the implementation of `inverse` reads as follows:
+In [Godot](godot.md) 4.2.2, the implementation of [`inverse`](https://docs.godotengine.org/en/4.2/classes/class_transform3d.html#class-transform3d-method-inverse) in [`Transform3D`](godot-transform3d.md) reads as follows:
 
 ```
 Transform3D Transform3D::inverse() const {
@@ -20,6 +20,8 @@ Transform3D Transform3D::inverse() const {
 See: https://github.com/godotengine/godot/blob/4.2.2-stable/core/math/transform_3d.cpp#L52-L58
 
 Instead of using `inverse`, you should always use `affine_inverse` instead.
+
+I consider this issue to be a [Godot crime](godot-crimes.md).
 
 ## History
 

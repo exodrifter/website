@@ -5,7 +5,7 @@ aliases:
 
 # Lambdas do not capture local variables
 
-Lambdas do not capture local variables as they only copy the _value_ of each variable (by design; see [godotengine/godot#69014](https://github.com/godotengine/godot/issues/69014#issuecomment-1324017859)). However, since `Variant` is passed by reference, you can use a `Variant` to get around this problem.
+In [Godot](godot.md), [GDScript](godot-gdscript.md) lambdas do not capture local variables as they only copy the _value_ of each variable (by design; see [godotengine/godot#69014](https://github.com/godotengine/godot/issues/69014#issuecomment-1324017859)). However, since `Variant` is passed by reference, you can use a `Variant` to get around this problem.
 
 For example, this does not work:
 
@@ -34,6 +34,8 @@ func foobar():
 
 	print(stop["value"]) # Either true or false
 ```
+
+I consider this issue to be a [Godot crime](godot-crimes.md).
 
 ## History
 
