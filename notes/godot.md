@@ -14,6 +14,7 @@ aliases:
 - [`float`](godot-float.md)
 - [`Font`](godot-font.md)
 - [GDShader](godot-gdshader.md)
+- [`Geometry2D`](godot-geometry2d.md)
 - [GUI](godot-gui.md)
 - [Import](godot-import.md)
 - [Input](godot-input.md)
