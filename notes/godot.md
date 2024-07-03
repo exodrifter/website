@@ -18,5 +18,6 @@ aliases:
 - [Import](godot-import.md)
 - [Input](godot-input.md)
 - [`JSON`](godot-json.md)
+- [`PhysicsDirectBodyState3D`](godot-physics-direct-body-state-3d.md)
 - [Serialization](godot-serialization.md)
 - [`ViewportTexture`](godot-viewport-texture.md)
