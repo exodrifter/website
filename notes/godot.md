@@ -8,6 +8,7 @@ aliases:
 **[Godot](https://godotengine.org)** is an open source game engine.
 
 - [`@tool`](godot-tool-script.md)
+- [`Area2D`](godot-area2d.md)
 - [`AnimationPlayer`](godot-animation-player.md)
 - [`Control`](godot-control.md)
 - [Crimes](godot-crimes.md)
