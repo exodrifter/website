@@ -12,3 +12,4 @@ A list of my projects.
 - [no signal](../notes/no-signal.md)
 - [t/suki](../notes/tsuki.md)
 - [Ultraprocessor Ribbon](../notes/ultraprocessor-ribbon.md)
+- [voluntary commitment](../notes/voluntary-commitment.md)

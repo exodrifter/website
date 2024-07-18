@@ -13,6 +13,7 @@ aliases:
 - [`Control`](godot-control.md)
 - [Crimes](godot-crimes.md)
 - [`Decal`](godot-decal.md)
+- [`DisplayServer`](godot-display-server.md)
 - [`float`](godot-float.md)
 - [`Font`](godot-font.md)
 - [GDScript](godot-gdscript.md)
