@@ -10,6 +10,7 @@ aliases:
 - [`@tool`](godot-tool-script.md)
 - [`Area2D`](godot-area2d.md)
 - [`AnimationPlayer`](godot-animation-player.md)
+- [`CanvasItem`](godot-canvas-item.md)
 - [`Control`](godot-control.md)
 - [Crimes](godot-crimes.md)
 - [`Decal`](godot-decal.md)
@@ -27,5 +28,6 @@ aliases:
 - [`ScrollContainer`](godot-scroll-container.md)
 - [Serialization](godot-serialization.md)
 - [Singletons (Autoload)](godot-singletons.md)
+- [`TextureRect`](godot-texture-rect.md)]
 - [`Transform3D`](godot-transform3d.md)
 - [`ViewportTexture`](godot-viewport-texture.md)

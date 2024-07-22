@@ -1,6 +1,7 @@
 ---
 aliases:
 - no signal
+- lost contact
 ---
 
 # no signal
@@ -9,7 +10,7 @@ aliases:
 
 _**no signal**_ is a [science fiction](science-fiction.md) escape room game about loneliness, fixing broken machinery, and reading old logs. You're stuck by yourself on a space station orbiting a black hole, trying to get home. There's no one to call for help.
 
-The game is made in [Godot](godot.md).
+The game is made in [Godot](godot.md). During development, this game had the working title _lost contact_.
 
 ## log
 
@@ -34,3 +35,4 @@ The game is made in [Godot](godot.md).
 - 2024-06-27: [080504 (stream 98)](../entries/20240629_080504.md)
 - 2024-07-02: [212436 (stream 99)](../entries/20240702_212436.md)
 - 2024-07-05: [145900 (stream 100)](../entries/20240705_145900.md)
+- 2024-07-22: [162416 (stream 101)](../entries/20240722_162416.md)
