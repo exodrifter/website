@@ -12,7 +12,7 @@ _**no signal**_ is a [science fiction](science-fiction.md) escape room game abou
 
 The game is made in [Godot](godot.md). During development, this game had the working title _lost contact_.
 
-## log
+# log
 
 - 2024-05-27: [044326 (stream 83)](../entries/20240528_044326.md), [045458](../entries/20240528_045458.md)
 - 2024-05-28: [034807 (stream 84)](../entries/20240529_034807.md)
@@ -35,4 +35,5 @@ The game is made in [Godot](godot.md). During development, this game had the wor
 - 2024-06-27: [080504 (stream 98)](../entries/20240629_080504.md)
 - 2024-07-02: [212436 (stream 99)](../entries/20240702_212436.md)
 - 2024-07-05: [145900 (stream 100)](../entries/20240705_145900.md)
+- 2024-07-12: v0.10, [Delta H Con](delta-h-con.md) ([20240724_213535](../entries/20240724_213535.md), [delta h con is a mess](../blog/delta-h-con-is-a-mess.md))
 - 2024-07-22: [162416 (stream 101)](../entries/20240722_162416.md)
