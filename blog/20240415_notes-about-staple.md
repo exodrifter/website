@@ -12,7 +12,7 @@ Posted at:
 
 # an indie dev's notes about staple! austin
 
-![A picture of the show floor before the event's opening. The space has high ceilings and all of the vendors are busy setting up their tables.](notes-about-staple-setup.png)
+![A picture of the show floor before the event's opening. The space has high ceilings and all of the vendors are busy setting up their tables.](20240415_notes-about-staple-setup.png)
 
 I haven't posted much lately because I've been working hard to show off a demo of [my hidden object/escape room game](https://store.steampowered.com/app/2840590/no_signal/) at _[STAPLE! Austin](https://staple-austin.org/)_, a two-day expo for independently created comics, zines, art, crafts, games, and more here in Austin, Texas. The event just happened last weekend. It was my first time at the event and it was the first time the event has been held since COVID-19.
 
@@ -31,7 +31,7 @@ Only @PIZZAPRANKS and I were selling video games at the event. Tables costed $16
 
 This is what my (very scuff) table looked like:
 
-![My half of the table at STAPLE! Austin 2024. The table is not covered by a tablecloth. A stack of Gender Dysphoria cassette cases sit to the left, with an index card below it which reads "Give the gift of ⭐ GENDER DYSPHORIA ⭐". A Framework laptop and a wired ergonomic mouse sits to the right, with an index card pointing at it which reads "no signal" and "wishlist on steam"](notes-about-staple-table.png)
+![My half of the table at STAPLE! Austin 2024. The table is not covered by a tablecloth. A stack of Gender Dysphoria cassette cases sit to the left, with an index card below it which reads "Give the gift of ⭐ GENDER DYSPHORIA ⭐". A Framework laptop and a wired ergonomic mouse sits to the right, with an index card pointing at it which reads "no signal" and "wishlist on steam"](20240415_notes-about-staple-table.png)
 
 Generally speaking, it seemed like people were surprised that video games were even at the event, and less prepared for [the cassette packaging](https://cohost.org/exodrifter/post/5162027-gender-dysphoria-tap) that Andrew and I were using to sell them. This isn't too surprising, since the vendors at the event are almost entirely comics, ttrpgs, and other print media. When it came to selling them, I noted a few things:
 
@@ -65,13 +65,13 @@ Secondly, the format of the event isn't very conducive to having people play the
 - I need to buy a mouse that can be used by both left-handed and right-handed people.
 - Quite a few people wanted to know what engine the game was made in despite not being game developers themselves.
 
-![A Steam analytics line graph showing the last week of wishlist data for _no signal_. Starting on April 8th, the number of wishlists reads: 1, 0, 1, 0, 0, 4, 6. All of the other data points for wishlist deletions, purchases & activations, and gifts read 0 for all of the days.](notes-about-staple-wishlists.png)
+![A Steam analytics line graph showing the last week of wishlist data for _no signal_. Starting on April 8th, the number of wishlists reads: 1, 0, 1, 0, 0, 4, 6. All of the other data points for wishlist deletions, purchases & activations, and gifts read 0 for all of the days.](20240415_notes-about-staple-wishlists.png)
 
 In all, 10 people played the game on the first day and 9 people played on the second day. On the first day, I got 4 more wishlists on steam and on the second day I got 6 more. _no signal_ now has a total of 86 wishlists as of this writing.
 
 ## overall notes
 
-![A laminated bookmark is held in my left hand. The bookmark depicts the entire space station at the top, with a gradient fading to one of the scenes in the game. The scene shows a table with a dual monitor setup, a chair, and a full tower desktop computer. There are some books, a camera, a keyboard, and a lamp on the table. The very bottom of the bookmark has the no signal logo and the text "no signal".|200](notes-about-staple-bookmark.png)
+![A laminated bookmark is held in my left hand. The bookmark depicts the entire space station at the top, with a gradient fading to one of the scenes in the game. The scene shows a table with a dual monitor setup, a chair, and a full tower desktop computer. There are some books, a camera, a keyboard, and a lamp on the table. The very bottom of the bookmark has the no signal logo and the text "no signal".|200](20240415_notes-about-staple-bookmark.png)
 
 Anyway, overall I think the event was a success for me. I made a lot of nice connections, a friend printed these wonderful bookmarks I made which I gave to each person that played the game, and I'm happy to know that there are more copies of _Gender Dysphoria_ floating around out there. I'm hoping that my games will [connect with more with people](https://cohost.org/exodrifter/post/5145551-why-i-make-games) and that I can start building a reputation for making emotionally powerful games.
 
