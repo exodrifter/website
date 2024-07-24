@@ -13,3 +13,5 @@ A list of my projects.
 - [t/suki](../notes/tsuki.md)
 - [Ultraprocessor Ribbon](../notes/ultraprocessor-ribbon.md)
 - [voluntary commitment](../notes/voluntary-commitment.md)
+
+Also see: [Marketing](../notes/marketing.md)
