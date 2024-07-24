@@ -16,6 +16,8 @@ A journal is a [note-taking strategy](note-taking-strategy.md) which I abandoned
 
 ![20230528_1748](../entries/20230528_1748.md)
 
+![20230529_0628](../entries/20230529_0628.md)
+
 ![20230601_1947](../entries/20230601_1947.md)
 
 ![20230602_0014](../entries/20230602_0014.md)

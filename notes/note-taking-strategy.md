@@ -6,7 +6,7 @@ aliases:
 
 # Note-taking strategies
 
-I use Obsidian to take notes, but there are many ways to take notes. This documents the note-taking strategies I use and how I practice them.
+I use [Obsidian](obsidian.md) to take notes, but there are many ways to take notes. This documents the note-taking strategies I use and how I practice them.
 
 # Current Strategies
 
