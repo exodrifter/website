@@ -15,6 +15,7 @@ The game is made in [Godot](godot.md). During development, this game had the wor
 # log
 
 - 2024-02-22: **v0.2**, [Austin Glitch State](austin-glitch-state.md) ([20240724_214606](../entries/20240724_214606.md))
+- 2024-04-13: **v0.4**, **v0.5**, [STAPLE! Austin](staple-austin.md) ([20240724_222036](../entries/20240724_222036.md), [an indie dev's notes about staple! austin](../blog/notes-about-staple.md))
 - 2024-05-27: [044326 (stream 83)](../entries/20240528_044326.md), [045458](../entries/20240528_045458.md)
 - 2024-05-28: [034807 (stream 84)](../entries/20240529_034807.md)
 - 2024-05-29: [195943](../entries/20240529_195943.md)
