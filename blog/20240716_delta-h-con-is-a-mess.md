@@ -6,8 +6,6 @@ aliases:
 Posted at:
 - [cohost!](https://cohost.org/exodrifter/post/6903427-delta-h-con-is-a-m) on 2024-07-16 at 08:03 UTC
 
----
-
 # delta h con is a mess
 
 Delta H Con is an anime convention held in Houston, Texas which claims to be a convention for "gaming enthusiasts" and "anime aficionados". It has panels, tournaments, artist alley, dealers room, events and more. I made the mistake of tabling at this convention this year.

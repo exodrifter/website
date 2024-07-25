@@ -8,8 +8,6 @@ Posted at:
 - [itch.io](https://exodrifter.itch.io/lost-contact/devlog/715497/an-indie-devs-notes-about-staple-austin) on 2024-04-15 at 22:06 UTC
 - [Steam](https://store.steampowered.com/news/app/2840590/view/7377534039863777457) on 2024-04-15 at 21:46 UTC
 
----
-
 # an indie dev's notes about staple! austin
 
 ![A picture of the show floor before the event's opening. The space has high ceilings and all of the vendors are busy setting up their tables.](20240415_notes-about-staple-setup.png)
