@@ -40,6 +40,7 @@ The game is made in [Godot](godot.md). During development, this game had the wor
 - 2024-07-12: **v0.10**, [Delta H Con](delta-h-con.md) ([20240724_213535](../entries/20240724_213535.md), [delta h con is a mess](../blog/20240716_delta-h-con-is-a-mess.md))
 - 2024-07-22: [162416 (stream 101)](../entries/20240722_162416.md)
 - 2024-07-25: [192146 (stream 103)](../entries/20240725_192146.md)
+- 2024-07-26: [215210 (stream 104)](../entries/20240726_215210.md)
 
 **Upcoming:**
 - 2024-08-23: [2D Con](2d-con.md) ([20240724_220117](../entries/20240724_220117.md))
