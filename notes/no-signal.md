@@ -43,6 +43,7 @@ The game is made in [Godot](godot.md). During development, this game had the wor
 - 2024-07-26: [215210 (stream 104)](../entries/20240726_215210.md)
 - 2024-07-29: **v0.12**, **v0.13**, [230310 (stream 105)](../entries/20240729_230310.md)
 - 2024-08-01: [222015 (stream 106)](../entries/20240801_222015.md)
+- 2024-08-02: [192115 (stream 107)](../entries/20240802_192115.md)
 
 **Upcoming:**
 - 2024-08-23: [2D Con](2d-con.md) ([20240724_220117](../entries/20240724_220117.md))
