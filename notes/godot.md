@@ -12,6 +12,7 @@ aliases:
 - [`AnimationPlayer`](godot-animation-player.md)
 - [`CanvasItem`](godot-canvas-item.md)
 - [`Control`](godot-control.md)
+- [Crashes](godot-crashes.md)
 - [Crimes](godot-crimes.md)
 - [`Decal`](godot-decal.md)
 - [`DisplayServer`](godot-display-server.md)
