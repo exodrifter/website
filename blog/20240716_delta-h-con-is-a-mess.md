@@ -5,6 +5,7 @@ aliases:
 
 Posted at:
 - [cohost!](https://cohost.org/exodrifter/post/6903427-delta-h-con-is-a-m) on 2024-07-16 at 08:03 UTC
+- [t/suki](https://forum.tsuki.games/t/delta-h-con-is-a-mess/171) on 2024-07-16 at 8:25 UTC
 
 # delta h con is a mess
 

@@ -4,8 +4,8 @@ aliases:
 ---
 
 Posted at:
-
 - [cohost!](https://cohost.org/exodrifter/post/7195979-godot-viewport-textu) on 2024-08-07 at 02:15 UTC
+- [t/suki](https://forum.tsuki.games/t/godot-viewporttexture-workaround/178) on 2024-08-07 at 02:24 UTC
 
 # godot `ViewportTexture` workaround
 
