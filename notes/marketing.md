@@ -22,3 +22,4 @@ aliases:
 | [Delta H Con](delta-h-con.md) | Houston, Texas | July |
 | [2D Con](2d-con.md) | Minneapolis, Minnesota | August |
 | [San Japan](san-japan.md) | San Antonio, Texas | August |
+| [ArmadilloCon](armadillo-con.md) | Austin, Texas | September |
