@@ -5,6 +5,7 @@ aliases:
 
 # Blog Posts
 
+- 2024-08-13: [self-hosting is exciting](../blog/20240813_self-hosting-is-exciting.md)
 - 2024-08-07: [godot `ViewportTexture` workaround](../blog/20240806_godot-viewport-texture-workaround.md)
 - 2024-07-16: [delta h con is a mess](../blog/20240716_delta-h-con-is-a-mess.md)
 - 2024-05-05: [hf4a is a silly storytelling device](../blog/20240505_hf4a-storytelling-device.md)
