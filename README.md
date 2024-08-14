@@ -17,5 +17,6 @@ These notes are hosted at [github.com/exodrifter/logbook](https://github.com/exo
 - [Genres](indices/genres.md)
 - [Musicals](indices/musicals.md)
 - [Projects](indices/projects.md)
+- [Study](indices/study.md)
 - [Tools](indices/tools.md)
 - [Video Games](indices/video-games.md)
