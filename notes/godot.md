@@ -26,6 +26,7 @@ aliases:
 - [Import](godot-import.md)
 - [Input](godot-input.md)
 - [`JSON`](godot-json.md)
+- [`NavigationAgent2D`](godot-navigation-agent-2d.md)
 - [`PhysicsDirectBodyState3D`](godot-physics-direct-body-state-3d.md)
 - [`ScrollContainer`](godot-scroll-container.md)
 - [Serialization](godot-serialization.md)
