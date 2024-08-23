@@ -10,6 +10,7 @@ aliases:
 - [`@tool`](godot-tool-script.md)
 - [`Area2D`](godot-area2d.md)
 - [`AnimationPlayer`](godot-animation-player.md)
+- [`Camera2D`](godot-camera-2d.md)
 - [`CanvasItem`](godot-canvas-item.md)
 - [`Control`](godot-control.md)
 - [Crashes](godot-crashes.md)
