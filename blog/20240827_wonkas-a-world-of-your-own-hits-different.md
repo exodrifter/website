@@ -1,0 +1,43 @@
+---
+aliases:
+- wonka's "a world of your own" hits different
+---
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/7446740-wonka-s-a-world-of) on 2024-08-27 at 05:44 AM
+
+# wonka's "a world of your own" hits different
+
+recently, during my flight to and from 2d con (which was great, by the way! i'll write about that soon), i watched wonka (2023). as a person who thinks of themselves as an indie game developer who wants to make games that connect with people, the movie really hits me different in a way i don't think it would for most people.
+
+spoilers below the cut:
+
+---
+
+in particular, _A World of Your Own_, has a different reading for me. I'll quote some of the relevant lyrics below:
+
+> Close your eyes and count to ten
+> Make a wish, now open them
+> Here's a store that's like no other
+> If it were, I wouldn't bother
+>
+> [...]
+>
+> A world of your own
+> A place to escape to
+> A world of your own
+> Where you can be free
+> Wherever you go
+> Wherevеr life takes you
+> This is your home
+> A world of your own
+
+i think for most people, this would read like wonka trying to express how unique and awesome his chocolate is. his chocolate can literally transport you to a new world of culinary and magical possibilities. but that's not how it reads for me. it's true that i want to make unique and awesome games and that games can transport people to another imaginary world, but it's more than just that.
+
+when i make games, i want to connect with people. i want to make people, wherever and whenever they are, feel seen and understood and more connected to each other. of course, whether or not i can actually accomplish this is uncertain (though this seemed to have worked out with [_Gender Dysphoria_](https://exodrifter.itch.io/gender-dysphoria)). but at least to me, just like one of the last scenes in the movie, genuinely sharing what i make with others is what makes my creative work special. i don't make games just for me. i make them to share.
+
+and it's rare that i can really relate to a piece of media about how i feel about _making_ things. especially one that has such a relatable character: wonka. like me, he is naive. he could be having a much easier time if he would just compromise on his values and aspirations, or even just give up on making chocolate entirely.
+
+for example, i'm sick of how games are marketed. i don't want to just cold-call people or learn the meta of how to do marketing, because i want to have meaningful connections. so that means i do stuff like try to actually participate in the communities of streamers i want to have play my game. i don't try to actively pull people in to play my game when i show up at conventions. i wrote a heartfelt letter for the physical copy of _Gender Dysphoria_. are these strategies effective? probably not.
+
+but i don't just want to make games that i would want to play, i don't just want to make games that other people want to buy, and i don't just want to make people entertained and happy. i don't want to just be another game developer. i want to be like no other.
