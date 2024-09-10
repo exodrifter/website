@@ -9,7 +9,6 @@ alias: Streaming Flight Check
 
 * [ ] Set Firefox browser search settings
 * [ ] Turn impulse blocker on (Block visiting Google Maps)
-* [ ] Change Sublime text project
 * [ ] Close stray windows in the display monitor
 * [ ] Close Slack
 * [ ] Clear Krita history
