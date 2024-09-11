@@ -59,7 +59,8 @@ The game is made in [Godot](godot.md). During development, this game had the wor
 - 2024-08-28: **v0.19**, [195545 (stream 113)](../entries/20240828_195545.md)
 - 2024-09-01: [San Japan](san-japan.md) ([20240906_154815](../entries/20240906_154815.md))
 - 2024-09-06: [155620 (stream 114)](../entries/20240906_155620.md)
-- 2024-09-09: [181827 (stream 115)](../entries/20240909_181827.md)
+- 2024-09-09: **v0.20**, **v0.21**, [181827 (stream 115)](../entries/20240909_181827.md)
+- 2024-09-10: [210403](../entries/20240910_210403.md)
 
 **Upcoming:**
 - 2024-08-23: [2D Con](2d-con.md) ([20240724_220117](../entries/20240724_220117.md))
