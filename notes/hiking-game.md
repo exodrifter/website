@@ -6,3 +6,5 @@
 
 - The dense, vibrant foliage and ruins of the outdoor scenes in [Stalker (1979)](stalker.md) ([20240527_061339](../entries/20240527_061339.md))
 - The badge-giving ceremony in Parks and Recreation. [20240603_020415](../entries/20240603_020415.md)
+- Low poly model detail https://bsky.app/profile/stoff.bsky.social/post/3klkg4ktlo72a
+- Heavenly Delusion
