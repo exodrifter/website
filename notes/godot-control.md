@@ -1,6 +1,6 @@
 ---
 aliases:
-- `Control`
+- "`Control`"
 ---
 
 # `Control`
