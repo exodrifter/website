@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/exodrifter
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://exodrifter.space
+  * I am exodrifter (https://keybase.io/exodrifter) on keybase.
+  * I have a public key ASCC0utjjbN_RyZxNT0t6hTUzCyt1tM47vC87G-U4Hh4Ngo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012082d2eb638db37f472671353d2dea14d4cc2cadd6d338eef0bcec6f94e07878360a",
+      "host": "keybase.io",
+      "kid": "012082d2eb638db37f472671353d2dea14d4cc2cadd6d338eef0bcec6f94e07878360a",
+      "uid": "b531b6d97d3b5658c691ab742b2e6919",
+      "username": "exodrifter"
+    },
+    "merkle_root": {
+      "ctime": 1564503641,
+      "hash": "c73a067c48b84ff327042f9db8d1cf32994e29110fa1a3cbf5f86b66abdb9f310545fddcb2085c31de86bfc09525275918255666d69ec4ec1026249d19a2a5b6",
+      "hash_meta": "bb80eccc0c237cb27f804e81b67078285f4b7a641400fc8f5a922ff522be6054",
+      "seqno": 5886764
+    },
+    "service": {
+      "entropy": "mjgoaFnwvcH1ZrQyRzg0LyaX",
+      "hostname": "exodrifter.space",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.2.1"
+  },
+  "ctime": 1564503663,
+  "expire_in": 504576000,
+  "prev": "3f33f110c10bc6408528c19737abe57454ed8f0bf972f0995cafb8c544dffd01",
+  "seqno": 24,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEggtLrY42zf0cmcTU9LeoU1MwsrdbTOO7wvOxvlOB4eDYKp3BheWxvYWTESpcCGMQgPzPxEMELxkCFKMGXN6vldFTtjwv5cvCZXK+4xUTf/QHEINqP7gOUxkOGtTm6na3CAX/XYUe07UWO0TvAd07WV5vvAgHCo3NpZ8RAWYBs2zH2an8RAR2ef8l3Algj9kgrvSbi/cVaL1KYVTc44v+2C2M71mibyilTvDw+j4iNAeXRcUd4YVwuAgnRC6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEILCOLUfBn1jRDzmHl8LwzE/3gMce/vOx3KfUr1OnkWrho3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/exodrifter
+
+==================================================================

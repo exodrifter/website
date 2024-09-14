@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
+body {
+	display: flex;
+	flex-direction: column;
+	gap: 40pt;
+	background: #786f7e;
+	background-image: radial-gradient(#8c8392 1pt, transparent 0);
+	background-position: -10pt -10pt;
+	background-size: 20pt 20pt;
+	margin: 0;
+	padding: 40pt;
+	color: #fff;
+	font-family: 'Anonymous Pro', 'Courier New', monospace;
+}
+header {
+	display: flex;
+	flex-direction: row;
+	gap: 20pt;
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 10pt;
+	}
+	.links {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	.other-links {
+		display: none;
+	}
+}
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 20pt;
+	max-width: 600pt;
+	.container {
+		margin-bottom: 10pt;
+	}
+	.feature {
+		margin: 10pt 0;
+		padding: 10pt;
+		background-color: #00000055;
+
+		.links {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+		}
+	}
+	.other-features {
+		margin: 10pt 0;
+		padding: 10pt;
+		background-color: #00000022;
+	}
+	.subtitle {
+		font-style: italic;
+	}
+}
+footer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+h1 {
+	font-size: 2.5em;
+	margin: 0;
+}
+h2 {
+	font-size: 1.8em;
+	margin: 0;
+}
+p {
+	font-size: 1em;
+	line-height: 1.5em;
+}
+li {
+	margin-bottom: 1em;
+	line-height: 1.5em;
+}
+a {
+	margin: .5em;
+	color: #fff;
+	text-decoration: none;
+	transition: color .5s;
+	white-space: nowrap;
+}
+a:hover {
+	color: #29262b;
+	transition: none;
+	i {
+		color: #29262b;
+		transition: none;
+	}
+}
+hr {
+	border: 0;
+	border-bottom: 1pt solid #958d9b;
+	width: 100%;
+}
+.icon {
+	max-height: 1em;
+	vertical-align: middle;
+	margin-right: .5em;
+}
+@media only screen and (min-width: 600pt) {
+	header {
+		flex-direction: column;
+		.links {
+			flex-direction: column;
+		}
+		.other-links {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	body {
+		flex-direction: row;
+		justify-content: center;
+	}
+	footer {
+		display: none;
+	}
+}
