@@ -1,4 +1,4 @@
-/.obsidian/*
-!/.obsidian/app.json
-!/.obsidian/core-plugins.json
+/content/.obsidian/*
+!/content/.obsidian/app.json
+!/content/.obsidian/core-plugins.json
 /result

@@ -2,7 +2,7 @@
 * text=auto eol=lf
 
 # Mark generated files
-.obsidian/ linguist-vendored
+/content/.obsidian/ linguist-vendored
 
 # Files to store in LFS
 *.jpg filter=lfs diff=lfs merge=lfs -text
