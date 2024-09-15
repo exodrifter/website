@@ -8,4 +8,4 @@ aliases:
 
 https://www.san-japan.org/
 
-San Japan is an annual anime and gaming convention in San Antonio, Texas.
+San Japan is an annual anime and gaming convention in San Antonio, Texas that takes place during the fall. ([20240724_220452](../entries/20240724_220452.md))
