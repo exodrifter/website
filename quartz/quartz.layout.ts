@@ -18,8 +18,8 @@ export const sharedPageComponents: SharedLayout = {
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.Breadcrumbs(),
-    Component.ContentMeta(),
-    Component.TagList(),
+    Component.NotIndex(Component.ContentMeta()),
+    Component.NotIndex(Component.TagList()),
   ],
   left: [
     Component.BrandingLogo({ path: "/logo.svg" }),
@@ -37,7 +37,7 @@ export const defaultContentPageLayout: PageLayout = {
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [
     Component.Breadcrumbs(),
-    Component.ContentMeta(),
+    Component.NotIndex(Component.ContentMeta()),
   ],
   left: [
     Component.BrandingLogo({ path: "/logo.svg" }),
