@@ -1,4 +1,5 @@
 ---
+title: Delta H Con
 aliases:
 - Delta H Con
 ---

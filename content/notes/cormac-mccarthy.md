@@ -1,4 +1,5 @@
 ---
+title: Cormac McCarthy
 aliases:
 - Cormac McCarthy
 ---

@@ -1,4 +1,5 @@
 ---
+title: Godot GUI lags on tree change
 aliases:
 - Godot GUI lags on tree change
 ---

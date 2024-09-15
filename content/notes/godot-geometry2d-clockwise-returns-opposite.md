@@ -1,4 +1,5 @@
 ---
+title: "`is_polygon_clockwise` returns the opposite result"
 aliases:
 - "`is_polygon_clockwise` returns the opposite result"
 ---

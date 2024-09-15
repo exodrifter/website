@@ -1,4 +1,5 @@
 ---
+title: "`CanvasLayer`"
 aliases:
 - "`CanvasLayer`"
 ---

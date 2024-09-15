@@ -1,4 +1,5 @@
 ---
+title: "`Area2D`"
 aliases:
 - "`Area2D`"
 ---

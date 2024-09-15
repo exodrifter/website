@@ -1,4 +1,5 @@
 ---
+title: "`float`"
 aliases:
 - "`float`"
 - Godot float

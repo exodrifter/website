@@ -1,4 +1,5 @@
 ---
+title: Exported variables of inherited scenes are aliased
 aliases:
 - Exported variables of inherited scenes are aliased
 ---

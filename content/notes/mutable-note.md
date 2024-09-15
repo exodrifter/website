@@ -1,4 +1,5 @@
 ---
+title: Mutable note
 aliases:
 - Mutable note
 - Mutable notes

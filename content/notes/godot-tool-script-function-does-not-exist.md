@@ -1,4 +1,5 @@
 ---
+title: "`@tool` script says function does not exist when it does"
 aliases:
 - "`@tool` script says function does not exist when it does"
 ---

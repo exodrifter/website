@@ -1,4 +1,5 @@
 ---
+title: "`Geometry2D`"
 aliases:
 - "`Geometry2D`"
 ---

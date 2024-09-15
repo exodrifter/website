@@ -1,5 +1,7 @@
 ---
+title: Serialization
 aliases:
+- Serialization
 - Serialization in Godot
 ---
 

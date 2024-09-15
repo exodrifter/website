@@ -1,4 +1,5 @@
 ---
+title: Board Games
 aliases:
 - Board Games
 ---

@@ -1,4 +1,5 @@
 ---
+title: Journal
 aliases:
 - Journal
 - Journals

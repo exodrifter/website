@@ -1,4 +1,5 @@
 ---
+title: GDShader
 aliases:
 - GDShader
 - Godot shader

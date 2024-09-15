@@ -1,4 +1,5 @@
 ---
+title: Godot input
 aliases:
 - Godot input
 ---

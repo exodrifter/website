@@ -1,4 +1,5 @@
 ---
+title: Arcade Games
 aliases:
 - arcade game
 - arcade games

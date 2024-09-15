@@ -1,4 +1,5 @@
 ---
+title: Godot often crashes at random on X11
 aliases:
 - Godot often crashes at random on X11
 ---

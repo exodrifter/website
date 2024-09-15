@@ -1,4 +1,5 @@
 ---
+title: The Death of Ivan Ilych
 aliases:
 - The Death of Ivan Ilych
 ---

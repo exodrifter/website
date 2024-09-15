@@ -1,4 +1,5 @@
 ---
+title: "My `NavigationAgent2D` is not avoiding other agents"
 aliases:
 - "My `NavigationAgent2D` is not avoiding other agents"
 ---

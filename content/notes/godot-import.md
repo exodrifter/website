@@ -1,4 +1,5 @@
 ---
+title: Godot import
 aliases:
 - Godot import
 ---

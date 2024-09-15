@@ -1,4 +1,5 @@
 ---
+title: Science Fiction
 aliases:
 - sci-fi
 - science fiction

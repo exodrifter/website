@@ -1,4 +1,5 @@
 ---
+title: San Japan
 aliases:
 - San Japan
 ---

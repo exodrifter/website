@@ -1,4 +1,5 @@
 ---
+title: "`Camera2D`"
 aliases:
 - "`Camera2D`"
 ---

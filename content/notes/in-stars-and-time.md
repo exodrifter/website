@@ -1,4 +1,5 @@
 ---
+title: In Stars And Time
 aliases:
 - In Stars And Time
 ---

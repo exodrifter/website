@@ -1,4 +1,5 @@
 ---
+title: "`@tool`"
 aliases:
 - "`@tool`"
 ---

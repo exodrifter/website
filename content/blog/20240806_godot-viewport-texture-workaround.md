@@ -1,6 +1,7 @@
 ---
+title: "godot `ViewportTexture` workaround"
 aliases:
-- godot `ViewportTexture` workaround
+- "godot `ViewportTexture` workaround"
 ---
 
 Posted at:

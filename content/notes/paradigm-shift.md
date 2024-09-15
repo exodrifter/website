@@ -1,4 +1,5 @@
 ---
+title: Paradigm shift
 aliases:
 - paradigm shift
 ---

@@ -1,4 +1,5 @@
 ---
+title: Gitea
 alias:
 - Gitea
 ---

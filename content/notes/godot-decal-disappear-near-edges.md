@@ -1,4 +1,5 @@
 ---
+title: Decals disappear near edges
 aliases:
 - Decals disappear near edges
 ---

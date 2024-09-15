@@ -1,4 +1,5 @@
 ---
+title: "`PackedScene`"
 aliases:
 - "`PackedScene`"
 ---

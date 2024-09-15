@@ -1,4 +1,5 @@
 ---
+title: Arkady Strugatsky
 aliases:
 - Arkady Strugatsky
 ---

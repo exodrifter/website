@@ -1,6 +1,7 @@
 ---
+title: "Unsupported header `x-amz-checksum-algorithm` received for this API call."
 aliases:
-- "Unsupported header 'x-amz-checksum-algorithm' received for this API call."
+- "Unsupported header `x-amz-checksum-algorithm` received for this API call."
 ---
 
 # Unsupported header `x-amz-checksum-algorithm` received for this API call.

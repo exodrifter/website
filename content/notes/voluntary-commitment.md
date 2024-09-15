@@ -1,4 +1,5 @@
 ---
+title: voluntary commitment
 aliases:
 - null
 - voluntary commitment

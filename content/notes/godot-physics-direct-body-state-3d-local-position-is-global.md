@@ -1,4 +1,5 @@
 ---
+title: "`get_contact_local_position` returns global position"
 aliases:
 - "`get_contact_local_position` returns global position"
 ---

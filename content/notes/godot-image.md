@@ -1,4 +1,5 @@
 ---
+title: "`Image`"
 aliases:
 - "`Image`"
 - Godot Image

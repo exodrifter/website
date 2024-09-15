@@ -1,4 +1,5 @@
 ---
+title: Development Journal
 aliases:
 - Dev Journal
 - Development Journal

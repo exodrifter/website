@@ -1,4 +1,5 @@
 ---
+title: "`Decal`"
 aliases:
 - "`Decal`"
 ---

@@ -1,4 +1,5 @@
 ---
+title: Indie Game Funds
 aliases:
 - indie game fund
 - indie game funds

@@ -1,4 +1,5 @@
 ---
+title: ink lists are hell
 aliases:
 - ink lists are hell
 ---

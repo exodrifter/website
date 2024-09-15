@@ -1,4 +1,5 @@
 ---
+title: "`PhysicsDirectBodyState3D`"
 aliases:
 - "`PhysicsDirectBodyState3D`"
 ---

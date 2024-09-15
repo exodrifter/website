@@ -1,4 +1,5 @@
 ---
+title: The Criterion Collection
 aliases:
 - Criterion
 - The Criterion Collection

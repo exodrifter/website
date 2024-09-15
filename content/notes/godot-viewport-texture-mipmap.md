@@ -1,4 +1,5 @@
 ---
+title: "`ViewportTexture` does not have mipmaps"
 aliases:
 - "`ViewportTexture` does not have mipmaps"
 ---

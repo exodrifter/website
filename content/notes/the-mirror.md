@@ -1,4 +1,5 @@
 ---
+title: The Mirror (1975)
 aliases:
 - The Mirror
 - The Mirror (1975)

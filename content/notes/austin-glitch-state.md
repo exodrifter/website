@@ -1,4 +1,5 @@
 ---
+title: Austin Glitch State
 aliases:
 - Austin Glitch State
 ---

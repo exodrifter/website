@@ -1,4 +1,5 @@
 ---
+title: Video Games
 aliases:
 - video game
 - video games

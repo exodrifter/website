@@ -1,4 +1,5 @@
 ---
+title: Eroge
 aliases:
 - eroge
 ---

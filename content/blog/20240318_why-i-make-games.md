@@ -1,4 +1,5 @@
 ---
+title: why i make games
 aliases:
 - why i make games
 ---

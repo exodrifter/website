@@ -1,4 +1,5 @@
 ---
+title: Blender
 aliases:
 - Blender
 ---

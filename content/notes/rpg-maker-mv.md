@@ -1,4 +1,5 @@
 ---
+title: RPG Maker MV
 aliases:
 - RPG Maker MV
 ---

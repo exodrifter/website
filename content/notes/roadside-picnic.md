@@ -1,4 +1,5 @@
 ---
+title: Roadside Picnic
 aliases:
 - Roadside Picnic
 ---

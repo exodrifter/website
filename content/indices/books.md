@@ -1,4 +1,5 @@
 ---
+title: Books
 aliases:
 - book
 - books

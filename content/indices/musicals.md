@@ -1,4 +1,5 @@
 ---
+title: Musicals
 aliases:
 - musical
 - musicals

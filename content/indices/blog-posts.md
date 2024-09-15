@@ -1,4 +1,5 @@
 ---
+title: Blog Posts
 aliases:
 - blog posts
 ---

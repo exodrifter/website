@@ -1,4 +1,5 @@
 ---
+title: GDShader doesn't pause
 aliases:
 - GDShader doesn't pause
 ---

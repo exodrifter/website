@@ -1,4 +1,5 @@
 ---
+title: Godot
 aliases:
 - Godot
 ---

@@ -1,4 +1,5 @@
 ---
+title: "`Area2D` calls the `body_entered` signal multiple times"
 aliases:
 - "`Area2D` calls the `body_entered` signal multiple times"
 ---

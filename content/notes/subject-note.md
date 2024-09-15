@@ -1,4 +1,5 @@
 ---
+title: Subject Note
 aliases:
 - Subject Note
 - Subject Notes

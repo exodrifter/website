@@ -1,4 +1,5 @@
 ---
+title: "`JSON`"
 aliases:
 - Godot JSON
 - "`JSON`"

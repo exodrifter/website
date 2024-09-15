@@ -1,4 +1,5 @@
 ---
+title: "`DisplayServer` doesn't change current screen"
 aliases:
 - "`DisplayServer` doesn't change current screen"
 ---

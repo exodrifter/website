@@ -1,4 +1,5 @@
 ---
+title: Float values NaN and INF are displayed as 0 in debugger and inspector
 aliases:
 - Float values NaN and INF are displayed as 0 in debugger and inspector
 ---

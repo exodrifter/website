@@ -1,4 +1,5 @@
 ---
+title: hf4a is a silly storytelling device
 aliases:
 - hf4a is a silly storytelling device
 ---

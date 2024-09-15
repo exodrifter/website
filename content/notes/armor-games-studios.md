@@ -1,4 +1,5 @@
 ---
+title: Armor Games Studios
 aliases:
 - Armor Games Studios
 ---

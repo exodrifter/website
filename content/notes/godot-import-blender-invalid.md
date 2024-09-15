@@ -1,4 +1,5 @@
 ---
+title: Blender files are invalid or corrupt
 aliases:
 - Blender files are invalid or corrupt
 ---

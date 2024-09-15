@@ -1,4 +1,5 @@
 ---
+title: Godot GUI
 aliases:
 - Godot GUI
 ---

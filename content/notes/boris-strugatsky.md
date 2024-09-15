@@ -1,4 +1,5 @@
 ---
+title: Boris Strugatsky
 aliases:
 - Boris Strugatsky
 ---

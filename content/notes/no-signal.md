@@ -1,4 +1,5 @@
 ---
+title: no signal
 aliases:
 - no signal
 - lost contact

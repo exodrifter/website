@@ -1,5 +1,7 @@
 ---
-alias: Inbox Note
+title: Inbox Note
+aliases:
+- Inbox Note
 ---
 # Inbox Note
 

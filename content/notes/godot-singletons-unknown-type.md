@@ -1,4 +1,5 @@
 ---
+title: Godot cannot determine the type of autoloads
 aliases:
 - Godot cannot determine the type of autoloads
 ---

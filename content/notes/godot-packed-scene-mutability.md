@@ -1,4 +1,5 @@
 ---
+title: "`PackedScene` mutability"
 aliases:
 - "`PackedScene` mutability"
 ---

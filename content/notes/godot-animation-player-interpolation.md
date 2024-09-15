@@ -1,4 +1,5 @@
 ---
+title: "`AnimationPlayer` doesn't interpolate shader parameter"
 aliases:
 - "`AnimationPlayer` doesn't interpolate shader parameter"
 ---

@@ -1,4 +1,5 @@
 ---
+title: Inbox
 alias:
 - Inbox
 ---

@@ -1,4 +1,5 @@
 ---
+title: Fyodor Dostoevsky
 aliases:
 - Fyodor Dostoevsky
 ---

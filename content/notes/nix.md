@@ -1,4 +1,5 @@
 ---
+title: Nix
 aliases:
 - Nix
 ---

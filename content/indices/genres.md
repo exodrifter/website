@@ -1,4 +1,5 @@
 ---
+title: Genres
 aliases:
 - genre
 - genres
@@ -6,7 +7,7 @@ aliases:
 
 # Genres
 
-- [Biography](../notes/biography.md)
+- [Biography](biography.md)
 - [Paradigm Shift](../notes/paradigm-shift.md)
 - [Role-Playing](role-playing.md)
 - [Science Fantasy](../notes/science-fantasy.md)

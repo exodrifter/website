@@ -1,4 +1,5 @@
 ---
+title: On Mars
 aliases:
 - On Mars
 ---

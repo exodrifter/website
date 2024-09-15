@@ -1,5 +1,7 @@
 ---
-alias: Streaming Flight Check
+title: Streaming Flight Check
+alias:
+- Streaming Flight Check
 ---
 
 # Streaming Flight Check

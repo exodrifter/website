@@ -1,4 +1,5 @@
 ---
+title: 2D Con
 aliases:
 - 2D Con
 ---

@@ -1,4 +1,5 @@
 ---
+title: Ko-fi
 aliases:
 - Ko-fi
 ---

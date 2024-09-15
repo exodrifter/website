@@ -1,4 +1,5 @@
 ---
+title: Films
 aliases:
 - film
 - films

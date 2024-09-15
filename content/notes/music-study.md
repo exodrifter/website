@@ -1,4 +1,5 @@
 ---
+title: Music Study
 aliases:
 - Music Study
 ---

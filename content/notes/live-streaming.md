@@ -1,4 +1,5 @@
 ---
+title: Live Streaming
 aliases:
 - live streaming
 ---

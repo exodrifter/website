@@ -1,4 +1,5 @@
 ---
+title: Zettelkasten Note
 aliases:
 - Zettelkasten Note
 - Zettelkasten Notes

@@ -1,4 +1,5 @@
 ---
+title: Godot singletons
 aliases:
 - Godot singletons
 ---

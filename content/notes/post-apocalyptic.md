@@ -1,3 +1,9 @@
+---
+title: 'Post-Apocalyptic'
+aliases:
+- 'Post-Apocalyptic'
+---
+
 # Post-Apocalyptic
 
 - [Furiosa: A Mad Max Saga (2024)](notes/furiosa-a-mad-max-saga.md)

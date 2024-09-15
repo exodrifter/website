@@ -1,4 +1,5 @@
 ---
+title: "My `Camera2D` is flickering"
 aliases:
 - "My `Camera2D` is flickering"
 ---

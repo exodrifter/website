@@ -1,4 +1,5 @@
 ---
+title: "`Font`"
 aliases:
 - "`Font`"
 - Godot font

@@ -1,4 +1,5 @@
 ---
+title: 'Mad Max: Fury Road (2015)'
 aliases:
 - 'Mad Max: Fury Road'
 - 'Mad Max: Fury Road (2015)'

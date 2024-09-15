@@ -1,4 +1,5 @@
 ---
+title: The Idiot
 aliases:
 - The Idiot
 ---

@@ -1,4 +1,5 @@
 ---
+title: self-hosting is exciting
 aliases:
 - self-hosting is exciting
 ---

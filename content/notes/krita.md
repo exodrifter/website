@@ -1,4 +1,5 @@
 ---
+title: Krita
 aliases:
 - Krita
 ---

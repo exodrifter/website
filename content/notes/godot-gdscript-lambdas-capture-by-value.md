@@ -1,4 +1,5 @@
 ---
+title: Lambdas capture local variables by value
 aliases:
 - Lambdas capture local variables by value
 ---

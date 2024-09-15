@@ -1,4 +1,5 @@
 ---
+title: Metro Corporation
 aliases:
 - Metro Corporation
 ---

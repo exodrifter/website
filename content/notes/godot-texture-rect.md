@@ -1,4 +1,5 @@
 ---
+title: "`TextureRect`"
 aliases:
 - "`TextureRect`"
 ---

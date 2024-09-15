@@ -1,4 +1,5 @@
 ---
+title: "`RichTextLabel` lags on first draw"
 aliases:
 - "`RichTextLabel` lags on first draw"
 ---

@@ -1,4 +1,5 @@
 ---
+title: Dharma Doujo
 aliases:
 - Dharma Doujo
 ---

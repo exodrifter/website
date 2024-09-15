@@ -1,4 +1,5 @@
 ---
+title: Ultraprocessor Ribbon
 aliases:
 - Ultraprocessor Ribbon
 ---

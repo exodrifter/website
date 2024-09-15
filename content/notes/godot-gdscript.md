@@ -1,4 +1,5 @@
 ---
+title: GDScript
 aliases:
 - GDScript
 ---

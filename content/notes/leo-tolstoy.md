@@ -1,4 +1,5 @@
 ---
+title: Leo Tolstoy
 aliases:
 - Leo Tolstoy
 ---

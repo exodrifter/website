@@ -1,4 +1,5 @@
 ---
+title: Crowdfunding
 aliases:
 - Crowdfunding
 ---

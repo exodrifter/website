@@ -1,3 +1,9 @@
+---
+title: Hiking Game
+aliases:
+- Hiking Game
+---
+
 # Hiking Game
 
 **Hiking game** is one of my dream game projects, which is about the logistics of travelling and overcoming adversarial odds.

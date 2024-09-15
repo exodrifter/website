@@ -1,4 +1,5 @@
 ---
+title: t/suki
 aliases:
 - t/suki
 ---

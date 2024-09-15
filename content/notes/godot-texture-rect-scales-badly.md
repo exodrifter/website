@@ -1,4 +1,5 @@
 ---
+title: "`TextureRect` does not scale nicely"
 aliases:
 - "`TextureRect` does not scale nicely"
 ---

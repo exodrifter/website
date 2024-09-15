@@ -1,4 +1,5 @@
 ---
+title: "`Control`"
 aliases:
 - "`Control`"
 ---

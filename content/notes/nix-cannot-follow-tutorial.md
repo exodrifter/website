@@ -1,4 +1,5 @@
 ---
+title: Cannot follow Nix tutorial
 alias:
 - Cannot follow Nix tutorial
 ---

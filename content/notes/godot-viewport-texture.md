@@ -1,4 +1,5 @@
 ---
+title: "`ViewportTexture`"
 aliases:
 - "`ViewportTexture`"
 ---

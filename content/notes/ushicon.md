@@ -1,4 +1,5 @@
 ---
+title: Ushicon
 aliases:
 - Ushicon
 ---

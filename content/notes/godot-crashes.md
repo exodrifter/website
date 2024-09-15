@@ -1,4 +1,5 @@
 ---
+title: Godot Crashes
 aliases:
 - Godot Crashes
 ---

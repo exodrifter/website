@@ -1,4 +1,5 @@
 ---
+title: "`ERR_FILE_BAD_PATH` when importing files"
 aliases:
 - "`ERR_FILE_BAD_PATH` when importing files"
 ---

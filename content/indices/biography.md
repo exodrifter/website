@@ -1,4 +1,5 @@
 ---
+title: Biography
 aliases:
 - biography
 - biographies

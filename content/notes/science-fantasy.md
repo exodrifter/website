@@ -1,4 +1,5 @@
 ---
+title: Science Fantasy
 aliases:
 - science fantasy
 ---

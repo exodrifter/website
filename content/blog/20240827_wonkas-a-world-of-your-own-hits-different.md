@@ -1,4 +1,5 @@
 ---
+title: wonka's "a world of your own" hits different
 aliases:
 - wonka's "a world of your own" hits different
 ---

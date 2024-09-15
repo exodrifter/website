@@ -1,4 +1,5 @@
 ---
+title: 'Furiosa: A Mad Max Saga (2024)'
 aliases:
 - 'Furiosa: A Mad Max Saga'
 - 'Furiosa: A Mad Max Saga (2024)'

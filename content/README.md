@@ -1,3 +1,9 @@
+---
+title: README
+aliases:
+- README
+---
+
 # ![logbook logo](icon.svg) logbook
 
 This is my logbook, where I record notes about my [projects](indices/projects.md) and media that I consume as a way to make it easier to talk or write about them. I also upload [blog posts](indices/blog-posts.md) here.

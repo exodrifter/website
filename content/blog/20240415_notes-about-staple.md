@@ -1,4 +1,5 @@
 ---
+title: an indie dev's notes about staple! austin
 aliases:
 - an indie dev's notes about staple! austin
 ---

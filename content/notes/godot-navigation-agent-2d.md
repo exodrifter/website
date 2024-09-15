@@ -1,4 +1,5 @@
 ---
+title: "`NavigationAgent2D`"
 aliases:
 - "`NavigationAgent2D`"
 ---

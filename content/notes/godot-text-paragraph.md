@@ -1,4 +1,5 @@
 ---
+title: "`TextParagraph`"
 aliases:
 - "`TextParagraph`"
 ---

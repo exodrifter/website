@@ -1,4 +1,5 @@
 ---
+title: Solaris (1972)
 alias:
 - Solaris
 - Solaris (1972)

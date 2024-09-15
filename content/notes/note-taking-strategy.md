@@ -1,4 +1,5 @@
 ---
+title: Note-taking strategies
 aliases:
 - note-taking strategy
 - note-taking strategies

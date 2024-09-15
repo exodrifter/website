@@ -1,4 +1,5 @@
 ---
+title: ArmadilloCon
 aliases:
 - ArmadilloCon
 ---

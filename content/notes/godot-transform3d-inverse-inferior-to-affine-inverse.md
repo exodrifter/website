@@ -1,4 +1,5 @@
 ---
+title: "`inverse` is an inferior version of `affine_inverse`"
 aliases:
 - "`inverse` is an inferior version of `affine_inverse`"
 ---
