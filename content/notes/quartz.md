@@ -13,3 +13,4 @@ https://github.com/jackyzha0/quartz
 ## Troubleshooting
 
 - [Quartz does not set the date properly](quartz-incorrect-date.md)
+- [SVGs don't respond to theme](svg-current-theme-color.md)
