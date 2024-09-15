@@ -38,9 +38,16 @@
                 npmInstallHook
 
                 cd $out/lib/node_modules/@jackyzha0/quartz
+
+                # Copy our website content
                 rm -r ./content
                 mkdir content
-                cp -r ${./.}/* ./content
+                cp -r ${./content}/* ./content
+
+                # Override quartz source files
+                mv ./quartz/components/index.ts ./quartz/components/index-original.ts
+                cp -r ${./quartz}/* ./
+
                 $out/bin/quartz build
                 mv public/ $out/public/
 
