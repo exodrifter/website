@@ -1,5 +1,6 @@
 ---
 title: hf4a is a silly storytelling device
+publishDate: 2024-05-05
 aliases:
 - hf4a is a silly storytelling device
 ---

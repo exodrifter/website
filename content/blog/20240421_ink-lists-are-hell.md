@@ -1,5 +1,6 @@
 ---
 title: ink lists are hell
+publishDate: 2024-04-21
 aliases:
 - ink lists are hell
 ---

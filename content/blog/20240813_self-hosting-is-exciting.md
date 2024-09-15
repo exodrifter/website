@@ -1,5 +1,6 @@
 ---
 title: self-hosting is exciting
+publishDate: 2024-08-13
 aliases:
 - self-hosting is exciting
 ---
