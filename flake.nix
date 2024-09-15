@@ -11,6 +11,32 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in {
+          apps.default = {
+            type = "app";
+
+            program =
+              let
+                caddyFile = pkgs.writeText "Caddyfile" ''
+                  :8080 {
+                      root * ${self.packages."${system}".default}/public/
+                      file_server
+                      try_files {path} {path}.html {path}/ =404
+                  }
+                '';
+
+                formattedCaddyFile = pkgs.runCommand "Caddyfile"
+                  { nativeBuildInputs = [ pkgs.caddy ]; }
+                  ''(caddy fmt ${caddyFile} || :) > "$out"'';
+
+                script =
+                  pkgs.writeScript "logbook" ''
+                    ${pkgs.lib.getExe pkgs.caddy} run --config ${formattedCaddyFile} --adapter caddyfile
+                  '';
+
+              in
+                "${script}";
+          };
+
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
               pkgs.nodejs_22
