@@ -29,12 +29,17 @@
                   ''(caddy fmt ${caddyFile} || :) > "$out"'';
 
                 script =
-                  pkgs.writeScript "logbook" ''
-                    ${pkgs.lib.getExe pkgs.caddy} run --config ${formattedCaddyFile} --adapter caddyfile
-                  '';
+                  pkgs.writeShellApplication {
+                    name = "logbook";
+
+                    runtimeInputs = [ pkgs.caddy ];
+
+                    text =
+                      "caddy run --config ${formattedCaddyFile} --adapter caddyfile";
+                  };
 
               in
-                "${script}";
+                "${pkgs.lib.getExe script}";
           };
 
           devShells.default = pkgs.mkShell {
