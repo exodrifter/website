@@ -1,6 +1,6 @@
 ---
 title: delta h con is a mess
-publishDate: 2024-07-16
+published: 2024-07-16
 aliases:
 - delta h con is a mess
 ---

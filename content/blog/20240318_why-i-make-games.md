@@ -1,6 +1,6 @@
 ---
 title: why i make games
-publishDate: 2024-03-18
+published: 2024-03-18
 aliases:
 - why i make games
 ---

@@ -1,6 +1,6 @@
 ---
 title: guiding principles
-publishDate: 2023-10-14
+published: 2023-10-14
 aliases:
 - guiding principles
 ---

@@ -1,6 +1,6 @@
 ---
 title: i will alias all of your mutable buffers, actually
-publishDate: 2024-02-24
+published: 2024-02-24
 aliases:
 - i will alias all of your mutable buffers, actually
 ---

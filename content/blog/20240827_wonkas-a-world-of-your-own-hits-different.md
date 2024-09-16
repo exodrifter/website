@@ -1,6 +1,6 @@
 ---
 title: wonka's "a world of your own" hits different
-publishDate: 2024-08-27
+published: 2024-08-27
 aliases:
 - wonka's "a world of your own" hits different
 ---

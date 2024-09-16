@@ -1,6 +1,6 @@
 ---
 title: an indie dev's notes about staple! austin
-publishDate: 2024-04-15
+published: 2024-04-15
 aliases:
 - an indie dev's notes about staple! austin
 ---

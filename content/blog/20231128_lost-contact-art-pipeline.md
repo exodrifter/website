@@ -1,6 +1,6 @@
 ---
 title: lost contact art pipeline
-publishDate: 2023-11-28
+published: 2023-11-28
 aliases:
 - lost contact art pipeline
 ---

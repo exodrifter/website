@@ -1,6 +1,6 @@
 ---
 title: lost contact palette tool
-publishDate: 2023-12-21
+published: 2023-12-21
 aliases:
 - lost contact palette tool
 ---
