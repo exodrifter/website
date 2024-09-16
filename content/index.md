@@ -31,7 +31,7 @@ Opportunities to work on video games and functional software interest me. If you
 
 - _[no signal](press-kits/no-signal.md)_ (2024) - an escape room game about an isolated station and mysterious signals emitted by a black hole.
 - _[voluntary commitment](press-kits/voluntary-commitment.md)_ (2024) - a role-playing game about being stuck against your will in a hospital.
-- _[Gender Dysphoria](press-kits/gender-dysphoria.md)_ (2020) - a non-linear kinetic interactive fiction  about negative experiences after coming out as transgender.
+- _[Ultraprocessor Ribbon](press-kits/ultraprocessor-ribbon.md)_ (2024) - a 2D block breaking and visual novel erogame about two gay girls and hot robot sex.
 
 [See all press kits...](press-kits/index.md)
 

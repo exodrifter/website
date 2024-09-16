@@ -12,7 +12,7 @@ tags:
 
 # Ultraprocessor Ribbon
 
-_**Ultraprocessor Ribbon**_ is a 2D breakout and visual novel erogame about two gay robot girls. You can read more about it at the [official site](https://jennraye.moe/ribbon).
+_**Ultraprocessor Ribbon**_ is a 2D block breaking and visual novel erogame about two gay girls and hot robot sex. You can read more about it at the [official site](https://jennraye.moe/ribbon).
 
 # facts
 
