@@ -33,13 +33,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - run: nix build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: 'result/public'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
