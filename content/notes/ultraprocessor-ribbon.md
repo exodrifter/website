@@ -4,13 +4,12 @@ aliases:
 - Ultraprocessor Ribbon
 tags:
 - log
+- ultraprocessor-ribbon
 ---
 
 # Ultraprocessor Ribbon
 
-[Website](https://jennraye.moe/ribbon) | [itch.io](https://jenniferraye.itch.io/ultraprocessor-ribbon)
-
-These are the development notes for _Ultraprocessor Ribbon_.
+These are the development notes for _Ultraprocessor Ribbon_. For more information, see the [press kit](../press-kits/ultraprocessor-ribbon.md).
 
 ## Log
 
