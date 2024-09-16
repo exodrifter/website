@@ -1,0 +1,22 @@
+@use "./base.scss";
+
+.left {
+  display: grid !important;
+  gap: 1.5rem !important;
+  grid-template-rows: min-content min-content min-content min-content;
+  grid-template-columns: 1fr;
+  align-items: center;
+
+  .page-title {
+    grid-area: 1/1/2/3;
+  }
+
+  .search {
+    max-width: unset;
+    grid-area: 2/1/3/2;
+  }
+
+  .darkmode {
+    grid-area: 2/2/3/3;
+  }
+}
