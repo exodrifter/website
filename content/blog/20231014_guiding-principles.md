@@ -1,0 +1,58 @@
+---
+title: guiding principles
+publishDate: 2023-10-14
+aliases:
+- guiding principles
+---
+
+# guiding principles
+
+I've decided to quit my day job and embrace the risk of trying to be an indie game dev. My last day as an employee ended yesterday. I'm excited, nervous, and terrified!
+
+I've done this once before, but I didn't really have a plan back then. I was severely depressed, worked on a game for a few years that I never released, and I made very little on Patreon (and I was also very bad at using it). It was not fun.
+
+This time, I have plans.
+
+There are a lot of specifics I can mention but I thought it would be more interesting for me to explain my guiding principles first. They may change in the future, but for now they are:
+
+---
+
+## quality
+
+Do a few things very well.
+
+- Instead of picking a game idea that is small and technically feasible, pick a game idea where I've already done everything that would be needed before plus, at most, one new thing.
+- Build tools to make it easier and faster to do a few things very well.
+- Strive to _build something better_ instead of _building more_.
+- Focus on only a few social media platforms and leverage everything they have to offer.
+
+## explore possibilities
+
+Make it trivial to explore possibilities.
+
+- Make smaller games and iterate more.
+- Build or use tools that let you see changes immediately and let you time travel.
+
+## meaningful relationships
+
+Form meaningful relationships with other people and organizations.
+
+- Cold-calling should not be a primary aspect of my marketing strategy.
+- Create emotionally evocative games that connect with players.
+- Foster a community where people can share what they are working on and others actually have genuine interest.
+- Make personal games.
+
+# short-term plans
+
+These principles have informed my short-term plan.
+
+I'm going to finish working on [_null_](../presskits/voluntary-commitment.md), rewrite my dialog scripting tool [_rumor_](https://github.com/exodrifter/unity-rumor) to have better compiler error messages and support time travel, and then work on a new hidden object game about loneliness called [_lost contact_](../notes/no-signal.md). I'm also going to use cohost! and Twitch more often and try to form friendships with streamers that specialize in playing indie games.
+
+In general, I'm not going to worry too much about making money. Instead, I'll be focused on making a name for myself, as presumptuous as it sounds, so I can have an easier time finding an audience and networking.
+
+I'll elaborate on these plans more in the future.
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/3170559-guiding-principles) on October 14, 2023 at 02:06 AM UTC

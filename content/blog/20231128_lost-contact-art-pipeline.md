@@ -11,7 +11,7 @@ aliases:
 
 Today I broke ground on [my first day making _lost contact_](https://vods.exodrifter.space/2023/11/27/1508) by (mostly) figuring out how the asset pipeline would work. As a test, I put together some of the 3D assets that @Titanseek3r (who I will refer to Tanuki from here on out) has made over the last few days.
 
-One of my [guiding principles](https://cohost.org/exodrifter/post/3170559-guiding-principles) is to make it trivial to explore possibilities. To that end, I want to develop an art pipeline that allows me to change aspects quickly and easily at any time. I _don't_ want to have to go back and forth between tools or ask an artist for frequent revisions to tweak aspects of the game, especially since _lost contact_, as a hidden object game, will need lots of tweaks to the placement of things.
+One of my [guiding principles](20231014_guiding-principles.md) is to make it trivial to explore possibilities. To that end, I want to develop an art pipeline that allows me to change aspects quickly and easily at any time. I _don't_ want to have to go back and forth between tools or ask an artist for frequent revisions to tweak aspects of the game, especially since _lost contact_, as a hidden object game, will need lots of tweaks to the placement of things.
 
 I discussed this strategy with Tanuki (who, thank goodness, knows much more about 3D art pipelines than me) and, with respect to this strategy, we agreed on the following aspects:
 
@@ -41,3 +41,8 @@ And finally, I set some environment settings in Godot, including ambient light, 
 ![The same image featured at the top of this post.](20231128_lost-contact-art-pipeline-scene.png)
 
 I was able to figure out the pipeline from scratch today and the result is pretty good, so I'm happy with it. It feels pretty nice to not get stuck hopping back and forth between different editors to make changes and I'm looking forward to making more scenes with this approach.
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/3682828-lost-contact-art-pip) on November 28, 2023 at 12:00 AM UTC

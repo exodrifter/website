@@ -138,7 +138,7 @@ The idea is that if we'd like to use a color from a palette, we can store the na
 
 All three of these pieces -- the post-import script, the `Brush` script, and the `Palette` script -- allow me to add new models directly to a scene and edit the colors however I wish. This makes iterating easy, to the extent that I can [create entirely new scenes and color them in a day's work while being frequently distracted](https://vods.exodrifter.space/2023/12/19/1630).
 
-This tool aligns with my [guiding principle to make it trivial to explore possibilities](https://cohost.org/exodrifter/post/3170559-guiding-principles). The low barrier to editing and tweaking make the act of creating levels pretty enjoyable for me. And even though it took me a little over a week of development time to make, it feels like the cost was well worth it.
+This tool aligns with my [guiding principle to make it trivial to explore possibilities](20231014_guiding-principles.md). The low barrier to editing and tweaking make the act of creating levels pretty enjoyable for me. And even though it took me a little over a week of development time to make, it feels like the cost was well worth it.
 
 As an aside, I am considering open-sourcing the palette plugin, but it probably won't happen for a while if I do decide to do so. This is because many aspects of the tool are currently too specific to _lost contact_ to be appropriate for more general use. First, I would like to use the tool for a while to see what can be improved on and be free to make those changes as I wish without worrying about compatibility issues, releases, or any of the other work related to making something open-source and maintaining it.
 
