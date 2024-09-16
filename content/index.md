@@ -7,6 +7,8 @@
 
 I'm currently working as an indie game developer making games in Godot, much of it live on Twitch. In the past, I've worked in the logistics industry as a Haskell developer and in the dataviz and archviz industry as a Unity VR developer. In college, I was the President of the student-run game development club Electronic Game Developers Society (EGaDS) at The University of Texas at Austin during the school year of 2013-2014.
 
+Opportunities to work on video games and functional software interest me. If you want someone like me on your team, I'm open to it. [See resume...](resume.md)
+
 # blog
 
 - **2024-08-27** - [wonka's "a world of your own" hits different](blog/20240827_wonkas-a-world-of-your-own-hits-different.md)
@@ -26,16 +28,9 @@ I'm currently working as an indie game developer making games in Godot, much of 
 
 # links
 
-- [bandcamp](https://music.exodrifter.space)
-- [cohost](https://cohost.org/exodrifter)
-- [discord](https://discord.gg/arqFQVt)
-- [github](https://github.com/exodrifter)
-- [itch.io](https://exodrifter.itch.io)
-- [ko-fi](https://ko-fi.com/exodrifter)
-- [mastodon](https://vt.social/@exodrifter)
-- [patreon](https://patreon.com/exodrifter)
-- [soundcloud](https://soundcloud.com/exodrifter)
-- [steam](https://store.steampowered.com/developer/exodrifter)
-- [twitch](https://www.twitch.tv/exodrifter_)
-- [twitter](https://twitter.com/exodrifter)
-- [vods](https://vods.exodrifter.space)
+Generally speaking, I'm only active on Cohost, Discord and Twitch:
+- [cohost!](https://cohost.org/exodrifter)
+- [Discord](https://discord.gg/arqFQVt)
+- [Twitch](https://www.twitch.tv/exodrifter_)
+
+[Contact me...](contact.md)
