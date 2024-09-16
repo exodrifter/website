@@ -5,9 +5,6 @@ aliases:
 - ink lists are hell
 ---
 
-Posted at:
-- [cohost!](https://cohost.org/exodrifter/post/5659898-ink-lists-are-hell) on 2024-04-21 at 23:15 UTC
-
 # ink lists are hell
 
 Ink is a dialogue scripting language that I absolutely loathe, but to be fair to them it can be difficult to design a scripting language meant for users who are primarily non-technical. Recently, I was reading their documentation so I could help someone with it and I learned how lists work in Ink. Here's what they look like:
@@ -531,3 +528,8 @@ VAR kettle = (on, cold)
 ```
 
 Okay! I think that's everything. I think I'm gonna head out before the code crime police shows up. Maybe I'll read some yuri manga...
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/5659898-ink-lists-are-hell) on 2024-04-21 at 23:15 UTC

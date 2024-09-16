@@ -5,9 +5,6 @@ aliases:
 - self-hosting is exciting
 ---
 
-Posted at:
-- [cohost!](https://cohost.org/exodrifter/post/7283616-self-hosting-is-exci) on 2024-08-13 at 20:22 UTC
-
 # self-hosting is exciting
 
 I have grown dissatisfied with some of the software and services I use on a daily basis. Even when attempting to use VPS services to host the things I want to use, I have often found that the VPS's that are offered do not match my needs. This is because I often need a server that doesn't have a lot of computational power because I'm more or less the only user but _does_ have lots of storage because I have a lot of data I want to save.
@@ -77,3 +74,8 @@ There are also other things that I want to do:
 - **Peertube**: I'd like to investigate the possibility of hosting my VODs on my own hardware. VODs take up a lot of space, but not that many people watch VODs either. I currently use Vimeo to do this, and it costs me $240 plus tax. I think self-hosting is probably cheaper at this rate, especially considering the relatively low expected bandwidth usage.
 - **WoL Device**: It would be really cool to set up a low-power always-on device which I can use to power on computers in my VPN remotely using the Wake-on-Lan feature than many motherboards support. This would help in situations where my computers go down for some reason (or I accidentally shutdown the computer) and I'm away from home for an extended period of time. I'm planning on installing `etherwake` on a second-hand Raspberry Pi from a friend to do this (I don't really want to buy a new one because I don't want to support Raspberry Pi after they decided to hire a cop who used Raspberry Pis to build covert surveillance devices and especially due to how they reacted to the community which disagreed with this hire, see [this PetaPixel article](https://petapixel.com/2022/12/09/raspberry-pi-under-fire-by-creators-who-are-upset-it-hired-a-former-cop/))
 - **Learn Nix and NixOS finally**: Wow, it would be really nice if I could have a reproducible way to set up all of these services I want to self-host...
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/7283616-self-hosting-is-exci) on 2024-08-13 at 20:22 UTC

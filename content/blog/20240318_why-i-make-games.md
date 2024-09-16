@@ -5,9 +5,6 @@ aliases:
 - why i make games
 ---
 
-Posted at:
-- [cohost!](https://cohost.org/exodrifter/post/5145551-why-i-make-games) on 2024-03-18 at 11:09 UTC
-
 # why i make games
 
 I love _making_ video games but I didn't get into making video games because I liked _playing_ them. Frankly, I don't even enjoy playing video games very much most of the time (I like board games much better, generally).
@@ -29,3 +26,8 @@ I started to spend a lot of my free time making video games. I jumped from Java 
 I graduated and got a software development job, but I kept making games on the side. I jumped from Unity to Godot. Occasionally, I go independent [like I currently am](https://cohost.org/exodrifter/post/3170559-guiding-principles). I'm still trying to make games and I still love seeing how people react to what I make.
 
 Game development has sunk its hook into me. I hope I can keep doing it for as long as I can.
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/5145551-why-i-make-games) on 2024-03-18 at 11:09 UTC

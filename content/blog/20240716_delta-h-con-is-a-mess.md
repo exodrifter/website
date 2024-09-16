@@ -5,10 +5,6 @@ aliases:
 - delta h con is a mess
 ---
 
-Posted at:
-- [cohost!](https://cohost.org/exodrifter/post/6903427-delta-h-con-is-a-m) on 2024-07-16 at 08:03 UTC
-- [t/suki](https://forum.tsuki.games/t/delta-h-con-is-a-mess/171) on 2024-07-16 at 8:25 UTC
-
 # delta h con is a mess
 
 Delta H Con is an anime convention held in Houston, Texas which claims to be a convention for "gaming enthusiasts" and "anime aficionados". It has panels, tournaments, artist alley, dealers room, events and more. I made the mistake of tabling at this convention this year.
@@ -62,3 +58,9 @@ Of course, attendees aren't required to interact with me and I'm not owed their 
 ## closing
 
 It's pretty clear to me that the indie game tables are an afterthought by the convention organizers. Even though attendance at conventions tends to be low on Friday, there wasn't enough thought and consideration put into supporting the indies that do show up. You can't sell, you're put in a room with extremely low foot traffic, and no note is made that you're even at the convention outside of a small section in the convention magazine. You're set up to fail. It feels a little like you're doing the convention a favor by making an empty room appear less empty. I will not return to Delta H Con and if you're a video game developer I don't think it's worth the time.
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/6903427-delta-h-con-is-a-m) on 2024-07-16 at 08:03 UTC
+- [t/suki](https://forum.tsuki.games/t/delta-h-con-is-a-mess/171) on 2024-07-16 at 8:25 UTC

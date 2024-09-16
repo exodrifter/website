@@ -5,9 +5,6 @@ aliases:
 - wonka's "a world of your own" hits different
 ---
 
-Posted at:
-- [cohost!](https://cohost.org/exodrifter/post/7446740-wonka-s-a-world-of) on 2024-08-27 at 05:44 AM
-
 # wonka's "a world of your own" hits different
 
 recently, during my flight to and from 2d con (which was great, by the way! i'll write about that soon), i watched wonka (2023). as a person who thinks of themselves as an indie game developer who wants to make games that connect with people, the movie really hits me different in a way i don't think it would for most people.
@@ -43,3 +40,8 @@ and it's rare that i can really relate to a piece of media about how i feel abou
 for example, i'm sick of how games are marketed. i don't want to just cold-call people or learn the meta of how to do marketing, because i want to have meaningful connections. so that means i do stuff like try to actually participate in the communities of streamers i want to have play my game. i don't try to actively pull people in to play my game when i show up at conventions. i wrote a heartfelt letter for the physical copy of _Gender Dysphoria_. are these strategies effective? probably not.
 
 but i don't just want to make games that i would want to play, i don't just want to make games that other people want to buy, and i don't just want to make people entertained and happy. i don't want to just be another game developer. i want to be like no other.
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/7446740-wonka-s-a-world-of) on 2024-08-27 at 05:44 AM

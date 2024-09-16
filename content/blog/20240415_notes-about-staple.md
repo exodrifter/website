@@ -5,11 +5,6 @@ aliases:
 - an indie dev's notes about staple! austin
 ---
 
-Posted at:
-- [cohost!](https://cohost.org/exodrifter/post/5575141-an-indie-dev-s-notes) on 2024-04-15 at 18:08 UTC
-- [itch.io](https://exodrifter.itch.io/lost-contact/devlog/715497/an-indie-devs-notes-about-staple-austin) on 2024-04-15 at 22:06 UTC
-- [Steam](https://store.steampowered.com/news/app/2840590/view/7377534039863777457) on 2024-04-15 at 21:46 UTC
-
 # an indie dev's notes about staple! austin
 
 ![A picture of the show floor before the event's opening. The space has high ceilings and all of the vendors are busy setting up their tables.](20240415_notes-about-staple-setup.png)
@@ -76,3 +71,10 @@ In all, 10 people played the game on the first day and 9 people played on the se
 Anyway, overall I think the event was a success for me. I made a lot of nice connections, a friend printed these wonderful bookmarks I made which I gave to each person that played the game, and I'm happy to know that there are more copies of _Gender Dysphoria_ floating around out there. I'm hoping that my games will [connect with more with people](https://cohost.org/exodrifter/post/5145551-why-i-make-games) and that I can start building a reputation for making emotionally powerful games.
 
 If you'd like to help me in my full-time indie dev journey, [wishlisting the game on Steam](https://store.steampowered.com/app/2840590/no_signal/) does _a lot_ because I'm **terrible** at marketing. It doesn't cost you anything! And in any case, thank you for taking the time to read ❤️
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/5575141-an-indie-dev-s-notes) on 2024-04-15 at 18:08 UTC
+- [itch.io](https://exodrifter.itch.io/lost-contact/devlog/715497/an-indie-devs-notes-about-staple-austin) on 2024-04-15 at 22:06 UTC
+- [Steam](https://store.steampowered.com/news/app/2840590/view/7377534039863777457) on 2024-04-15 at 21:46 UTC

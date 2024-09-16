@@ -5,9 +5,6 @@ aliases:
 - i will alias all of your mutable buffers, actually
 ---
 
-Posted at:
-- [cohost!](https://cohost.org/exodrifter/post/4678975-i-will-alias-all-of) on February 25, 2024 at 03:26 AM UTC
-
 # i will alias all of your mutable buffers, actually
 
 In Godot 4.2.1, first make a script that looks like this...
@@ -88,3 +85,8 @@ _And, to my surprise and embarrassment, the official community manager for Godot
 I shared the problem I ran into with them, they got a contributor to also come by, I showed the contributor the problem and made an MRP for them, and [a PR was opened the very next day to address the issue](https://github.com/godotengine/godot/pull/88741).
 
 Honestly, I'm floored. How cool is that?! I did not think that would happen. Hopefully the fix will get rolled out soon and prevent others from the terror of aliased mutable buffers.
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/4678975-i-will-alias-all-of) on February 25, 2024 at 03:26 AM UTC

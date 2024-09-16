@@ -5,10 +5,6 @@ aliases:
 - "godot `ViewportTexture` workaround"
 ---
 
-Posted at:
-- [cohost!](https://cohost.org/exodrifter/post/7195979-godot-viewport-textu) on 2024-08-07 at 02:15 UTC
-- [t/suki](https://forum.tsuki.games/t/godot-viewporttexture-workaround/178) on 2024-08-07 at 02:24 UTC
-
 # godot `ViewportTexture` workaround
 
 In Godot 3 and 4, [`ViewportTexture`s do not have mipmaps](../notes/godot-viewport-texture-mipmap.md). Unfortunately, if you're like me you're using the `ViewportTexture` class as a way to render a UI in world space. Not having mipmaps more or less means that your UI looks really bad when it's scaled due to aliasing artifacts.
@@ -117,3 +113,9 @@ And after:
 ![The viewport texture without scaling artifacts.](20240806_godot-viewport-texture-workaround-after.png)
 
 You also can't see it from the picture, but the pixel shimmering effect you would normally get without this approach is also gone.
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/7195979-godot-viewport-textu) on 2024-08-07 at 02:15 UTC
+- [t/suki](https://forum.tsuki.games/t/godot-viewporttexture-workaround/178) on 2024-08-07 at 02:24 UTC
