@@ -53,13 +53,13 @@ oh no
 
 ---
 
-"i will alias all of your mutable buffers" is something funny I like to say sometimes, but as it turns out I actually ran into this issue in Godot while working on [my game](https://exodrifter.itch.io/lost-contact).
+"i will alias all of your mutable buffers" is something funny I like to say sometimes, but as it turns out I actually ran into this issue in Godot while working on [my game](../presskits/no-signal.md).
 
 I was investigating a bug where I had two instances of a drive bay and when i edited one of them, the colors would sometimes be configured incorrectly, like in this picture below:
 
 ![Two drive bays that can hold four drives each and status indicator lights for each drive bay. From left to right, the light colors are: red, white, white, yellow, red, white, white, white. The drives in the corresponding slots are: invalid, invalid, mounted, mounted, invalid, empty, empty, empty. Invalid drives are not mounted all the way. Strangely, the light colors do not appear to correspond to the state of the drive bay.](20240224_i-will-alias-all-of-your-mutable-buffers-actually_drive-bays.png)
 
-I had written my game in [a way that allowed me to color models by referencing a swatch in a palette](https://cohost.org/exodrifter/post/3936085-lost-contact-palette). The way I stored this information was by using a dictionary of material slot IDs to swatch keys, like this...
+I had written my game in [a way that allowed me to color models by referencing a swatch in a palette](20231221_lost-contact-palette-tool.md). The way I stored this information was by using a dictionary of material slot IDs to swatch keys, like this...
 
 ```json
 { 1: "drive_bay_invalid"
