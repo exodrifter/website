@@ -16,7 +16,7 @@ I've finally gotten around to converting my notes into a new website. There, you
 
 You can see it here: [https://www.exodrifter.space](https://www.exodrifter.space)
 
-I'm still migrating a lot of stuff over, but hopefully over time all of my written content will eventually live there now. There's also an [rss feed](exodrifter.space/blog/index.xml)!
+I'm still migrating a lot of stuff over, but hopefully over time all of my written content will eventually live there now. There's also an [rss feed](https://www.exodrifter.space/blog/index.xml)!
 
 This website is a bit different from the usual because it doesn't host just a blog; it is also the successor to both my [logbook](20240607_logbook.md) and my [old website](20240105_new-website.md). In fact, the original logbook repository is now being used to make the website with Quartz and Nix, which I'll explain briefly below.
 
