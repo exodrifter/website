@@ -1,3 +1,9 @@
+---
+title: exodrifter
+aliases:
+- exodrifter
+---
+
 # about
 
 <div style="display: flex; flex-direction: row; align-items: center;">
