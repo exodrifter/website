@@ -15,21 +15,24 @@ _**Gender Dysphoria**_ is a short 20 minute non-linear narrative game about nega
 
 # facts
 
-**developer:** exodrifter
+<div style="display: flex; flex-direction: row">
+<div style="flex-grow: 1">
 
-**publisher:** exodrifter
+**working title:** gender dysphoria<br/>
+**release date:** September 19, 2020<br/>
+**developer:** exodrifter<br/>
+**publisher:** exodrifter<br/>
 
-**release date:** September 19, 2020
+</div>
+<div style="flex-grow: 1">
 
-**platforms:** [itch.io](https://exodrifter.itch.io/gender-dysphoria), [Steam](https://store.steampowered.com/app/2310400/Gender_Dysphoria), [Tape Club](https://pizzapranks.com/product/gender-dysphoria-by-exodrifter/)
+**engine:** Unity<br/>
+**stores:** [itch.io](https://exodrifter.itch.io/gender-dysphoria), [Steam](https://store.steampowered.com/app/2310400/Gender_Dysphoria), [Tape Club](https://pizzapranks.com/product/gender-dysphoria-by-exodrifter/)<br/>
+**price:** \$5 USD<br/>
+**source:** [gitea](https://gitea.arcturuscollective.com/exodrifter/gender-dysphoria/), [gitlab](https://gitlab.com/exodrifter/gender-dysphoria)<br/>
 
-**price:** \$5 USD
-
-**engine:** Unity
-
-**working title:** gender dysphoria
-
-**source:** [gitea](https://gitea.arcturuscollective.com/exodrifter/gender-dysphoria/), [gitlab](https://gitlab.com/exodrifter/gender-dysphoria)
+</div>
+</div>
 
 # history
 

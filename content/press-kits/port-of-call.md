@@ -15,19 +15,23 @@ _**Port of Call**_ is a 3D first person narrative game about talking to passenge
 
 # facts
 
-**developer:** Underdog Games
+<div style="display: flex; flex-direction: row">
+<div style="flex-grow: 1">
 
-**publisher:** Underdog Games
+**working title:** styx<br/>
+**release date:** August 28, 2015<br/>
+**developer:** Underdog Games<br/>
+**publisher:** Underdog Games<br/>
 
-**release date:** August 28, 2015
+</div>
+<div style="flex-grow: 1">
 
-**platforms:** [Steam](https://store.steampowered.com/app/356520/Port_of_Call/)
+**engine:** Unity<br/>
+**stores:** [Steam](https://store.steampowered.com/app/356520/Port_of_Call/)<br/>
+**price:** free<br/>
 
-**price:** free
-
-**engine:** Unity
-
-**working title:** styx
+</div>
+</div>
 
 # history
 

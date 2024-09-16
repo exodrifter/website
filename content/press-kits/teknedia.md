@@ -14,19 +14,23 @@ _**Teknedia**_ is a first person arcade platforming game.
 
 # facts
 
-**developer:** Stache Studios
+<div style="display: flex; flex-direction: row">
+<div style="flex-grow: 1">
 
-**publisher:** Stache Studios
+**working title:** weldworks<br/>
+**release date:** January 8, 2021<br/>
+**developer:** Stache Studios<br/>
+**publisher:** Stache Studios<br/>
 
-**release date:** January 8, 2021
+</div>
+<div style="flex-grow: 1">
 
-**platforms:** [Steam](https://store.steampowered.com/app/354780/Teknedia/)
+**stores:** [Steam](https://store.steampowered.com/app/354780/Teknedia/)<br/>
+**price:** \$9.99 USD<br/>
+**engine:** Custom Engine in C++<br/>
 
-**price:** \$9.99 USD
-
-**engine:** Custom Engine in C++
-
-**working title:** weldworks
+</div>
+</div>
 
 # history
 

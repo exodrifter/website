@@ -14,19 +14,23 @@ _**voluntary commitment**_ is a 2D top-down RPG about being committed to a myste
 
 # facts
 
-**developer:** exodrifter and evandahm
+<div style="display: flex; flex-direction: row">
+<div style="flex-grow: 1">
 
-**publisher:** Iron Circus Games
+**working title:** null<br/>
+**release date:** eta 2024<br/>
+**developer:** exodrifter and evandahm<br/>
+**publisher:** Iron Circus Games<br/>
 
-**release date:** eta 2024
+</div>
+<div style="flex-grow: 1">
 
-**platforms:** tba
+**stores:** tba<br/>
+**price:** tba<br/>
+**engine:** Godot<br/>
 
-**price:** tba
-
-**engine:** Godot
-
-**working title:** null
+</div>
+</div>
 
 # history
 
