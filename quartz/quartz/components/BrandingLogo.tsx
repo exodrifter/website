@@ -1,4 +1,4 @@
-import { pathToRoot } from "../util/path"
+import { joinSegments, pathToRoot } from "../util/path"
 import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
 
@@ -12,7 +12,7 @@ export default ((options: BrandingOptions) => {
     return (
       <h2 class={classNames(displayClass, "page-title")}>
         <a href={baseDir}>
-          <img src={options.path} alt="exodrifter logo" draggable="false" />
+          <img src={joinSegments(baseDir, options.path)} alt="exodrifter logo" draggable="false" />
         </a>
       </h2>
     )

@@ -22,7 +22,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.NotIndex(Component.TagList()),
   ],
   left: [
-    Component.BrandingLogo({ path: "/logo.svg" }),
+    Component.BrandingLogo({ path: "logo.svg" }),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
@@ -40,7 +40,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.NotIndex(Component.ContentMeta()),
   ],
   left: [
-    Component.BrandingLogo({ path: "/logo.svg" }),
+    Component.BrandingLogo({ path: "logo.svg" }),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
