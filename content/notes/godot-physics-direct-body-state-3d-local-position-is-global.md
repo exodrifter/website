@@ -2,12 +2,13 @@
 title: "`get_contact_local_position` returns global position"
 aliases:
 - "`get_contact_local_position` returns global position"
+tags:
+- godot
 ---
-
 
 # `get_contact_local_position` returns global position
 
-In [Godot](godot.md) 4.2.2, `get_contact_local_position` in [`PhysicsDirectBodyState3D`](godot-physics-direct-body-state-3d.md) is documented as follows:
+In Godot 4.2.2, `get_contact_local_position` in `PhysicsDirectBodyState3D` is documented as follows:
 
 > [Godot 4.2.2 docs](https://docs.godotengine.org/en/4.2/classes/class_physicsdirectbodystate3d.html#class-physicsdirectbodystate3d-method-get-contact-local-position):
 >

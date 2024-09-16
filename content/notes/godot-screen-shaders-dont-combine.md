@@ -1,14 +1,16 @@
 ---
-title: Godot screen shaders don't combine
+title: Screen shaders don't combine
 aliases:
-- Godot screen shaders don't combine
+- Screen shaders don't combine
+tags:
+- godot
 ---
 
-# Godot screen shaders don't combine
+# Screen shaders don't combine
 
-Only the last [screen shader](godot-gdshader.md) in the tree will be used if multiple screen shaders are in the tree. In order to have multiple screen shaders overlaid on top of each other, a [`CanvasLayer`](godot-canvas-layer.md) needs to be used.
+Only the last screen shader in the tree will be used if multiple screen shaders are in the tree. In order to have multiple screen shaders overlaid on top of each other, a `CanvasLayer` needs to be used.
 
-For each [screen shader](godot-gdshader.md), put it under a parent of type [`CanvasLayer`](godot-canvas-layer.md), and set the `layer` property of the `CanvasLayer` to the correct number such that the effects are in the desired order.
+For each screen shader, put it under a parent of type `CanvasLayer`, and set the `layer` property of the `CanvasLayer` to the correct number such that the effects are in the desired order.
 
 ## History
 

@@ -2,11 +2,13 @@
 title: "`inverse` is an inferior version of `affine_inverse`"
 aliases:
 - "`inverse` is an inferior version of `affine_inverse`"
+tags:
+- godot
 ---
 
 # `inverse` is an inferior version of `affine_inverse`
 
-In [Godot](godot.md) 4.2.2, the implementation of [`inverse`](https://docs.godotengine.org/en/4.2/classes/class_transform3d.html#class-transform3d-method-inverse) in [`Transform3D`](godot-transform3d.md) reads as follows:
+In Godot 4.2.2, the implementation of [`inverse`](https://docs.godotengine.org/en/4.2/classes/class_transform3d.html#class-transform3d-method-inverse) in `Transform3D` reads as follows:
 
 ```
 Transform3D Transform3D::inverse() const {

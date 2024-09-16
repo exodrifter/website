@@ -2,11 +2,13 @@
 title: "`ERR_FILE_BAD_PATH` when importing files"
 aliases:
 - "`ERR_FILE_BAD_PATH` when importing files"
+tags:
+- godot
 ---
 
 # `ERR_FILE_BAD_PATH` when importing files
 
-When [importing files in Godot](godot-import.md), it is possible to get this error in the console:
+When importing files in Godot, it is possible to get this error in the console:
 
 ```
 editor/import/resource_importer_scene.cpp:2405 - Condition "!save_path.is_empty() && !DirAccess::exists(save_path.get_base_dir())" is true. Returning: ERR_FILE_BAD_PATH

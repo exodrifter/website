@@ -2,11 +2,13 @@
 title: "`AnimationPlayer` doesn't interpolate shader parameter"
 aliases:
 - "`AnimationPlayer` doesn't interpolate shader parameter"
+tags:
+- godot
 ---
 
 # `AnimationPlayer` doesn't interpolate shader parameter
 
-In [Godot](../notes/godot.md) 4.2.1, an [`AnimationPlayer`](../notes/godot-animation-player.md) won't interpolate a new shader parameter track due to [godotengine/godot#87040](https://github.com/godotengine/godot/issues/87040#issuecomment-1887424734):
+In Godot 4.2.1, an `AnimationPlayer` won't interpolate a new shader parameter track due to [godotengine/godot#87040](https://github.com/godotengine/godot/issues/87040#issuecomment-1887424734):
 
 > [TokageItLab](https://github.com/godotengine/godot/issues/87040#issuecomment-1887424734):
 >

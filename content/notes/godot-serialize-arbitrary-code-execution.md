@@ -2,6 +2,8 @@
 title: Arbitrary Code Execution in Godot serialization
 alias:
 - Arbitrary Code Execution in Godot serialization
+tags:
+- godot
 ---
 
 # Arbitrary Code Execution in Godot serialization

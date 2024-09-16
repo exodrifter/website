@@ -2,13 +2,15 @@
 title: "`RichTextLabel` lags on first draw"
 aliases:
 - "`RichTextLabel` lags on first draw"
+tags:
+- godot
 ---
 
 # `RichTextLabel` lags on first draw
 
-[`RichTextLabel`](godot-rich-text-label.md) uses [`TextParagraph`](godot-text-paragraph.md) internally to draw text, but since `TextParagraph` caches some information lazily there can be a lag spike when drawing the `RichTextLabel` for the first time.
+`RichTextLabel` uses `TextParagraph` internally to draw text, but since `TextParagraph` caches some information lazily there can be a lag spike when drawing the `RichTextLabel` for the first time.
 
-To get around this issue, you can disable the use of system fonts as a fallback or use the [`TextParagraph`](godot-text-paragraph.md) class directly, and force it to cache the information it needs before the first draw call:
+To get around this issue, you can disable the use of system fonts as a fallback or use the `TextParagraph` class directly, and force it to cache the information it needs before the first draw call:
 
 ```gdscript
 @tool
@@ -44,7 +46,7 @@ func _draw() -> void:
 	print("_draw: ", end - start, "ms")
 ```
 
-Unfortunately, [`TextParagraph`](godot-text-paragraph.md) does not support BBCode.
+Unfortunately, `TextParagraph` does not support BBCode.
 
 ## History
 

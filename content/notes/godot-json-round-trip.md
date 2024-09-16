@@ -2,6 +2,8 @@
 title: "`JSON` does not round trip"
 aliases:
 - "`JSON` does not round trip"
+tags:
+- godot
 ---
 
 # `JSON` does not round trip
@@ -35,6 +37,6 @@ Instead, consider using `store_var` and `get_var` in `FileAccess` (see also: [Ar
 
 ## History
 
-![20240617_214349](entries/20240617_214349.md)
+![20240617_214349](../entries/20240617_214349.md)
 
 ![20240619_243315](../entries/20240619_243315.md)

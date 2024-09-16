@@ -2,13 +2,15 @@
 title: "My `Camera2D` is flickering"
 aliases:
 - "My `Camera2D` is flickering"
+tags:
+- godot
 ---
 
 # My `Camera2D` is flickering
 
 > My camera is rendering the incorrect position for a frame even though I've put in a debugging statement showing that the position is correct!
 
-[[godot-camera-2d|`Camera2D`]] contains a mutable state which needs to be communicated to a `Viewport` in the rendering server. This problem can be fixed by calling `align()` to force the state in the rendering server to be synced.
+`Camera2D` contains a mutable state which needs to be communicated to a `Viewport` in the rendering server. This problem can be fixed by calling `align()` to force the state in the rendering server to be synced.
 
 # History
 

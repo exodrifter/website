@@ -2,6 +2,8 @@
 title: "`ViewportTexture` does not have mipmaps"
 aliases:
 - "`ViewportTexture` does not have mipmaps"
+tags:
+- godot
 ---
 
 # `ViewportTexture` does not have mipmaps

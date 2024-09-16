@@ -2,11 +2,13 @@
 title: "`Area2D` calls the `body_entered` signal multiple times"
 aliases:
 - "`Area2D` calls the `body_entered` signal multiple times"
+tags:
+- godot
 ---
 
 # `Area2D` calls the `body_entered` signal multiple times
 
-In [Godot](godot.md), when calling `reparent` on a `Node2D`, this will cause the [`Area2D`](godot-area2d.md) to call `body_exited` immediately followed by `body_entered`. For example, this pseudocode...
+In Godot, when calling `reparent` on a `Node2D`, this will cause the `Area2D` to call `body_exited` immediately followed by `body_entered`. For example, this pseudocode...
 
 ```gdscript
 func _on_body_entered(body):

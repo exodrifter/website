@@ -2,6 +2,8 @@
 title: Image decompression doesn't work in exported builds
 aliases:
 - Image decompression doesn't work in exported builds
+tags:
+- godot
 ---
 
 # Image decompression doesn't work in exported builds

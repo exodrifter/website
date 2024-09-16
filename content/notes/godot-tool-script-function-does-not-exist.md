@@ -2,11 +2,13 @@
 title: "`@tool` script says function does not exist when it does"
 aliases:
 - "`@tool` script says function does not exist when it does"
+tags:
+- godot
 ---
 
 # `@tool` script says function does not exist when it does
 
-In [Godot](godot.md), if you try calling a function on a non-tool script from a [tool script](godot-tool-script.md), you'll get the error that looks like this:
+In Godot, if you try calling a function on a non-tool script from a tool script, you'll get the error that looks like this:
 
 ```
 res://test.gd:8 - Invalid call. Nonexistent function 'get_color' in base 'Resource (SwatchRef)'.

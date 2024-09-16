@@ -9,7 +9,7 @@ aliases:
 
 _voluntary commitment_ is a top-down role-playing game about being stuck against your will in a hospital.
 
-The game is made in [Godot](godot.md).
+The game is made in [Godot](../tags/godot.md).
 
 ## log
 
