@@ -6,7 +6,7 @@ aliases:
 permalink: /no-signal
 tags:
 - godot
-- no signal
+- no-signal
 ---
 
 # no signal
