@@ -1,6 +1,8 @@
 ---
 title: Teknedia presskit
-publishDate: 2012-01-17
+created: 2011-02-25
+modified: 2012-01-17
+published: 2021-01-08
 aliases:
 - Teknedia presskit
 permalink: /teknedia

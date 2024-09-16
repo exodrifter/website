@@ -1,6 +1,6 @@
 ---
 title: voluntary commitment presskit
-publishDate: 2023-06-24
+created: 2023-03-09
 aliases:
 - voluntary commitment presskit
 permalink: /voluntary-commitment

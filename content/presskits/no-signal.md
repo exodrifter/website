@@ -1,6 +1,6 @@
 ---
 title: no signal presskit
-publishDate: 2023-11-04
+created: 2023-11-04
 aliases:
 - no signal presskit
 permalink: /no-signal
