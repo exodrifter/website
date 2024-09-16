@@ -6,6 +6,7 @@ aliases:
 - Gender Dysphoria press kit
 permalink: /gender-dysphoria
 tags:
+- gender-dysphoria
 - unity
 ---
 
