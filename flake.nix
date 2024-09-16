@@ -78,6 +78,7 @@
                 # Override quartz source files
                 mv ./quartz/components/index.ts ./quartz/components/index-original.ts
                 mv ./quartz/plugins/emitters/index.ts ./quartz/plugins/emitters/index-original.ts
+                mv ./quartz/plugins/transformers/index.ts ./quartz/plugins/transformers/index-original.ts
                 cp -r ${./quartz}/* ./
 
                 $out/bin/quartz build
