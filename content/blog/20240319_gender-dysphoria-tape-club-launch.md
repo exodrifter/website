@@ -1,0 +1,21 @@
+---
+title: gender dysphoria tape club launch
+published: 2024-03-19
+aliases:
+- gender dysphoria tape club launch
+---
+
+# gender dysphoria tape club launch
+
+![Two cassette cases, one standing upfront showing the cover art for the game Gender Dysphoria and one laying face-down showing the side and back of the cassette case, where a USB is visible instead of a cassette tape. They are both placed on a black desk next to an Indiepocalyspe devil sticker in the foreground and a cardboard box, the left keyboard of a Moonlander, and a cheap Monoprice tablet in the background.](20240319_gender-dysphoria-tape-club-launch-tape.png)
+
+_[Gender Dysphoria](../presskits/gender-dysphoria.md)_ is available now as a physical product on the @PIZZAPRANKS Videogame Tape Market: https://pizzapranks.com/product/gender-dysphoria-by-exodrifter/
+
+Well, it has been available for a few weeks now, but I forgot to announce it. It's a USB stick with the game files inside a cassette case (stickers not included)! I've also included a special README file with a short personal letter from myself as a special bonus for those of you that get a copy.
+
+I'll also be giving out limited quantities of these while I'm tabling at in-person events showing off my next game _[no signal](../presskits/no-signal.md)_ as well, such as at the upcoming [STAPLE! The Independent Media Expo 2024](https://www.eventbrite.com/e/staple-the-independent-media-expo-2024-tickets-813467231387) event.
+
+# colophon
+
+Posted at:
+- [cohost!](https://cohost.org/exodrifter/post/5162027-gender-dysphoria-tap) on March 19, 2024 at 6:44 AM UTC
