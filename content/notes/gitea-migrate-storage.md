@@ -2,6 +2,8 @@
 title: "How do I migrate Gitea storage?"
 aliases:
 - "How do I migrate Gitea storage?"
+tags:
+- gitea
 ---
 
 # How do I migrate Gitea storage?

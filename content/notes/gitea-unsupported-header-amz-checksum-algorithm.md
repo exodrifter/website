@@ -2,6 +2,8 @@
 title: "Unsupported header `x-amz-checksum-algorithm` received for this API call."
 aliases:
 - "Unsupported header `x-amz-checksum-algorithm` received for this API call."
+tags:
+- gitea
 ---
 
 # Unsupported header `x-amz-checksum-algorithm` received for this API call.
