@@ -9,7 +9,7 @@ aliases:
 
 ![](20231221_lost-contact-palette-tool-example.gif)
 
-Like I mentioned [last time](https://cohost.org/exodrifter/post/3682828-lost-contact-art-pip), the art pipeline for the game I'm working on is designed to lower the iteration time so that I can iterate more quickly and frequently on how the levels look. However, I ran into an issue where our desired process still had a long iteration time due to how Godot works out of the box. So, I've created a tool which you can see pictured above.
+Like I mentioned [last time](20231128_lost-contact-art-pipeline.md), the art pipeline for the game I'm working on is designed to lower the iteration time so that I can iterate more quickly and frequently on how the levels look. However, I ran into an issue where our desired process still had a long iteration time due to how Godot works out of the box. So, I've created a tool which you can see pictured above.
 
 Neat, right? Read on to see the motivating reason for making this and how it was implemented.
 
