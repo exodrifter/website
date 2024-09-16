@@ -1,14 +1,14 @@
 ---
-title: no signal
+title: no signal logs
 aliases:
-- no signal
-- lost contact
+- no signal logs
+- lost contact logs
 tags:
 - log
 - no-signal
 ---
 
-# no signal
+# no signal logs
 
 These are the development notes for _no signal_. For more information, see the [press kit](../press-kits/no-signal.md).
 

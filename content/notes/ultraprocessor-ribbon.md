@@ -1,13 +1,13 @@
 ---
-title: Ultraprocessor Ribbon
+title: Ultraprocessor Ribbon logs
 aliases:
-- Ultraprocessor Ribbon
+- Ultraprocessor Ribbon logs
 tags:
 - log
 - ultraprocessor-ribbon
 ---
 
-# Ultraprocessor Ribbon
+# Ultraprocessor Ribbon logs
 
 These are the development notes for _Ultraprocessor Ribbon_. For more information, see the [press kit](../press-kits/ultraprocessor-ribbon.md).
 

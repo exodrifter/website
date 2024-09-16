@@ -1,13 +1,13 @@
 ---
-title: voluntary commitment
+title: voluntary commitment logs
 aliases:
-- null
-- voluntary commitment
+- null logs
+- voluntary commitment logs
 tag:
 - log
 ---
 
-# voluntary commitment
+# voluntary commitment logs
 
 These are the development notes for _voluntary commitment_. For more information, see the [press kit](../press-kits/voluntary-commitment.md).
 
