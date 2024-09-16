@@ -2,13 +2,15 @@
 title: Ultraprocessor Ribbon
 aliases:
 - Ultraprocessor Ribbon
+tags:
+- log
 ---
 
 # Ultraprocessor Ribbon
 
 [Website](https://jennraye.moe/ribbon) | [itch.io](https://jenniferraye.itch.io/ultraprocessor-ribbon)
 
-_Ultraprocessor Ribbon_ is an [eroge](../indices/eroge.md) that is being developed by DemureSoft, of which I am a part of.
+These are the development notes for _Ultraprocessor Ribbon_.
 
 ## Log
 

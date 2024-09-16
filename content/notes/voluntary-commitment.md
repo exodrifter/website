@@ -3,13 +3,13 @@ title: voluntary commitment
 aliases:
 - null
 - voluntary commitment
+tag:
+- log
 ---
 
 # voluntary commitment
 
-_voluntary commitment_ is a top-down role-playing game about being stuck against your will in a hospital.
-
-The game is made in [Godot](../tags/godot.md).
+These are the development notes for _voluntary commitment_. For more information, see the [press kit](../press-kits/voluntary-commitment.md).
 
 ## log
 

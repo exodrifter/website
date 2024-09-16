@@ -3,11 +3,14 @@ title: no signal
 aliases:
 - no signal
 - lost contact
+tags:
+- log
+- no-signal
 ---
 
 # no signal
 
-These are the development notes for _no signal_.  For more information, see the [no signal press kit](../press-kits/no-signal.md).
+These are the development notes for _no signal_. For more information, see the [press kit](../press-kits/no-signal.md).
 
 # log
 
