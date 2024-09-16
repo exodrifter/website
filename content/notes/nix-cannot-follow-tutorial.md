@@ -2,6 +2,8 @@
 title: Cannot follow Nix tutorial
 alias:
 - Cannot follow Nix tutorial
+tags:
+- nix
 ---
 
 # Cannot follow Nix tutorial
