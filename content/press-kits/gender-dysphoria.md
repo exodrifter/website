@@ -1,9 +1,9 @@
 ---
-title: Gender Dysphoria presskit
+title: Gender Dysphoria press kit
 created: 2020-07-03
 published: 2020-09-19
 aliases:
-- Gender Dysphoria presskit
+- Gender Dysphoria press kit
 permalink: /gender-dysphoria
 ---
 

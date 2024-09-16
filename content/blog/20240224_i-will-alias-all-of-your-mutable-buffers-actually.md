@@ -53,7 +53,7 @@ oh no
 
 ---
 
-"i will alias all of your mutable buffers" is something funny I like to say sometimes, but as it turns out I actually ran into this issue in Godot while working on [my game](../presskits/no-signal.md).
+"i will alias all of your mutable buffers" is something funny I like to say sometimes, but as it turns out I actually ran into this issue in Godot while working on [my game](../press-kits/no-signal.md).
 
 I was investigating a bug where I had two instances of a drive bay and when i edited one of them, the colors would sometimes be configured incorrectly, like in this picture below:
 

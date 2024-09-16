@@ -1,9 +1,9 @@
 ---
-title: Port of Call presskit
+title: Port of Call press kit
 created: 2014-02-03
 published: 2015-08-28
 aliases:
-- Port of Call presskit
+- Port of Call press kit
 permalink: /port-of-call
 ---
 

@@ -7,7 +7,7 @@ aliases:
 
 # no signal
 
-These are the development notes for _no signal_.  For more information, see the [no signal presskit](../presskits/no-signal.md).
+These are the development notes for _no signal_.  For more information, see the [no signal press kit](../press-kits/no-signal.md).
 
 # log
 

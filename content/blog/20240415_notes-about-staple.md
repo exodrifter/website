@@ -9,7 +9,7 @@ aliases:
 
 ![A picture of the show floor before the event's opening. The space has high ceilings and all of the vendors are busy setting up their tables.](20240415_notes-about-staple-setup.png)
 
-I haven't posted much lately because I've been working hard to show off a demo of [my hidden object/escape room game](../presskits/no-signal.md) at _[STAPLE! Austin](https://staple-austin.org/)_, a two-day expo for independently created comics, zines, art, crafts, games, and more here in Austin, Texas. The event just happened last weekend. It was my first time at the event and it was the first time the event has been held since COVID-19.
+I haven't posted much lately because I've been working hard to show off a demo of [my hidden object/escape room game](../press-kits/no-signal.md) at _[STAPLE! Austin](https://staple-austin.org/)_, a two-day expo for independently created comics, zines, art, crafts, games, and more here in Austin, Texas. The event just happened last weekend. It was my first time at the event and it was the first time the event has been held since COVID-19.
 
 A couple of other game devs were also tabling, though only two of us were selling video games that we made. Of the ones I know, there was:
 

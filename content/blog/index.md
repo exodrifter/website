@@ -1,9 +1,5 @@
 ---
-title: Blog Index
+title: blog
 aliases:
-- Blog Index
+- blog
 ---
-
-# Blog
-
-All of my long-form posts can be found here.

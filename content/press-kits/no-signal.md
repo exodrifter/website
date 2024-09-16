@@ -1,8 +1,8 @@
 ---
-title: no signal presskit
+title: no signal press kit
 created: 2023-11-04
 aliases:
-- no signal presskit
+- no signal press kit
 permalink: /no-signal
 ---
 

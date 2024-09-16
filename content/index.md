@@ -24,13 +24,13 @@ Opportunities to work on video games and functional software interest me. If you
 
 [See all posts...](blog/index.md)
 
-# presskits
+# press kits
 
-- [no signal](presskits/no-signal.md) (2024) - an escape room game about an isolated station and mysterious signals emitted by a black hole.
-- [voluntary commitment](presskits/voluntary-commitment.md) (2024) - a role-playing game about being stuck against your will in a hospital.
-- [Gender Dysphoria](presskits/gender-dysphoria.md) (2020) - a non-linear kinetic interactive fiction  about negative experiences after coming out as transgender.
+- [no signal](press-kits/no-signal.md) (2024) - an escape room game about an isolated station and mysterious signals emitted by a black hole.
+- [voluntary commitment](press-kits/voluntary-commitment.md) (2024) - a role-playing game about being stuck against your will in a hospital.
+- [Gender Dysphoria](press-kits/gender-dysphoria.md) (2020) - a non-linear kinetic interactive fiction  about negative experiences after coming out as transgender.
 
-[See all presskits...](presskits/index.md)
+[See all press kits...](press-kits/index.md)
 
 # albums
 

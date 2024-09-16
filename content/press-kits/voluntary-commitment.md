@@ -1,8 +1,8 @@
 ---
-title: voluntary commitment presskit
+title: voluntary commitment press kit
 created: 2023-03-09
 aliases:
-- voluntary commitment presskit
+- voluntary commitment press kit
 permalink: /voluntary-commitment
 ---
 

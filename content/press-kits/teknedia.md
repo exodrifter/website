@@ -1,10 +1,10 @@
 ---
-title: Teknedia presskit
+title: Teknedia press kit
 created: 2011-02-25
 modified: 2012-01-17
 published: 2021-01-08
 aliases:
-- Teknedia presskit
+- Teknedia press kit
 permalink: /teknedia
 ---
 
