@@ -3,6 +3,9 @@ title: new website powered by quartz and nix
 published: 2024-09-16T09:04Z
 aliases:
 - new website powered by quartz and nix
+tags:
+- quartz
+- nix
 ---
 
 # new website powered by quartz and nix

@@ -3,6 +3,8 @@ title: black body
 published: 2023-01-22
 aliases:
 - black body
+tags:
+- fl-studio
 ---
 
 # black body

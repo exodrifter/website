@@ -3,6 +3,8 @@ title: ink lists are hell
 published: 2024-04-21
 aliases:
 - ink lists are hell
+tags:
+- ink
 ---
 
 # ink lists are hell

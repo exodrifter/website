@@ -3,6 +3,9 @@ title: "godot `ViewportTexture` workaround"
 published: 2024-08-06
 aliases:
 - "godot `ViewportTexture` workaround"
+tags:
+- godot
+- gdshader
 ---
 
 # godot `ViewportTexture` workaround

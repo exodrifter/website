@@ -3,6 +3,8 @@ title: lonely metro
 published: 2023-01-22
 aliases:
 - lonely metro
+tags:
+- fl-studio
 ---
 
 # lonely metro

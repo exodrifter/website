@@ -3,6 +3,9 @@ title: "Compile C# at runtime in Unity3D"
 published: 2015-12-06T16:32Z
 aliases:
 - "Compile C# at runtime in Unity3D"
+tags:
+- unity
+- c-sharp
 ---
 
 # Compile C# at runtime in Unity3D

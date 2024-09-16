@@ -3,6 +3,8 @@ title: kaleidoscopic
 published: 2023-01-22
 aliases:
 - kaleidoscopic
+tags:
+- fl-studio
 ---
 
 # kaleidoscopic

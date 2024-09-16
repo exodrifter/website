@@ -4,6 +4,8 @@ created: 2023-03-09
 aliases:
 - voluntary commitment press kit
 permalink: /voluntary-commitment
+tags:
+- godot
 ---
 
 # voluntary commitment

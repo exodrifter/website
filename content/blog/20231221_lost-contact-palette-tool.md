@@ -3,6 +3,9 @@ title: lost contact palette tool
 published: 2023-12-21
 aliases:
 - lost contact palette tool
+tags:
+- godot
+- gdscript
 ---
 
 # lost contact palette tool

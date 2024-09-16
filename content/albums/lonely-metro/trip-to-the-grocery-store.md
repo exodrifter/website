@@ -3,6 +3,8 @@ title: trip to the grocery store
 published: 2022-06-18
 aliases:
 - trip to the grocery store
+tags:
+- fl-studio
 ---
 
 # trip to the grocery store

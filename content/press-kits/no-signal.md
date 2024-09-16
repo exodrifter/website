@@ -4,6 +4,8 @@ created: 2023-11-04
 aliases:
 - no signal press kit
 permalink: /no-signal
+tags:
+- godot
 ---
 
 # no signal

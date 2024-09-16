@@ -3,6 +3,8 @@ title: lost contact art pipeline
 published: 2023-11-28
 aliases:
 - lost contact art pipeline
+tags:
+- godot
 ---
 
 # lost contact art pipeline
