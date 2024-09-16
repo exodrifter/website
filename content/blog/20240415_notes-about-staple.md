@@ -9,7 +9,7 @@ aliases:
 
 ![A picture of the show floor before the event's opening. The space has high ceilings and all of the vendors are busy setting up their tables.](20240415_notes-about-staple-setup.png)
 
-I haven't posted much lately because I've been working hard to show off a demo of [my hidden object/escape room game](https://store.steampowered.com/app/2840590/no_signal/) at _[STAPLE! Austin](https://staple-austin.org/)_, a two-day expo for independently created comics, zines, art, crafts, games, and more here in Austin, Texas. The event just happened last weekend. It was my first time at the event and it was the first time the event has been held since COVID-19.
+I haven't posted much lately because I've been working hard to show off a demo of [my hidden object/escape room game](../presskits/no-signal.md) at _[STAPLE! Austin](https://staple-austin.org/)_, a two-day expo for independently created comics, zines, art, crafts, games, and more here in Austin, Texas. The event just happened last weekend. It was my first time at the event and it was the first time the event has been held since COVID-19.
 
 A couple of other game devs were also tabling, though only two of us were selling video games that we made. Of the ones I know, there was:
 
@@ -28,7 +28,7 @@ This is what my (very scuff) table looked like:
 
 ![My half of the table at STAPLE! Austin 2024. The table is not covered by a tablecloth. A stack of Gender Dysphoria cassette cases sit to the left, with an index card below it which reads "Give the gift of ⭐ GENDER DYSPHORIA ⭐". A Framework laptop and a wired ergonomic mouse sits to the right, with an index card pointing at it which reads "no signal" and "wishlist on steam"](20240415_notes-about-staple-table.png)
 
-Generally speaking, it seemed like people were surprised that video games were even at the event, and less prepared for [the cassette packaging](https://cohost.org/exodrifter/post/5162027-gender-dysphoria-tap) that Andrew and I were using to sell them. This isn't too surprising, since the vendors at the event are almost entirely comics, ttrpgs, and other print media. When it came to selling them, I noted a few things:
+Generally speaking, it seemed like people were surprised that video games were even at the event, and less prepared for [the cassette packaging](20240319_gender-dysphoria-tape-club-launch.md) that Andrew and I were using to sell them. This isn't too surprising, since the vendors at the event are almost entirely comics, ttrpgs, and other print media. When it came to selling them, I noted a few things:
 
 - There were many people who bought the game without knowing much about it aside from my explanation that it is "a short 20-minute interactive fiction"
 - I frequently forgot to mention that the game is fully voice acted or that the game is about the negative experiences I had after coming out
@@ -68,7 +68,7 @@ In all, 10 people played the game on the first day and 9 people played on the se
 
 ![A laminated bookmark is held in my left hand. The bookmark depicts the entire space station at the top, with a gradient fading to one of the scenes in the game. The scene shows a table with a dual monitor setup, a chair, and a full tower desktop computer. There are some books, a camera, a keyboard, and a lamp on the table. The very bottom of the bookmark has the no signal logo and the text "no signal".|200](20240415_notes-about-staple-bookmark.png)
 
-Anyway, overall I think the event was a success for me. I made a lot of nice connections, a friend printed these wonderful bookmarks I made which I gave to each person that played the game, and I'm happy to know that there are more copies of _Gender Dysphoria_ floating around out there. I'm hoping that my games will [connect with more with people](https://cohost.org/exodrifter/post/5145551-why-i-make-games) and that I can start building a reputation for making emotionally powerful games.
+Anyway, overall I think the event was a success for me. I made a lot of nice connections, a friend printed these wonderful bookmarks I made which I gave to each person that played the game, and I'm happy to know that there are more copies of _Gender Dysphoria_ floating around out there. I'm hoping that my games will [connect with more with people](20240318_why-i-make-games.md) and that I can start building a reputation for making emotionally powerful games.
 
 If you'd like to help me in my full-time indie dev journey, [wishlisting the game on Steam](https://store.steampowered.com/app/2840590/no_signal/) does _a lot_ because I'm **terrible** at marketing. It doesn't cost you anything! And in any case, thank you for taking the time to read ❤️
 

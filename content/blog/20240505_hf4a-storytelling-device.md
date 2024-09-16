@@ -11,7 +11,7 @@ aliases:
 
 _High Frontier 4 All_ is a game that I've been wanting to play for a long time. It has one of the highest complexity ratings on Board Game Geek that I've ever seen, which is pretty intimidating, but I love complicated systems and it's about INDUSTRIALIZING SPACE. I love space!!! So, when I finally received my copy I was really excited to play it.
 
-The game actually has several different rule sets to help you learn the game. Gabby ([@fullmoon](https://cohost.org/fullmoon)) and I picked the Race for Glory rule set, which is a slightly simplified version of the full rule set, and learned how to play it last weekend. After playing it a few times, the game seems to tell such great, funny stories and I'm thinking about writing more about my play sessions in the future with more detail. For now, here's how the first game unfolded:
+The game actually has several different rule sets to help you learn the game. Gabby and I picked the Race for Glory rule set, which is a slightly simplified version of the full rule set, and learned how to play it last weekend. After playing it a few times, the game seems to tell such great, funny stories and I'm thinking about writing more about my play sessions in the future with more detail. For now, here's how the first game unfolded:
 
 ---
 
