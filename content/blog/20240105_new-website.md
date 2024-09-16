@@ -9,7 +9,7 @@ aliases:
 
 ![A screenshot of the exodrifter.space website at the time of the post. There's a sidebar on the left, with the following elements arranged vertically: exodrifter logo, cohost link, discord link, twitch link, horizontal rule, bandcamp link, github link, itch.io link, ko-fi link, mastodon link, patreon link, soundcloud link, steam link, twitter link, vods link. The main content to the right of the sidebar is titled "games" and is followed by a three slightly darker boxes arranged vertically containing the title, release year, working title, status of the work, and a description of the work for the games lost contact, voluntary commitment, and gender dysphoria.](20240105_new-website-current.png)
 
-I made [new business cards](https://cohost.org/exodrifter/post/4050516-new-business-cards), so I wanted to update my website as well! You can see the new design here: https://www.exodrifter.space/
+I made [new business cards](20240101_new-business-cards.md), so I wanted to update my website as well! You can see the new design here: https://www.exodrifter.space/
 
 ---
 
