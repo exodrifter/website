@@ -32,6 +32,12 @@ Opportunities to work on video games and functional software interest me. If you
 
 [See all presskits...](presskits/index.md)
 
+# albums
+
+- [lonely metro](albums/lonely-metro/index.md) (2023)
+
+[See all albums...](albums/index.md)
+
 # links
 
 Generally speaking, I'm only active on Cohost, Discord and Twitch:
