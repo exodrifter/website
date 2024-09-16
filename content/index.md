@@ -17,10 +17,10 @@ Opportunities to work on video games and functional software interest me. If you
 
 # blog
 
-- **2024-08-27** - [wonka's "a world of your own" hits different](blog/20240827_wonkas-a-world-of-your-own-hits-different.md)
-- **2024-08-13** - [self-hosting is exciting](blog/20240813_self-hosting-is-exciting.md)
-- **2024-04-21** - [ink lists are hell](blog/20240421_ink-lists-are-hell.md)
-- **2024-03-18** - [why i make games](blog/20240318_why-i-make-games.md)
+- **2024-08-27** - [wonka's "a world of your own" hits different](blog/20240827.md)
+- **2024-08-13** - [self-hosting is exciting](blog/20240813.md)
+- **2024-04-21** - [ink lists are hell](blog/20240421.md)
+- **2024-03-18** - [why i make games](blog/20240318.md)
 
 [See all posts...](blog/index.md)
 
