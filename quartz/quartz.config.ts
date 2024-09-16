@@ -81,6 +81,7 @@ const config: QuartzConfig = {
         enableSiteMap: true,
         enableRSS: true,
       }),
+      Plugin.RssGenerator({ path: "blog", rssLimit: null, rssFullHtml: true }),
       Plugin.Assets(),
       Plugin.Static(),
       Plugin.NotFoundPage(),

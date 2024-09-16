@@ -16,7 +16,7 @@
 
             program =
               let
-                caddyFile = pkgs.writeText "Caddyfile" ''
+                caddyfile = pkgs.writeText "Caddyfile" ''
                   :8080 {
                       root * ${self.packages."${system}".default}/public/
                       file_server
@@ -24,9 +24,9 @@
                   }
                 '';
 
-                formattedCaddyFile = pkgs.runCommand "Caddyfile"
+                formattedCaddyfile = pkgs.runCommand "Caddyfile"
                   { nativeBuildInputs = [ pkgs.caddy ]; }
-                  ''(caddy fmt ${caddyFile} || :) > "$out"'';
+                  ''(caddy fmt ${caddyfile} || :) > "$out"'';
 
                 script =
                   pkgs.writeShellApplication {
@@ -35,7 +35,7 @@
                     runtimeInputs = [ pkgs.caddy ];
 
                     text =
-                      "caddy run --config ${formattedCaddyFile} --adapter caddyfile";
+                      "caddy run --config ${formattedCaddyfile} --adapter caddyfile";
                   };
 
               in
@@ -77,6 +77,7 @@
 
                 # Override quartz source files
                 mv ./quartz/components/index.ts ./quartz/components/index-original.ts
+                mv ./quartz/plugins/emitters/index.ts ./quartz/plugins/emitters/index-original.ts
                 cp -r ${./quartz}/* ./
 
                 $out/bin/quartz build
