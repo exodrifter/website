@@ -4,7 +4,7 @@ Experienced Software Engineer with a demonstrated history of working in the soft
 
 [Contact me...](contact.md)
 
-# Experience
+# experience
 
 **Indie Game Developer <span style="float: right;">February 2022 - Present</span>**
 - I extensively develop games live on [Twitch](twitch.tv/exodrifter_), where I'm currently working on [no signal](notes/no-signal.md)
@@ -55,12 +55,12 @@ visualization contract.
 **Intern - ABB <span style="float: right;">May 2009 - August 2009</span>**
 - Honestly I don't even remember what I did.
 
-# Education
+# education
 
 **Computer Science, Bachelor's Degree - UT Austin <span style="float: right;">2011 - 2015</span>**
 - President of the Electronic Game Developer Society
 
-# Skills
+# skills
 
 **Languages:** Haskell, C#, Java, Purescript
 

@@ -1,4 +1,4 @@
-# Contact
+# contact
 
 To contact me, use one of the following methods:
 - <i class="ri-mail-fill"></i> [skeleton@exodrifter.space](mailto:skeleton@exodrifter.space)
@@ -6,13 +6,13 @@ To contact me, use one of the following methods:
 
 Please note that I am highly likely to ignore Discord messages unless you share a mutual server with me.
 
-# Support
+# support
 
 If you like the work that I do, I accept donations at the following places:
 - <i class="ri-cup-fill"></i> [Ko-fi](https://ko-fi.com/exodrifter)
 - <i class="ri-patreon-fill"></i> [Patreon](https://patreon.com/exodrifter)
 
-# All Links
+# all links
 
 These are all of my social media links. Please note that I am not generally active on most social media sites, with the exception of Cohost, Discord, and Twitch.
 

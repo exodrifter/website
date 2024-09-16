@@ -4,7 +4,7 @@ alias:
 - Inbox
 ---
 
-# Inbox
+# inbox
 
 Stuff I want to follow up on and create notes for.
 
