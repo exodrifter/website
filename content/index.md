@@ -56,3 +56,13 @@ Generally speaking, I'm only active on Cohost, Discord and Twitch:
 - <i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)
 
 [Contact me...](contact.md)
+
+# coolzone
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr">
+
+[Haskell for all](https://www.haskellforall.com/)
+
+[Jennifer Raye](https://jennraye.moe)
+
+</div>
