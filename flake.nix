@@ -31,9 +31,7 @@
                 script =
                   pkgs.writeShellApplication {
                     name = "logbook";
-
                     runtimeInputs = [ pkgs.caddy ];
-
                     text =
                       "caddy run --config ${formattedCaddyfile} --adapter caddyfile";
                   };
@@ -47,6 +45,7 @@
               pkgs.nodejs_22
             ];
           };
+
           packages = rec {
             default = pkgs.buildNpmPackage rec {
               pname = "quartz";
@@ -61,7 +60,6 @@
 
               dontNpmBuild = true;
               makeCacheWritable = true;
-
               npmDepsHash = "sha256-qgAzMTtFTShj3xUut73DBCbkt7yTwVjthL8hEgRFdIo=";
 
               installPhase = ''
