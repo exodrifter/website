@@ -35,8 +35,8 @@ Opportunities to work on video games and functional software interest me. If you
 # links
 
 Generally speaking, I'm only active on Cohost, Discord and Twitch:
-- [cohost!](https://cohost.org/exodrifter)
-- [Discord](https://discord.gg/arqFQVt)
-- [Twitch](https://www.twitch.tv/exodrifter_)
+- <i class="ri-discuss-fill"></i> [cohost!](https://cohost.org/exodrifter)
+- <i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)
+- <i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)
 
 [Contact me...](contact.md)
