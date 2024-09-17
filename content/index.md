@@ -20,7 +20,7 @@ Opportunities to work on video games and functional software interest me. If you
 # blog
 
 - **2024-09-16** - [new website powered by quartz and nix](blog/20240916.md)
-- **2024-09-10** - [no signal demo](blog/20240910.md)
+- **2024-09-10** - [no signal demo](blog/20240910_235854.md)
 - **2024-08-27** - [wonka's "a world of your own" hits different](blog/20240827.md)
 - **2024-04-21** - [ink lists are hell](blog/20240421.md)
 - **2024-03-18** - [why i make games](blog/20240318.md)

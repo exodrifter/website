@@ -22,6 +22,6 @@ I consider this issue to be a [Godot crime](godot-crimes.md).
 
 ![20240222_2021](../entries/20240222_2021.md)
 
-![i will alias all of your mutable buffers, actually](../blog/20240224.md)
+![i will alias all of your mutable buffers, actually](../blog/20240225_042654.md)
 
 ![20240703_194355](../entries/20240703_194355.md)
