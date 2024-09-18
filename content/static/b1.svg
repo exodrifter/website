@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="16.995996mm"
+   height="8.3517408mm"
+   viewBox="0 0 16.995996 8.3517408"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <style>
+      svg {
+        color: black;
+        color-scheme: light dark;
+      }
+      @media (prefers-color-scheme: dark) {
+        svg {
+          color: white;
+        }
+      }
+    </style>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-24.307248,-174.91791)">
+    <rect
+       style="fill:currentColor;fill-opacity:1;stroke:currentColor;stroke-width:1.02318;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       id="rect1"
+       width="3.7799723"
+       height="9.1019306"
+       x="150.42972"
+       y="212.57077"
+       transform="matrix(1,0,-0.56534546,0.82485424,0,0)" />
+    <rect
+       style="fill:currentColor;fill-opacity:1;stroke:currentColor;stroke-width:1.02318;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       id="rect1-5"
+       width="3.7799723"
+       height="9.1019306"
+       x="156.89838"
+       y="212.57077"
+       transform="matrix(1,0,-0.56534546,0.82485424,0,0)" />
+  </g>
+</svg>

@@ -1,5 +1,40 @@
 @use "./base.scss";
 
+body {
+  background-image: radial-gradient(var(--lightgray) 0.05rem, transparent 0);
+  background-position: -10pt -10pt;
+  background-size: 20pt 20pt;
+  background-attachment: fixed;
+}
+
+section {
+  background-color: unset;
+}
+
+h1::before {
+  content: url(/static/b1.svg);
+  margin-right: 0.5rem;
+  top: 0.25rem;
+  position: relative;
+  opacity: 0.8;
+}
+
+h2::before {
+  content: url(/static/b2.svg);
+  margin-right: 0.5rem;
+  top: 0.4rem;
+  position: relative;
+  opacity: 0.8;
+}
+
+ul.overflow::after {
+  background: unset;
+}
+
+.callout {
+  backdrop-filter: blur(0.12rem);
+}
+
 .left {
   display: grid !important;
   gap: 1.5rem !important;
