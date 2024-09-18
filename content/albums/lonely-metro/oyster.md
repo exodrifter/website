@@ -13,6 +13,10 @@ aliases:
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-oyster">vods</a></div>
 </div>
 
-<img src="oyster.png" alt="The cover art for oyster, which is a picture of a river where water is churning around some rocks. The text 786f7e is overlaid ontop." width="50%"></img>
+<div style="width: 50%;">
+
+![The cover art for oyster, which is a picture of a river where water is churning around some rocks. The text 786f7e is overlaid ontop.](oyster.png)
+
+</div>
 
 <iframe style="border: 0; width: 100%; max-width: 700px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=477085509/size=small/bgcol=333333/linkcol=0f91ff/track=638554513/transparent=true/" seamless><a href="https://music.exodrifter.space/album/lonely-metro">lonely metro by exodrifter</a></iframe>

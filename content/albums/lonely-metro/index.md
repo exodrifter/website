@@ -13,7 +13,11 @@ tags:
 <div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/album/lonely-metro">Bandcamp</a></div>
 </div>
 
-<img src="cover.png" alt="lonely metro album art, which pictures an installation of antennas from the Toronto Pearson International Airport against a cloudy sky." width="50%"></img>
+<div style="width: 50%;">
+
+![lonely metro album art, which pictures an installation of antennas from the Toronto Pearson International Airport against a cloudy sky.](cover.png)
+
+</div>
 
 I really feel like my music is getting better these days and I have many new friends that I really value now too. Many things happened over the last year, too many to really say there, but I hope you enjoy this album. <3
 

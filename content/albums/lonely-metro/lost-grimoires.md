@@ -13,6 +13,10 @@ aliases:
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-lost-grimoires">vods</a></div>
 </div>
 
-<img src="lost-grimoires.png" alt="The cover art for lost grimoires, which is a greyscale picture of a bookshelf. The text 786f7e is overlaid ontop." width="50%"></img>
+<div style="width: 50%;">
+
+![The cover art for lost grimoires, which is a greyscale picture of a bookshelf. The text 786f7e is overlaid ontop.](lost-grimoires.png)
+
+</div>
 
 <iframe style="border: 0; width: 100%; max-width: 700px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=477085509/size=small/bgcol=333333/linkcol=0f91ff/track=2100575492/transparent=true/" seamless><a href="https://music.exodrifter.space/album/lonely-metro">lonely metro by exodrifter</a></iframe>

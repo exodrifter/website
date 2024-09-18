@@ -13,6 +13,10 @@ aliases:
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-rhodophyta">vods</a></div>
 </div>
 
-<img src="rhodophyta.png" alt="The cover art for rhodophyta, which is a picture of green plants blanketing the ground. The text 786f7e is overlaid ontop." width="50%"></img>
+<div style="width: 50%;">
+
+![The cover art for rhodophyta, which is a picture of green plants blanketing the ground. The text 786f7e is overlaid ontop.](rhodophyta.png)
+
+</div>
 
 <iframe style="border: 0; width: 100%; max-width: 700px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=477085509/size=small/bgcol=333333/linkcol=0f91ff/track=2242973840/transparent=true/" seamless><a href="https://music.exodrifter.space/album/lonely-metro">lonely metro by exodrifter</a></iframe>
