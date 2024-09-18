@@ -63,3 +63,4 @@ These are the development notes for _no signal_. For more information, see the [
 - 2024-09-10: **v0.22**, [210403](../entries/20240910_210403.md)
 - 2024-09-12: **v0.23**, [182833 (stream 116)](../entries/20240912_182833.md)
 - 2024-09-14: **v0.24**, [180208 (stream 117)](../entries/20240914_180208.md)
+- 2024-09-17: **v0.25**, [180208 (stream 118)](20240917_220405.md)
