@@ -16,7 +16,7 @@ _**Ultraprocessor Ribbon**_ is a 2D block breaking and visual novel erogame abou
 
 # facts
 
-<div style="display: flex; flex-direction: row">
+<div class="flex">
 <div style="flex-grow: 1">
 
 **working title:** Ultraprocessor Ribbon<br/>

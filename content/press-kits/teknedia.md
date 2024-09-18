@@ -14,7 +14,7 @@ _**Teknedia**_ is a first person arcade platforming game.
 
 # facts
 
-<div style="display: flex; flex-direction: row">
+<div class="flex">
 <div style="flex-grow: 1">
 
 **working title:** weldworks<br/>

@@ -63,7 +63,7 @@ Generally speaking, I'm only active on Cohost, Discord and Twitch:
 
 # coolzone
 
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr">
+<div class="flex">
 
 [Haskell for all](https://www.haskellforall.com/)
 

@@ -15,7 +15,7 @@ _**no signal**_ is a science fiction escape room game about loneliness, fixing b
 
 # facts
 
-<div style="display: flex; flex-direction: row">
+<div class="flex">
 <div style="flex-grow: 1">
 
 **working title:** lost contact<br/>

@@ -7,7 +7,7 @@ aliases:
 
 # starfire funk
 
-<div style="display: flex; flex-direction: row; gap: 1rem; margin-bottom: 1rem;">
+<div class="flex">
 <div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/starfire-funk">Bandcamp</a></div>
 <div><i class="ri-soundcloud-fill"></i> <a href="https://soundcloud.com/exodrifter/starfire-funk">SoundCloud</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-starfire-funk">vods</a></div>

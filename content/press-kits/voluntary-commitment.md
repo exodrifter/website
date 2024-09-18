@@ -15,7 +15,7 @@ _**voluntary commitment**_ is a 2D top-down RPG about being committed to a myste
 
 # facts
 
-<div style="display: flex; flex-direction: row">
+<div class="flex">
 <div style="flex-grow: 1">
 
 **working title:** null<br/>

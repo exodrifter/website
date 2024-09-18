@@ -16,7 +16,7 @@ _**Gender Dysphoria**_ is a short 20 minute non-linear narrative game about nega
 
 # facts
 
-<div style="display: flex; flex-direction: row">
+<div class="flex">
 <div style="flex-grow: 1">
 
 **working title:** gender dysphoria<br/>

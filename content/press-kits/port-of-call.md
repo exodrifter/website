@@ -15,7 +15,7 @@ _**Port of Call**_ is a 3D first person narrative game about talking to passenge
 
 # facts
 
-<div style="display: flex; flex-direction: row">
+<div class="flex">
 <div style="flex-grow: 1">
 
 **working title:** styx<br/>

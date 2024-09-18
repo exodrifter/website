@@ -9,7 +9,7 @@ tags:
 
 # lonely metro
 
-<div style="display: flex; flex-direction: row; gap: 1rem; margin-bottom: 1rem;">
+<div class="flex">
 <div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/album/lonely-metro">Bandcamp</a></div>
 </div>
 
