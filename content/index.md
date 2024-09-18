@@ -46,8 +46,9 @@ Opportunities to work on video games and functional software interest me. If you
 
 # logs
 
-- [no signal](../notes/no-signal.md)
-- [Ultraprocessor Ribbon](../notes/ultraprocessor-ribbon.md)
+- [no signal](notes/no-signal.md)
+- [Ultraprocessor Ribbon](notes/ultraprocessor-ribbon.md)
+- [music study](notes/music-study.md)
 
 [See all logs...](tags/log.md)
 
