@@ -3,8 +3,6 @@ title: rhodophyta
 published: 2022-05-01
 aliases:
 - rhodophyta
-tags:
-- fl-studio
 ---
 
 # rhodophyta

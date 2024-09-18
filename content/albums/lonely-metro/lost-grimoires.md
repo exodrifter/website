@@ -3,8 +3,6 @@ title: lost grimoires
 published: 2022-09-20
 aliases:
 - lost grimoires
-tags:
-- fl-studio
 ---
 
 # lost grimoires

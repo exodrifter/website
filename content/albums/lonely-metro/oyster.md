@@ -3,8 +3,6 @@ title: oyster
 published: 2022-12-06
 aliases:
 - oyster
-tags:
-- fl-studio
 ---
 
 # oyster

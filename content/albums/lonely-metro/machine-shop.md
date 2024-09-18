@@ -3,8 +3,6 @@ title: machine shop
 published: 2023-01-22
 aliases:
 - machine shop
-tags:
-- fl-studio
 ---
 
 # machine shop

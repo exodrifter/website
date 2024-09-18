@@ -3,8 +3,6 @@ title: "don't leave"
 published: 2023-01-22
 aliases:
 - "don't leave"
-tags:
-- fl-studio
 ---
 
 # don't leave

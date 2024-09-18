@@ -3,8 +3,6 @@ title: starfire funk
 published: 2022-09-13
 aliases:
 - starfire funk
-tags:
-- fl-studio
 ---
 
 # starfire funk
