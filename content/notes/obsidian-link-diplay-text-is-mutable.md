@@ -2,6 +2,8 @@
 title: Obsidian link display text is mutable
 aliases:
 - Obsidian link display text is mutable
+tags:
+- obsidian
 ---
 
 # Obsidian link display text is mutable

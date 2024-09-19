@@ -3,11 +3,13 @@ title: Note-taking strategies
 aliases:
 - note-taking strategy
 - note-taking strategies
+tags:
+- obsidian
 ---
 
 # Note-taking strategies
 
-I use [Obsidian](obsidian.md) to take notes, but there are many ways to take notes. This documents the note-taking strategies I use and how I practice them.
+I use [Obsidian](../tags/obsidian.md) to take notes, but there are many ways to take notes. This documents the note-taking strategies I use and how I practice them.
 
 # Current Strategies
 
