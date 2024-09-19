@@ -3,13 +3,16 @@ title: starfire funk
 published: 2022-09-14T04:33:50Z
 aliases:
 - starfire funk
+crossposts:
+- url: https://soundcloud.com/exodrifter/starfire-funk
+  time: 2022-09-14T04:33:50Z
+- url: https://music.exodrifter.space/track/starfire-funk
+  time: 2023-01-22
 ---
 
 # starfire funk
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/starfire-funk">Bandcamp</a></div>
-<div><i class="ri-soundcloud-fill"></i> <a href="https://soundcloud.com/exodrifter/starfire-funk">SoundCloud</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-starfire-funk">vods</a></div>
 </div>
 

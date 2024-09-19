@@ -3,12 +3,14 @@ title: black body
 published: 2023-01-22
 aliases:
 - black body
+crossposts:
+- url: https://music.exodrifter.space/track/black-body
+  time: 2023-01-22
 ---
 
 # black body
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/black-body">Bandcamp</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-black-body">vods</a></div>
 </div>
 

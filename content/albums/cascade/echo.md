@@ -3,12 +3,14 @@ title: echo
 published: 2022-01-22
 aliases:
 - echo
+crossposts:
+- url: https://music.exodrifter.space/track/echo
+  time: 2022-01-22
 ---
 
 # echo
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://exodrifter.bandcamp.com/track/echo">Bandcamp</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-echo">vods</a></div>
 </div>
 

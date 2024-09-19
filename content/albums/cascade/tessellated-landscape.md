@@ -3,13 +3,16 @@ title: tessellated landscape
 published: 2021-07-12T13:42:01Z
 aliases:
 - tessellated landscape
+crossposts:
+- url: https://soundcloud.com/exodrifter/tesselated-landscape
+  time: 2021-07-12T13:42:01Z
+- url: https://music.exodrifter.space/track/tessellated-landscape
+  time: 2022-01-22
 ---
 
 # tessellated landscape
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://exodrifter.bandcamp.com/track/tessellated-landscape">Bandcamp</a></div>
-<div><i class="ri-soundcloud-fill"></i> <a href="https://soundcloud.com/exodrifter/tesselated-landscape">SoundCloud</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-tesselated-landscape">vods</a></div>
 </div>
 

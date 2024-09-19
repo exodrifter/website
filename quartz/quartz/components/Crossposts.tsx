@@ -25,6 +25,19 @@ const Crossposts: QuartzComponent = ({
           const host = new URL(f.url).host
           switch (host) {
 
+            case "music.exodrifter.space":
+            case "exodrifter.bandcamp.com":
+              return (
+                <li>
+                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <br/>
+                  <img src="/static/bandcamp.svg"/>&nbsp;
+                  <a href={f.url} class="external">
+                    Bandcamp
+                  </a>
+                </li>
+              )
+
             case "cohost.org":
             case "www.cohost.org":
               return (

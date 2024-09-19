@@ -3,13 +3,16 @@ title: trip to the grocery store
 published: 2022-06-18T06:57:13Z
 aliases:
 - trip to the grocery store
+crossposts:
+- url: https://soundcloud.com/exodrifter/lonesome-trip-to-the-grocery-store
+  time: 2022-06-18T06:57:13Z
+- url: https://music.exodrifter.space/track/trip-to-the-grocery-store
+  time: 2023-01-22
 ---
 
 # trip to the grocery store
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/trip-to-the-grocery-store">Bandcamp</a></div>
-<div><i class="ri-soundcloud-fill"></i> <a href="https://soundcloud.com/exodrifter/lonesome-trip-to-the-grocery-store">SoundCloud</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-trip-to-the-grocery-store">vods</a></div>
 </div>
 

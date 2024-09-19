@@ -3,15 +3,14 @@ title: lonely metro
 published: 2023-01-22
 aliases:
 - lonely metro
+crossposts:
+- url: https://music.exodrifter.space/album/lonely-metro
+  time: 2022-01-22
 tags:
 - fl-studio
 ---
 
 # lonely metro
-
-<div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/album/lonely-metro">Bandcamp</a></div>
-</div>
 
 <div style="width: 50%;">
 

@@ -3,13 +3,16 @@ title: the orbit where i drift
 published: 2021-10-02T23:40:32Z
 aliases:
 - the orbit where i drift
+crossposts:
+- url: https://soundcloud.com/exodrifter/the-orbit-where-i-drift
+  time: 2021-10-02T23:40:32Z
+- url: https://music.exodrifter.space/track/the-orbit-where-i-drift
+  time: 2022-01-22
 ---
 
 # the orbit where i drift
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://exodrifter.bandcamp.com/track/the-orbit-where-i-drift">Bandcamp</a></div>
-<div><i class="ri-soundcloud-fill"></i> <a href="https://soundcloud.com/exodrifter/the-orbit-where-i-drift">SoundCloud</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-the-orbit-where-i-drift">vods</a></div>
 </div>
 

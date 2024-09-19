@@ -3,12 +3,14 @@ title: "don't leave"
 published: 2023-01-22
 aliases:
 - "don't leave"
+crossposts:
+- url: https://music.exodrifter.space/track/dont-leave
+  time: 2023-01-22
 ---
 
 # don't leave
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/dont-leave">Bandcamp</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-don-t-leave">vods</a></div>
 </div>
 

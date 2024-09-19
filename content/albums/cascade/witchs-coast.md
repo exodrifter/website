@@ -3,13 +3,16 @@ title: "witch's coast"
 published: 2021-12-06T00:39:46Z
 aliases:
 - "witch's coast"
+crossposts:
+- url: https://soundcloud.com/exodrifter/witchs-coast
+  time: 2021-12-06T00:39:46Z
+- url: https://music.exodrifter.space/track/witchs-coast
+  time: 2022-01-22
 ---
 
 # witch's coast
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://exodrifter.bandcamp.com/track/witchs-coast">Bandcamp</a></div>
-<div><i class="ri-soundcloud-fill"></i> <a href="https://soundcloud.com/exodrifter/witchs-coast">SoundCloud</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-witch-s-coast">vods</a></div>
 </div>
 

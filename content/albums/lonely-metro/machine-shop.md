@@ -3,12 +3,14 @@ title: machine shop
 published: 2023-01-22
 aliases:
 - machine shop
+crossposts:
+- url: https://music.exodrifter.space/track/machine-shop
+  time: 2023-01-22
 ---
 
 # machine shop
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/machine-shop">Bandcamp</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-machine-shop">vods</a></div>
 </div>
 

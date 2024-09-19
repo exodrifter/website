@@ -3,6 +3,11 @@ title: lunar projection
 published: 2021-12-10T21:47:46Z
 aliases:
 - lunar projection
+crossposts:
+- url: https://soundcloud.com/exodrifter/lunar-projection
+  time: 2021-12-10T21:47:46Z
+- url: https://music.exodrifter.space/track/lunar-projection
+  time: 2022-01-22
 ---
 
 # lunar projection

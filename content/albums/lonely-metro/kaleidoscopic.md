@@ -3,12 +3,14 @@ title: kaleidoscopic
 published: 2023-01-22
 aliases:
 - kaleidoscopic
+crossposts:
+- url: https://music.exodrifter.space/track/kaleidoscopic
+  time: 2023-01-22
 ---
 
 # kaleidoscopic
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/kaleidoscopic">Bandcamp</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-kaleidoscopic">vods</a></div>
 </div>
 

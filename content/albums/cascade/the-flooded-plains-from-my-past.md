@@ -3,6 +3,11 @@ title: the flooded plains from my past
 published: 2021-06-26T11:31:10Z
 aliases:
 - the flooded plains from my past
+crossposts:
+- url: https://soundcloud.com/exodrifter/the-flooded-plains-from-my-past
+  time: 2021-06-26T11:31:10Z
+- url: https://music.exodrifter.space/track/the-flooded-plains-from-my-past
+  time: 2022-01-22
 ---
 
 # the flooded plains from my past

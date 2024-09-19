@@ -3,15 +3,14 @@ title: cascade
 published: 2022-01-22
 aliases:
 - cascade
+crossposts:
+- url: https://music.exodrifter.space/album/cascade
+  time: 2022-01-22
 tag:
 - fl-studio
 ---
 
 # cascade
-
-<div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/album/cascade">Bandcamp</a></div>
-</div>
 
 <div style="width: 50%;">
 

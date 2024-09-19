@@ -3,14 +3,14 @@ title: apparition
 published: 2021-10-24T02:30:40Z
 aliases:
 - apparition
+crossposts:
+- url: https://soundcloud.com/exodrifter/apparition
+  time: 2021-10-24T02:30:40Z
+- url: https://music.exodrifter.space/track/apparition
+  time: 2022-01-22
 ---
 
 # apparition
-
-<div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/apparition">Bandcamp</a></div>
-<div><i class="ri-soundcloud-fill"></i> <a href="https://soundcloud.com/exodrifter/apparition">SoundCloud</a></div>
-</div>
 
 <div style="width: 50%;">
 

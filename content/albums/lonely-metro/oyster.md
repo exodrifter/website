@@ -3,13 +3,16 @@ title: oyster
 published: 2022-12-06T22:55:32Z
 aliases:
 - oyster
+crossposts:
+- url: https://soundcloud.com/exodrifter/oyster
+  time: 2022-12-06T22:55:32Z
+- url: https://music.exodrifter.space/track/oyster
+  time: 2023-01-22
 ---
 
 # oyster
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/oyster">Bandcamp</a></div>
-<div><i class="ri-soundcloud-fill"></i> <a href="https://soundcloud.com/exodrifter/oyster">SoundCloud</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-oyster">vods</a></div>
 </div>
 

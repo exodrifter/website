@@ -3,13 +3,16 @@ title: lost grimoires
 published: 2022-09-20T07:10:15Z
 aliases:
 - lost grimoires
+crossposts:
+- url: https://soundcloud.com/exodrifter/maples-lost-grimoires
+  time: 2022-12-06T22:55:32Z
+- url: https://music.exodrifter.space/track/lost-grimoires
+  time: 2023-01-22
 ---
 
 # lost grimoires
 
 <div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/lost-grimoires">Bandcamp</a></div>
-<div><i class="ri-soundcloud-fill"></i> <a href="https://soundcloud.com/exodrifter/maples-lost-grimoires">SoundCloud</a></div>
 <div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-lost-grimoires">vods</a></div>
 </div>
 
