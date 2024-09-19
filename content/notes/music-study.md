@@ -1,5 +1,7 @@
 ---
 title: Music Study
+created: 2024-08-14T17:15:39Z
+modified: 2024-09-18T16:44:49Z
 aliases:
 - Music Study
 tags:

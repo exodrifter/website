@@ -1,5 +1,7 @@
 ---
 title: no signal logs
+created: 2023-12-04
+modified: 2024-09-17T22:04:05Z
 aliases:
 - no signal logs
 - lost contact logs
