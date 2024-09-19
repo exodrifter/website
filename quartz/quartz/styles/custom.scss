@@ -29,9 +29,33 @@ ul.overflow::after {
   background: unset;
 }
 
+.backlinks li {
+  margin-top: 0.5rem;
+}
+
 .callout {
   overflow: hidden;
   backdrop-filter: blur(0.12rem);
+}
+
+.crossposts > h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.crossposts > ul {
+  margin: .5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.crossposts li {
+  margin-top: 0.5rem;
+}
+
+.crossposts img {
+  width: 1rem;
+  margin: 0;
 }
 
 .flex {
