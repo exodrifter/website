@@ -41,6 +41,7 @@ Opportunities to work on video games and functional software interest me. If you
 # albums
 
 - [lonely metro](albums/lonely-metro/index.md) (2023)
+- [cascade](albums/cascade/index.md) (2022)
 
 [See all albums...](albums/index.md)
 
