@@ -43,4 +43,5 @@ I used to consider this a [Godot crime](godot-crimes.md), but I have since chang
 # History
 
 - [20240704072433](../entries/20240704072433.md)
+- [godot lambdas do not capture by design](../blog/20231004033426.md)
 - [202310030153](../entries/202310030153.md)

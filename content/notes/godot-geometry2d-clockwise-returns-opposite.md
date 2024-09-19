@@ -17,4 +17,5 @@ I consider this issue to be a [Godot crime](godot-crimes.md).
 # History
 
 - [20240703190344](../entries/20240703190344.md)
+- [First Godot PR](../blog/20230729232005.md)
 - [202307280735](../entries/202307280735.md)
