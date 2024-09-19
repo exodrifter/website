@@ -12,11 +12,11 @@ title: index
 
 # blog
 
+- **2024-09-19** - [2d con is incredible](blog/20240919200017.md)
 - **2024-09-16** - [new website powered by quartz and nix](blog/20240916090424.md)
 - **2024-09-10** - [no signal demo](blog/20240910235854.md)
 - **2024-08-27** - [wonka's "a world of your own" hits different](blog/20240827054418.md)
 - **2024-04-21** - [ink lists are hell](blog/20240421231554.md)
-- **2024-03-18** - [why i make games](blog/20240318110956.md)
 
 [See all posts...](blog/index.md)
 
