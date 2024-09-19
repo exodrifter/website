@@ -14,4 +14,4 @@ Otherwise, the blender scene and any scenes containing blender scenes can be con
 
 ## History
 
-![20240616_212133](../entries/20240616_212133.md)
+![20240616212133](../entries/20240616212133.md)

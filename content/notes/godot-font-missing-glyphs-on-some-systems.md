@@ -14,4 +14,4 @@ Turning this setting off will ensure that the font will be rendered the same reg
 
 ## History
 
-![20240612_004207](../entries/20240612_004207.md)
+![20240612004207](../entries/20240612004207.md)

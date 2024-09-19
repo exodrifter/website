@@ -11,8 +11,8 @@ A [note-taking-strategy](note-taking-strategy.md) where each note contains a m
 
 ## History
 
-![20230528_0429](../entries/20230528_0429.md)
+![202305280429](../entries/202305280429.md)
 
-![20230529_0628](../entries/20230529_0628.md)
+![202305290628](../entries/202305290628.md)
 
-![20230529_0637](../entries/20230529_0637.md)
+![202305290637](../entries/202305290637.md)

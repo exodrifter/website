@@ -9,4 +9,4 @@ A single note treated as a mutable scratchpad to quickly write down something th
 
 # History
 
-![20230603_1700](../entries/20230603_1700.md)
+![202306031700](../entries/202306031700.md)

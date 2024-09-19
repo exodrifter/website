@@ -28,4 +28,4 @@ If you are trying to decompress an image previously compressed by `Image.compres
 
 ## History
 
-![20240806_165154](../entries/20240806_165154.md)
+![20240806165154](../entries/20240806165154.md)

@@ -20,4 +20,4 @@ get_viewport().push_input(event)
 
 ## History
 
-![20240625_210532](../entries/20240625_210532.md)
+![20240625210532](../entries/20240625210532.md)

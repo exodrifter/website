@@ -24,4 +24,4 @@ Setting `MINIO_CHECKSUM_ALGORITHM` in the configuration to `md5` should fix the 
 
 ## History
 
-![20240805_221730](../entries/20240805_221730.md)
+![20240805221730](../entries/20240805221730.md)

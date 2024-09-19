@@ -11,4 +11,4 @@ A [note-taking strategy](note-taking-strategy.md) which was been abandoned in fa
 
 # History
 
-![20230529_0637](../entries/20230529_0637.md)
+![202305290637](../entries/202305290637.md)

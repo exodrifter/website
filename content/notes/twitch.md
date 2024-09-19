@@ -12,6 +12,6 @@ My first recorded stream on this platform is from [September 12, 2019](https://v
 
 # History
 
-![20230601_0217](../entries/20230601_0217.md)
+![202306010217](../entries/202306010217.md)
 
-![20230601_0220](../entries/20230601_0220.md)
+![202306010220](../entries/202306010220.md)

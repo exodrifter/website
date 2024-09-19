@@ -12,6 +12,6 @@ I first started recording VODs on [April 12, 2019](https://vods.exodrifter.space
 
 # History
 
-![20221126_1732](../entries/20221126_1732.md)
+![202211261732](../entries/202211261732.md)
 
-![20230601_0213](../entries/20230601_0213.md)
+![202306010213](../entries/202306010213.md)

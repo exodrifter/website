@@ -20,8 +20,8 @@ I consider this issue to be a [Godot crime](godot-crimes.md).
 
 ## History
 
-![20240222_2021](../entries/20240222_2021.md)
+![202402222021](../entries/202402222021.md)
 
 ![i will alias all of your mutable buffers, actually](../blog/20240225042654.md)
 
-![20240703_194355](../entries/20240703_194355.md)
+![20240703194355](../entries/20240703194355.md)

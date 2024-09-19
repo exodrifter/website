@@ -11,4 +11,4 @@ Related:
 
 ## Ideas
 
-- Colors can be perceived as depth ([20240611_172440](../entries/20240611_172440.md))
+- Colors can be perceived as depth ([20240611172440](../entries/20240611172440.md))

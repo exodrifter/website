@@ -12,4 +12,4 @@ By default, `TextureRect` in Godot uses nearest filtering instead of linear filt
 
 # History
 
-![20240722_203732](../entries/20240722_203732.md)
+![20240722203732](../entries/20240722203732.md)

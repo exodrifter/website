@@ -20,4 +20,4 @@ This issue can be worked around by downgrading `libx11` to version `1.8.2-1`.
 
 ## History
 
-![20240805_225007](../entries/20240805_225007.md)
+![20240805225007](../entries/20240805225007.md)

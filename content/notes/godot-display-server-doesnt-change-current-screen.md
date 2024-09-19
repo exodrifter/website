@@ -12,4 +12,4 @@ For some reason, `DisplayServer` doesn't change the current screen when the wind
 
 ## History
 
-![20240718_190133](../entries/20240718_190133.md)
+![20240718190133](../entries/20240718190133.md)

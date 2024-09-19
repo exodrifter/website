@@ -16,4 +16,4 @@ Instead of using exported fields to store internal information, have the root sc
 
 ## History
 
-![20240604_191544](../entries/20240604_191544.md)
+![20240604191544](../entries/20240604191544.md)

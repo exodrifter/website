@@ -12,4 +12,4 @@ In Godot, mouse and touch inputs are treated as separate inputs and by default, 
 
 ## History
 
-![20240127_0014](../entries/20240127_0014.md)
+![202401270014](../entries/202401270014.md)

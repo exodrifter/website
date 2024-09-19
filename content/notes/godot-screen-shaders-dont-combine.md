@@ -14,4 +14,4 @@ For each screen shader, put it under a parent of type `CanvasLayer`, and set the
 
 ## History
 
-![20240604_154022](../entries/20240604_154022.md)
+![20240604154022](../entries/20240604154022.md)

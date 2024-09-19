@@ -42,6 +42,6 @@ I used to consider this a [Godot crime](godot-crimes.md), but I have since chang
 
 ## History
 
-![20231003_0153](../entries/20231003_0153.md)
+![202310030153](../entries/202310030153.md)
 
-![20240704_072433](../entries/20240704_072433.md)
+![20240704072433](../entries/20240704072433.md)

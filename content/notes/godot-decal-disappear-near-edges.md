@@ -17,4 +17,4 @@ A workaround for this issue is to add more padding to the decal texture.
 
 ## History
 
-![20240618_194223](../entries/20240618_194223.md)
+![20240618194223](../entries/20240618194223.md)

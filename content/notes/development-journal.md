@@ -11,6 +11,6 @@ This [note-taking strategy](note-taking-strategy.md) was abandoned in favor of t
 
 # History
 
-![20230528_0429](../entries/20230528_0429.md)
+![202305280429](../entries/202305280429.md)
 
-![20230528_1748](../entries/20230528_1748.md)
+![202305281748](../entries/202305281748.md)

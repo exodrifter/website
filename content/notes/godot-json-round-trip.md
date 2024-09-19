@@ -37,6 +37,6 @@ Instead, consider using `store_var` and `get_var` in `FileAccess` (see also: [Ar
 
 ## History
 
-![20240617_214349](../entries/20240617_214349.md)
+![20240617214349](../entries/20240617214349.md)
 
-![20240620_003315](../entries/20240620_003315.md)
+![20240620003315](../entries/20240620003315.md)

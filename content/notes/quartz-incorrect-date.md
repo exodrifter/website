@@ -20,4 +20,4 @@ This is because for these date types, the date is actually read from different f
 
 ## History
 
-![20240915_073724](../entries/20240915_073724.md)
+![20240915073724](../entries/20240915073724.md)

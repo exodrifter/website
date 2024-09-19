@@ -12,4 +12,4 @@ Many Godot functions allow for arbitrary code execution when a file is loaded. T
 
 ## History
 
-![20240620_003315](../entries/20240620_003315.md)
+![20240620003315](../entries/20240620003315.md)

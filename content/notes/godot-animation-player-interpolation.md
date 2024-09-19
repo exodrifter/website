@@ -18,6 +18,6 @@ The workaround for this is edit all key frames in all animations with null value
 
 ## History
 
-![20240503_1856](../entries/20240503_1856.md)
+![202405031856](../entries/202405031856.md)
 
-![20240527_095110](../entries/20240527_095110.md)
+![20240527095110](../entries/20240527095110.md)

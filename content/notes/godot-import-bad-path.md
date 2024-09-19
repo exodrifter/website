@@ -24,4 +24,4 @@ However, at least as of Godot 4.2.2, Godot will not let you update these propert
 
 ## History
 
-![20240616_174856](../entries/20240616_174856.md)
+![20240616174856](../entries/20240616174856.md)

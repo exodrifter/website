@@ -22,4 +22,4 @@ I consider this issue to be a [Godot crime](godot-crimes.md).
 
 ## History
 
-![20231212_0058](../entries/20231212_0058.md)
+![202312120058](../entries/202312120058.md)

@@ -18,4 +18,4 @@ I consider this issue to be a [Godot crime](godot-crimes.md).
 
 ## History
 
-![20240313_0348](../entries/20240313_0348.md)
+![202403130348](../entries/202403130348.md)

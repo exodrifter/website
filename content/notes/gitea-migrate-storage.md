@@ -30,4 +30,4 @@ You may have to rename the `actions-log` and `actions-artifacts` to `actions_log
 
 ## History
 
-![20240803_164302](../entries/20240803_164302.md)
+![20240803164302](../entries/20240803164302.md)
