@@ -3,6 +3,8 @@ title: Subject note
 aliases:
 - Subject note
 - Subject notes
+tags:
+- note-taking
 ---
 
 # Subject note

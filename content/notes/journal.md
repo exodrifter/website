@@ -3,6 +3,8 @@ title: Journal
 aliases:
 - Journal
 - Journals
+tags:
+- note-taking
 ---
 
 # Journal

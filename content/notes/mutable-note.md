@@ -3,6 +3,8 @@ title: Mutable note
 aliases:
 - Mutable note
 - Mutable notes
+tags:
+- note-taking
 ---
 
 # Mutable note

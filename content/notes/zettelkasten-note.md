@@ -3,6 +3,8 @@ title: Zettelkasten Note
 aliases:
 - Zettelkasten Note
 - Zettelkasten Notes
+tags:
+- note-taking
 ---
 
 # Zettelkasten Note

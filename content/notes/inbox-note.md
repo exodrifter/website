@@ -2,6 +2,8 @@
 title: Inbox Note
 aliases:
 - Inbox Note
+tags:
+- note-taking
 ---
 # Inbox Note
 

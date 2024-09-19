@@ -3,6 +3,8 @@ title: Development Journal
 aliases:
 - Dev Journal
 - Development Journal
+tags:
+- note-taking
 ---
 
 # Development Journal

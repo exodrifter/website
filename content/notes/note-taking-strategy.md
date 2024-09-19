@@ -4,6 +4,7 @@ aliases:
 - note-taking strategy
 - note-taking strategies
 tags:
+- note-taking
 - obsidian
 ---
 
