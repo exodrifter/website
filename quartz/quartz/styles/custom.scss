@@ -16,7 +16,6 @@ h1::before {
   margin-right: 0.5rem;
   top: 0.25rem;
   position: relative;
-  opacity: 0.8;
 }
 
 h2::before {
@@ -24,11 +23,14 @@ h2::before {
   margin-right: 0.5rem;
   top: 0.4rem;
   position: relative;
-  opacity: 0.8;
 }
 
 ul.overflow::after {
   background: unset;
+}
+
+.callout {
+  backdrop-filter: blur(0.12rem);
 }
 
 .flex {
@@ -50,10 +52,6 @@ ul.overflow::after {
       margin: 0;
     }
   }
-}
-
-.callout {
-  backdrop-filter: blur(0.12rem);
 }
 
 .left {
