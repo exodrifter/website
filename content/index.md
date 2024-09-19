@@ -4,9 +4,6 @@ aliases:
 - exodrifter
 ---
 
-> [!warning]
-> This blog is being actively developed, links might break!
-
 # about
 
 <div style="display: flex; flex-direction: row; align-items: center;">
