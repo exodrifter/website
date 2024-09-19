@@ -22,6 +22,6 @@ This error happens when the `save_to_file/path` value is set to a path which doe
 
 However, at least as of Godot 4.2.2, Godot will not let you update these properties in the advanced import settings dialog. You can change them in the dialog, but your changes will be reverted when the dialog is closed. To get around this issue, close Godot and edit the `.import` file for the affected resources directly.
 
-## History
+# History
 
-![20240616174856](../entries/20240616174856.md)
+- [20240616174856](../entries/20240616174856.md)

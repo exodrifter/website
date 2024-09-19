@@ -10,6 +10,6 @@ tags:
 
 Many Godot functions allow for arbitrary code execution when a file is loaded. To avoid this vulnerability, you can use `get_var` and `store_var` from `FileAccess`.
 
-## History
+# History
 
-![20240620003315](../entries/20240620003315.md)
+- [20240620003315](../entries/20240620003315.md)

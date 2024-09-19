@@ -26,6 +26,6 @@ Instead of using `inverse`, you should always use `affine_inverse` instead.
 
 I consider this issue to be a [Godot crime](godot-crimes.md).
 
-## History
+# History
 
-![202312251644](../entries/202312251644.md)
+- [202312251644](../entries/202312251644.md)

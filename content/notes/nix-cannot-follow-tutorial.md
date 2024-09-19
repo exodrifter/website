@@ -19,6 +19,6 @@ nix-channel --update
 
 **The shell cannot find cowsay or lolcat.** This may be because you have a `.bashrc` or `.bash_profile` script which modifies the `PATH` in some way that prevents `nix` from modifying it as expected. You also might have a line that launches another shell, like `exec fish` which causes this problem.
 
-## History
+# History
 
-![20240812075541](../entries/20240812075541.md)
+- [20240812075541](../entries/20240812075541.md)

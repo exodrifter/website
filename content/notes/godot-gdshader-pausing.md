@@ -29,8 +29,7 @@ func _process(delta: float) -> void:
 
  In order to work, a global shader parameter with the name `SCALED_TIME` needs to exist in the project settings and this code needs be added to an autoloaded singleton.
 
-## History
+# History
 
-![202403281816](../entries/202403281816.md)
-
-![20240530054616](../entries/20240530054616.md)
+- [20240530054616](../entries/20240530054616.md)
+- [202403281816](../entries/202403281816.md)

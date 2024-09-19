@@ -12,6 +12,6 @@ Only the last screen shader in the tree will be used if multiple screen shaders 
 
 For each screen shader, put it under a parent of type `CanvasLayer`, and set the `layer` property of the `CanvasLayer` to the correct number such that the effects are in the desired order.
 
-## History
+# History
 
-![20240604154022](../entries/20240604154022.md)
+- [20240604154022](../entries/20240604154022.md)

@@ -28,6 +28,6 @@ done
 
 You may have to rename the `actions-log` and `actions-artifacts` to `actions_log` and `actions_artifacts` respectively depending on how your paths are configured in Gitea.
 
-## History
+# History
 
-![20240803164302](../entries/20240803164302.md)
+- [20240803164302](../entries/20240803164302.md)

@@ -40,8 +40,7 @@ func foobar():
 
 I used to consider this a [Godot crime](godot-crimes.md), but I have since changed my mind.
 
-## History
+# History
 
-![202310030153](../entries/202310030153.md)
-
-![20240704072433](../entries/20240704072433.md)
+- [20240704072433](../entries/20240704072433.md)
+- [202310030153](../entries/202310030153.md)

@@ -24,13 +24,3 @@ There are a few note-taking strategies I used to use:
 * [Development Journal](development-journal.md); was replaced by the [Journal](journal.md) strategy.
 * [Journal](notes/journal.md); using the [Zettelkasten Note](notes/zettelkasten-note.md) strategy instead.
 * [Mutable note](mutable-note.md); using the [Subject Note](subject-note.md) strategy instead.
-
-# History
-
-![202305280429](../entries/202305280429.md)
-
-![202305281748](../entries/202305281748.md)
-
-![202305290637](../entries/202305290637.md)
-
-![20240724200049](../entries/20240724200049.md)

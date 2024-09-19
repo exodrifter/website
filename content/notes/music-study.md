@@ -2,6 +2,8 @@
 title: Music Study
 aliases:
 - Music Study
+tags:
+- log
 ---
 
 # Music Study

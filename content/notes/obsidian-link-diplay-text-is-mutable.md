@@ -4,7 +4,6 @@ aliases:
 - Obsidian link display text is mutable
 ---
 
-
 # Obsidian link display text is mutable
 
 The display text for internal links in Obsidian is **not** immutable.
@@ -21,8 +20,6 @@ This problem could be worked around by adding the display text used in the inter
 
 # History
 
-![202305300005](../entries/202305300005.md)
-
-![202306020039](../entries/202306020039.md)
-
-![20240724210051](../entries/20240724210051.md)
+- [20240724210051](../entries/20240724210051.md)
+- [202306020039](../entries/202306020039.md)
+- [202305300005](../entries/202305300005.md)

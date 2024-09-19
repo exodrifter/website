@@ -28,4 +28,4 @@ Changing the color to `currentColor` is not sufficient for setting the color of 
 
 # History
 
-![20240915101218](../entries/20240915101218.md)
+- [20240915101218](../entries/20240915101218.md)

@@ -18,10 +18,8 @@ For example, if you have a scene which inherits another and that scene exports a
 
 I consider this issue to be a [Godot crime](godot-crimes.md).
 
-## History
+# History
 
-![202402222021](../entries/202402222021.md)
-
-![i will alias all of your mutable buffers, actually](../blog/20240225042654.md)
-
-![20240703194355](../entries/20240703194355.md)
+- [20240703194355](../entries/20240703194355.md)
+- [i will alias all of your mutable buffers, actually](../blog/20240225042654.md)
+- [202402222021](../entries/202402222021.md)

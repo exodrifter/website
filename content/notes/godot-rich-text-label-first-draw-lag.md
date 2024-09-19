@@ -48,8 +48,7 @@ func _draw() -> void:
 
 Unfortunately, `TextParagraph` does not support BBCode.
 
-## History
+# History
 
-![20240607184945](../entries/20240607184945.md)
-
-![20240611220958](../entries/20240611220958.md)
+- [20240611220958](../entries/20240611220958.md)
+- [20240607184945](../entries/20240607184945.md)

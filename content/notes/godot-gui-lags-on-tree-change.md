@@ -19,10 +19,8 @@ In Godot 4.0, having a large tree of `Control` nodes can result in lag whenever 
 The GUI can lag for a number of other reasons:
 - [`RichTextLabel` lags on first draw](godot-rich-text-label-first-draw-lag.md)
 
-## History
+# History
 
-![20240530172341](../entries/20240530172341.md)
-
-![20240604190518](../entries/20240604190518.md)
-
-![20240607184945](../entries/20240607184945.md)
+- [20240607184945](../entries/20240607184945.md)
+- [20240604190518](../entries/20240604190518.md)
+- [20240530172341](../entries/20240530172341.md)

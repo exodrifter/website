@@ -14,6 +14,6 @@ When an imported scene is duplicated, the exported values on the root of the `Pa
 
 Instead of using exported fields to store internal information, have the root script determine the information somehow (for example, by storing the information at a special path internally). Try to only export fields you want the user to configure when it is instantiated.
 
-## History
+# History
 
-![20240604191544](../entries/20240604191544.md)
+- [20240604191544](../entries/20240604191544.md)

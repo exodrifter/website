@@ -17,7 +17,7 @@ In order to use avoidance, it's not enough to enable the setting. You also need 
 
 # History
 
-![202305310209](../entries/202305310209.md)
-![202305310218](../entries/202305310218.md)
-![202305310226](../entries/202305310226.md)
-![202305310236](../entries/202305310236.md)
+- [202305310236](../entries/202305310236.md)
+- [202305310226](../entries/202305310226.md)
+- [202305310218](../entries/202305310218.md)
+- [202305310209](../entries/202305310209.md)

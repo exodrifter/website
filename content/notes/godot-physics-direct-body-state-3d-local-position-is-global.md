@@ -18,6 +18,6 @@ Despite the function being labeled as a "local" position, the documentation here
 
 I consider this issue to be a [Godot crime](godot-crimes.md).
 
-## History
+# History
 
-![20240703184120](../entries/20240703184120.md)
+- [20240703184120](../entries/20240703184120.md)

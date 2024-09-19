@@ -22,6 +22,6 @@ This happens because some object storage services like Backblaze and Cloudflare 
 
 Setting `MINIO_CHECKSUM_ALGORITHM` in the configuration to `md5` should fix the error.
 
-## History
+# History
 
-![20240805221730](../entries/20240805221730.md)
+- [20240805221730](../entries/20240805221730.md)

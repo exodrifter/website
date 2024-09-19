@@ -20,6 +20,6 @@ To fix this issue, use the `@tool` annotation on all scripts that contain functi
 
 I consider this issue to be a [Godot crime](godot-crimes.md).
 
-## History
+# History
 
-![202312120058](../entries/202312120058.md)
+- [202312120058](../entries/202312120058.md)

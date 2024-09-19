@@ -18,6 +18,6 @@ This works if `defaultDateType` is set to `created`. However, you might find tha
 
 This is because for these date types, the date is actually read from different fields in the default `CreatedModifiedDate` plugin. For `modified`, the field is read from `lastmod`, `updated`, or `last-modified`. For `published`, the date is read from `publishDate`.
 
-## History
+# History
 
-![20240915073724](../entries/20240915073724.md)
+- [20240915073724](../entries/20240915073724.md)

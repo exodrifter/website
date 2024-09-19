@@ -26,6 +26,6 @@ However, the decompress function may still return `ERR_UNAVAILABLE` anyway when 
 
 If you are trying to decompress an image previously compressed by `Image.compress`, it appears that only `COMPRESS_S3TC` can be decompressed at runtime with the default export template.
 
-## History
+# History
 
-![20240806165154](../entries/20240806165154.md)
+- [20240806165154](../entries/20240806165154.md)

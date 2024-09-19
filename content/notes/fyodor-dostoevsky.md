@@ -6,4 +6,4 @@ aliases:
 
 # Fyodor Dostoevsky
 
-**Fyodor Dostoevsky** is the author of [The Idiot](the-idiot.md) ([20240529050749](../entries/20240529050749.md).
+**Fyodor Dostoevsky** is the author of [The Idiot](the-idiot.md). ([20240529050749](../entries/20240529050749.md))

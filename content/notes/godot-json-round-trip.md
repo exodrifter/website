@@ -35,8 +35,7 @@ Value is Vector2i? false
 
 Instead, consider using `store_var` and `get_var` in `FileAccess` (see also: [Arbitrary Code Execution in Godot serialization](godot-serialize-arbitrary-code-execution.md))
 
-## History
+# History
 
-![20240617214349](../entries/20240617214349.md)
-
-![20240620003315](../entries/20240620003315.md)
+- [20240620003315](../entries/20240620003315.md)
+- [20240617214349](../entries/20240617214349.md)

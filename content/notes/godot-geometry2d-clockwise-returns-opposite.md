@@ -14,8 +14,7 @@ I opened [godotengine/godot#89635](https://github.com/godotengine/godot/pull/896
 
 I consider this issue to be a [Godot crime](godot-crimes.md).
 
-## History
+# History
 
-![202307280735](../entries/202307280735.md)
-
-![20240703190344](../entries/20240703190344.md)
+- [20240703190344](../entries/20240703190344.md)
+- [202307280735](../entries/202307280735.md)

@@ -15,6 +15,6 @@ The edge of a decal can sometimes disappear when viewed from certain angles in G
 
 A workaround for this issue is to add more padding to the decal texture.
 
-## History
+# History
 
-![20240618194223](../entries/20240618194223.md)
+- [20240618194223](../entries/20240618194223.md)

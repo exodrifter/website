@@ -16,8 +16,7 @@ In Godot 4.2.1, an `AnimationPlayer` won't interpolate a new shader parameter tr
 
 The workaround for this is edit all key frames in all animations with null values to a value different from the initial value. This causes the type to be assigned properly. After this is done, the value can be set back to the default value.
 
-## History
+# History
 
-![202405031856](../entries/202405031856.md)
-
-![20240527095110](../entries/20240527095110.md)
+- [20240527095110](../entries/20240527095110.md)
+- [202405031856](../entries/202405031856.md)

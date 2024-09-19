@@ -12,6 +12,6 @@ In order for Godot to import `.blend` files, the `filesystem/import/blender/blen
 
 Otherwise, the blender scene and any scenes containing blender scenes can be considered invalid or corrupt by Godot.
 
-## History
+# History
 
-![20240616212133](../entries/20240616212133.md)
+- [20240616212133](../entries/20240616212133.md)

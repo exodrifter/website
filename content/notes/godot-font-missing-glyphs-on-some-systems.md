@@ -12,6 +12,6 @@ tags:
 
 Turning this setting off will ensure that the font will be rendered the same regardless of whose system it is running on.
 
-## History
+# History
 
-![20240612004207](../entries/20240612004207.md)
+- [20240612004207](../entries/20240612004207.md)

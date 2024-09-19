@@ -16,6 +16,6 @@ See: [godotengine/godot#86300](https://github.com/godotengine/godot/issues/86300
 
 I consider this issue to be a [Godot crime](godot-crimes.md).
 
-## History
+# History
 
-![202403130348](../entries/202403130348.md)
+- [202403130348](../entries/202403130348.md)
