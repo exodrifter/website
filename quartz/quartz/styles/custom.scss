@@ -37,6 +37,12 @@ ul.overflow::after {
   margin-top: 0.5rem;
 }
 
+.banner img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
 .callout {
   overflow: hidden;
   backdrop-filter: blur(0.12rem);
