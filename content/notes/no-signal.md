@@ -14,53 +14,55 @@ These are the development notes for _no signal_. For more information, see the [
 
 # log
 
-- 2023-12-04: **prototype**
-- 2024-02-21: **v0.1**
-- 2024-02-22: **v0.2**, [Austin Glitch State](austin-glitch-state.md) ([20240724_214606](../entries/20240724_214606.md))
-- 2024-04-13: **v0.4**, **v0.5**, [STAPLE! Austin](staple-austin.md) ([20240724_222036](../entries/20240724_222036.md), [an indie dev's notes about staple! austin](../blog/20240415.md))
-- 2024-05-12: **v0.6**
-- 2024-05-13: **v0.7**
-- 2024-05-27: [044326 (stream 83)](../entries/20240528_044326.md), [045458](../entries/20240528_045458.md)
-- 2024-05-28: [034807 (stream 84)](../entries/20240529_034807.md)
-- 2024-05-29: [195943](../entries/20240529_195943.md)
-- 2024-05-30: [172341](../entries/20240530_172341.md), [205828 (stream 85)](../entries/20240530_205828.md)
-- 2024-05-31: [220748 (stream 86)](../entries/20240531_220748.md)
-- 2024-06-03: [170733](../entries/20240603_170733.md)
-- 2024-06-04: **v0.8**, [161954 (stream 87)](../entries/20240604_161954.md)
-- 2024-06-05: [172228](../entries/20240605_172228.md)
-- 2024-06-07: [214912 (stream 88)](../entries/20240607_214912.md)
-- 2024-06-10: [023202 (stream 89)](../entries/20240611_023202.md)
-- 2024-06-11: [220834 (stream 90)](../entries/20240611_220834.md)
-- 2024-06-17: [194336 (stream 91)](../entries/20240617_194336.md)
-- 2024-06-18: [201145 (stream 92)](../entries/20240618_201145.md)
-- 2024-06-20: [054416 (stream 93)](../entries/20240621_054416.md), [054605](../entries/20240621_054605.md)
-- 2024-06-21: [214324 (stream 94)](../entries/20240621_214324.md)
-- 2024-06-24: [174442 (stream 95)](../entries/20240625_174442.md)
-- 2024-06-25: [210415 (stream 96)](../entries/20240625_210415.md)
-- 2024-06-26: [061122 (stream 97)](../entries/20240627_061122.md)
-- 2024-06-27: **v0.9**, [080504 (stream 98)](../entries/20240629_080504.md), [Austin Glitch State](austin-glitch-state.md) ([20240724_214606](../entries/20240724_214606.md))
-- 2024-07-02: [212436 (stream 99)](../entries/20240702_212436.md)
-- 2024-07-05: [145900 (stream 100)](../entries/20240705_145900.md)
-- 2024-07-12: **v0.10**, [Delta H Con](delta-h-con.md) ([20240724_213535](../entries/20240724_213535.md), [delta h con is a mess](../blog/20240716.md))
-- 2024-07-22: [162416 (stream 101)](../entries/20240722_162416.md)
-- 2024-07-25: **v0.11**, [192146 (stream 103)](../entries/20240725_192146.md)
-- 2024-07-26: [215210 (stream 104)](../entries/20240726_215210.md)
-- 2024-07-29: **v0.12**, **v0.13**, [230310 (stream 105)](../entries/20240729_230310.md)
-- 2024-08-01: [222015 (stream 106)](../entries/20240801_222015.md)
-- 2024-08-02: [192115 (stream 107)](../entries/20240802_192115.md)
-- 2024-08-04: [194138](../entries/20240804_194138.md)
-- 2024-08-05: **v0.14**, [181209 (stream 108)](../entries/20240805_181209.md)
-- 2024-08-06: **v0.15**, [165154](../entries/20240806_165154.md)
-- 2024-08-16: **v0.16**, **v0.17**
-- 2024-08-19: [210102 (stream 110)](../entries/20240819_210102.md)
-- 2024-08-20: **v0.18**, [214005 (stream 111)](../entries/20240820_214005.md)
-- 2024-08-25: [2D Con](2d-con.md) ([20240724_220117](../entries/20240724_220117.md), [20240827_210622](../entries/20240827_210622.md))
-- 2024-08-27: [211406 (stream 112)](../entries/20240827_211406.md)
-- 2024-08-28: **v0.19**, [195545 (stream 113)](../entries/20240828_195545.md)
-- 2024-09-01: [San Japan](san-japan.md) ([20240724_220452](../entries/20240724_220452.md), [20240906_154815](../entries/20240906_154815.md))
-- 2024-09-06: [155620 (stream 114)](../entries/20240906_155620.md)
-- 2024-09-09: **v0.20**, **v0.21**, [181827 (stream 115)](../entries/20240909_181827.md)
-- 2024-09-10: **v0.22**, [210403](../entries/20240910_210403.md)
-- 2024-09-12: **v0.23**, [182833 (stream 116)](../entries/20240912_182833.md)
-- 2024-09-14: **v0.24**, [180208 (stream 117)](../entries/20240914_180208.md)
-- 2024-09-17: **v0.25**, [180208 (stream 118)](20240917_220405.md)
+| date | version | notes |
+|------|---------|-------|
+| <span class="timestamp">2023-12-04</span> | prototype ||
+| <span class="timestamp">2024-02-21</span> | v0.1 ||
+| <span class="timestamp">2024-02-22</span> | v0.2 | [Austin Glitch State](austin-glitch-state.md) |
+| <span class="timestamp">2024-04-13</span> | v0.4, v0.5 | [STAPLE! Austin](staple-austin.md) ([20240415](../blog/20240415.md)) |
+| <span class="timestamp">2024-05-12</span> | v0.6 ||
+| <span class="timestamp">2024-05-13</span> | v0.7 ||
+| <span class="timestamp">2024-05-27</span> || [044326 (stream 83)](../entries/20240528_044326.md), [045458](../entries/20240528_045458.md) |
+| <span class="timestamp">2024-05-28</span> || [034807 (stream 84)](../entries/20240529_034807.md) |
+| <span class="timestamp">2024-05-29</span> || [195943](../entries/20240529_195943.md) |
+| <span class="timestamp">2024-05-30</span> || [172341](../entries/20240530_172341.md), [205828 (stream 85)](../entries/20240530_205828.md) |
+| <span class="timestamp">2024-05-31</span> || [220748 (stream 86)](../entries/20240531_220748.md) |
+| <span class="timestamp">2024-06-03</span> || [170733](../entries/20240603_170733.md) |
+| <span class="timestamp">2024-06-04</span> | v0.8 | [161954 (stream 87)](../entries/20240604_161954.md) |
+| <span class="timestamp">2024-06-05</span> || [172228](../entries/20240605_172228.md) |
+| <span class="timestamp">2024-06-07</span> || [214912 (stream 88)](../entries/20240607_214912.md) |
+| <span class="timestamp">2024-06-10</span> || [023202 (stream 89)](../entries/20240611_023202.md) |
+| <span class="timestamp">2024-06-11</span> || [220834 (stream 90)](../entries/20240611_220834.md) |
+| <span class="timestamp">2024-06-17</span> || [194336 (stream 91)](../entries/20240617_194336.md) |
+| <span class="timestamp">2024-06-18</span> || [201145 (stream 92)](../entries/20240618_201145.md) |
+| <span class="timestamp">2024-06-20</span> || [054416 (stream 93)](../entries/20240621_054416.md), [054605](../entries/20240621_054605.md) |
+| <span class="timestamp">2024-06-21</span> || [214324 (stream 94)](../entries/20240621_214324.md) |
+| <span class="timestamp">2024-06-24</span> || [174442 (stream 95)](../entries/20240625_174442.md) |
+| <span class="timestamp">2024-06-25</span> || [210415 (stream 96)](../entries/20240625_210415.md) |
+| <span class="timestamp">2024-06-26</span> || [061122 (stream 97)](../entries/20240627_061122.md) |
+| <span class="timestamp">2024-06-27</span> | v0.9 | [080504 (stream 98)](../entries/20240629_080504.md), [Austin Glitch State](austin-glitch-state.md) |
+| <span class="timestamp">2024-07-02</span> || [212436 (stream 99)](../entries/20240702_212436.md) |
+| <span class="timestamp">2024-07-05</span> || [145900 (stream 100)](../entries/20240705_145900.md) |
+| <span class="timestamp">2024-07-12</span> | v0.10 | [Delta H Con](delta-h-con.md) ([20240716](../blog/20240716.md)) |
+| <span class="timestamp">2024-07-22</span> || [162416 (stream 101)](../entries/20240722_162416.md) |
+| <span class="timestamp">2024-07-25</span> | v0.11 | [192146 (stream 103)](../entries/20240725_192146.md) |
+| <span class="timestamp">2024-07-26</span> || [215210 (stream 104)](../entries/20240726_215210.md) |
+| <span class="timestamp">2024-07-29</span> | v0.12, v0.13 | [230310 (stream 105)](../entries/20240729_230310.md) |
+| <span class="timestamp">2024-08-01</span> || [222015 (stream 106)](../entries/20240801_222015.md) |
+| <span class="timestamp">2024-08-02</span> || [192115 (stream 107)](../entries/20240802_192115.md) |
+| <span class="timestamp">2024-08-04</span> || [194138](../entries/20240804_194138.md) |
+| <span class="timestamp">2024-08-05</span> | v0.14 | [181209 (stream 108)](../entries/20240805_181209.md) |
+| <span class="timestamp">2024-08-06</span> | v0.15 | [165154](../entries/20240806_165154.md) |
+| <span class="timestamp">2024-08-16</span> | v0.16, v0.17 ||
+| <span class="timestamp">2024-08-19</span> || [210102 (stream 110)](../entries/20240819_210102.md) |
+| <span class="timestamp">2024-08-20</span> | v0.18 | [214005 (stream 111)](../entries/20240820_214005.md) |
+| <span class="timestamp">2024-08-25</span> || [2D Con](2d-con.md) ([20240827_210622](../entries/20240827_210622.md)) |
+| <span class="timestamp">2024-08-27</span> || [211406 (stream 112)](../entries/20240827_211406.md) |
+| <span class="timestamp">2024-08-28</span> | v0.19 | [195545 (stream 113)](../entries/20240828_195545.md) |
+| <span class="timestamp">2024-09-01</span> || [San Japan](san-japan.md) ([20240906_154815](../entries/20240906_154815.md)) |
+| <span class="timestamp">2024-09-06</span> || [155620 (stream 114)](../entries/20240906_155620.md) |
+| <span class="timestamp">2024-09-09</span> | v0.20, v0.21 | [181827 (stream 115)](../entries/20240909_181827.md) |
+| <span class="timestamp">2024-09-10</span> | v0.22 | [210403](../entries/20240910_210403.md) |
+| <span class="timestamp">2024-09-12</span> | v0.23 | [182833 (stream 116)](../entries/20240912_182833.md) |
+| <span class="timestamp">2024-09-14</span> | v0.24 | [180208 (stream 117)](../entries/20240914_180208.md) |
+| <span class="timestamp">2024-09-17</span> | v0.25 | [180208 (stream 118)](20240917_220405.md) |

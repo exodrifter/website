@@ -13,7 +13,7 @@ Related:
 
 ## Works
 
-- [no signal](no-signal.md)
+- [no signal](../press-kits/no-signal.md)
 - [On Mars](on-mars.md)
 - [On Mars: Alien Invasion](on-mars-alien-invasion.md)
 - [Solaris (1972)](solaris.md)

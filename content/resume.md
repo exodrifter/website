@@ -7,7 +7,7 @@ Experienced Software Engineer with a demonstrated history of working in the soft
 # experience
 
 **Indie Game Developer <span style="float: right;">February 2022 - Present</span>**
-- I extensively develop games live on [Twitch](twitch.tv/exodrifter_), where I'm currently working on [no signal](notes/no-signal.md)
+- I extensively develop games live on [Twitch](twitch.tv/exodrifter_), where I'm currently working on [no signal](press-kits/no-signal.md)
 - Self-published a game named _[Gender Dysphoria](press-kits/gender-dysphoria.md)_
 - Worked with a publisher to make _[voluntary commitment](press-kits/voluntary-commitment.md)_
 

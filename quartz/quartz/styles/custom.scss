@@ -74,3 +74,12 @@ ul.overflow::after {
     grid-area: 2/2/3/3;
   }
 }
+
+.table-container > table {
+  margin: 0;
+  width: 100%
+}
+
+.timestamp {
+  font-family: var(--codeFont);
+}
