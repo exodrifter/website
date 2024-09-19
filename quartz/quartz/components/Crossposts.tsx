@@ -101,6 +101,19 @@ const Crossposts: QuartzComponent = ({
                 </li>
               )
 
+            case "youtube.com":
+            case "www.youtube.com":
+              return (
+                <li>
+                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <br/>
+                  <i class="ri-youtube-fill"></i>&nbsp;
+                  <a href={f.url} class="external">
+                    YouTube
+                  </a>
+                </li>
+              )
+
             default:
               return (
                 <li>
