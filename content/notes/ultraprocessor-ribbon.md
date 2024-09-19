@@ -13,4 +13,6 @@ These are the development notes for _Ultraprocessor Ribbon_. For more informatio
 
 ## Log
 
-- 2024-06-16: [174856](../entries/20240616_174856.md), [212133](../entries/20240616_212133.md)
+| date | version | notes |
+|------|---------|-------|
+| <span class="timestamp">2024-06-16</span> || [174856](../entries/20240616_174856.md), [212133](../entries/20240616_212133.md) |
