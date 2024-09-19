@@ -1,6 +1,6 @@
 ---
 title: starfire funk
-published: 2022-09-13
+published: 2022-09-14T04:33:50Z
 aliases:
 - starfire funk
 ---

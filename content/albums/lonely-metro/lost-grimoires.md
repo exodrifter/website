@@ -1,6 +1,6 @@
 ---
 title: lost grimoires
-published: 2022-09-20
+published: 2022-09-20T07:10:15Z
 aliases:
 - lost grimoires
 ---

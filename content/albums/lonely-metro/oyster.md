@@ -1,6 +1,6 @@
 ---
 title: oyster
-published: 2022-12-06
+published: 2022-12-06T22:55:32Z
 aliases:
 - oyster
 ---

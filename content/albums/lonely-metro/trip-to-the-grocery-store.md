@@ -1,6 +1,6 @@
 ---
 title: trip to the grocery store
-published: 2022-06-18
+published: 2022-06-18T06:57:13Z
 aliases:
 - trip to the grocery store
 ---
