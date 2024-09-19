@@ -19,7 +19,7 @@ These are the development notes for _no signal_. For more information, see the [
 | <span class="timestamp">2023-12-04</span> | prototype ||
 | <span class="timestamp">2024-02-21</span> | v0.1 ||
 | <span class="timestamp">2024-02-22</span> | v0.2 | [Austin Glitch State](austin-glitch-state.md) |
-| <span class="timestamp">2024-04-13</span> | v0.4, v0.5 | [STAPLE! Austin](staple-austin.md) ([20240415](../blog/20240415.md)) |
+| <span class="timestamp">2024-04-13</span> | v0.4, v0.5 | [STAPLE! Austin](staple-austin.md) ([20240415180849](../blog/20240415180849.md)) |
 | <span class="timestamp">2024-05-12</span> | v0.6 ||
 | <span class="timestamp">2024-05-13</span> | v0.7 ||
 | <span class="timestamp">2024-05-27</span> || [044326 (stream 83)](../entries/20240528_044326.md), [045458](../entries/20240528_045458.md) |
@@ -43,7 +43,7 @@ These are the development notes for _no signal_. For more information, see the [
 | <span class="timestamp">2024-06-27</span> | v0.9 | [080504 (stream 98)](../entries/20240629_080504.md), [Austin Glitch State](austin-glitch-state.md) |
 | <span class="timestamp">2024-07-02</span> || [212436 (stream 99)](../entries/20240702_212436.md) |
 | <span class="timestamp">2024-07-05</span> || [145900 (stream 100)](../entries/20240705_145900.md) |
-| <span class="timestamp">2024-07-12</span> | v0.10 | [Delta H Con](delta-h-con.md) ([20240716](../blog/20240716.md)) |
+| <span class="timestamp">2024-07-12</span> | v0.10 | [Delta H Con](delta-h-con.md) ([20240716080346](../blog/20240716080346.md)) |
 | <span class="timestamp">2024-07-22</span> || [162416 (stream 101)](../entries/20240722_162416.md) |
 | <span class="timestamp">2024-07-25</span> | v0.11 | [192146 (stream 103)](../entries/20240725_192146.md) |
 | <span class="timestamp">2024-07-26</span> || [215210 (stream 104)](../entries/20240726_215210.md) |
