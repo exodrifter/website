@@ -8,8 +8,10 @@ tags:
 
 # Music Study
 
-- [20240814171539](../entries/20240814171539.md)
-- [20240828164626](../entries/20240828164626.md)
-- [20240904164842](../entries/20240904164842.md)
-- [20240912175355](../entries/20240912175355.md)
-- [20240918164449](../entries/20240918164449.md)
+| date | notes |
+|------|-------|
+| <span class="timestamp">2024-09-18</span> | [164449](../entries/20240918164449.md) |
+| <span class="timestamp">2024-09-12</span> | [175355](../entries/20240912175355.md) |
+| <span class="timestamp">2024-09-04</span> | [164842](../entries/20240904164842.md) |
+| <span class="timestamp">2024-08-28</span> | [164626](../entries/20240828164626.md) |
+| <span class="timestamp">2024-08-14</span> | [171539](../entries/20240814171539.md) |
