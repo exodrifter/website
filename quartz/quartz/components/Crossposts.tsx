@@ -29,7 +29,7 @@ const Crossposts: QuartzComponent = ({
             case "exodrifter.bandcamp.com":
               return (
                 <li>
-                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <time datetime={f.time}>{formatDate(new Date(f.time)!, cfg.locale)}</time>
                   <br/>
                   <img src="/static/bandcamp.svg"/>&nbsp;
                   <a href={f.url} class="external">
@@ -42,7 +42,7 @@ const Crossposts: QuartzComponent = ({
             case "www.cohost.org":
               return (
                 <li>
-                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <time datetime={f.time}>{formatDate(new Date(f.time)!, cfg.locale)}</time>
                   <br/>
                   <img src="/static/cohost.svg"/>&nbsp;
                   <a href={f.url} class="external">
@@ -54,7 +54,7 @@ const Crossposts: QuartzComponent = ({
             case "exodrifter.itch.io":
               return (
                 <li>
-                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <time datetime={f.time}>{formatDate(new Date(f.time)!, cfg.locale)}</time>
                   <br/>
                   <img src="/static/itch.svg"/>&nbsp;
                   <a href={f.url} class="external">
@@ -67,7 +67,7 @@ const Crossposts: QuartzComponent = ({
             case "www.patreon.com":
               return (
                 <li>
-                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <time datetime={f.time}>{formatDate(new Date(f.time)!, cfg.locale)}</time>
                   <br/>
                   <i class="ri-patreon-fill"></i>&nbsp;
                   <a href={f.url} class="external">
@@ -80,7 +80,7 @@ const Crossposts: QuartzComponent = ({
             case "www.soundcloud.com":
               return (
                 <li>
-                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <time datetime={f.time}>{formatDate(new Date(f.time)!, cfg.locale)}</time>
                   <br/>
                   <i class="ri-soundcloud-fill"></i>&nbsp;
                   <a href={f.url} class="external">
@@ -92,7 +92,7 @@ const Crossposts: QuartzComponent = ({
             case "store.steampowered.com":
               return (
                 <li>
-                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <time datetime={f.time}>{formatDate(new Date(f.time)!, cfg.locale)}</time>
                   <br/>
                   <i class="ri-steam-fill"></i>&nbsp;
                   <a href={f.url} class="external">
@@ -105,7 +105,7 @@ const Crossposts: QuartzComponent = ({
             case "www.youtube.com":
               return (
                 <li>
-                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <time datetime={f.time}>{formatDate(new Date(f.time)!, cfg.locale)}</time>
                   <br/>
                   <i class="ri-youtube-fill"></i>&nbsp;
                   <a href={f.url} class="external">
@@ -117,7 +117,7 @@ const Crossposts: QuartzComponent = ({
             default:
               return (
                 <li>
-                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <time datetime={f.time}>{formatDate(new Date(f.time)!, cfg.locale)}</time>
                   <br/>
                   <a href={f.url} class="external">
                     {host}
