@@ -14,10 +14,10 @@ modified: 2024-02-10T05:33:54
 
 # blog
 
+- **2024-09-23** - [san japan 2024](blog/20240919203503.md)
 - **2024-09-19** - [2d con is incredible](blog/20240919200017.md)
 - **2024-09-16** - [new website powered by quartz and nix](blog/20240916090424.md)
 - **2024-09-10** - [no signal demo](blog/20240910235854.md)
-- **2024-08-27** - [wonka's "a world of your own" hits different](blog/20240827054418.md)
 - **2024-04-21** - [ink lists are hell](blog/20240421231554.md)
 
 [See all posts...](blog/index.md)

@@ -25,10 +25,10 @@ These are the development notes for _no signal_. For more information, see the [
 | <span class="timestamp">2024-09-10</span> | v0.22 | [210403](../entries/20240910210403.md) |
 | <span class="timestamp">2024-09-09</span> | v0.20, v0.21 | [181827 (stream 115)](../entries/20240909181827.md) |
 | <span class="timestamp">2024-09-06</span> || [155620 (stream 114)](../entries/20240906155620.md) |
-| <span class="timestamp">2024-09-01</span> || [San Japan](san-japan.md) ([20240906154815](../entries/20240906154815.md)) |
+| <span class="timestamp">2024-09-01</span> || [San Japan](san-japan.md) ([20240906154815](../entries/20240906154815.md), [san japan 2024](../blog/20240919203503.md)) |
 | <span class="timestamp">2024-08-28</span> | v0.19 | [195545 (stream 113)](../entries/20240828195545.md) |
 | <span class="timestamp">2024-08-27</span> || [211406 (stream 112)](../entries/20240827211406.md) |
-| <span class="timestamp">2024-08-25</span> || [2D Con](2d-con.md) ([20240827210622](../entries/20240827210622.md)) |
+| <span class="timestamp">2024-08-25</span> || [2D Con](2d-con.md) ([20240827210622](../entries/20240827210622.md), [2d con is incredible](../blog/20240919200017.md)) |
 | <span class="timestamp">2024-08-20</span> | v0.18 | [214005 (stream 111)](../entries/20240820214005.md) |
 | <span class="timestamp">2024-08-19</span> || [210102 (stream 110)](../entries/20240819210102.md) |
 | <span class="timestamp">2024-08-16</span> | v0.16, v0.17 ||
