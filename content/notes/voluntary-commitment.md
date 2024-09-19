@@ -3,7 +3,7 @@ title: voluntary commitment logs
 aliases:
 - null logs
 - voluntary commitment logs
-tag:
+tags:
 - log
 ---
 

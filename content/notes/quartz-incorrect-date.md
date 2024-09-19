@@ -2,7 +2,7 @@
 title: Quartz does not set the date properly
 aliases:
 - Quartz does not set the date properly
-tag:
+tags:
 - quartz
 ---
 
