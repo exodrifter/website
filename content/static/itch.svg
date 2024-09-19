@@ -12,12 +12,12 @@
     <style
        id="style1">
       svg {
-        color: black;
+        color: #4e4e4e;
         color-scheme: light dark;
       }
       @media (prefers-color-scheme: dark) {
         svg {
-          color: white;
+          color: #d4d4d4;
         }
       }
     </style>
