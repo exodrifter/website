@@ -63,6 +63,19 @@ const Crossposts: QuartzComponent = ({
                 </li>
               )
 
+            case "soundcloud.com":
+            case "www.soundcloud.com":
+              return (
+                <li>
+                  {formatDate(new Date(f.time)!, cfg.locale)}
+                  <br/>
+                  <i class="ri-soundcloud-fill"></i>&nbsp;
+                  <a href={f.url} class="external">
+                    SoundCloud
+                  </a>
+                </li>
+              )
+
             case "store.steampowered.com":
               return (
                 <li>
