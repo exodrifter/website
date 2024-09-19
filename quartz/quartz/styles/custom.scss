@@ -30,6 +30,7 @@ ul.overflow::after {
 }
 
 .callout {
+  overflow: hidden;
   backdrop-filter: blur(0.12rem);
 }
 
