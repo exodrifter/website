@@ -18,9 +18,9 @@ These are the development notes for _no signal_. For more information, see the [
 
 | date | version | notes |
 |------|---------|-------|
-| <span class="timestamp">2024-09-17</span> | v0.25 | [180208 (stream 118)](../entries/20240917220405.md) |
-| <span class="timestamp">2024-09-14</span> | v0.24 | [180208 (stream 117)](../entries/20240914180208.md) |
-| <span class="timestamp">2024-09-12</span> | v0.23 | [182833 (stream 116)](../entries/20240912182833.md) |
+| <span class="timestamp">2024-09-17</span> | [v0.25](../blog/20240919180833.md) | [180208 (stream 118)](../entries/20240917220405.md) |
+| <span class="timestamp">2024-09-14</span> | [v0.24](../blog/20240919180636.md) | [180208 (stream 117)](../entries/20240914180208.md) |
+| <span class="timestamp">2024-09-12</span> | [v0.23](../blog/20240919180346.md) | [182833 (stream 116)](../entries/20240912182833.md) |
 | <span class="timestamp">2024-09-10</span> | v0.22 | [210403](../entries/20240910210403.md) |
 | <span class="timestamp">2024-09-09</span> | v0.20, v0.21 | [181827 (stream 115)](../entries/20240909181827.md) |
 | <span class="timestamp">2024-09-06</span> || [155620 (stream 114)](../entries/20240906155620.md) |
