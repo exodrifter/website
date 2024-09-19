@@ -25,6 +25,10 @@ h2::before {
   position: relative;
 }
 
+code {
+  backdrop-filter: blur(.12rem);
+}
+
 ul.overflow::after {
   background: unset;
 }
