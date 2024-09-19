@@ -1,5 +1,5 @@
 ---
-title: index
+title: exodrifter
 ---
 
 <div style="display: flex; flex-direction: row; align-items: center;">
