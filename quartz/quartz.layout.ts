@@ -28,7 +28,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Darkmode(),
   ],
   right: [
-    Component.DesktopOnly(Component.TableOfContents()),
+    Component.DesktopOnly(Component.TableOfContents({ layout: "legacy" })),
     Component.Crossposts(),
     Component.Backlinks(),
   ],
@@ -47,7 +47,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.Darkmode(),
   ],
   right: [
-    Component.DesktopOnly(Component.TableOfContents()),
+    Component.DesktopOnly(Component.TableOfContents({ layout: "legacy" })),
     Component.Crossposts(),
     Component.Backlinks(),
   ],

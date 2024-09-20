@@ -29,6 +29,37 @@ pre {
   backdrop-filter: blur(.12rem);
 }
 
+summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+summary::after {
+  content: url(/static/arrow.svg);
+  width: 24px;
+  height: 24px;
+  margin-left: 0.5rem;
+  transition: 0.1s;
+  transform: rotate(-90deg)
+}
+
+summary > * {
+  margin: 0 !important;
+  padding-left: 0 !important;
+  display: inline-block;
+}
+
+details[open] > summary::after {
+  transform: rotate(0deg);
+}
+
+details > ul {
+  margin: .5rem 0 !important;
+  padding: 0;
+  list-style: none;
+}
+
 ul.overflow::after {
   background: unset;
 }
@@ -46,17 +77,6 @@ ul.overflow::after {
 .callout {
   overflow: hidden;
   backdrop-filter: blur(0.12rem);
-}
-
-.crossposts > h3 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.crossposts > ul {
-  margin: .5rem 0;
-  padding: 0;
-  list-style: none;
 }
 
 .crossposts li {

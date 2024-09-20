@@ -18,9 +18,11 @@ const Crossposts: QuartzComponent = ({
     return b.time - a.time;
   })
   return (
-    <div class={classNames(displayClass, "crossposts")}>
-      <h3>Crossposts</h3>
-      <ul class="overflow">
+    <details class={classNames(displayClass, "crossposts")} open="">
+      <summary>
+        <h3>Crossposts</h3>
+      </summary>
+      <ul>
         {crossposts.map((f) => {
           const host = new URL(f.url).host
           const time = new Date(f.time)!
@@ -132,7 +134,7 @@ const Crossposts: QuartzComponent = ({
           }
         })}
       </ul>
-    </div>
+    </details>
   )
 }
 

@@ -1,0 +1,28 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="fold">
+  <defs
+     id="defs1">
+    <style
+       id="style1">
+      svg {
+        color: #2b2b2b;
+        color-scheme: light dark;
+      }
+      @media (prefers-color-scheme: dark) {
+        svg {
+          color: #ebebec;
+        }
+      }
+    </style>
+  </defs>
+  <polyline points="6 9 12 15 18 9"></polyline>
+</svg>
