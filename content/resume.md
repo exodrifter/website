@@ -1,3 +1,8 @@
+---
+title: resume
+created: 2024-09-16T00:56:40Z
+---
+
 # Ava Pek (exodrifter)
 
 Experienced Software Engineer with a demonstrated history of working in the software development industry and a Bachelor of Science focused in Computer Science from The University of Texas at Austin. Skilled in Godot, Unity3D, and Haskell. I promise I won't [alias all of your mutable buffers](blog/20240225042654.md).
