@@ -14,6 +14,7 @@ aliases:
 | Name | Location | Frequency |
 |------|----------|-----------|
 | [Austin Glitch State](austin-glitch-state.md) | Austin, Texas | Every 2 months |
+| [Next Fest](next-fest.md) | n/a | February, June, and October |
 
 # Conventions
 
