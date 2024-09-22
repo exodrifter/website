@@ -1,5 +1,6 @@
 ---
 title: Marketing
+modified: 2024-09-22T21:05:08Z
 aliases:
 - marketing
 ---
@@ -15,6 +16,7 @@ aliases:
 |------|----------|-----------|
 | [Austin Glitch State](austin-glitch-state.md) | Austin, Texas | Every 2 months |
 | [Next Fest](next-fest.md) | n/a | February, June, and October |
+| [INDIE Live Expo](indie-live-expo.md) | n/a | December |
 
 # Conventions
 
