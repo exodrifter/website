@@ -58,6 +58,8 @@ Generally speaking, I'm only active on Cohost, Discord and Twitch:
 
 <div class="flex">
 
+[Centrochelys](http://www.brendanmcleod.dev/)
+
 [Haskell for all](https://www.haskellforall.com/)
 
 [illuminesce.](https://chostett.com/)
