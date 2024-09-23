@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2024-09-23T20:24:06Z
+modified: 2024-09-23T23:02:35Z
 ---
 
 <div style="display: flex; flex-direction: row; align-items: center;">
@@ -52,7 +52,9 @@ Generally speaking, I'm only active on Cohost, Discord and Twitch:
 - <i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)
 - <i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)
 
-[Contact me...](contact.md)
+[About me...](about.md)<br/>
+[Contact me...](contact.md)<br/>
+[See resume...](resume.md)
 
 # coolzone
 
