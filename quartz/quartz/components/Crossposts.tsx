@@ -69,6 +69,43 @@ const Crossposts: QuartzComponent = ({
                 </li>
               )
 
+            case "vt.social":
+              return (
+                <li>
+                  {timeElement}
+                  <br/>
+                  <i class="ri-mastodon-fill"></i>&nbsp;
+                  <a href={f.url} class="external">
+                    vt.social
+                  </a>
+                </li>
+              )
+
+            case "patreon.com":
+            case "www.patreon.com":
+              return (
+                <li>
+                  {timeElement}
+                  <br/>
+                  <i class="ri-patreon-fill"></i>&nbsp;
+                  <a href={f.url} class="external">
+                    Patreon
+                  </a>
+                </li>
+              )
+
+            case "soundcloud.com":
+            case "www.soundcloud.com":
+              return (
+                <li>
+                  {timeElement}
+                  <br/>
+                  <i class="ri-soundcloud-fill"></i>&nbsp;
+                  <a href={f.url} class="external">
+                    SoundCloud
+                  </a>
+                </li>
+              )
             case "patreon.com":
             case "www.patreon.com":
               return (
@@ -117,6 +154,19 @@ const Crossposts: QuartzComponent = ({
                   <i class="ri-youtube-fill"></i>&nbsp;
                   <a href={f.url} class="external">
                     YouTube
+                  </a>
+                </li>
+              )
+
+            case "twitter.com":
+            case "x.com":
+              return (
+                <li>
+                  {timeElement}
+                  <br/>
+                  <i class="ri-twitter-fill"></i>&nbsp;
+                  <a href={f.url} class="external">
+                    Twitter
                   </a>
                 </li>
               )
