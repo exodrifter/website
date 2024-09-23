@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2024-09-23T18:59:05Z
+modified: 2024-09-23T20:24:06Z
 ---
 
 <div style="display: flex; flex-direction: row; align-items: center;">
@@ -65,6 +65,8 @@ Generally speaking, I'm only active on Cohost, Discord and Twitch:
 [illuminesce.](https://chostett.com/)
 
 [Jennifer Raye](https://jennraye.moe)
+
+[LCOLONQ](https://pub.colonq.computer/~llll/)
 
 [mabbees](https://mabbees.neocities.org/)
 
