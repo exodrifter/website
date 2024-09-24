@@ -69,6 +69,18 @@ const Crossposts: QuartzComponent = ({
                 </li>
               )
 
+            case "ko-fi.com":
+              return (
+                <li>
+                  {timeElement}
+                  <br/>
+                  <img src="/static/ko-fi.svg"/>&nbsp;
+                  <a href={f.url} class="external">
+                    Ko-fi
+                  </a>
+                </li>
+              )
+
             case "vt.social":
               return (
                 <li>
