@@ -10,21 +10,34 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs1" />
+     id="defs1">
+    <style
+       id="style1">
+      svg {
+        color: black;
+        color-scheme: light dark;
+      }
+      @media (prefers-color-scheme: dark) {
+        svg {
+          color: white;
+        }
+      }
+    </style>
+  </defs>
   <g
      id="layer1"
-     style="stroke-width:1.58749998;stroke-dasharray:none;stroke:#ffffff;stroke-opacity:1">
+     style="stroke-width:1.58749998;stroke-dasharray:none;stroke:currentColor;stroke-opacity:1">
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:1.58749998;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;stroke:currentColor;stroke-width:1.58749998;stroke-dasharray:none;stroke-opacity:1"
        d="m 10.484607,14.789022 h 10.780784 v 7.463621 H 10.484607 Z"
        id="rect4" />
     <path
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1.58749998;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:currentColor;stroke-width:1.58749998;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
        d="m 10.484607,14.789023 5.390392,3.73181 5.390392,-3.73181 z"
        id="path5" />
     <path
        id="path1"
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1.58749998;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:currentColor;stroke-width:1.58749998;stroke-dasharray:none;stroke-opacity:1"
        d="M 22.115962,3.0191982 18.166332,6.968828 A 9.7748842,9.7748842 0 0 0 8.724531,4.4387498 9.7748842,9.7748842 0 0 0 1.812292,11.350989 9.7748842,9.7748842 0 0 0 4.34237,20.79279 l 3.949629,-3.94963 a 9.7748842,9.7748842 0 0 0 2.192631,1.634526 v -3.688664 h 10.780738 v 2.783293 A 9.7748842,9.7748842 0 0 0 24.64604,12.460999 9.7748842,9.7748842 0 0 0 22.115962,3.0191982 Z" />
   </g>
 </svg>
