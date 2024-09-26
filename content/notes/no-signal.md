@@ -18,7 +18,8 @@ These are the development notes for _no signal_. For more information, see the [
 
 | date | version | notes |
 |------|---------|-------|
-| <span class="timestamp">2024-09-20</span> || [172216](../entries/20240920172216.md) |
+| <span class="timestamp">2024-09-26</span> || [175815 (stream 120)](../entries/20240926175815.md), [192304 (stream 120)](../entries/20240926192304.md) |
+| <span class="timestamp">2024-09-20</span> || [172216 (stream 119)](../entries/20240920172216.md) |
 | <span class="timestamp">2024-09-17</span> | [v0.25](../blog/20240919180833.md) | [180208 (stream 118)](../entries/20240917220405.md) |
 | <span class="timestamp">2024-09-14</span> | [v0.24](../blog/20240919180636.md) | [180208 (stream 117)](../entries/20240914180208.md) |
 | <span class="timestamp">2024-09-12</span> | [v0.23](../blog/20240919180346.md) | [182833 (stream 116)](../entries/20240912182833.md) |
