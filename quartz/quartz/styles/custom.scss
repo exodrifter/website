@@ -60,6 +60,53 @@ details > ul {
   list-style: none;
 }
 
+details.hf4a {
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+details.hf4a ul {
+  width: 100%;
+  list-style: none;
+  padding-inline-start: 1.5rem;
+}
+
+details.hf4a > ul > li {
+  margin-top: 1rem;
+}
+
+details.hf4a-map {
+  display: inline;
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  transition: 0.15s background linear;
+  padding: 0 0.4rem;
+
+  &:hover {
+    background: var(--lightgray);
+  }
+}
+
+details.hf4a-map > summary::after {
+  content: none;
+}
+
+details.hf4a-map > div {
+  position: absolute;
+  left: 0;
+  top: 35px;
+  right: 0;
+  border-radius: 1rem;
+  filter: drop-shadow(0 0 1rem #000a);
+}
+
+details.hf4a-map li {
+  padding: 1px inherit;
+}
+
 ul.overflow::after {
   background: unset;
 }
