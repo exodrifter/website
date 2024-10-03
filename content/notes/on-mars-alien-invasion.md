@@ -2,6 +2,8 @@
 title: 'On Mars: Alien Invasion'
 aliases:
 - 'On Mars: Alien Invasion'
+tags:
+- science-fiction
 ---
 
 # On Mars: Alien Invasion

@@ -1,5 +1,6 @@
 ---
 title: The Criterion Collection
+created: 2024-05-29T06:12:05Z
 aliases:
 - Criterion
 - The Criterion Collection

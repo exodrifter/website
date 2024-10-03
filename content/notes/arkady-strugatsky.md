@@ -1,5 +1,6 @@
 ---
 title: Arkady Strugatsky
+created: 2024-05-29T06:12:05Z
 aliases:
 - Arkady Strugatsky
 ---

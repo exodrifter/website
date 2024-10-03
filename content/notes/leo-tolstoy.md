@@ -1,5 +1,6 @@
 ---
 title: Leo Tolstoy
+created: 2024-05-29T06:12:05Z
 aliases:
 - Leo Tolstoy
 ---

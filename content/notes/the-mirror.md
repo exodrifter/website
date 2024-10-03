@@ -1,5 +1,6 @@
 ---
 title: The Mirror (1975)
+created: 2024-05-29T06:12:05Z
 aliases:
 - The Mirror
 - The Mirror (1975)

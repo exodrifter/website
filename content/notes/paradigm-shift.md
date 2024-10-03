@@ -7,7 +7,7 @@ aliases:
 # Paradigm shift
 
 Related:
-- [Science Fiction](science-fiction.md)
+- [Science Fiction](../tags/science-fiction.md)
 
 ## Ideas
 

@@ -7,6 +7,7 @@ permalink: /no-signal
 tags:
 - godot
 - no-signal
+- science-fiction
 ---
 
 # no signal
