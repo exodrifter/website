@@ -20,6 +20,7 @@ modified: 2024-09-23T23:02:35Z
 - **2024-09-10** - [no signal demo](blog/20240910235854.md)
 - **2024-04-21** - [ink lists are hell](blog/20240421231554.md)
 
+[<i class="ri-rss-fill"></i> RSS](blog/index.xml) <br/>
 [See all posts...](blog/index.md)
 
 # press kits
