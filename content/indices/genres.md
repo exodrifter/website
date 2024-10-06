@@ -8,7 +8,7 @@ aliases:
 # Genres
 
 - [Biography](biography.md)
-- [Paradigm Shift](../notes/paradigm-shift.md)
+- [Paradigm Shift](../tags/paradigm-shift.md)
 - [Role-Playing](role-playing.md)
 - [Science Fantasy](../notes/science-fantasy.md)
 - [Science Fiction](../tags/science-fiction.md)
