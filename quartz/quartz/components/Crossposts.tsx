@@ -44,6 +44,18 @@ const Crossposts: QuartzComponent = ({
                 </li>
               )
 
+            case "bsky.app":
+              return (
+                <li>
+                  {timeElement}
+                  <br/>
+                  <i class="ri-bluesky-fill"></i>&nbsp;
+                  <a href={f.url} class="external">
+                    Bluesky
+                  </a>
+                </li>
+              )
+
             case "cohost.org":
             case "www.cohost.org":
               return (
