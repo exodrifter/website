@@ -49,7 +49,7 @@
           packages = rec {
             default = pkgs.buildNpmPackage rec {
               pname = "quartz";
-              version = "4.3.1";
+              version = "4.4.0";
 
               src = pkgs.fetchFromGitHub {
                 owner = "jackyzha0";
