@@ -65,7 +65,7 @@ Generally speaking, I'm only active on Cohost, Discord and Twitch:
 
 [Haskell for all](https://www.haskellforall.com/)
 
-[illuminesce.](https://chostett.com/)
+[illuminesce.](https://illuminesce.net/)
 
 [Jennifer Raye](https://jennraye.moe)
 
