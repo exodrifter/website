@@ -186,3 +186,8 @@ ul.overflow::after {
 .timestamp {
   font-family: var(--codeFont);
 }
+
+#toc {
+  max-height: 400px;
+  overflow: scroll;
+}

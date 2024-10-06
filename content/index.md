@@ -14,10 +14,10 @@ modified: 2024-09-23T23:02:35Z
 
 # blog
 
+- **2024-10-06** - [hf4a mars speedrun](blog/20241006043901.md)
 - **2024-10-03** - [no signal @ Fantastic Arcade](blog/20241003184428.md)
 - **2024-09-23** - [san japan 2024](blog/20240919203503.md)
 - **2024-09-19** - [2d con is incredible](blog/20240919200017.md)
-- **2024-09-16** - [new website powered by quartz and nix](blog/20240916090424.md)
 - **2024-09-10** - [no signal demo](blog/20240910235854.md)
 
 [<i class="ri-rss-fill"></i> RSS](blog/index.xml) <br/>
