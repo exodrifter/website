@@ -30,7 +30,7 @@ export const defaultContentPageLayout: PageLayout = {
   right: [
     Component.DesktopOnly(Component.TableOfContents({ layout: "legacy" })),
     Component.Crossposts(),
-    Component.Backlinks(),
+    Component.CustomBacklinks(),
   ],
 }
 
@@ -49,6 +49,6 @@ export const defaultListPageLayout: PageLayout = {
   right: [
     Component.DesktopOnly(Component.TableOfContents({ layout: "legacy" })),
     Component.Crossposts(),
-    Component.Backlinks(),
+    Component.CustomBacklinks(),
   ],
 }

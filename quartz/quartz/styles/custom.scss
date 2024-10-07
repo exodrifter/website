@@ -178,6 +178,11 @@ ul.overflow::after {
   }
 }
 
+.page > #quartz-body .sidebar.right {
+  flex-wrap: nowrap;
+  height: calc(100vh - 12rem);
+}
+
 .table-container > table {
   margin: 0;
   width: 100%
@@ -188,6 +193,5 @@ ul.overflow::after {
 }
 
 #toc {
-  max-height: 400px;
   overflow: scroll;
 }
