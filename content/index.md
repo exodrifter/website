@@ -48,8 +48,7 @@ modified: 2024-09-23T23:02:35Z
 
 # links
 
-Generally speaking, I'm only active on Cohost, Discord and Twitch:
-- <i class="ri-discuss-fill"></i> [cohost!](https://cohost.org/exodrifter)
+Generally speaking, I'm only active on Discord and Twitch:
 - <i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)
 - <i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)
 

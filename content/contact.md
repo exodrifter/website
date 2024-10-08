@@ -28,8 +28,6 @@ These are all of my social media links. Please note that I am not generally acti
 
 <i class="ri-bluesky-fill"></i> [Bluesky](https://bsky.app/profile/exodrifter.bsky.social)
 
-<i class="ri-discuss-fill"></i> [cohost!](https://cohost.org/exodrifter)
-
 <i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)
 
 <i class="ri-github-fill"></i> [GitHub](https://github.com/exodrifter)
