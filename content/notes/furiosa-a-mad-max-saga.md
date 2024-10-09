@@ -1,5 +1,6 @@
 ---
 title: 'Furiosa: A Mad Max Saga (2024)'
+created: 2024-05-30T04:47:32Z
 aliases:
 - 'Furiosa: A Mad Max Saga'
 - 'Furiosa: A Mad Max Saga (2024)'

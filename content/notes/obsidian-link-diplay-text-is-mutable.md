@@ -1,5 +1,7 @@
 ---
 title: Obsidian link display text is mutable
+created:  2024-07-24T21:18:06Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - Obsidian link display text is mutable
 tags:

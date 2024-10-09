@@ -1,5 +1,7 @@
 ---
 title: "My `Camera2D` is flickering"
+created: 2024-08-23T16:34:07Z
+modified: 2024-09-16T20:56:53Z
 aliases:
 - "My `Camera2D` is flickering"
 tags:

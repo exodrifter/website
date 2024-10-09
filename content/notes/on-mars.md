@@ -1,5 +1,6 @@
 ---
 title: On Mars
+created: 2024-06-01T05:38:57Z
 aliases:
 - On Mars
 tags:

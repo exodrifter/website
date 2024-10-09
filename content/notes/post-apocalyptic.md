@@ -1,5 +1,6 @@
 ---
 title: 'Post-Apocalyptic'
+created: 2024-05-30T04:47:32Z
 aliases:
 - 'Post-Apocalyptic'
 ---

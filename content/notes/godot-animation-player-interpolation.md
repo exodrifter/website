@@ -1,5 +1,7 @@
 ---
 title: "`AnimationPlayer` doesn't interpolate shader parameter"
+created: 2024-05-27T09:19:01Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`AnimationPlayer` doesn't interpolate shader parameter"
 tags:

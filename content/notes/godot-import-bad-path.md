@@ -1,5 +1,7 @@
 ---
 title: "`ERR_FILE_BAD_PATH` when importing files"
+created: 2024-06-16T18:19:02Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`ERR_FILE_BAD_PATH` when importing files"
 tags:

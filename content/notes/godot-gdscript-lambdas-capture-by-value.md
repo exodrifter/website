@@ -1,5 +1,7 @@
 ---
 title: Lambdas capture local variables by value
+created: 2024-07-04T07:37:55Z
+modified: 2024-09-19T04:56:37Z
 aliases:
 - Lambdas capture local variables by value
 tags:

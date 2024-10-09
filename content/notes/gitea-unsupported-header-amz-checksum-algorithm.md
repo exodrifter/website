@@ -1,5 +1,7 @@
 ---
 title: "Unsupported header `x-amz-checksum-algorithm` received for this API call."
+created: 2024-08-05T23:01:41Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "Unsupported header `x-amz-checksum-algorithm` received for this API call."
 tags:

@@ -1,5 +1,7 @@
 ---
 title: "`Area2D` calls the `body_entered` signal multiple times"
+created: 2024-07-04T05:02:06Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`Area2D` calls the `body_entered` signal multiple times"
 tags:

@@ -1,5 +1,7 @@
 ---
 title: "`RichTextLabel` lags on first draw"
+created: 2024-06-07T22:04:45Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`RichTextLabel` lags on first draw"
 tags:

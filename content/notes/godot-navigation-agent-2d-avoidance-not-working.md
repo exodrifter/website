@@ -1,5 +1,7 @@
 ---
 title: "My `NavigationAgent2D` is not avoiding other agents"
+created: 2024-08-21T04:04:01Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "My `NavigationAgent2D` is not avoiding other agents"
 tags:

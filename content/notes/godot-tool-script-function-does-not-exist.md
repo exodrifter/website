@@ -1,5 +1,7 @@
 ---
 title: "`@tool` script says function does not exist when it does"
+created: 2024-07-03T19:23:04Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`@tool` script says function does not exist when it does"
 tags:

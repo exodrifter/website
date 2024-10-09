@@ -1,5 +1,7 @@
 ---
 title: Austin Glitch State
+created: 2024-07-24T21:51:15Z
+modified: 2024-09-19T00:46:40Z
 aliases:
 - Austin Glitch State
 ---

@@ -1,5 +1,7 @@
 ---
 title: Blender files are invalid or corrupt
+created: 2024-06-16T18:19:02Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - Blender files are invalid or corrupt
 tags:

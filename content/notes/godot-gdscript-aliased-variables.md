@@ -1,5 +1,7 @@
 ---
 title: Exported variables of inherited scenes are aliased
+created: 2024-07-04T14:58:23Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - Exported variables of inherited scenes are aliased
 tags:

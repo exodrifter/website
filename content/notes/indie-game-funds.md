@@ -1,5 +1,6 @@
 ---
 title: Indie Game Funds
+created: 2024-06-08T19:25:40Z
 modified: 2024-09-24T16:34:22Z
 aliases:
 - indie game fund

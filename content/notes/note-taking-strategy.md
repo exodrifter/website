@@ -1,5 +1,7 @@
 ---
 title: Note-taking strategies
+created: 2024-07-24T20:16:46Z
+modified: 2024-09-19T04:30:21Z
 aliases:
 - note-taking strategy
 - note-taking strategies

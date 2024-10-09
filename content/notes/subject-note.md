@@ -1,5 +1,7 @@
 ---
 title: Subject note
+created: 2024-07-24T20:16:46Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - Subject note
 - Subject notes

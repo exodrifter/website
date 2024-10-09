@@ -1,6 +1,7 @@
 ---
 title: Solaris (1972)
 created: 2024-05-29T06:12:05Z
+modified: 2024-06-07T07:01:49Z
 aliases:
 - Solaris
 - Solaris (1972)

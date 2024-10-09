@@ -1,5 +1,7 @@
 ---
 title: How do you know if a face is a backface?
+created: 2024-08-02T03:38:38Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - How do you know if a face is a backface?
 tags:

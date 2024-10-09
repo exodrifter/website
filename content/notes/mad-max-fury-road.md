@@ -1,5 +1,7 @@
 ---
 title: 'Mad Max: Fury Road (2015)'
+created: 2024-05-30T04:47:32Z
+modified: 2024-05-30T05:13:33Z
 aliases:
 - 'Mad Max: Fury Road'
 - 'Mad Max: Fury Road (2015)'

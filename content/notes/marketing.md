@@ -1,5 +1,6 @@
 ---
 title: Marketing
+created: 2024-06-05T18:34:46Z
 modified: 2024-09-22T21:05:08Z
 aliases:
 - marketing

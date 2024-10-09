@@ -1,5 +1,7 @@
 ---
 title: "`is_polygon_clockwise` returns the opposite result"
+created: 2024-07-03T19:10:44Z
+modified: 2024-09-19T04:56:37Z
 aliases:
 - "`is_polygon_clockwise` returns the opposite result"
 tags:

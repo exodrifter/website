@@ -1,5 +1,7 @@
 ---
 title: Decals disappear near edges
+created: 2024-06-19T00:12:54Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - Decals disappear near edges
 tags:

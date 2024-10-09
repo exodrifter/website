@@ -1,5 +1,7 @@
 ---
 title: Godot cannot determine the type of autoloads
+created: 2024-07-03T20:06:52Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - Godot cannot determine the type of autoloads
 tags:

@@ -1,5 +1,7 @@
 ---
 title: "`ViewportTexture` does not have mipmaps"
+created: 2024-06-21T05:56:54Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`ViewportTexture` does not have mipmaps"
 tags:

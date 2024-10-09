@@ -1,5 +1,7 @@
 ---
 title: "`PackedScene` mutability"
+created: 2024-06-04T16:16:41Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`PackedScene` mutability"
 tags:

@@ -1,5 +1,6 @@
 ---
 title: 2D Con
+created: 2024-07-24T22:07:41Z
 aliases:
 - 2D Con
 ---

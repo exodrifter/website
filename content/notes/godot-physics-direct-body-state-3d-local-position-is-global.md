@@ -1,5 +1,7 @@
 ---
 title: "`get_contact_local_position` returns global position"
+created: 2024-07-03T18:56:41Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`get_contact_local_position` returns global position"
 tags:

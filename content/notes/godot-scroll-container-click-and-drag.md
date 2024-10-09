@@ -1,5 +1,7 @@
 ---
 title: "`ScrollContainer` doesn't scroll with click and drag"
+created: 2024-07-04T04:55:45Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`ScrollContainer` doesn't scroll with click and drag"
 tags:

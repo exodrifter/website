@@ -1,5 +1,7 @@
 ---
 title: GDShader doesn't pause
+created: 2024-05-30T05:53:46Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - GDShader doesn't pause
 tags:

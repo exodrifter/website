@@ -1,5 +1,7 @@
 ---
 title: STAPLE! Austin
+created: 2024-07-24T22:34:34Z
+modified: 2024-09-19T00:46:40Z
 aliases:
 - STAPLE!
 - STAPLE! Austin

@@ -1,5 +1,7 @@
 ---
 title: "`TextureRect` does not scale nicely"
+created: 2024-07-22T22:14:34Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`TextureRect` does not scale nicely"
 tags:

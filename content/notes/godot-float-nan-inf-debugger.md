@@ -1,5 +1,7 @@
 ---
 title: Float values NaN and INF are displayed as 0 in debugger and inspector
+created: 2024-06-29T08:10:42Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - Float values NaN and INF are displayed as 0 in debugger and inspector
 tags:

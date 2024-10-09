@@ -1,5 +1,7 @@
 ---
 title: Cannot follow Nix tutorial
+created: 2024-08-12T08:10:09Z
+modified: 2024-09-19T04:26:37Z
 alias:
 - Cannot follow Nix tutorial
 tags:

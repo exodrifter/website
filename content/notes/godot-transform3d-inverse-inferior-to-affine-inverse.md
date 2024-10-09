@@ -1,5 +1,7 @@
 ---
 title: "`inverse` is an inferior version of `affine_inverse`"
+created: 2024-07-03T19:38:43Z
+modified: 2024-09-19T04:26:37Z
 aliases:
 - "`inverse` is an inferior version of `affine_inverse`"
 tags:
