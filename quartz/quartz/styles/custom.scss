@@ -25,6 +25,10 @@ h2::before {
   position: relative;
 }
 
+code {
+  font-variant-ligatures: none;
+}
+
 pre {
   backdrop-filter: blur(.12rem);
 }
