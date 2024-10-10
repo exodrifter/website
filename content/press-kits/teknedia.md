@@ -6,6 +6,8 @@ published: 2021-01-08
 aliases:
 - Teknedia press kit
 permalink: /teknedia
+tags:
+- teknedia
 ---
 
 # Teknedia

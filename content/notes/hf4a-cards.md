@@ -1,6 +1,7 @@
 ---
 title: High Frontier 4 All Cards
 created: 2024-09-26T09:18:22Z
+modified: 2024-10-10T19:53:29Z
 aliases:
 - HF4A Cards
 - High Frontier 4 All Cards
@@ -111,7 +112,7 @@ These cards are only used with the Race for Glory ruleset.
 | CQ038R | Anonymous P2P |
 | CQ039F | Shimizu Corp Entrepreneurs |
 | CQ039R | NASRDA Astronauts |
-| CQ040F | United Nations Cosmonauts |
+| CQ040F | [United Nations Cosmonauts](hf4a-cq040f.md) |
 | CQ040R | B612 Foundation |
 | CQ041F | Taikonauts |
 | CQ041R | ROSCOSMOS |
