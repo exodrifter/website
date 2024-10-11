@@ -17,4 +17,4 @@ exiftool -EXIF= path/to/file
 
 You can confirm that the EXIF metadata is deleted by running `exiftool path/to/file`. [^1]
 
-[^1]: [20240923174750](entries/20240923174750.md)
+[^1]: [20240923174750](../entries/20240923174750.md)

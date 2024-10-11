@@ -12,4 +12,4 @@ aliases:
 
 The movie is woefully tone deaf and illogical -- it doesn't really take into account the United States's long and ugly track record of doing coups for example as the main character conducts his own coup. If you're okay with not examining the plot with a critical eye, it's an explosion-filled action film that portrays the main characters as playing the role of good guys. However, the fact that the plot cannot hold any water makes all of the action feels senseless to me. [^1]
 
-[^1]: [20241008032007](entries/20241008032007.md)
+[^1]: [20241008032007](../entries/20241008032007.md)

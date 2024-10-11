@@ -20,4 +20,4 @@ Key | Description
 `aliases` | Alias for `alias`.
 `cssclass` | Allows for a custom style on individual notes using CSS snippets.
 
-[^1]: [202305300248](entries/202305300248.md)
+[^1]: [202305300248](../entries/202305300248.md)
