@@ -1,7 +1,7 @@
 ---
 title: Godot crimes
 created: 2024-06-29T08:10:42Z
-modified: 2024-09-16T20:56:53Z
+modified: 2024-10-11T02:35:15Z
 aliases:
 - Godot crime
 - Godot crimes
@@ -23,6 +23,8 @@ These crimes have not been addressed and are still issues in the Godot codebase.
 - [Godot cannot determine the type of autoloads](godot-singletons-unknown-type.md)
 - [Float values NaN and INF are displayed as 0 in debugger and inspector](godot-float-nan-inf-debugger.md)
 - [`get_contact_local_position` returns global position](godot-physics-direct-body-state-3d-local-position-is-global.md)
+- [Cubemaps are not oriented consistently between rendering pipelines](godot-cubemap-orientation.md)
+- [Godot always runs scripts in deserialized resources](godot-runs-scripts-in-resources.md)
 
 ## Solved Crimes
 

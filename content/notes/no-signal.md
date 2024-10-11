@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2024-10-09T04:31:18Z
+modified: 2024-10-11T03:25:51Z
 aliases:
 - no signal logs
 - lost contact logs
@@ -66,9 +66,16 @@ These are the development notes for _no signal_. For more information, see the [
 | <span class="timestamp">2024-05-29</span> || [195943](../entries/20240529195943.md) |
 | <span class="timestamp">2024-05-28</span> || [034807 (stream 84)](../entries/20240529034807.md) |
 | <span class="timestamp">2024-05-27</span> || [044326 (stream 83)](../entries/20240528044326.md), [045458](../entries/20240528045458.md) |
-| <span class="timestamp">2024-05-13</span> | v0.7 ||
+| <span class="timestamp">2024-05-14</span> || [0336](../entries/202405140336.md), [0826](../entries/202405140826.md) |
+| <span class="timestamp">2024-05-13</span> | v0.7 | [1745](../entries/202405131745.md) |
 | <span class="timestamp">2024-05-12</span> | v0.6 ||
+| <span class="timestamp">2024-04-18</span> || [2259 (stream 66)](../entries/202404182259.md) |
 | <span class="timestamp">2024-04-13</span> | v0.4, v0.5 | [STAPLE! Austin](staple-austin.md) ([an indie dev's notes about staple! austin](../blog/20240415180849.md)) |
+| <span class="timestamp">2024-03-28</span> || [1816 (stream 57)](../entries/202403281816.md) |
+| <span class="timestamp">2024-03-25</span> || [1952 (stream 55)](../entries/202403251952.md) |
+| <span class="timestamp">2024-03-22</span> || [1810 (stream 54)](../entries/202403221810.md) |
+| <span class="timestamp">2024-03-13</span> || [0348](../entries/202403130348.md) |
+| <span class="timestamp">2024-03-10</span> || ATX GameMakers Showcase and Arcade ([2110](../entries/202403102110.md)) |
 | <span class="timestamp">2024-02-22</span> | v0.2 | [Austin Glitch State](austin-glitch-state.md) |
 | <span class="timestamp">2024-02-21</span> | v0.1 ||
 | <span class="timestamp">2023-12-04</span> | prototype ||
