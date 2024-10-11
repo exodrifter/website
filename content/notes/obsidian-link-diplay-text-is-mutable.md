@@ -1,7 +1,7 @@
 ---
 title: Obsidian link display text is mutable
-created:  2024-07-24T21:18:06Z
-modified: 2024-09-19T04:26:37Z
+created: 2023-05-30T00:05Z
+modified: 2024-10-11T05:51:02Z
 aliases:
 - Obsidian link display text is mutable
 tags:
@@ -10,7 +10,7 @@ tags:
 
 # Obsidian link display text is mutable
 
-The display text for internal links in Obsidian is **not** immutable.
+The display text for internal links in [Obsidian](obsidian.md) is **not** immutable.
 
 Although this doesn't happen every time, Obsidian _can_ change the display text when a file is renamed if the display text is the same as the name of the file and there is no corresponding alias.
 
