@@ -1,6 +1,7 @@
 ---
 title: Obsidian Flavored Markdown
 created: 2023-05-30T00:32Z
+modified: 2024-10-11T06:17:45Z
 aliases:
 - Obsidian Flavored Markdown
 tags:
@@ -23,7 +24,7 @@ It has the following characteristics:
 > [!warning]
 > This syntax is specific to Obsidian! This syntax is not supported in general outside the Obsidian ecosystem.
 
-Obsidian adds the following syntax:
+Obsidian adds the following syntax: [^1]
 
 Syntax | Feature
 -------|--------
@@ -32,6 +33,4 @@ Syntax | Feature
 `%% %%` | [Obsidian Comments](obsidian-comments.md)
 `> [!note]` | [Callouts](obsidian-callout.md)
 
-# History
-
-![202305300032](../entries/202305300032.md)
+[^1]: [202305300032](../entries/202305300032.md)

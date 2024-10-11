@@ -10,7 +10,7 @@ tags:
 # How to I create a one-shot timer?
 
 > [!question]
-> How do I create a timer that doesn't repeat so I can wait a certain amount of time exactly once without creating a [[godot/api/timer|Timer]] node?
+> How do I create a timer that doesn't repeat so I can wait a certain amount of time exactly once without creating a `Timer` node?
 
 Use `SceneTree`'s `create_timer` method and use the `timeout` property of the newly-created `SceneTreeTimer`.
 
@@ -23,4 +23,4 @@ func some_function():
 
 # History
 
-![202305291910](../entries/202305291910.md)
+- [202305291910](../entries/202305291910.md)

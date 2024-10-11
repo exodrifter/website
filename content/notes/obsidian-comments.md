@@ -1,6 +1,7 @@
 ---
 title: Obsidian Comments
 created: 2023-06-02T02:16Z
+modified: 2024-10-11T06:17:30Z
 aliases:
 - Obsidian Comment
 - Obsidian Comments
@@ -16,7 +17,7 @@ Used to hide text from read mode; one of the additional syntax options in [Obsid
 
 # Syntax
 
-You can comment out parts of a document by surrounding the text to comment out with `%%`. For example:
+You can comment out parts of a document by surrounding the text to comment out with `%%`. For example: [^1]
 
 ```markdown
 This sentence is missing a %%word%% in read mode.
@@ -33,6 +34,4 @@ This results in:
 > This only appears in edit mode.
 > %%
 
-# History
-
-![202306020216](../entries/202306020216.md)
+[^1]: [202306020216](../entries/202306020216.md)

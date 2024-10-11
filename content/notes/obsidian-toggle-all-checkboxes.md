@@ -1,19 +1,17 @@
 ---
-title: How do I toggle checkboxes en masse?
+title: How to toggle all checkboxes
 created: 2023-06-01T01:21Z
+modified: 2024-10-11T06:04:06Z
 aliases:
-- How do I toggle checkboxes en masse?
+- How to toggle all checkboxes
 tags:
 - obsidian
 ---
 
-# How do I toggle checkboxes en masse?
+# How to toggle all checkboxes
 
-> [!question]
-> How do I check or uncheck all of the checkboxes quickly?
-
-Highlight all of the checkbox lines in edit mode and press the `Toggle checkbox status` hotkey (`ctrl+l` by default).
+To toggle the state of checkboxes in a list in [Obsidian](obsidian.md), highlight all of the checkbox lines in edit mode and press the `Toggle checkbox status` hotkey (`ctrl+l` by default).[^1]
 
 # History
 
-![202306010121](../entries/202306010121.md)
+[^1]: [202306010121](../entries/202306010121.md)

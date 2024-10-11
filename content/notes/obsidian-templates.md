@@ -1,7 +1,7 @@
 ---
 title: Obsidian Templates
 created: 2023-06-01T19:47Z
-modified: 2023-06-01T23:39Z
+modified: 2024-10-11T06:10:02Z
 aliases:
 - Obsidian Templates
 tags:
@@ -16,18 +16,18 @@ A [core Obsidian plugin](obsidian-core-plugin.md) which allows you to create new
 
 # Features
 
-It can do the following things:
+It can do the following things: [^1] [^2]
 * Insert the contents of a template note into the current note.
 * Insert the current date in the default date format into the current note (`Templates: Insert current date` command).
 * Insert the current time in the default time format into the current note (`Templates: Insert current time` command).
 
 # Template Note
 
-A **template note** is a note which is in the path that the Obsidian Templates `Template folder location` setting is set to.
+A **template note** is a note which is in the path that the Obsidian Templates `Template folder location` setting is set to. [^4]
 
 # Template Variables
 
-A **template variable** is a string which will be substituted with values when the template is inserted into the current note or used to create a new note.
+A **template variable** is a string which will be substituted with values when the template is inserted into the current note or used to create a new note. [^3] [^4]
 
 Variable | Description
 ---------|------------
@@ -41,12 +41,10 @@ Variable | Description
 
 Note that while a format string can be used with `{{date}}` or `{{time}}`, either of the date or time formats can be changed to use a format that has both the date and time in it. This works for the default format settings too.
 
-# History
+[^1]: [202306011947](../entries/202306011947.md)
 
-![202306011947](../entries/202306011947.md)
+[^2]: [202306012327](../entries/202306012327.md)
 
-![202306012327](../entries/202306012327.md)
+[^3]: [202306012331](../entries/202306012331.md)
 
-![202306012331](../entries/202306012331.md)
-
-![202306012339](../entries/202306012339.md)
+[^4]: [202306012339](../entries/202306012339.md)

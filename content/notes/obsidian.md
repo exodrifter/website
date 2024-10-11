@@ -1,6 +1,7 @@
 ---
 title: Obsidian
 created: 2023-05-30T00:14Z
+modified: 2024-10-11T06:12:12Z
 aliases:
 - Obsidian
 tags:
@@ -9,7 +10,7 @@ tags:
 
 # Obsidian
 
-A note-taking app which uses [Obsidian Flavored Markdown](obsidian-flavored-markdown.md) files as its file format of choice. In particular, it has very good tools for connecting notes to one another including:
+A note-taking app which uses [Obsidian Flavored Markdown](obsidian-flavored-markdown.md) files as its file format of choice. In particular, it has very good tools for connecting notes to one another including: [^1]
 
 * A graph view to visualize connections between notes
 * A list of backlinks for a note (notes which link to the note you are viewing)
@@ -29,6 +30,4 @@ Obsidian has the following base features:
 
 Obsidian's functionality can be extended using Community Plugins.
 
-# History
-
-![202305300014](../entries/202305300014.md)
+[^1]: [202305300014](../entries/202305300014.md)
