@@ -5,6 +5,7 @@ aliases:
 - 6 Underground
 - 6 Underground (2019)
 tags:
+- action
 - film
 ---
 
