@@ -5,6 +5,8 @@ modified: 2024-10-03T04:29:38Z
 aliases:
 - sci-fi
 - science fiction
+tags:
+- genre
 ---
 
 Related: [Paradigm Shift](paradigm-shift.md), [Science Fantasy](science-fantasy.md)

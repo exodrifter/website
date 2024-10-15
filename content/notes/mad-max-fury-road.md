@@ -7,10 +7,11 @@ aliases:
 - 'Mad Max: Fury Road (2015)'
 tags:
 - film
+- post-apocalyptic
 ---
 
 # Mad Max: Fury Road (2015)
 
-_**Mad Max: Fury Road**_ is a [post-apocalyptic](post-apocalyptic.md) action film.
+_**Mad Max: Fury Road**_ is a post-apocalyptic action film.
 
 In 2024, a prequel titled _[Furiosa: A Mad Max Saga](furiosa-a-mad-max-saga.md)_ was released ([20240530040419](../entries/20240530040419.md)).
