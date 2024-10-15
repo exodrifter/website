@@ -3,6 +3,8 @@ title: The Death of Ivan Ilych
 created: 2024-05-29T06:12:05Z
 aliases:
 - The Death of Ivan Ilych
+tags:
+- book
 ---
 
 # The Death of Ivan Ilych

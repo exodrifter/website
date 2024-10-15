@@ -3,6 +3,8 @@ title: Roadside Picnic
 created: 2024-05-29T06:12:05Z
 aliases:
 - Roadside Picnic
+tags:
+- book
 ---
 
 # Roadside Picnic
