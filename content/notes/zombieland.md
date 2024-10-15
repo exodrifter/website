@@ -5,6 +5,7 @@ aliases:
 - Zombieland
 - Zombieland (2009)
 tags:
+- film
 - post-apocalyptic
 - zombie
 ---

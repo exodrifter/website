@@ -6,12 +6,13 @@ aliases:
 - Solaris
 - Solaris (1972)
 tags:
+- film
 - science-fiction
 ---
 
 # Solaris (1972)
 
-_**Solaris (1972)**_ is a [science fiction](../tags/science-fiction.md) [film](../indices/films.md) directed by [Andrei Tarkovsky](andrei-tarkovsky.md).
+_**Solaris (1972)**_ is a [science fiction](../tags/science-fiction.md) film directed by [Andrei Tarkovsky](andrei-tarkovsky.md).
 
 It was his first attempt at making a [science fiction](../tags/science-fiction.md) film, before [Stalker (1979)](stalker.md) ([20240529050749](../entries/20240529050749.md)).
 

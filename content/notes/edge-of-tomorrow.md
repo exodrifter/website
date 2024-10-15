@@ -5,6 +5,7 @@ aliases:
 - Edge of Tomorrow
 - Edge of Tomorrow (2014)
 tags:
+- film
 - science-fiction
 ---
 

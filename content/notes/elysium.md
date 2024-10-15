@@ -5,6 +5,7 @@ aliases:
 - Elysium
 - Elysium (2013)
 tags:
+- film
 - science-fiction
 ---
 

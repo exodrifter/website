@@ -4,6 +4,8 @@ created: 2024-10-08T03:41:35Z
 aliases:
 - 6 Underground
 - 6 Underground (2019)
+tags:
+- film
 ---
 
 # 6 Underground (2019)

@@ -5,8 +5,9 @@ aliases:
 - Eternal Sunshine of the Spotless Mind
 - Eternal Sunshine of the Spotless Mind (2004)
 tags:
-- science-fiction
+- film
 - paradigm-shift
+- science-fiction
 ---
 
 # Eternal Sunshine of the Spotless Mind

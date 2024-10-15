@@ -4,6 +4,8 @@ created: 2024-06-19T05:51:50Z
 aliases:
 - Robot Dreams
 - Robot Dreams (2023)
+tags:
+- film
 ---
 
 # Robot Dreams (2023)
