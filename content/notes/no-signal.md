@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2024-10-11T03:25:51Z
+modified: 2024-10-15T17:39:03Z
 aliases:
 - no signal logs
 - lost contact logs
@@ -18,7 +18,8 @@ These are the development notes for _no signal_. For more information, see the [
 
 | date | version | notes |
 |------|---------|-------|
-| <span class="timestamp">2024-10-14</span> || [20241014191628](../entries/20241014191628.md), [Steam Next Fest](next-fest.md) ([new game at next fest](../blog/20241014190154.md)) |
+| <span class="timestamp">2024-10-15</span> || [164902](../entries/20241015164902.md), [173758](../entries/20241015173758.md) |
+| <span class="timestamp">2024-10-14</span> || [191628](../entries/20241014191628.md), [Steam Next Fest](next-fest.md) ([new game at next fest](../blog/20241014190154.md)) |
 | <span class="timestamp">2024-10-11</span> || [191410 (stream 126)](../entries/20241011191410.md) |
 | <span class="timestamp">2024-10-08</span> || [165340 (stream 125)](../entries/20241008165340.md), [204358](../entries/20241008204358.md) |
 | <span class="timestamp">2024-09-27</span> || [192213 (stream 121)](../entries/20240927192213.md) |
