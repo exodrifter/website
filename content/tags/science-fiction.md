@@ -7,4 +7,4 @@ aliases:
 - science fiction
 ---
 
-Related: [Paradigm Shift](paradigm-shift.md), [Science Fantasy](../notes/science-fantasy.md)
+Related: [Paradigm Shift](paradigm-shift.md), [Science Fantasy](science-fantasy.md)
