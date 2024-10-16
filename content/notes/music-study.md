@@ -12,7 +12,7 @@ tags:
 
 | date | notes |
 |------|-------|
-| <span class="timestamp">2024-10-16</span> | [164645](../entries/20241016164645.md) |
+| <span class="timestamp">2024-10-16</span> | [164645](../entries/20241016164645.md), [184619](../entries/20241016184619.md) |
 | <span class="timestamp">2024-10-09</span> | [163931](../entries/20241009163931.md) |
 | <span class="timestamp">2024-10-08</span> | [033044](../entries/20241009033044.md) |
 | <span class="timestamp">2024-10-02</span> | [164246](../entries/20241002164246.md) |
