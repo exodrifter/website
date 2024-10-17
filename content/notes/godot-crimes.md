@@ -25,6 +25,7 @@ These crimes have not been addressed and are still issues in the Godot codebase.
 - [`get_contact_local_position` returns global position](godot-physics-direct-body-state-3d-local-position-is-global.md)
 - [Cubemaps are not oriented consistently between rendering pipelines](godot-cubemap-orientation.md)
 - [Godot always runs scripts in deserialized resources](godot-runs-scripts-in-resources.md)
+- [Godot doesn't export dependencies](godot-export-dependencies-broken.md)
 
 ## Solved Crimes
 
