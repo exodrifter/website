@@ -1,7 +1,7 @@
 ---
 title: Quartz does not set the date properly
 created: 2024-09-15T07:31:29Z
-modified: 2024-09-19T04:26:37Z
+modified: 2024-10-18T04:56:59Z
 aliases:
 - Quartz does not set the date properly
 tags:
@@ -10,7 +10,7 @@ tags:
 
 # Quartz does not set the date properly
 
-Quartz's documentation says the following:
+[Quartz](quartz.md)'s documentation says the following:
 
 > [Syntax, Authoring Content, Quartz Documentation](https://quartz.jzhao.xyz/authoring-content#syntax):
 >
