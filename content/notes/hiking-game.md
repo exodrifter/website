@@ -8,7 +8,7 @@ aliases:
 
 # Hiking Game
 
-**Hiking game** is one of my dream game projects, which is about the logistics of travelling and overcoming adversarial odds.
+**Hiking game** is an unplanned game about connecting with nature, being present in the moment, and taking pictures of plants.
 
 ## Inspirations
 
@@ -16,3 +16,9 @@ aliases:
 - The badge-giving ceremony in Parks and Recreation. [20240603020415](../entries/20240603020415.md)
 - Low poly model detail https://bsky.app/profile/stoff.bsky.social/post/3klkg4ktlo72a
 - Heavenly Delusion
+
+# log
+
+| date | version | notes
+|---|---|---|
+| <span class="timestamp">2024-10-18</span> || [042652](../entries/20241018042652.md) |
