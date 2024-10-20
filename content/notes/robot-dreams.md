@@ -6,6 +6,7 @@ aliases:
 - Robot Dreams (2023)
 tags:
 - film
+- animation
 ---
 
 # Robot Dreams (2023)
