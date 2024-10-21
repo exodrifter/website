@@ -1,7 +1,7 @@
 ---
 title: High Frontier 4 All Cards
 created: 2024-09-26T09:18:22Z
-modified: 2024-10-10T19:53:29Z
+modified: 2024-10-21T04:43:38Z
 aliases:
 - HF4A Cards
 - High Frontier 4 All Cards
@@ -304,3 +304,24 @@ These cards are only used with the Race for Glory ruleset.
 | CG119R | Triggered Decay Nuclear Battery |
 | CG120F | [Optoelectric Nuclear Battery](hf4a-cg120f.md) |
 | CG120R | Nuclear-pumped Excimer Flashlamp |
+
+# Module 1
+
+## GW/TW Thruster
+
+| Code | Name |
+|------|------|
+| M1W156F | Salt-water Zubrin |
+| M1W156R | Zubrin-GDM |
+| M1W157F | Amat-catalyzed Fission-fusion |
+| M1W157R | Amat-initiated H-B Magnetic-inertial |
+| M1W158F | Levitated Dipole 6Li-H Fusion |
+| M1W158R | Dusty Plasma |
+| M1W159F | VISTA D-T Inertial Fusion |
+| M1W159R | Deadalus 3He-D Inertial Fusion |
+| M1W160F | Dense Plasma H-B Focus Fusion |
+| M1W160R | Crossfire H-B Focus Fusion |
+| M1W161F | Spheromak 3He-D Magnetic Fusion |
+| M1W161R | Colliding FRC 3HE-D Fusion |
+| M1W162F | Mini-Mag Orion Z-pinch Fission |
+| M1W162R | Solem Medusa Tugged Orion |
