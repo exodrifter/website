@@ -1,7 +1,7 @@
 ---
 title: Marketing
 created: 2024-06-05T18:34:46Z
-modified: 2024-09-22T21:05:08Z
+modified: 2024-10-21T15:06:30Z
 aliases:
 - marketing
 ---
@@ -23,9 +23,10 @@ aliases:
 
 | Name | Location | Month |
 |------|----------|-------|
+| [Ushicon](ushicon.md) | Austin, Texas | February |
+| [Midwest Gaming Classic](midwest-gaming-classic.md) | Milwaukee, Wisconsin | April |
 | [STAPLE! Austin](staple-austin.md) | Austin, Texas | April |
 | [Delta H Con](delta-h-con.md) | Houston, Texas | July |
 | [2D Con](2d-con.md) | Minneapolis, Minnesota | August |
 | [San Japan](san-japan.md) | San Antonio, Texas | August |
 | [ArmadilloCon](armadillo-con.md) | Austin, Texas | September |
-| [Ushicon](ushicon.md) | Austin, Texas | February |
