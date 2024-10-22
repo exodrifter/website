@@ -96,6 +96,16 @@ wordmark
 
 ![](no-signal/wordmark.svg)
 
+# pamphlet
+
+Front
+
+![](no-signal/pamphlet-front.png)
+
+Back
+
+![](no-signal/pamphlet-back.png)
+
 # monetization permission
 
 exodrifter allows for the contents of _no signal_ to be published through video broadcasting services for any commercial or non-commercial purposes. Monetization of videos created containing assets from no signal is legally & explicitly allowed by exodrifter.
