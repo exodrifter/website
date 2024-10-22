@@ -63,6 +63,10 @@ trailer ([link](https://www.youtube.com/watch?v=ACe8NJ5Y2iE))
 
 # branding
 
+application icon
+
+![](port-of-call/icon.jpg)
+
 icon
 
 ![](port-of-call/icon.png)
