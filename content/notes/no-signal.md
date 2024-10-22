@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2024-10-22T05:08:21Z
+modified: 2024-10-22T15:19:28Z
 aliases:
 - no signal logs
 - lost contact logs
@@ -26,7 +26,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 | <span class="timestamp">2024-10-17</span> || [145528 (stream 128)](../entries/20241017145528.md) |
 | <span class="timestamp">2024-10-16</span> || [143922](../entries/20241016143922.md) |
 | <span class="timestamp">2024-10-15</span> || [164902](../entries/20241015164902.md), [173758](../entries/20241015173758.md) |
-| <span class="timestamp">2024-10-14</span> | v0.26 | [191628 (stream 127)](../entries/20241014191628.md), [Steam Next Fest](next-fest.md) ([new game at next fest](../blog/20241014190154.md)) |
+| <span class="timestamp">2024-10-14</span> | v0.26 | [191628 (stream 127)](../entries/20241014191628.md), [Steam Next Fest](next-fest.md) ([steam next fest notes](../blog/20241021211115.md)) |
 | <span class="timestamp">2024-10-11</span> || [191410 (stream 126)](../entries/20241011191410.md) |
 | <span class="timestamp">2024-10-08</span> || [165340 (stream 125)](../entries/20241008165340.md), [204358](../entries/20241008204358.md) |
 | <span class="timestamp">2024-09-27</span> || [192213 (stream 121)](../entries/20240927192213.md) |
