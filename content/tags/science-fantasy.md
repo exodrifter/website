@@ -6,4 +6,5 @@ aliases:
 - science fantasy
 tags:
 - genre
+- science-fantasy
 ---

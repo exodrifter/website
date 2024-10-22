@@ -6,4 +6,5 @@ aliases:
 - Zombie
 tags:
 - genre
+- zombie
 ---

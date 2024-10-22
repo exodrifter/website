@@ -7,6 +7,7 @@ aliases:
 - science fiction
 tags:
 - genre
+- science-fiction
 ---
 
 Related: [Paradigm Shift](paradigm-shift.md), [Science Fantasy](science-fantasy.md)

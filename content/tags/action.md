@@ -5,5 +5,6 @@ aliases:
 - action
 - Action
 tags:
+- action
 - genre
 ---

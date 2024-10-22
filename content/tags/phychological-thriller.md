@@ -5,4 +5,5 @@ aliases:
 - psychological thriller
 tags:
 - genre
+- phsychological-thriller
 ---

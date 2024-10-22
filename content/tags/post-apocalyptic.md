@@ -6,4 +6,5 @@ aliases:
 - post-apocalyptic
 tags:
 - genre
+- post-apocalyptic
 ---

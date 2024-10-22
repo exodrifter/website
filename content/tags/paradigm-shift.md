@@ -5,6 +5,7 @@ aliases:
 - paradigm shift
 tags:
 - genre
+- paradigm-shift
 ---
 
 Related: [Science Fiction](science-fiction.md)
