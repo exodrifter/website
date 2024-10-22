@@ -4,6 +4,9 @@ created: 2024-06-02T19:30:38Z
 modified: 2024-06-03T03:47:23Z
 aliases:
 - 'Hamilton: An American Musical'
+tags:
+- biography
+- musical
 ---
 
 # Hamilton: An American Musical
