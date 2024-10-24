@@ -20,6 +20,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 
 | date | version | notes |
 |------|---------|-------|
+| <span class="timestamp">2024-10-24</span> | v0.27 | [190113 (stream 132)](../entries/20241024190113.md), [Austin Glitch State](austin-glitch-state.md) ([041200](../entries/20241025041200.md)) |
 | <span class="timestamp">2024-10-22</span> || [191750 (stream 131)](../entries/20241022191750.md) |
 | <span class="timestamp">2024-10-21</span> || [152231 (stream 130)](../entries/20241021152231.md) |
 | <span class="timestamp">2024-10-20</span> || [041506](../entries/20241020041506.md) |
