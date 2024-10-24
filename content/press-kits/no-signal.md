@@ -36,7 +36,7 @@ _**no signal**_ is a science fiction escape room game about loneliness, fixing b
 
 # history
 
-For a few months, the idea of telling a story about loneliness, how it effects you, and how you can use cognitive reframing in those kinds of situations preoccupied my thoughts. I wanted to tell an emotionally powerful story that many could connect with and take away a positive outlook from and in December 2023, we made a prototype for a hidden object game to do just that. The development of the game has been streamed live on Twitch most weekdays since then and it is planned to be released sometime in winter 2024.
+For a few months, the idea of telling a story about loneliness, how it affects you, and how you can use cognitive reframing in those kinds of situations preoccupied my thoughts. I wanted to tell an emotionally powerful story that many could connect with and take away a positive outlook from and in December 2023, we made a prototype for a hidden object game to do just that. The development of the game has been streamed live on Twitch most weekdays since then and it is planned to be released sometime in winter 2024.
 
 # features
 
