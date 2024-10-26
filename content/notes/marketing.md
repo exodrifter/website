@@ -30,3 +30,4 @@ aliases:
 | [2D Con](2d-con.md) | Minneapolis, Minnesota | August |
 | [San Japan](san-japan.md) | San Antonio, Texas | August |
 | [ArmadilloCon](armadillo-con.md) | Austin, Texas | September |
+| [Fantastic Arcade](fantastic-arcade.md) | Austin, Texas | October |
