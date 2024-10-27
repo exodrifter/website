@@ -14,9 +14,9 @@ modified: 2024-09-23T23:02:35Z
 
 # blog
 
+- **2024-11-05** - [fantastic arcade is also incredible](blog/20241106041719.md)
 - **2024-10-22** - [steam next fest notes](blog/20241021211115.md)
 - **2024-10-06** - [hf4a mars speedrun](blog/20241006043901.md)
-- **2024-10-03** - [no signal @ Fantastic Arcade](blog/20241003184428.md)
 - **2024-09-23** - [san japan 2024](blog/20240919203503.md)
 - **2024-09-19** - [2d con is incredible](blog/20240919200017.md)
 
