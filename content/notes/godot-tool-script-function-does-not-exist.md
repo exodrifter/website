@@ -1,7 +1,7 @@
 ---
 title: "`@tool` script says function does not exist when it does"
 created: 2024-07-03T19:23:04Z
-modified: 2024-09-19T04:26:37Z
+modified: 2024-10-28T05:43:53Z
 aliases:
 - "`@tool` script says function does not exist when it does"
 tags:
@@ -10,7 +10,7 @@ tags:
 
 # `@tool` script says function does not exist when it does
 
-In Godot, if you try calling a function on a non-tool script from a tool script, you'll get the error that looks like this:
+In Godot [GDScripts](godot-gdscript.md), if you try calling a function on a non-tool script from a tool script, you'll get the error that looks like this:
 
 ```
 res://test.gd:8 - Invalid call. Nonexistent function 'get_color' in base 'Resource (SwatchRef)'.

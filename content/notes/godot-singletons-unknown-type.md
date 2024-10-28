@@ -1,16 +1,16 @@
 ---
-title: Godot cannot determine the type of autoloads
+title: Singleton autoloads have an unknown type
 created: 2024-07-03T20:06:52Z
-modified: 2024-09-19T04:26:37Z
+modified: 2024-10-28T05:07:25Z
 aliases:
-- Godot cannot determine the type of autoloads
+- Singleton autoloads have an unknown type
 tags:
 - godot
 ---
 
-# Godot cannot determine the type of autoloads
+# Singleton autoloads have an unknown type
 
-In Godot, if you make a singleton autoload by autoloading a packed scene that has the script attached, the editor will not be able to determine the type of the autoload.
+In Godot, if you make a singleton autoload by autoloading a packed scene that has the script attached, the editor will not be able to determine the type of the autoload in [GDScript](godot-gdscript.md)
 
 To workaround this problem, you will need to tell Godot the type of the autoload.
 

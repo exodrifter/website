@@ -1,7 +1,7 @@
 ---
 title: GDShader doesn't pause
 created: 2024-05-30T05:53:46Z
-modified: 2024-09-19T04:26:37Z
+modified: 2024-10-28T05:22:13Z
 aliases:
 - GDShader doesn't pause
 tags:
@@ -10,7 +10,7 @@ tags:
 
 # GDShader doesn't pause
 
-In Godot 4.0, shaders don't pause when the tree is paused as the time parameter continues to increase while the game is paused.
+In Godot 4.0, [GDShaders](gdshader.md) don't pause when the tree is paused as the time parameter continues to increase while the game is paused.
 
 Unfortunately, it doesn't appear like the Godot maintainers will fix this for 4.0, because they believe the canonical solution for this should be to add a new global uniform to the project that takes whether or not the tree is paused into account for use in a shader. 
 

@@ -1,7 +1,7 @@
 ---
 title: "`JSON` does not round trip"
 created: 2024-06-18T00:37:16Z
-modified: 2024-09-19T04:26:37Z
+modified: 2024-10-28T04:40:46Z
 aliases:
 - "`JSON` does not round trip"
 tags:
@@ -35,7 +35,7 @@ Value is String? true
 Value is Vector2i? false
 ```
 
-Instead, consider using `store_var` and `get_var` in `FileAccess` (see also: [Arbitrary Code Execution in Godot serialization](godot-serialize-arbitrary-code-execution.md))
+Instead of storing data in JSON, consider using `store_var` and `get_var` in `FileAccess` instead (see: [Arbitrary Code Execution in Godot serialization](godot-serialize-arbitrary-code-execution.md)).
 
 # History
 

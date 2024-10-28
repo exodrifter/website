@@ -1,6 +1,7 @@
 ---
 title: How do I create a getter and setter for variables?
 created: 2023-05-29T21:19Z
+modified: 2024-10-28T05:09:30Z
 aliases:
 - How do I create a getter and setter for variables?
 tags:
@@ -10,7 +11,7 @@ tags:
 # How do I create a getter and setter for variables?
 
 > [!question]
-> How do I create getters and setters for my variables in GDScript so that I can ensure that some code always runs when the value is gotten or set?
+> How do I create getters and setters for my variables in [GDScript](godot-gdscript.md) so that I can ensure that some code always runs when the value is gotten or set?
 
 ```gdscript
 @export var foobar: Array = [] :

@@ -1,7 +1,7 @@
 ---
 title: "`RichTextLabel` lags on first draw"
 created: 2024-06-07T22:04:45Z
-modified: 2024-09-19T04:26:37Z
+modified: 2024-10-28T04:59:24Z
 aliases:
 - "`RichTextLabel` lags on first draw"
 tags:
@@ -10,7 +10,7 @@ tags:
 
 # `RichTextLabel` lags on first draw
 
-`RichTextLabel` uses `TextParagraph` internally to draw text, but since `TextParagraph` caches some information lazily there can be a lag spike when drawing the `RichTextLabel` for the first time.
+[`RichTextLabel`](godot-rich-text-label.md) uses `TextParagraph` internally to draw text, but since `TextParagraph` caches some information lazily there can be a lag spike when drawing the `RichTextLabel` for the first time.
 
 To get around this issue, you can disable the use of system fonts as a fallback or use the `TextParagraph` class directly, and force it to cache the information it needs before the first draw call:
 

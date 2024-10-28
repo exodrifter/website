@@ -1,6 +1,7 @@
 ---
 title: Godot Displayed Text
 created: 2024-10-23T17:45:14Z
+modified: 2024-10-28T04:50:15Z
 aliases:
 - Godot Displayed Text
 tags:
@@ -9,7 +10,7 @@ tags:
 
 # Godot Displayed Text
 
-`RichTextLabel` and `Label` both have a set of properties called "Displayed Text" that you can use to control how much of the text is shown on screen and how that text is displayed.[^1]
+[`RichTextLabel`](godot-rich-text-label.md) and `Label` both have a set of properties called "Displayed Text" that you can use to control how much of the text is shown on screen and how that text is displayed.[^1]
 
 `visible_characters` and `visible_ratio` allow you to define how much of the text you would like to show, allowing you to do animations that make the text appear like it is being typed out. `visible_characters` allows you to do this by defining how many characters to show while `visible_ratio` allows you to do this by defining a percentage (between the value of `0.0` and `1.0`) [^1]
 
