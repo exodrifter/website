@@ -11,5 +11,5 @@ aliases:
 
 It appears that they primarily focus on Gameboy titles. [^2]
 
-[^1]: [20241026221819](entries/20241026221819.md)
-[^2]: [20241026221011](entries/20241026221011.md)
+[^1]: [20241026221819](../entries/20241026221819.md)
+[^2]: [20241026221011](../entries/20241026221011.md)
