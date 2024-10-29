@@ -20,6 +20,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 
 | date | version | notes |
 |------|---------|-------|
+| <span class="timestamp">2024-10-28</span> || [180109](../entries/20241028180109.md)
 | <span class="timestamp">2024-10-27</span> || [004348](../entries/20241027004348.md), [200127](../entries/20241027200127.md) |
 | <span class="timestamp">2024-10-26</span> || [Fantastic Arcade](fantastic-arcade.md) ([162805](../entries/20241026162805.md)) |
 | <span class="timestamp">2024-10-24</span> | v0.27 | [190113 (stream 132)](../entries/20241024190113.md), [Austin Glitch State](austin-glitch-state.md) ([041200](../entries/20241025041200.md)) |
