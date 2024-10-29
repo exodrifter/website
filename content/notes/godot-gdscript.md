@@ -1,6 +1,7 @@
 ---
 title: GDScript
 created: 2024-10-28T05:05:15Z
+modified: 2024-10-29T06:10:04Z
 aliases:
 - GDScript
 tags:
@@ -10,6 +11,7 @@ tags:
 # GDScript
 
 - [Exported variables of inherited scenes are aliased](godot-gdscript-aliased-variables.md)
+- [GDScript Lambdas](gdscript-lambda.md)
 - [How do I create a getter and setter for variables?](godot-gdscript-getter-setter.md)
 - [Lambdas capture local variables by value](godot-gdscript-lambdas-capture-by-value.md)
 - [Singleton autoloads have an unknown type](godot-singletons-unknown-type.md)
