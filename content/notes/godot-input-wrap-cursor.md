@@ -1,6 +1,7 @@
 ---
 title: Wrap mouse cursor in Godot
 created: 2024-10-29T00:17:46Z
+modified: 2024-10-31T21:17:50Z
 aliases:
 - Wrap mouse cursor in Godot
 tags:
@@ -13,7 +14,7 @@ Sometimes you might want to wrap the mouse cursor within the bounds of the windo
 
 To do this, we need to detect if the mouse is close to the window edge by some arbitrary margin. We have to use a margin because if the window is maximized when the mouse hits the edge of the screen, the operating system will not report mouse movement that would move the mouse past the bounds of the window since that would also move the cursor off-screen. [^1]
 
-When the mouse is within the bounds, we can warp the mouse. However, the mouse position in Godot is in the viewport's coordinate system, so we have to transform it back to window pixel coordinates in order for the warp to work correctly: [^1]
+Here's how you would use `DisplayServer` to warp the mouse within the bounds of the window: [^2]
 
 ```gdscript
 func _unhandled_input(event: InputEvent) -> void:
@@ -21,28 +22,30 @@ func _unhandled_input(event: InputEvent) -> void:
 		handle_input_mouse_motion(event as InputEventMouseMotion)
 
 func handle_input_mouse_motion(event: InputEventMouseMotion) -> void:
-	var window := get_window()
-	var xform := get_viewport().get_final_transform()
-	var new_position := get_viewport().get_mouse_position() * xform + event.relative
+	var window := Rect2i(
+		DisplayServer.window_get_position(),
+		DisplayServer.window_get_size()
+	)
+	var new_position := DisplayServer.mouse_get_position()
 
 	const margin := 10
 	var warp := false
-	if new_position.x < margin:
+	if new_position.x < window.position.x + margin:
 		warp = true
-		new_position.x += window.size.x - margin
-	if new_position.x > window.size.x - margin:
+		new_position.x += window.size.x - (margin * 2)
+	elif new_position.x > window.end.x - margin:
 		warp = true
-		new_position.x -= window.size.x - margin
-	if new_position.y < margin:
+		new_position.x -= window.size.x - (margin * 2)
+	elif new_position.y < window.position.y + margin:
 		warp = true
-		new_position.y += window.size.y - margin
-	if new_position.y > window.size.y - margin:
+		new_position.y += window.size.y - (margin * 2)
+	elif new_position.y > window.end.y - margin:
 		warp = true
-		new_position.y -= window.size.y - margin
-
+		new_position.y -= window.size.y - (margin * 2)
 	if warp:
-		Input.warp_mouse(new_position)
+		DisplayServer.warp_mouse(new_position - window.position)
 		just_warped = true
 ```
 
 [^1]: [20241029240745](../entries/20241029240745.md)
+[^2]: [20241031203718](../entries/20241031203718.md)
