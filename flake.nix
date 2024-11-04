@@ -55,12 +55,12 @@
                 owner = "jackyzha0";
                 repo = "quartz";
                 rev = "v${version}";
-                hash = "sha256-kID0R/n3ij5uvZ/CXjiLa3oqjghX2U4Zu82huejG6/Q=";
+                hash = "sha256-ImL9QycKNWnI7hFej6HeJra2flsdnrC+hoRrfW9kw2Q=";
               };
 
               dontNpmBuild = true;
               makeCacheWritable = true;
-              npmDepsHash = "sha256-qgAzMTtFTShj3xUut73DBCbkt7yTwVjthL8hEgRFdIo=";
+              npmDepsHash = "sha256-TAbNdOoYxLEzPxIOvECqu6IROW3PUW612K0cUm6/4aM=";
 
               installPhase = ''
                 runHook preInstall
