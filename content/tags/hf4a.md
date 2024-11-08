@@ -6,6 +6,7 @@ aliases:
 - High Frontier 4 All
 tags:
 - hf4a
+- space
 ---
 
 <div class="banner">

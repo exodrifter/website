@@ -3,6 +3,8 @@ title: Long Duration Exposure Facility
 created: 2024-11-01T17:09:53Z
 aliases:
 - Long Duration Exposure Facility
+tags:
+- space
 ---
 
 # Long Duration Exposure Facility
