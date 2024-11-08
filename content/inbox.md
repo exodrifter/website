@@ -19,3 +19,4 @@ Stuff I want to follow up on and create notes for.
 - Wonka (2023)
 - Inventing Ecocide: Vietnam War + Agent Orange
 - Andor https://en.wikipedia.org/wiki/Andor_(TV_series)
+- How Godot Engine was made https://www.youtube.com/watch?v=hKLl03A9Kws
