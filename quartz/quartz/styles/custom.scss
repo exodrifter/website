@@ -187,6 +187,11 @@ ul.overflow::after {
   height: calc(100vh - 12rem);
 }
 
+.page > #quartz-body .center, .page > #quartz-body footer {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .table-container > table {
   margin: 0;
   width: 100%
