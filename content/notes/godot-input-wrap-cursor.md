@@ -47,5 +47,5 @@ func handle_input_mouse_motion(event: InputEventMouseMotion) -> void:
 		just_warped = true
 ```
 
-[^1]: [20241029240745](../entries/20241029240745.md)
+[^1]: [20241029000745](../entries/20241029000745.md)
 [^2]: [20241031203718](../entries/20241031203718.md)

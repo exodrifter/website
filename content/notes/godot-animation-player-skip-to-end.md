@@ -15,4 +15,4 @@ As of Godot 4.3.stable, to skip to the end of an `Animation` in `AnimationPlayer
 play(animation_name, -1, 0, true)
 ```
 
-[^1]: [20241110241500](../entries/20241110241500.md)
+[^1]: [20241110001500](../entries/20241110001500.md)
