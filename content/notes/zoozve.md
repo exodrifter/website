@@ -3,6 +3,8 @@ title: Zoozve
 created: 2024-10-14T21:36:02Z
 aliases:
 - Zoozve
+tags:
+- space
 ---
 
 # Zoozve

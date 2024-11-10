@@ -4,6 +4,8 @@ created: 2024-10-14T21:37:23Z
 aliases:
 - quasi-moon
 - Quasi-moon
+tags:
+- space
 ---
 
 # Quasi-moon
