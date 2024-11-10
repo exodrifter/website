@@ -20,3 +20,5 @@ Stuff I want to follow up on and create notes for.
 - Inventing Ecocide: Vietnam War + Agent Orange
 - Andor https://en.wikipedia.org/wiki/Andor_(TV_series)
 - How Godot Engine was made https://www.youtube.com/watch?v=hKLl03A9Kws
+- The Substance (2024) https://www.rottentomatoes.com/m/the_substance
+- Mars Express (2024) https://www.rottentomatoes.com/m/mars_express
