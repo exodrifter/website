@@ -1,7 +1,7 @@
 ---
 title: Wrap mouse cursor in Godot
 created: 2024-10-29T00:17:46Z
-modified: 2024-10-31T21:17:50Z
+modified: 2024-11-11T02:48:22Z
 aliases:
 - Wrap mouse cursor in Godot
 tags:
@@ -47,5 +47,8 @@ func handle_input_mouse_motion(event: InputEventMouseMotion) -> void:
 		just_warped = true
 ```
 
+However, this code will not work under Wayland due to unresolved issues with `warp_mouse` in Godot Engine. [^3]
+
 [^1]: [20241029000745](../entries/20241029000745.md)
 [^2]: [20241031203718](../entries/20241031203718.md)
+[^3]: [20241111024109](../entries/20241111024109.md)
