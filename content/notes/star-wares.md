@@ -1,6 +1,9 @@
 ---
 title: star wares
 created: 2024-11-06T00:33:52Z
+aliases:
+- star wares
+- space wares
 tags:
 - log
 - star-wares
