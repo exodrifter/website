@@ -4,6 +4,7 @@ created: 2024-10-06T04:28:33Z
 aliases:
 - Cabal cannot resolve base dependency
 tags:
+- cabal
 - haskell
 ---
 
