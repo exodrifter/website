@@ -5,8 +5,9 @@ aliases:
 - Look Back
 - Look Back (2024)
 tags:
-- film
 - animation
+- anime
+- film
 ---
 
 # Look Back (2024)
