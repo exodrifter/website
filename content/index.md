@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2024-09-23T23:02:35Z
+modified: 2024-11-24T20:03:55Z
 ---
 
 <div style="display: flex; flex-direction: row; align-items: center;">
@@ -14,6 +14,7 @@ modified: 2024-09-23T23:02:35Z
 
 # blog
 
+- **2024-11-24** - [toronto game expo 2024](blog/20241124185224.md)
 - **2024-11-05** - [fantastic arcade is also incredible](blog/20241106041719.md)
 - **2024-10-22** - [steam next fest notes](blog/20241021211115.md)
 - **2024-10-06** - [hf4a mars speedrun](blog/20241006043901.md)
