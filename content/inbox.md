@@ -1,7 +1,7 @@
 ---
 title: inbox
 created: 2024-07-24T20:16:46Z
-modified: 2024-10-04T01:39:35Z
+modified: 2024-11-24T21:57:18Z
 alias:
 - Inbox
 ---
@@ -22,3 +22,4 @@ Stuff I want to follow up on and create notes for.
 - How Godot Engine was made https://www.youtube.com/watch?v=hKLl03A9Kws
 - The Substance (2024) https://www.rottentomatoes.com/m/the_substance
 - Mars Express (2024) https://www.rottentomatoes.com/m/mars_express
+- Ways of Seeing https://en.m.wikipedia.org/wiki/Ways_of_Seeing
