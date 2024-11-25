@@ -6,7 +6,8 @@ aliases:
 - The Prestige (2009)
 tags:
 - film
-- psychological-thriller
+- psychological
+- thriller
 ---
 
 # The Prestige (2009)
