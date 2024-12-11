@@ -1,8 +1,9 @@
 ---
-title: "mother!"
+title: "mother! (2017)"
 created: 2024-12-01T00:57:37Z
 aliases:
 - "mother!"
+- "mother! (2017)"
 tags:
 - film
 - psychological
