@@ -1,0 +1,24 @@
+---
+title: The Core (2003)
+created: 2024-12-16T07:07:46Z
+aliases:
+- The Core (2003)
+tags:
+- disaster
+- film
+- science-fiction
+---
+
+# The Core
+
+**The Core (2003)** is a science-fiction disaster film about a team who is tasked with drilling to the center of the Earth to set off a series of nuclear warheads in order to restart the rotation of the Earth's core. I found the film to be really awful, on account of its lack of scientific accuracy, a Hollywood-portrayal of hacking, and how contrived the writing seemed at times. [^1]
+
+In the film, a top-secret experimental weapon called DESTINI is blamed for accidentally stopping the core's rotation. The lack of a rotating core causes several effects, including: [^1]
+- An EMP blast, which caused pacemakers in a localized area to fail immediately.
+- Birds flying in a frenzy, breaking through windows.
+- Ground-based guidance systems calculating the incorrect position for the space shuttle's landing, forcing an emergency landing in an LA river.
+- The sight of auroras much closer to the equator than should be possible.
+- An electric storm which caused stone buildings in Italy to explode
+- No magnetosphere, which allowed microwaves to penetrate the atmosphere. This resulted in the ocean boiling and the Golden Gate Bridge experiencing a structural failure due to the metal it was made of melting.
+
+[^1]: [20241216070543](../entries/20241216070543.md)
