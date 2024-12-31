@@ -6,6 +6,7 @@ aliases:
 - Green Book (2018)
 tags:
 - biography
+- based-on-a-true-story
 - film
 ---
 
