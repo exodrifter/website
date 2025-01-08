@@ -1,7 +1,7 @@
 ---
 title: Music Study
 created: 2024-08-14T17:15:39Z
-modified: 2024-12-12T18:32:44Z
+modified: 2025-01-08T18:02:18Z
 aliases:
 - Music Study
 tags:
@@ -12,6 +12,7 @@ tags:
 
 | date | notes |
 |------|-------|
+| <span class="timestamp">2025-01-08</span> | [174135](../entries/20250108174135.md) |
 | <span class="timestamp">2024-12-12</span> | [181013](../entries/20241212181013.md) |
 | <span class="timestamp">2024-12-05</span> | [173946](../entries/20241205173946.md) |
 | <span class="timestamp">2024-11-27</span> | [173818](../entries/20241127173818.md) |
