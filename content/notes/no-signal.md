@@ -20,6 +20,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 
 | date | version | notes |
 |------|---------|-------|
+| <span class="timestamp">2025-02-02</span> || [182941](../entries/20250202182941.md) |
 | <span class="timestamp">2025-01-31</span> || [192922](../entries/20250131192922.md) |
 | <span class="timestamp">2025-01-28</span> || [172941](../entries/20250128172941.md) |
 | <span class="timestamp">2025-01-27</span> || [184748](../entries/20250127184748.md) |
