@@ -34,6 +34,7 @@ modified: 2024-11-24T20:03:55Z
 
 # albums
 
+- [future formant](albums/future-formant/index.md) (2025)
 - [lonely metro](albums/lonely-metro/index.md) (2023)
 - [cascade](albums/cascade/index.md) (2022)
 
