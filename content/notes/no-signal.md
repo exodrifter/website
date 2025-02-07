@@ -20,25 +20,26 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 
 | date | version | notes |
 |------|---------|-------|
+| <span class="timestamp">2025-02-06</span> || [170706 (stream 171)](../entries/20250206170706.md) |
 | <span class="timestamp">2025-02-02</span> || [182941](../entries/20250202182941.md) |
-| <span class="timestamp">2025-01-31</span> || [192922](../entries/20250131192922.md) |
-| <span class="timestamp">2025-01-28</span> || [172941](../entries/20250128172941.md) |
-| <span class="timestamp">2025-01-27</span> || [184748](../entries/20250127184748.md) |
+| <span class="timestamp">2025-01-31</span> || [192922 (stream 170)](../entries/20250131192922.md) |
+| <span class="timestamp">2025-01-28</span> || [172941 (stream 169)](../entries/20250128172941.md) |
+| <span class="timestamp">2025-01-27</span> || [184748 (stream 168)](../entries/20250127184748.md) |
 | <span class="timestamp">2025-01-26</span> | v0.32 | [193902](../entries/20250126193902.md) |
-| <span class="timestamp">2025-01-24</span> || [164722](../entries/20250124164722.md) |
-| <span class="timestamp">2025-01-23</span> || [170606](../entries/20250123170606.md) |
-| <span class="timestamp">2025-01-20</span> || [170713](../entries/20250120170713.md) |
+| <span class="timestamp">2025-01-24</span> || [164722 (stream 167)](../entries/20250124164722.md) |
+| <span class="timestamp">2025-01-23</span> || [170606 (stream 166)](../entries/20250123170606.md) |
+| <span class="timestamp">2025-01-20</span> || [170713 (stream 165)](../entries/20250120170713.md) |
 | <span class="timestamp">2025-01-19</span> || [011928](../entries/20250119011928.md), [184455](../entries/20250119184455.md) |
-| <span class="timestamp">2025-01-17</span> || [170802](../entries/20250117170802.md) |
-| <span class="timestamp">2025-01-16</span> || [174642](../entries/20250116174642.md) |
+| <span class="timestamp">2025-01-17</span> || [170802 (stream 164)](../entries/20250117170802.md) |
+| <span class="timestamp">2025-01-16</span> || [174642 (stream 163)](../entries/20250116174642.md) |
 | <span class="timestamp">2025-01-11</span> || [201240](../entries/20250111201240.md) |
 | <span class="timestamp">2025-01-10</span> || [194634](../entries/20250110194634.md) |
 | <span class="timestamp">2025-01-08</span> || [182257](../entries/20250108182257.md) |
-| <span class="timestamp">2025-01-06</span> || [201029](../entries/20250106201029.md) |
+| <span class="timestamp">2025-01-06</span> || [201029 (stream 162)](../entries/20250106201029.md) |
 | <span class="timestamp">2025-01-05</span> | v0.31 | [200559](../entries/20250105200559.md) |
-| <span class="timestamp">2025-01-03</span> || [194331](../entries/20250103194331.md) |
-| <span class="timestamp">2025-01-01</span> || [211248](../entries/20250101211248.md) |
-| <span class="timestamp">2024-12-30</span> || [192822](../entries/20241230192822.md) |
+| <span class="timestamp">2025-01-03</span> || [194331 (stream 161)](../entries/20250103194331.md) |
+| <span class="timestamp">2025-01-01</span> || [211248 (stream 160)](../entries/20250101211248.md) |
+| <span class="timestamp">2024-12-30</span> || [192822 (stream 159)](../entries/20241230192822.md) |
 | <span class="timestamp">2024-12-24</span> || [215037](../entries/20241224215037.md) |
 | <span class="timestamp">2024-12-20</span> || [232205](../entries/20241220232205.md) |
 | <span class="timestamp">2024-12-18</span> || [115152](../entries/20241218115152.md) |
