@@ -37,18 +37,18 @@ visualization contract.
 
 <br/>
 
-**SDE Intern - Microsoft <span style="float: right;">June 2013 - September 2013</span>**
-- Developed high performance mobile shaders for a driving game using ShaderLab.
-
-<br/>
-
-**Unity Intern - Chaotic Moon Studios <span style="float: right;">January, 2015 - May 2015</span>**
+**Unity Intern - Chaotic Moon Studios <span style="float: right;">January 2015 - May 2015</span>**
 - Responsible for continuing development of a fitness mobile application.
 - Collaborated with third party contractors to coordinate server/client interaction.
 
 <br/>
 
-**Intern Undergrad Senior Analyst <span style="float: right;">May 2012 - August 2012</span>**
+**SDE Intern - Microsoft <span style="float: right;">June 2013 - September 2013</span>**
+- Developed high performance mobile shaders for a driving game using ShaderLab.
+
+<br/>
+
+**Intern Undergrad Senior Analyst - Dell<span style="float: right;">May 2012 - August 2012</span>**
 - Created an extensible program to synchronize data between multiple bug trackers.
 
 <br/>
