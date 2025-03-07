@@ -1,7 +1,7 @@
 ---
 title: Godot crimes
 created: 2024-06-29T08:10:42Z
-modified: 2024-10-11T02:35:15Z
+modified: 2025-03-07T17:37:26Z
 aliases:
 - Godot crime
 - Godot crimes
@@ -26,6 +26,7 @@ These crimes have not been addressed and are still issues in the Godot codebase.
 - [Cubemaps are not oriented consistently between rendering pipelines](godot-cubemap-orientation.md)
 - [Godot always runs scripts in deserialized resources](godot-runs-scripts-in-resources.md)
 - [Godot doesn't export dependencies](godot-export-dependencies-broken.md)
+- [`reduce` in Godot returns first value in array when accumulator is `null`](godot-array-reduce.md)
 
 ## Solved Crimes
 
