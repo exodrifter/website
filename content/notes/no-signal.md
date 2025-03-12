@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2025-03-12T05:05:00Z
+modified: 2025-03-12T05:29:07Z
 aliases:
 - no signal logs
 - lost contact logs
@@ -22,7 +22,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 |------|---------|-------|
 | <span class="timestamp">2025-03-12</span> || [021733](../entries/20250312021733.md) |
 | <span class="timestamp">2025-03-11</span> || [005729](../entries/20250311005729.md), [202357 (stream 182)](../entries/20250311202357.md) |
-| <span class="timestamp">2025-03-10</span> || [163053](../entries/20250310163053.md) |
+| <span class="timestamp">2025-03-10</span> || [ATX GameMakers Showcase](atx-game-makers-showcase.md) ([163053](../entries/20250310163053.md)) |
 | <span class="timestamp">2025-03-09</span> || [163842](../entries/20250309163842.md) |
 | <span class="timestamp">2025-03-08</span> | v0.33 | [072215](../entries/20250308072215.md) |
 | <span class="timestamp">2025-03-07</span> || [052217](../entries/20250307052217.md), [180326 (stream 181)](../entries/20250307180326.md) |
@@ -81,7 +81,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 | <span class="timestamp">2024-11-21</span> || [213032 (stream 147)](../entries/20241121213032.md) |
 | <span class="timestamp">2024-11-19</span> || [185713 (stream 146)](../entries/20241119185713.md) |
 | <span class="timestamp">2024-11-18</span> || [210041 (stream 145)](../entries/20241118210041.md) |
-| <span class="timestamp">2024-11-17</span> || Toronto Game Expo ([193741](../entries/20241117193741.md)) |
+| <span class="timestamp">2024-11-17</span> || [Toronto Game Expo](toronto-game-expo.md) ([193741](../entries/20241117193741.md), [toronto game expo 2024](../blog/20241124185224.md)) |
 | <span class="timestamp">2024-11-15</span> || [185024 (stream 144)](../entries/20241115185024.md) |
 | <span class="timestamp">2024-11-14</span> || [213755 (stream 143)](../entries/20241114213755.md) |
 | <span class="timestamp">2024-11-13</span> || [035354](../entries/20241113035354.md) |
@@ -166,7 +166,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 | <span class="timestamp">2024-03-25</span> || [1952 (stream 55)](../entries/202403251952.md) |
 | <span class="timestamp">2024-03-22</span> || [1810 (stream 54)](../entries/202403221810.md) |
 | <span class="timestamp">2024-03-13</span> || [0348](../entries/202403130348.md) |
-| <span class="timestamp">2024-03-10</span> || ATX GameMakers Showcase and Arcade ([2110](../entries/202403102110.md)) |
+| <span class="timestamp">2024-03-10</span> || [ATX GameMakers Showcase and Arcade](atx-game-makers-showcase.md) ([2110](../entries/202403102110.md)) |
 | <span class="timestamp">2024-02-22</span> | v0.2 | [Austin Glitch State](austin-glitch-state.md) |
 | <span class="timestamp">2024-02-21</span> | v0.1 ||
 | <span class="timestamp">2023-12-04</span> | prototype ||
