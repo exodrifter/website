@@ -10,13 +10,7 @@ To contact me, use one of the following methods:
 - <i class="ri-mail-fill"></i> [skeleton@exodrifter.space](mailto:skeleton@exodrifter.space)
 - <i class="ri-discord-fill"></i> `@exodrifter` on Discord
 
-Please note that I am highly likely to ignore Discord messages unless you share a mutual server with me.
-
-# support
-
-If you like the work that I do, I accept donations at the following places:
-- <i class="ri-cup-fill"></i> [Ko-fi](https://ko-fi.com/exodrifter)
-- <i class="ri-patreon-fill"></i> [Patreon](https://patreon.com/exodrifter)
+Please note that I am highly likely to ignore Discord messages unless you share a mutual server with me. To support me, see [support](support.md).
 
 # all links
 
