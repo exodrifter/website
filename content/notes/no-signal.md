@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2025-03-14T05:00:25Z
+modified: 2025-03-17T20:54:27Z
 aliases:
 - no signal logs
 - lost contact logs
@@ -20,6 +20,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 
 | date | version | notes |
 |------|---------|-------|
+| <span class="timestamp">2025-03-17</span> || Hiatus [175635](../entries/20250317175635.md) |
 | <span class="timestamp">2025-03-14</span> || [045802](../entries/20250314045802.md) |
 | <span class="timestamp">2025-03-13</span> || [044456](../entries/20250313044456.md), [172811 (stream 184)](../entries/20250313172811.md) |
 | <span class="timestamp">2025-03-12</span> || [021733](../entries/20250312021733.md), [195316 (stream 183)](../entries/20250312195316.md) |
