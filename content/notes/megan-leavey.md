@@ -7,6 +7,7 @@ aliases:
 tags:
 - film
 - war
+- autobiographical
 ---
 
 # Megan Leavey
