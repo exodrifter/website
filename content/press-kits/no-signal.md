@@ -20,7 +20,7 @@ _**no signal**_ is a science fiction escape room game about loneliness, fixing b
 <div style="flex-grow: 1">
 
 **working title:** lost contact<br/>
-**release date:** eta Winter 2024<br/>
+**release date:** tba (previously Winter 2024)<br/>
 **developer:** exodrifter<br/>
 **publisher:** exodrifter<br/>
 
