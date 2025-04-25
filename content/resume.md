@@ -1,7 +1,7 @@
 ---
 title: resume
 created: 2024-09-16T00:56:40Z
-modified: 2024-10-10T20:13:46Z
+modified: 2025-04-25T21:35:31Z
 ---
 
 # Ava Pek (exodrifter)
@@ -59,12 +59,12 @@ visualization contract.
 <br/>
 
 **Intern - ABB <span style="float: right;">May 2009 - August 2009</span>**
-- Honestly I don't even remember what I did.
+- Used in-house drawing applications to create tabular displays that showed data from the database with color codes that alerted users of abnormal conditions, according to the specifications of engineers and developers of the energy management system.
 
 # education
 
 **Computer Science, Bachelor's Degree - UT Austin <span style="float: right;">2011 - 2015</span>**
-- President of the Electronic Game Developer Society
+- President of the Electronic Game Developers Society
 
 # skills
 
