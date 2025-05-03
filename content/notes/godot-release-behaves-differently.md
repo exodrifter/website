@@ -10,4 +10,4 @@ tags:
 
 # Release build behaves differently
 
-In Godot, a release build can behave differently compared to the debug build because [`assert` does not run side effects](godot-gdscript-assert-side-effects.md).
+In Godot, a release build can behave differently compared to the debug build because [`assert` does not run side effects](gdscript-assert-side-effects.md).

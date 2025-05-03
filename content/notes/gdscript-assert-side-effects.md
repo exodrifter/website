@@ -4,7 +4,6 @@ created: 2025-05-03T18:32:11Z
 aliases:
 - "`assert` does not run side effects"
 tags:
-- godot
 - gdscript
 ---
 

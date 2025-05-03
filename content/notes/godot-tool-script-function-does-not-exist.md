@@ -10,7 +10,7 @@ tags:
 
 # `@tool` script says function does not exist when it does
 
-In Godot [GDScripts](godot-gdscript.md), if you try calling a function on a non-tool script from a tool script, you'll get the error that looks like this:
+In Godot [GDScripts](../tags/gdscript.md), if you try calling a function on a non-tool script from a tool script, you'll get the error that looks like this:
 
 ```
 res://test.gd:8 - Invalid call. Nonexistent function 'get_color' in base 'Resource (SwatchRef)'.

@@ -10,7 +10,7 @@ tags:
 
 # Singleton autoloads have an unknown type
 
-In Godot, if you make a singleton autoload by autoloading a packed scene that has the script attached, the editor will not be able to determine the type of the autoload in [GDScript](godot-gdscript.md)
+In Godot, if you make a singleton autoload by autoloading a packed scene that has the script attached, the editor will not be able to determine the type of the autoload in [GDScript](../tags/gdscript.md)
 
 To workaround this problem, you will need to tell Godot the type of the autoload.
 

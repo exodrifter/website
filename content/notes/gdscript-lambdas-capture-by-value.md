@@ -5,12 +5,12 @@ modified: 2024-10-29T05:58:57Z
 aliases:
 - Lambdas capture local variables by value
 tags:
-- godot
+- gdscript
 ---
 
 # Lambdas capture local variables by value
 
-In Godot, [GDScript](godot-gdscript.md) [lambdas](gdscript-lambda.md) only copy the _value_ of each variable it captures (by design; see [godotengine/godot#69014](https://github.com/godotengine/godot/issues/69014#issuecomment-1324017859)). However, since the value of a `Variant` is itself a reference, you can use a `Variant` to get around this problem if you want the lambda to mutate a capture. [^2] [^3]
+In Godot, [GDScript](../tags/gdscript.md) [lambdas](gdscript-lambda.md) only copy the _value_ of each variable it captures (by design; see [godotengine/godot#69014](https://github.com/godotengine/godot/issues/69014#issuecomment-1324017859)). However, since the value of a `Variant` is itself a reference, you can use a `Variant` to get around this problem if you want the lambda to mutate a capture. [^2] [^3]
 
 For example, this does not work: [^3]
 

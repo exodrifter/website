@@ -32,10 +32,10 @@ These crimes have not been addressed and are still issues in the Godot codebase.
 
 These crimes have been addressed and are no longer issues in the Godot codebase.
 
-- [Exported variables of inherited scenes are aliased](godot-gdscript-aliased-variables.md), fixed for Godot 4.3
+- [Exported variables of inherited scenes are aliased](gdscript-aliased-variables.md), fixed for Godot 4.3
 
 ## Pardoned Crimes
 
 I no longer consider the following items as crimes.
 
-- [Lambdas do not capture local variables](godot-gdscript-lambdas-capture-by-value.md); Godot actually passes everything by value to the closure and it just so happens that the value of `Variant` variables is itself a reference. I think this design is less confusing than any alternative I can think of.
+- [Lambdas do not capture local variables](gdscript-lambdas-capture-by-value.md); Godot actually passes everything by value to the closure and it just so happens that the value of `Variant` variables is itself a reference. I think this design is less confusing than any alternative I can think of.
