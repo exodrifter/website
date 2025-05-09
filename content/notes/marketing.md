@@ -1,7 +1,7 @@
 ---
 title: Marketing
 created: 2024-06-05T18:34:46Z
-modified: 2024-10-21T15:06:30Z
+modified: 2025-05-09T06:34:20Z
 aliases:
 - marketing
 ---
@@ -31,3 +31,4 @@ aliases:
 | [San Japan](san-japan.md) | San Antonio, Texas | August |
 | [ArmadilloCon](armadillo-con.md) | Austin, Texas | September |
 | [Fantastic Arcade](fantastic-arcade.md) | Austin, Texas | October |
+| [GodotCon](godot-con.md) | Boston, Massachusetts | May |
