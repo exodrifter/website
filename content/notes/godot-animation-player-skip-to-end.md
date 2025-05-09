@@ -2,9 +2,9 @@
 title: "Skip to the end of an `Animation` in `AnimationPlayer`"
 created: 2024-11-10T00:26:35Z
 aliases:
-  - "Skip to the end of an `Animation` in `AnimationPlayer`"
+- "Skip to the end of an `Animation` in `AnimationPlayer`"
 tags:
-  - godot
+- godot
 ---
 
 # Skip to the end of an `Animation` in `AnimationPlayer`

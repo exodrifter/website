@@ -4,7 +4,7 @@ created: 2025-05-09T06:04:10Z
 aliases:
 - GodotCon
 tags:
-- Godot
+- godot
 ---
 
 # GodotCon

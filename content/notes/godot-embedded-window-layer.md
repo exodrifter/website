@@ -3,6 +3,8 @@ title: Godot embedded windows layer
 created: 2025-02-10T19:16:01Z
 aliases:
 - Godot embedded windows layer
+tags:
+- godot
 ---
 
 # Godot embedded windows layer
