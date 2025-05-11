@@ -26,7 +26,8 @@ h2::before {
 }
 
 code {
-  white-space: pre-line;
+  tab-size: 4;
+  white-space: pre-wrap;
   font-variant-ligatures: none;
 }
 
