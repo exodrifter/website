@@ -14,7 +14,7 @@ tags:
 
 A **core plugin** is a base [Obsidian](obsidian.md) feature which is supported in base installation and can be enabled or disabled.
 
-* [Obsidian Sync](obsidian-sync.md)*
+* [Obsidian Sync](obsidian-sync.md) [^1]
 * [Obsidian Templates](obsidian-templates)
 
-\* Requires an additional payment.
+[^1]: Requires an additional payment.
