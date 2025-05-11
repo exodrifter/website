@@ -7,4 +7,6 @@ aliases:
 
 # ArmadilloCon
 
-**ArmadilloCon** is an annual science fiction writer convention that takes place in Austin, Texas in September. ([20240811035503](../entries/20240811035503.md))
+**ArmadilloCon** is an annual science fiction writer convention that takes place in Austin, Texas in September. [^1]
+
+[^1]: [20240811035503](../entries/20240811035503.md)

@@ -12,8 +12,8 @@ aliases:
 
 ## Inspirations
 
-- The dense, vibrant foliage and ruins of the outdoor scenes in [Stalker (1979)](stalker.md) ([20240527061339](../entries/20240527061339.md))
-- The badge-giving ceremony in Parks and Recreation. [20240603020415](../entries/20240603020415.md)
+- The dense, vibrant foliage and ruins of the outdoor scenes in [Stalker (1979)](stalker.md) [^1]
+- The badge-giving ceremony in Parks and Recreation. [^2]
 - Low poly model detail https://bsky.app/profile/stoff.bsky.social/post/3klkg4ktlo72a
 - Heavenly Delusion
 
@@ -22,3 +22,6 @@ aliases:
 | date | version | notes
 |---|---|---|
 | <span class="timestamp">2024-10-18</span> || [042652](../entries/20241018042652.md) |
+
+[^1]: [20240527061339](../entries/20240527061339.md)
+[^2]: [20240603020415](../entries/20240603020415.md)

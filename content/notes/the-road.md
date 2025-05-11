@@ -12,4 +12,6 @@ tags:
 
 _**The Road**_ is a book by [Cormac McCarthy](cormac-mccarthy.md).
 
-I was reminded of this book after watching [Stalker (1979)](stalker.md) ([20240527061339](../entries/20240527061339.md)).
+I was reminded of this book after watching [Stalker (1979)](stalker.md). [^1]
+
+[^1]: [20240527061339](../entries/20240527061339.md)

@@ -9,4 +9,6 @@ aliases:
 
 https://www.2dcon.net/
 
-2D Con is a gaming an annual esports event in Minneapolis, Minnesota that takes place during the fall. ([20240724220117](../entries/20240724220117.md))
+2D Con is a gaming an annual esports event in Minneapolis, Minnesota that takes place during the fall. [^1]
+
+[^1]: [20240724220117](../entries/20240724220117.md)

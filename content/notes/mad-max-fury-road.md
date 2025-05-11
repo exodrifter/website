@@ -14,4 +14,6 @@ tags:
 
 _**Mad Max: Fury Road**_ is a post-apocalyptic action film.
 
-In 2024, a prequel titled _[Furiosa: A Mad Max Saga](furiosa-a-mad-max-saga.md)_ was released ([20240530040419](../entries/20240530040419.md)).
+In 2024, a prequel titled _[Furiosa: A Mad Max Saga](furiosa-a-mad-max-saga.md)_ was released. [^1]
+
+[^1]: [20240530040419](../entries/20240530040419.md)
