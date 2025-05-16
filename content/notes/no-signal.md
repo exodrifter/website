@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2025-05-11T23:14:53Z
+modified: 2025-05-16T20:31:21Z
 aliases:
 - no signal logs
 - lost contact logs
@@ -39,7 +39,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 | <span class="timestamp">2025-03-12</span> || [021733](../entries/20250312021733.md), [195316 (stream 183)](../entries/20250312195316.md) |
 | <span class="timestamp">2025-03-11</span> || [005729](../entries/20250311005729.md), [202357 (stream 182)](../entries/20250311202357.md) |
 | <span class="timestamp">2025-03-10</span> || [ATX GameMakers Showcase](atx-game-makers-showcase.md) ([163053](../entries/20250310163053.md)) |
-| <span class="timestamp">2025-03-09</span> || [163842](../entries/20250309163842.md) |
+| <span class="timestamp">2025-03-09</span> || [ATX GameMakers Showcase](atx-game-makers-showcase.md) ([163842](../entries/20250309163842.md)) |
 | <span class="timestamp">2025-03-08</span> | v0.33 | [072215](../entries/20250308072215.md) |
 | <span class="timestamp">2025-03-07</span> || [052217](../entries/20250307052217.md), [180326 (stream 181)](../entries/20250307180326.md) |
 | <span class="timestamp">2025-03-06</span> || [173232 (stream 180)](../entries/20250306173232.md) |
