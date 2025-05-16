@@ -3,6 +3,7 @@ title: How do I delete EXIF metadata with exiftool?
 created: 2024-09-23T17:47:50Z
 aliases:
 - How do I delete EXIF metadata with exiftool?
+- How do I strip EXIF metadata with exiftool?
 ---
 
 # How do I delete EXIF metadata with exiftool?
