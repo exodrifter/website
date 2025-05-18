@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2025-05-16T20:31:21Z
+modified: 2025-05-18T01:43:33Z
 aliases:
 - no signal logs
 - lost contact logs
@@ -20,6 +20,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 
 | date | version | notes |
 |------|---------|-------|
+| <span class="timestamp">2025-05-17</span> || [225559](../entries/20250517225559.md) |
 | <span class="timestamp">2025-05-11</span> || [230902](../entries/20250511230902.md) |
 | <span class="timestamp">2025-05-09</span> || [190827](../entries/20250509190827.md) |
 | <span class="timestamp">2025-05-07</span> || [GodotCon Boston](godot-con-boston-2025.md) ([125107](../entries/20250507125107.md)) |
