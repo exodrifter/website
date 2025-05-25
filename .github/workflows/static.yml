@@ -34,7 +34,6 @@ jobs:
         with:
           lfs: true
       - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
       - run: nix build
       - name: Setup Pages
         uses: actions/configure-pages@v4
