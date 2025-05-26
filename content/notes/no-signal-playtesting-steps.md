@@ -1,7 +1,7 @@
 ---
 title: no signal playtesting steps
 created: 2024-10-22T04:52:01Z
-modified: 2025-01-27T18:29:32Z
+modified: 2025-05-26T17:20:59Z
 aliases:
 - no signal playtesting steps
 tags:
@@ -18,10 +18,9 @@ To complete the playtest, follow the following steps: [^1]
 3. Send me your answers to the post-play questionnaire:
 	- What platform (Windows/Mac/Linux) are you playing on?
 	- What is the story of the game?
-	- What are your own personal goals in the game?
-	- What do you want to see in the game that you haven't seen yet?
-	- Did you run into anything buggy or confusing? What were they?
+	- What parts of the game were too easy or too difficult?
+	- Did you run into anything buggy or confusing?
 	- Any other feedback you'd like to provide?
-	- I will credit you as a playtester, if you wish. How do you want to be named in the credits?
+	- How do you want to be named in the credits?
 
 [^1]: [20250127182750](../entries/20250127182750.md)
