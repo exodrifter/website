@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2025-05-27T22:06:54Z
+modified: 2025-05-28T19:03:02Z
 aliases:
 - no signal logs
 - lost contact logs
@@ -20,17 +20,18 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 
 | date | version | notes |
 |------|---------|-------|
-| <span class="timestamp">2025-05-27</span> || [215702](../entries/20250527215702.md) |
-| <span class="timestamp">2025-05-21</span> || [170546](../entries/20250521170546.md) |
+| <span class="timestamp">2025-05-28</span> | v0.35.3 | [185946 (stream 188)](../entries/20250528185946.md) |
+| <span class="timestamp">2025-05-27</span> | v0.35.2 | [215702](../entries/20250527215702.md) |
+| <span class="timestamp">2025-05-21</span> | v0.35.1 | [170546](../entries/20250521170546.md) |
 | <span class="timestamp">2025-05-20</span> || [183255](../entries/20250520183255.md) |
-| <span class="timestamp">2025-05-18</span> || [190928](../entries/20250518190928.md) |
+| <span class="timestamp">2025-05-18</span> || [190928 (stream 187)](../entries/20250518190928.md) |
 | <span class="timestamp">2025-05-17</span> || [225559](../entries/20250517225559.md) |
 | <span class="timestamp">2025-05-11</span> || [230902](../entries/20250511230902.md) |
 | <span class="timestamp">2025-05-09</span> || [190827](../entries/20250509190827.md) |
 | <span class="timestamp">2025-05-07</span> || [GodotCon Boston](godot-con-boston-2025.md) ([125107](../entries/20250507125107.md)) |
 | <span class="timestamp">2025-05-06</span> || [GodotCon Boston](godot-con-boston-2025.md) ([132816](../entries/20250506132816.md)) |
 | <span class="timestamp">2025-05-03</span> | v0.34 | [221149](../entries/20250503221149.md) |
-| <span class="timestamp">2025-04-30</span> || [175941](../entries/20250430175941.md) |
+| <span class="timestamp">2025-04-30</span> || [175941 (stream 186)](../entries/20250430175941.md) |
 | <span class="timestamp">2025-04-29</span> || [192941](../entries/20250429192941.md) |
 | <span class="timestamp">2025-04-28</span> || [072532](../entries/20250428072532.md), [211901](../entries/20250428211901.md) |
 | <span class="timestamp">2025-04-27</span> || [045042](../entries/20250427045042.md) |
@@ -38,7 +39,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 | <span class="timestamp">2025-04-19</span> || [212851](../entries/20250419212851.md) |
 | <span class="timestamp">2025-04-17</span> || [063943](../entries/20250417063943.md) |
 | <span class="timestamp">2025-03-30</span> || [192223](../entries/20250330192223.md) |
-| <span class="timestamp">2025-03-17</span> || Hiatus [175635](../entries/20250317175635.md) |
+| <span class="timestamp">2025-03-17</span> || Hiatus [175635 (stream 185)](../entries/20250317175635.md) |
 | <span class="timestamp">2025-03-14</span> || [045802](../entries/20250314045802.md) |
 | <span class="timestamp">2025-03-13</span> || [044456](../entries/20250313044456.md), [172811 (stream 184)](../entries/20250313172811.md) |
 | <span class="timestamp">2025-03-12</span> || [021733](../entries/20250312021733.md), [195316 (stream 183)](../entries/20250312195316.md) |

@@ -22,5 +22,6 @@ To complete the playtest, follow the following steps: [^1]
 	- Did you run into anything buggy or confusing?
 	- Any other feedback you'd like to provide?
 	- How do you want to be named in the credits?
+	- What price do you think the game should have, and why?
 
 [^1]: [20250127182750](../entries/20250127182750.md)
