@@ -3,6 +3,8 @@ title: A Mathematician's Lament
 created: 2025-05-30T20:31:10Z
 aliases:
 - A Mathematician's Lament
+tags:
+- essay
 ---
 
 # A Mathematician's Lament
