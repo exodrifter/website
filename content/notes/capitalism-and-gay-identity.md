@@ -4,6 +4,7 @@ created: 2025-05-13T20:18:36Z
 aliases:
 - Capitalism and Gay Identity
 tags:
+- essay
 - lgbtq
 ---
 
