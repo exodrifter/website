@@ -61,4 +61,4 @@ git config --global fetch.all true
 git config --global commit.verbose true
 ```
 
-[^1]: [20250504243105](../entries/20250504243105.md)
+[^1]: [20250504003105](../entries/20250504003105.md)
