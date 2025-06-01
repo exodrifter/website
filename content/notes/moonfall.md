@@ -7,13 +7,12 @@ aliases:
 tags:
 - disaster
 - film
-- roland-emmerich
 - science-fiction
 ---
 
 # Moonfall
 
-**Moonfall (2022)** is a science-fiction disaster film directed by Roland Emmerich about the two former astronauts and a conspiracy theorist who discover that the Moon is a megastructure -- a Dyson sphere powered by a white dwarf -- after it suddenly changes orbit. The movie was inspired by the book _Who Built the Moon?_. [^1]
+**Moonfall (2022)** is a science-fiction disaster film directed by [Roland Emmerich](roland-emmerich.md) about the two former astronauts and a conspiracy theorist who discover that the Moon is a megastructure -- a Dyson sphere powered by a white dwarf -- after it suddenly changes orbit. The movie was inspired by the book _Who Built the Moon?_. [^1]
 
 I found the story to be very cheesy and bad. I didn't find even the story to be so bad that it was good, though the visuals made it enjoyable enough for me to watch. [^1]
 
