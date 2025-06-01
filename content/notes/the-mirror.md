@@ -6,7 +6,7 @@ aliases:
 - The Mirror (1975)
 tags:
 - film
-- autobiographical
+- autobiography
 ---
 
 # The Mirror (1975)
