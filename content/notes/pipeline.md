@@ -2,6 +2,8 @@
 title: Pipeline
 created: 2025-01-04T06:23:58Z
 aliases:
+- pipeline
+tags:
 - board-game
 ---
 
