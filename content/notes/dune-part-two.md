@@ -1,5 +1,5 @@
 ---
-title: "Dune: Part Two"
+title: "Dune: Part Two (2024)"
 created: 2025-01-30T05:15:50Z
 aliases:
 - "Dune: Part Two"
