@@ -20,26 +20,27 @@ rake aborted!
 Aws::S3::Errors::InvalidArgument: Unsupported header 'x-amz-checksum-crc32' received for this API call. (Aws::S3::Errors::InvalidArgument)
 ```
 
-This is because of a breaking change in the AWS SDK that has been reported, [but was closed as "not planned"](https://github.com/aws/aws-sdk-js-v3/issues/6819). The workaround is to update the environment and remove the `expire_missing_assets` step: [^1]
+This is because of a breaking change in the AWS SDK that has been reported, [but was closed as "not planned"](https://github.com/aws/aws-sdk-js-v3/issues/6819). The workaround is to tell the Discourse installation to use the last compatible version of the AWS SDK. First, create `templates/aws-revert.template.yml`: [^2]
 
-```yml
-env:
-  AWS_REQUEST_CHECKSUM_CALCULATION: WHEN_REQUIRED
-  AWS_RESPONSE_CHECKSUM_VALIDATION: WHEN_REQUIRED
-  ## elided
-
-## elided
-
+```
+# Revert aws-sdk-s3 to a version that works with Backblaze
 hooks:
-  ## elided  
-  after_assets_precompile:
+  after_bundle_exec:
     - exec:
         cd: $home
         cmd:
-          - sudo -E -u discourse bundle exec rake s3:upload_assets
-##        - sudo -E -u discourse bundle exec rake s3:expire_missing_assets
+          - bundle config set frozen false
+          - "sed -i 's/gem \"aws-sdk-s3\", require: false/gem \"aws-sdk-s3\", \"1.177.0\", require: false/' Gemfile"
+          - bundle update aws-sdk-s3
+          - bundle add aws-sdk-core --version 3.215
 ```
 
-This workaround will result in assets not being deleted from the bucket anymore. [^1]
+Then include the template in `app.yml`: [^2]
+
+```
+templates:
+  - "templates/aws-revert.template.yml"
+```
 
 [^1]: [20250402091023](../entries/20250402091023.md)
+[^2]: [20250604052045](../entries/20250604052045.md)
