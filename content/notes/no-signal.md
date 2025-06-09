@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2025-06-08T05:41:11Z
+modified: 2025-06-10T05:28:29Z
 aliases:
 - no signal logs
 - lost contact logs
@@ -20,8 +20,9 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 
 | date | version | notes |
 |------|---------|-------|
-| <span class="timestamp">2025-06-08</span> || [001152 (stream 191)](../entries/20250608001152.md) |
-| <span class="timestamp">2025-06-06</span> || [062103](../entries/20250606062103.md) |
+| <span class="timestamp">2025-06-09</span> | v0.35.13 | [011545](../entries/20250609011545.md), [194229](../entries/20250609194229.md) |
+| <span class="timestamp">2025-06-08</span> | v0.35.11, v0.35.12 | [001152 (stream 191)](../entries/20250608001152.md) |
+| <span class="timestamp">2025-06-06</span> | v0.35.9, v0.35.10 | [062103](../entries/20250606062103.md) |
 | <span class="timestamp">2025-06-05</span> || [051359](../entries/20250605051359.md) |
 | <span class="timestamp">2025-06-03</span> | v0.35.8 | [040802](../entries/20250603040802.md), [073959](../entries/20250603073959.md), [064905 (stream 190)](../entries/20250603064905.md) |
 | <span class="timestamp">2025-06-02</span> || [075704](../entries/20250602075704.md) |
