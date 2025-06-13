@@ -6,6 +6,7 @@ alias:
 - Stalker
 - Stalker (1979)
 tags:
+- favorite
 - film
 - science-fantasy
 ---

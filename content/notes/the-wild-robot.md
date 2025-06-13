@@ -6,6 +6,7 @@ aliases:
 - The Wild Robot (2024)
 tags:
 - animation
+- favorite
 - film
 ---
 
