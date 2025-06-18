@@ -78,10 +78,6 @@ vods ([link](https://vods.exodrifter.space/tag/lost-contact/))
 
 ![](no-signal/screen-6.png)
 
-![](no-signal/screen-7.png)
-
-![](no-signal/screen-8.png)
-
 # branding
 
 icon
@@ -94,7 +90,7 @@ logo
 
 wordmark
 
-![](no-signal/wordmark.svg)
+![](no-signal/wordmark.png)
 
 # pamphlet
 
