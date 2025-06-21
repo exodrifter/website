@@ -1,7 +1,7 @@
 ---
 title: OffKai Expo Gen 4
 created: 2025-06-21T10:33:09Z
-edited: 2025-06-21T10:46:12Z
+edited: 2025-06-21T10:48:10Z
 aliases:
 - OffKai Expo Gen 4
 - OffKai Expo 2025
@@ -15,3 +15,4 @@ The following tables contain the talks I attended in person:
 |---|---|
 | [How YOU Can Edit VTuber Content](https://www.offkaiexpo.com/event/how-you-can-edit-vtuber-content/) | [20250620221130](../entries/20250620221130.md) |
 | [Cyber Safety and VTubing](https://www.offkaiexpo.com/event/cyber-safety-and-vtubing/) | [20250620235314](../entries/20250620235314.md) |
+| [Taboo Talk: Stigmas in NSFW and ASMR VTubing](https://www.offkaiexpo.com/event/taboo-talk-stigmas-in-nsfw-and-asmr-vtubing/) | [20250621042624](../entries/20250621042624.md) |
