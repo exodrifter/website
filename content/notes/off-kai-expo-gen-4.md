@@ -1,7 +1,7 @@
 ---
 title: OffKai Expo Gen 4
 created: 2025-06-21T10:33:09Z
-edited: 2025-06-22T19:30:20Z
+edited: 2025-06-23T06:16:03Z
 aliases:
 - OffKai Expo Gen 4
 - OffKai Expo 2025
@@ -24,5 +24,9 @@ The following table contains the talks I attended in person:
 | [Virtual Fashion Design](https://www.offkaiexpo.com/event/virtual-fashion-design/) | [20250622182312](../entries/20250622182312.md) |
 | [Beyond the Screen: A VTuber’s Guide to Work-Life Balance](https://www.offkaiexpo.com/event/beyond-the-screen-a-vtubers-guide-to-work-life-balance/) | [20250622192732](../entries/20250622192732.md) |
 
+Unfortunately, [Vtubers Logos, Why They’re Important, and How to Get One](https://www.offkaiexpo.com/event/vtubers-logos-why-theyre-important-and-how-to-get-one/) was cancelled. [^1]
+
 Other notes:
 - Industry exhibit hall [20250621200740](../entries/20250621200740.md)
+
+[^1]: [20250622231019](../entries/20250622231019.md)
