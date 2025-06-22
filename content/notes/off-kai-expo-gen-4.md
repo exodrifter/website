@@ -1,7 +1,7 @@
 ---
 title: OffKai Expo Gen 4
 created: 2025-06-21T10:33:09Z
-edited: 2025-06-22T06:37:21Z
+edited: 2025-06-22T18:25:24Z
 aliases:
 - OffKai Expo Gen 4
 - OffKai Expo 2025
@@ -21,6 +21,7 @@ The following table contains the talks I attended in person:
 | [How has content creation changed? Feat. 2 “senior” VTubers](https://www.offkaiexpo.com/event/how-has-content-creation-changed/) | [20250621222515](../entries/20250621222515.md)
 | [Designing a Vtuber: A Live Drawing Panel](https://www.offkaiexpo.com/event/designing-a-vtuber-a-live-drawing-panel/) | [20250622003143](../entries/20250622003143.md) |
 | [Boids-based simulation of the Hamtaro Circle – bringing algorithms to the Wota Pit](https://www.offkaiexpo.com/event/boids-based-simulation-of-the-hamtaro-circle-bringing-algorithms-to-the-wota-pit/) | [20250622060946](../entries/20250622060946.md)
+| [Virtual Fashion Design](https://www.offkaiexpo.com/event/virtual-fashion-design/) | [20250622182312](../entries/20250622182312.md) |
 
 Other notes:
 - Industry exhibit hall [20250621200740](../entries/20250621200740.md)
