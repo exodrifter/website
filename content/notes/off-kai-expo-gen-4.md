@@ -1,7 +1,7 @@
 ---
 title: OffKai Expo Gen 4
 created: 2025-06-21T10:33:09Z
-edited: 2025-06-23T06:16:03Z
+edited: 2025-06-23T07:05:22Z
 aliases:
 - OffKai Expo Gen 4
 - OffKai Expo 2025
@@ -28,5 +28,7 @@ Unfortunately, [Vtubers Logos, Why They’re Important, and How to Get One](http
 
 Other notes:
 - Industry exhibit hall [20250621200740](../entries/20250621200740.md)
+- Making short-form content [20250623061647](../entries/20250623061647.md)
+- Success in Software and Game Development [20250623063816](../entries/20250623063816.md)
 
 [^1]: [20250622231019](../entries/20250622231019.md)
