@@ -14,12 +14,12 @@ modified: 2025-05-16T20:33:37Z
 
 # blog
 
+- **2025-05-25** - [no signal release date](blog/20250625201455.md)
 - **2025-05-16** - [godotcon boston 2025](blog/20250516012109.md)
 - **2025-03-17** - [no signal dev hiatus](blog/20250317203824.md)
 - **2025-01-01** - [2024 review](blog/20250101011413.md)
 - **2024-11-24** - [toronto game expo 2024](blog/20241124185224.md)
 - **2024-11-05** - [fantastic arcade is also incredible](blog/20241106041719.md)
-- **2024-10-22** - [steam next fest notes](blog/20241021211115.md)
 
 [<i class="ri-rss-fill"></i> RSS](blog/index.xml) <br/>
 [See all posts...](blog/index.md)
