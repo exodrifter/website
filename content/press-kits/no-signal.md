@@ -20,7 +20,7 @@ _**no signal**_ is a science fiction escape room game about loneliness, fixing b
 <div style="flex-grow: 1">
 
 **working title:** lost contact<br/>
-**release date:** tba (previously Winter 2024)<br/>
+**release date:** July 25, 2025 at 21:00 UTC<br/>
 **developer:** exodrifter<br/>
 **publisher:** exodrifter<br/>
 
@@ -29,7 +29,7 @@ _**no signal**_ is a science fiction escape room game about loneliness, fixing b
 
 **engine:** Godot<br/>
 **stores:** [itch.io](https://exodrifter.itch.io/lost-contact), [Steam](https://store.steampowered.com/app/2840590/no_signal)<br/>
-**price:** tba<br/>
+**price:** $14.99, with a 7-day 20% release discount<br/>
 
 </div>
 </div>
@@ -117,11 +117,13 @@ exodrifter allows for the contents of _no signal_ to be published through video 
 
 **titanseek3r** - artist, writer
 
+**Mist. Astra Ebonwing** - quality assurance
+
+**RayMarch** - logo
+
 # contact
 
 **business inquiries** [skeleton@exodrifter.space](mailto:skeleton@exodrifter.space)
-
-**cohost!** [cohost.org/exodrifter](https://cohost.org/exodrifter)
 
 **discord** [discord.gg/arqFQVt](https://discord.gg/arqFQVt)
 
