@@ -8,11 +8,13 @@ aliases:
 
 # Live Streaming History
 
-- Started streaming on Picarto sometime between 2016-02-01 and 2016-03-06 [^1] [^2] [^3]
-- **2019-04-12** 23:09 UTC - First recorded Picarto stream [^4]
-- **2019-09-12** 00:30 UTC - First recorded Twitch stream [^5]
-- **2022-02-27** - Twitch Affiliate [^6]
-- **2023-01-08** - VOD website at https://vods.exodrifter.space launched. Previously, VODs were only available on Patreon. [^7]
+| Date | Event |
+|---|---|
+| 2016-02-01 ~ 2016-03-06 | Started Streaming on Picarto [^1] [^2] [^3] |
+| 2019-04-12 | First recorded Picarto stream [^4] |
+| 2019-09-12 | First recorded Twitch stream [^5] |
+| 2022-02-27 | Became Twitch Affiliate [^6] |
+| 2023-01-08 | [VOD website](https://vods.exodrifter.space) launched. [^7] |
 
 [^1]: [202211261732](../entries/202211261732.md)
 [^2]: [202211231725](../entries/202211231725.md)
