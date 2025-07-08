@@ -9,6 +9,8 @@ aliases:
 
 # OffKai Expo Gen 4
 
+**OffKai Expo Gen 4** was the fourth year [OffKai Expo](20250707063944.md) was held, from June 20th to June 22nd. It was the first OffKai I attended. [^2]
+
 The following table contains the talks I attended in person:
 
 | Talk | Notes |
@@ -32,3 +34,4 @@ Other notes:
 - Success in Software and Game Development [20250623063816](../entries/20250623063816.md)
 
 [^1]: [20250622231019](../entries/20250622231019.md)
+[^2]: [20250707064328](../entries/20250707064328.md)
