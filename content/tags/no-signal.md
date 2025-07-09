@@ -8,7 +8,7 @@ tags:
 
 <div class="banner">
 
-![](../press-kits/no-signal/screen-7.png)
+![](../press-kits/no-signal/screen-3.png)
 
 </div>
 

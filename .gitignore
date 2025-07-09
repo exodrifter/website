@@ -4,5 +4,5 @@
 !/content/.obsidian/core-plugins.json
 
 /dist-newstyle/
-/_cache/
+/.shake/
 /_site/

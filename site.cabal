@@ -34,12 +34,13 @@ executable site
       base >= 4.11
     , relude ^>= 1.2.1.0
 
-    , blaze-html
     , containers
     , directory
+    , extra
     , filepath
-    , hakyll
     , pandoc
+    , pandoc-types
+    , shake
     , time
 
   mixins:
