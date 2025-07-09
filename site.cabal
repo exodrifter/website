@@ -39,10 +39,15 @@ executable site
     , directory
     , extra
     , filepath
+    , http-types
+    , mime-types
     , pandoc
     , pandoc-types
+    , scotty
     , shake
+    , text
     , time
+    , wai
 
   mixins:
     base hiding (Prelude),

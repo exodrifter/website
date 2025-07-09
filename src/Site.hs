@@ -4,6 +4,7 @@ module Site
 
 import Exo.Shake ((<//>), (</>), (-<.>), (|%>), (%>))
 import qualified Exo.Shake as Shake
+import qualified Exo.Const as Const
 
 import qualified Data.Text as T
 import qualified Text.Pandoc as Pandoc
@@ -16,15 +17,16 @@ main = do
   Shake.runShake $ do
 
     Shake.cleanPhony
+    Shake.serverPhony
 
-    Shake.wantWebpages
+    Shake.action Shake.wantWebpages
 
     let
       staticFiles =
         ("_site" <//>) <$> ["*.gif", "*.mp4", "*.png", "*.jpg", "*.svg" ]
     staticFiles |%> \out -> do
       let
-        inputPath = Shake.contentDirectory </> Shake.dropDirectory1 out
+        inputPath = Const.contentDirectory </> Shake.dropDirectory1 out
       Shake.copyFileChanged inputPath out
 
     "//*.html" %> \out -> do
@@ -36,7 +38,7 @@ main = do
                 Pandoc.enableExtension Pandoc.Ext_yaml_metadata_block
               $ Pandoc.readerExtensions Pandoc.def
           }
-        inputPath = Shake.contentDirectory </> Shake.dropDirectory1 out -<.> "md"
+        inputPath = Const.contentDirectory </> Shake.dropDirectory1 out -<.> "md"
       md <- T.pack <$> readFile' inputPath
       pandoc <-
             convertVideoEmbeds
