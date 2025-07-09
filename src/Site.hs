@@ -15,7 +15,8 @@ outputDir = "_site"
 shake :: Shake.Rules () -> IO ()
 shake rules = do
   -- Rebuild all of the files if the build system has changed.
-  ver <- Shake.getHashedShakeVersion ["site.hs"]
+  sourceFiles <- listFilesRecursive "src"
+  ver <- Shake.getHashedShakeVersion sourceFiles
   let
     shakeOptions :: Shake.ShakeOptions
     shakeOptions = Shake.shakeOptions { Shake.shakeVersion = ver }

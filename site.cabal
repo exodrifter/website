@@ -29,7 +29,7 @@ executable site
     OverloadedStrings,
     RecordWildCards,
 
-  main-is: site.hs
+  main-is: src/Site.hs
   build-depends:
       base >= 4.11
     , relude ^>= 1.2.1.0
