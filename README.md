@@ -5,14 +5,11 @@ posts and notes turned into a static site with the help of Quartz and Nix.
 
 # development
 
-You can use standard Nix commands to build and run the website:
+You can use ghcid to build and run the website:
 
 ```sh
-nix build # Just to build
-nix run # Build and run a test Caddy server at port 8080
+ghcid --target=site --run --setup=":set args watch"
 ```
-
-The resulting website will be at the path `result/public`.
 
 # feedback
 

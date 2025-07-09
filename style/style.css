@@ -1,0 +1,217 @@
+:root {
+    --sidebar-size: calc(var(--grid-size)*9);
+    --main-size: calc(var(--grid-size)*25);
+    --page-size: calc(var(--sidebar-size) + var(--main-size) + var(--grid-size));
+    --grid-size: 1.5rem;
+
+    color-scheme: light dark;
+    --bg1: light-dark(hsl(240 4 92), hsl(240 4 8));
+    --bg2: light-dark(hsl(0 0 80), hsl(0 0 20));
+    --text: light-dark(hsl(0 0 5), hsl(0 0 95));
+    --subtext: light-dark(hsl(240 8 45), hsl(240 8 55));
+    --link: light-dark(hsl(204 28 33), hsl(204 28 67));
+
+    --transition-time: 0.15s
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: bottom;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+body {
+    box-sizing: content-box;
+    max-width: var(--page-size);
+    margin-left: auto;
+    margin-right: auto;
+
+    font-family: 'Space Grotesk';
+    font-size: calc(var(--grid-size)*2/3);
+    line-height: var(--grid-size);
+    background-color: var(--bg1);
+
+    color: var(--text);
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+    padding: var(--grid-size);
+    gap: var(--grid-size);
+}
+
+.sidebar {
+    position: sticky;
+    top: var(--grid-size);
+    width: var(--sidebar-size);
+    height: calc(100vh - var(--grid-size)*2);
+    padding: var(--grid-size) 0;
+    transition: all var(--transition-time);
+
+    > * + * {
+        margin-top: var(--grid-size);
+    }
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+
+    input[type=text] {
+        border: none;
+        max-width: calc(var(--sidebar-size) - var(--grid-size));
+        height: var(--grid-size);
+        padding: 0 calc(var(--grid-size)/2);
+        background-color: var(--bg2);
+        color: var(--text);
+        border-radius: calc(var(--grid-size)/4);
+        font-family: 'Space Mono';
+        font-size: calc(var(--grid-size)*2/3);
+    }
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: var(--sidebar-size);
+    height: calc(var(--grid-size)*4);
+
+    img {
+        width: 100%;
+        height: calc(var(--grid-size)*4);
+        object-fit: contain;
+    }
+}
+
+article > * + *, section > * + *, .main > * + *, .tools  > * + * {
+    margin-top: var(--grid-size);
+}
+
+.main {
+    max-width: var(--main-size);
+    transition: all var(--transition-time);
+}
+
+.main, .sidebar {
+    background-color: var(--bg1);
+    background-image: radial-gradient(var(--bg2) .075rem, rgba(0, 0, 0, 0) 0px);
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: calc(var(--grid-size)/2) calc(var(--grid-size)/2);
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--grid-size)/2);
+}
+
+nav * {
+    margin-top: 0 !important;
+}
+
+nav *, section > h1, .meta {
+    font-family: 'Space Mono';
+    font-size: calc(var(--grid-size)*2/3);
+    color: var(--subtext);
+}
+
+section > h1 {
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--grid-size)/2);
+}
+
+section h1::after {
+    content: "";
+    flex: 1;
+    margin-left: 1rem;
+    height: 1px;
+    background-color: var(--subtext);
+    align-self: end;
+}
+
+article {
+    > h1 {
+        font-size: var(--grid-size);
+        line-height: calc(var(--grid-size)*2);
+    }
+    
+    > h1::before {
+        content: url(./b1.svg);
+        margin: 0 calc(var(--grid-size)/2);
+    }
+
+    > h2 {
+        font-size: var(--grid-size);
+        line-height: calc(var(--grid-size)*2);
+    }
+    
+    > h2::before {
+        content: url(./b2.svg);
+        margin: 0 calc(var(--grid-size)/2);
+    }
+}
+
+pre {
+    white-space: pre-wrap;
+    display: flex;
+    flex-direction: column;
+}
+
+pre::before {
+    counter-reset: listing;
+}
+
+pre code {
+    display: flex;
+    counter-increment: listing;
+    margin-top: 0 !important;
+}
+
+pre code::before {
+    content: counter(listing);
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: calc(var(--grid-size) * 2);
+    padding-right: calc(var(--grid-size) / 4);
+    text-align: right;
+    color: var(--subtext);
+}
+
+code {
+    font-family: 'Space Mono';
+    font-size: calc(var(--grid-size)*2/3);
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+ol, ul {
+    padding-inline-start: calc(var(--grid-size));
+
+    li::marker {
+        color: var(--subtext);
+        line-height: calc(var(--grid-size) * .75);
+    }
+}
+
+footer {
+    text-align: right;
+}
+
+[class^="ri-"] {
+    display: inline-block;
+    width: var(--grid-size);
+    text-align: center;
+}

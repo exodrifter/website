@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48"
+   height="24"
+   viewBox="0 0 12.699999 6.35"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="b1.svg"
+   inkscape:version="1.4.1 (93de688d07, 2025-03-30)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="7.7174391"
+     inkscape:cx="30.515304"
+     inkscape:cy="13.864703"
+     inkscape:window-width="1504"
+     inkscape:window-height="931"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1">
+    <style
+       id="style1">
+      svg {
+        color: black;
+        color-scheme: light dark;
+      }
+      @media (prefers-color-scheme: dark) {
+        svg {
+          color: white;
+        }
+      }
+    </style>
+  </defs>
+  <g
+     id="g2"
+     transform="matrix(0.76252526,0,0,0.77040752,0,-0.08440123)">
+    <path
+       id="path1-6"
+       style="fill:currentColor;fill-opacity:1;stroke:none;stroke-width:1.57229;stroke-linecap:square;paint-order:stroke markers fill"
+       d="M 11.896303,0.109554 9.5171201,4.2307495 7.1379372,8.351945 h 4.7583658 l 2.3797,-4.1211955 2.379183,-4.1211955 z" />
+    <path
+       id="path1"
+       style="fill:currentColor;fill-opacity:1;stroke:none;stroke-width:1.57229;stroke-linecap:square;paint-order:stroke markers fill"
+       d="M 4.7583659,0.10955404 2.3791829,4.2307495 0,8.351945 H 4.7583659 L 7.1380656,4.2307495 9.5172485,0.10955404 Z" />
+  </g>
+</svg>

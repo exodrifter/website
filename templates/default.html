@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>$title$</title>
+        <meta charset="utf-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space Mono&amp;family=Space Grotesk:wght@400;700&amp;family=Space Grotesk:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class="page">
+            <aside class="sidebar">
+                <div class="logo">
+                    <a href="/"><img src="/logo.svg" alt="exodrifter logo" draggable="false"></a>
+                </div>
+                <div class="tools">
+                    <div class="search">
+                        <label><i class="ri-search-fill"></i></label>
+                        <input type="text" placeholder="search...">
+                    </div>
+                    $if(toc)$
+                    <section>
+                        <h1><i class="ri-list-unordered"></i> toc <a class="top" href="#"><i class="ri-arrow-up-fill"></i></a></h1>
+                        $toc$
+                    </section>
+                    $endif$
+                </div>
+            </aside>
+            <div class="main">
+                <nav>
+                    <i class="ri-folder-fill"></i>
+                    $for(breadcrumb)$
+                    $body$
+                    $sep$<p>/</p>
+                    $endfor$
+                </nav>
+                <section id="_content">
+                    <h1><i class="ri-file-2-fill"></i> content</a></h1>
+                    $body$
+                </section>
+
+                <section id="_meta">
+                    <h1><i class="ri-database-2-fill"></i> meta</i></h1>
+                    $if(tags)$
+                    <p class="meta">
+                        tags:
+                        $for(tags)$
+                        <a href="/tags/$body$.html">$body$</a>
+                        $sep$,
+                        $endfor$
+                    </p>
+                    $endif$
+                    <p class="meta">
+                    $if(created)$
+                        created: $created$
+                    $endif$
+                    $if(modified)$
+                    <br>
+                        modified: $modified$
+                    $endif$
+                    </p>
+                    <p class="meta">crossposts: <a href="https://cohost.org/exodrifter/post/5659898-ink-lists-are-hell">cohost!</a> @ <time datetime="2024-04-21T23:15:54.853Z" title="2024-04-21T23:15:54.853Z">2024-04-21 23:15:54</time></p>
+                </section>
+
+                <footer>
+                    <p class="meta"><i class="ri-copyright-fill"></i> exodrifter</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
