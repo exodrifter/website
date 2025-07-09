@@ -1,61 +1,30 @@
-import Data.List((\\))
-import Development.Shake ((<//>), (%>), (|%>))
-import Development.Shake.FilePath ((</>), (-<.>))
-import System.Directory.Extra
-import qualified Development.Shake as Shake
-import qualified Development.Shake.FilePath as FilePath
-import qualified Development.Shake.Util as Shake
+module Site
+( main
+) where
+
+import Exo.Shake ((<//>), (</>), (-<.>), (|%>), (%>))
+import qualified Exo.Shake as Shake
+
 import qualified Data.Text as T
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 
-outputDir :: FilePath
-outputDir = "_site"
-
-shake :: Shake.Rules () -> IO ()
-shake rules = do
-  -- Rebuild all of the files if the build system has changed.
-  sourceFiles <- listFilesRecursive "src"
-  ver <- Shake.getHashedShakeVersion sourceFiles
-  let
-    shakeOptions :: Shake.ShakeOptions
-    shakeOptions = Shake.shakeOptions { Shake.shakeVersion = ver }
-
-    -- Prune stale files in the output folder.
-    pruner :: [FilePath] -> IO ()
-    pruner live = do
-        present <- listFilesRecursive outputDir
-        let toRemove = present \\ live
-        traverse_ removeFile toRemove
-
-  Shake.shakeArgsPrune shakeOptions pruner rules
-
 main :: IO ()
 main = do
   let
-    contentDir = "content"
 
-  shake $ do
+  Shake.runShake $ do
 
-    Shake.phony "clean" $ do
-        Shake.putInfo ("Deleting " <> outputDir)
-        Shake.removeFilesAfter outputDir ["//*"]
+    Shake.cleanPhony
 
-    Shake.action $ do
-      let
-        ignoreObsidian =
-          filter (notElem ".obsidian" . FilePath.splitDirectories)
-      files <- ignoreObsidian <$> Shake.getDirectoryFiles contentDir ["//*.md"]
-
-      let htmlFiles = (\file -> outputDir </> file -<.> "html") <$> files
-      Shake.need htmlFiles
+    Shake.wantWebpages
 
     let
       staticFiles =
         ("_site" <//>) <$> ["*.gif", "*.mp4", "*.png", "*.jpg", "*.svg" ]
     staticFiles |%> \out -> do
       let
-        inputPath = contentDir </> FilePath.dropDirectory1 out
+        inputPath = Shake.contentDirectory </> Shake.dropDirectory1 out
       Shake.copyFileChanged inputPath out
 
     "//*.html" %> \out -> do
@@ -67,14 +36,14 @@ main = do
                 Pandoc.enableExtension Pandoc.Ext_yaml_metadata_block
               $ Pandoc.readerExtensions Pandoc.def
           }
-        inputPath = contentDir </> FilePath.dropDirectory1 out -<.> "md"
+        inputPath = Shake.contentDirectory </> Shake.dropDirectory1 out -<.> "md"
       md <- T.pack <$> readFile' inputPath
       pandoc <-
             convertVideoEmbeds
         <$> runPandoc (Pandoc.readMarkdown readerOpts md)
 
       -- Find dependencies
-      let workingDirectory = FilePath.takeDirectory out
+      let workingDirectory = Shake.takeDirectory out
       needImageDependencies workingDirectory pandoc
 
       -- Generate the HTML

@@ -5,7 +5,7 @@ version: 0.1.0.0
 synopsis: exodrifter's website
 homepage: exodrifter.space
 license: NONE
-license-file: LICENSE
+license-file: LICENSE.md
 author: exodrifter
 maintainer: code@exodrifter.space
 category: Web
@@ -29,7 +29,8 @@ executable site
     OverloadedStrings,
     RecordWildCards,
 
-  main-is: src/Site.hs
+  main-is: Site.hs
+  hs-source-dirs: src
   build-depends:
       base >= 4.11
     , relude ^>= 1.2.1.0
