@@ -7,6 +7,7 @@ import qualified Exo.Shake as Shake
 import qualified Exo.Const as Const
 
 import qualified System.FilePath as FilePath
+import qualified Data.Map as Map
 import qualified Data.Text as T
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
@@ -44,15 +45,13 @@ main = do
 
     -- Generate website pages.
     Const.outputDirectory <//> "*.html" %> \out -> do
-
       -- Read the markdown
       let
         readerOpts = Pandoc.def
           { Pandoc.readerExtensions = Pandoc.getDefaultExtensions "markdown"
           }
-        inputPath =
-              Const.contentDirectory
-          </> Shake.dropDirectory1 out -<.> "md"
+        canonicalPath = Shake.dropDirectory1 out
+        inputPath = Const.contentDirectory </> canonicalPath -<.> "md"
       md <- T.pack <$> readFile' inputPath
       pandoc <-
             convertVideoEmbeds
@@ -70,8 +69,14 @@ main = do
         , Const.outputDirectory </> "logo.svg"
         ]
       let
+        variables :: Map Text (DocTemplates.Val Text)
+        variables =
+          Map.fromList
+            [ ("breadcrumb", DocTemplates.toVal (makeBreadcrumbs canonicalPath))
+            ]
         writerOpts = Pandoc.def
           { Pandoc.writerTemplate = Just template
+          , Pandoc.writerVariables = DocTemplates.toContext variables
           , Pandoc.writerTableOfContents = True
           , Pandoc.writerExtensions = Pandoc.getDefaultExtensions "html"
           }
@@ -116,6 +121,28 @@ needImageDependencies dir pandoc =
         _ -> []
   in
     Shake.need (Pandoc.query extractUrl pandoc)
+
+
+-- Creates a list of breadcrumb pieces to the current file.
+makeBreadcrumbs :: FilePath -> [Text]
+makeBreadcrumbs path =
+  -- Make a list of (crumb, path) tuples
+  let
+    pieces =
+        fmap FilePath.dropExtension
+      . filter (/= "index.md")
+      $ FilePath.splitDirectories path
+    crumbs =
+         ("home", [])
+      :| zip pieces [take n pieces | n <- [1..]]
+
+    -- Make every breadcrumb into a link except for the last element
+    mkA (crumb, p) =
+      "<a href=/" <> FilePath.joinPath p <> ">" <> crumb <> "</a>"
+    mkP (crumb, _) =
+      "<p>" <> crumb <> "</p>"
+
+  in T.pack <$> ((mkA <$> init crumbs) <> [mkP (last crumbs)])
 
 --------------------------------------------------------------------------------
 -- Helpers
