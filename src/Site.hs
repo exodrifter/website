@@ -6,6 +6,7 @@ import Exo.Shake ((<//>), (</>), (-<.>), (|%>), (%>))
 import qualified Exo.Shake as Shake
 import qualified Exo.Const as Const
 
+import qualified System.FilePath as FilePath
 import qualified Data.Text as T
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
@@ -55,6 +56,7 @@ main = do
       md <- T.pack <$> readFile' inputPath
       pandoc <-
             convertVideoEmbeds
+          . updateLinks
         <$> runPandoc (Pandoc.readMarkdown readerOpts md)
 
       -- Find dependencies
@@ -75,6 +77,20 @@ main = do
           }
       html <- runPandoc (Pandoc.writeHtml5String writerOpts pandoc)
       Shake.writeFileChanged out (T.unpack html)
+
+updateLinks :: Pandoc.Pandoc -> Pandoc.Pandoc
+updateLinks =
+  let
+    updateLink :: Pandoc.Inline -> Pandoc.Inline
+    updateLink inline =
+      case inline of
+        (Pandoc.Link a i (u, t)) ->
+          case FilePath.splitExtension (T.unpack u) of
+            (path, ".md") -> Pandoc.Link a i (T.pack path, t)
+            _ -> inline
+        _ -> inline
+  in
+    Pandoc.walk updateLink
 
 convertVideoEmbeds :: Pandoc.Pandoc -> Pandoc.Pandoc
 convertVideoEmbeds =
