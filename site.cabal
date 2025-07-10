@@ -42,6 +42,7 @@ executable site
     , filepath
     , http-types
     , mime-types
+    , network-uri
     , pandoc
     , pandoc-types
     , scotty

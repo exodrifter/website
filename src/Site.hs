@@ -9,6 +9,8 @@ import qualified Exo.Const as Const
 import qualified System.FilePath as FilePath
 import qualified Data.Map as Map
 import qualified Data.Text as T
+import qualified Data.Time as Time
+import qualified Network.URI as URI
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import qualified Text.DocTemplates as DocTemplates
@@ -48,7 +50,10 @@ main = do
       -- Read the markdown
       let
         readerOpts = Pandoc.def
-          { Pandoc.readerExtensions = Pandoc.getDefaultExtensions "markdown"
+          { Pandoc.readerExtensions =
+                Pandoc.enableExtension Pandoc.Ext_lists_without_preceding_blankline
+              . Pandoc.disableExtension Pandoc.Ext_citations
+              $ Pandoc.getDefaultExtensions "markdown"
           }
         canonicalPath = Shake.dropDirectory1 out
         inputPath = Const.contentDirectory </> canonicalPath -<.> "md"
@@ -73,6 +78,7 @@ main = do
         variables =
           Map.fromList
             [ ("breadcrumb", DocTemplates.toVal (makeBreadcrumbs canonicalPath))
+            , ("crosspost", makeCrossposts pandoc)
             ]
         writerOpts = Pandoc.def
           { Pandoc.writerTemplate = Just template
@@ -122,7 +128,6 @@ needImageDependencies dir pandoc =
   in
     Shake.need (Pandoc.query extractUrl pandoc)
 
-
 -- Creates a list of breadcrumb pieces to the current file.
 makeBreadcrumbs :: FilePath -> [Text]
 makeBreadcrumbs path =
@@ -143,6 +148,64 @@ makeBreadcrumbs path =
       "<p>" <> crumb <> "</p>"
 
   in T.pack <$> ((mkA <$> init crumbs) <> [mkP (last crumbs)])
+
+-- Creates a list of crossposts.
+makeCrossposts :: Pandoc.Pandoc -> DocTemplates.Val Text
+makeCrossposts (Pandoc.Pandoc (Pandoc.Meta meta) _) =
+  let
+    toTextValWith :: (Text -> Text)
+                  -> Maybe Pandoc.MetaValue
+                  -> DocTemplates.Val Text
+    toTextValWith fn m =
+      case m of
+        Just (Pandoc.MetaInlines [Pandoc.Str text]) ->
+          DocTemplates.toVal (fn text)
+        _ ->
+          DocTemplates.NullVal
+
+    extractSite :: Text -> Text
+    extractSite text =
+      let
+        auth = URI.parseURI (T.unpack text) >>= URI.uriAuthority
+      in
+        case URI.uriRegName <$> auth of
+          Nothing -> "unknown"
+          Just "bsky.app" -> "bsky"
+          Just "cohost.org" -> "cohost!"
+          Just "exodrifter.itch.io" -> "itch.io"
+          Just "forum.tsuki.games" -> "t/suki"
+          Just "ko-fi.com" -> "ko-fi"
+          Just "music.exodrifter.space" -> "bandcamp"
+          Just "soundcloud.com" -> "soundcloud"
+          Just "store.steampowered.com" -> "steam"
+          Just "twitter.com" -> "twitter"
+          Just "www.patreon.com" -> "patreon"
+          Just "www.youtube.com" -> "youtube"
+          Just "x.com" -> "twitter"
+          Just "steamcommunity.com" -> "steam"
+          Just a -> T.pack a
+
+    convertCrosspost :: Pandoc.MetaValue -> Maybe (DocTemplates.Val Text)
+    convertCrosspost c =
+      case c of
+        Pandoc.MetaMap m ->
+          let
+            crosspost :: Map Text (DocTemplates.Val Text)
+            crosspost = Map.fromList
+              [ ("url", toTextValWith identity (Map.lookup "url" m))
+              , ("site", toTextValWith extractSite (Map.lookup "url" m))
+              , ("time", toTextValWith formatTime (Map.lookup "time" m))
+              ]
+          in
+            Just (DocTemplates.toVal crosspost)
+        _ ->
+          Nothing
+  in
+    case Map.lookup "crossposts" meta of
+      Just (Pandoc.MetaList arr) ->
+        DocTemplates.ListVal (mapMaybe convertCrosspost arr)
+      _ ->
+        DocTemplates.NullVal
 
 --------------------------------------------------------------------------------
 -- Helpers
@@ -174,3 +237,21 @@ runPandocPure pandoc =
     case result of
       Right a -> Right a
       Left err -> Left (Pandoc.renderError err)
+
+formatTime :: Text -> Text
+formatTime text =
+  let
+    validFormats =
+      [ ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d %H:%M:%S")
+      , ("%Y-%m-%dT%H:%MZ", "%Y-%m-%d %H:%M")
+      ]
+    locale = Time.defaultTimeLocale
+
+    tryParse :: String -> Maybe Time.UTCTime
+    tryParse format = Time.parseTimeM False locale format (T.unpack text)
+
+    tryFormat :: (String, String) -> Maybe Text
+    tryFormat (parseFormat, format) =
+      T.pack . Time.formatTime locale format <$> tryParse parseFormat
+  in
+    fromMaybe text (viaNonEmpty head (mapMaybe tryFormat validFormats))

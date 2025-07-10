@@ -108,6 +108,10 @@ article > * + *, section > * + *, .main > * + *, .tools  > * + * {
     background-position: calc(var(--grid-size)/2) calc(var(--grid-size)/2);
 }
 
+div.meta > *:not(:first-child) {
+    margin-left: var(--grid-size);
+}
+
 nav {
     display: flex;
     flex-direction: row;

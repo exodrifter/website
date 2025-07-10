@@ -63,7 +63,14 @@
                         modified: $modified$
                     $endif$
                     </p>
-                    <p class="meta">crossposts: <a href="https://cohost.org/exodrifter/post/5659898-ink-lists-are-hell">cohost!</a> @ <time datetime="2024-04-21T23:15:54.853Z" title="2024-04-21T23:15:54.853Z">2024-04-21 23:15:54</time></p>
+                    $if(crosspost)$
+                    <div class="meta">
+                    <p class="meta">crossposts:</p>
+                    $for(crosspost)$
+                    <p class="meta"><a href="$crosspost.url$">$crosspost.site$</a> @ <time datetime="$crosspost.time$" title="$crosspost.time$">$crosspost.time$</time></span>
+                    $endfor$
+                    </div>
+                    $endif$
                 </section>
 
                 <footer>
