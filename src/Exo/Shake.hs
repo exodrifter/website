@@ -6,7 +6,7 @@ module Exo.Shake
 -- Rules
 , cleanPhony
 , serverPhony
-, wantWebpages
+, wantWebsite
 ) where
 
 import Data.List ((\\))
@@ -55,16 +55,31 @@ cleanPhony =
 serverPhony :: Rules ()
 serverPhony =
   phony "server" do
-    wantWebpages
+    wantWebsite
     liftIO Scotty.runServer
 
 --------------------------------------------------------------------------------
 -- Actions
 --------------------------------------------------------------------------------
 
--- Creates a list of needed webpages.
-wantWebpages :: Action ()
-wantWebpages = do
+-- Creates a list of needed files for the website.
+wantWebsite :: Action ()
+wantWebsite = do
+  let
+    wantedStaticFiles =
+      (Const.outputDirectory </>) <$>
+        [ "keybase.txt"
+        ]
+  wantedWebpages <- determineWebpages
+
+  need . concat $
+    [ wantedStaticFiles
+    , wantedWebpages
+    ]
+
+-- Creates a list of webpages needed for the website.
+determineWebpages :: Action [FilePath]
+determineWebpages = do
   -- Right now, we only generate webpages from markdown.
   sourceFiles <- getDirectoryFiles Const.contentDirectory ["//*.md"]
 
@@ -74,6 +89,5 @@ wantWebpages = do
       filter (notElem ".obsidian" . splitDirectories)
     files = ignoreObsidianDirectory sourceFiles
 
-  -- Mark each of the webpages as needed.
   let toOutputPath path = Const.outputDirectory </> path -<.> "html"
-  need (toOutputPath <$> files)
+  pure (toOutputPath <$> files)

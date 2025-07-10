@@ -20,29 +20,38 @@ main = do
     Shake.cleanPhony
     Shake.serverPhony
 
-    Shake.action Shake.wantWebpages
+    Shake.action Shake.wantWebsite
 
-    let
-      staticFiles =
-        ("_site" <//>) <$> ["*.gif", "*.mp4", "*.png", "*.jpg", "*.svg" ]
-    staticFiles |%> \out -> do
+    -- Copy static files.
+    Const.outputDirectory </> "*.css" %> \out -> do
       let
-        inputPath = Const.contentDirectory </> Shake.dropDirectory1 out
+        inputPath =
+              Const.staticDirectory
+          </> "style"
+          </> Shake.dropDirectory1 out
       Shake.copyFileChanged inputPath out
 
-    "_site/*.css" %> \out -> do
-      let
-        inputPath = "static/style" </> Shake.dropDirectory1 out
+    Const.outputDirectory </> "*.txt" %> \out -> do
+      let inputPath = Const.staticDirectory </> Shake.dropDirectory1 out
       Shake.copyFileChanged inputPath out
 
-    "_site//*.html" %> \out -> do
+    -- Copy website assets.
+    let copyExtensions = [ "*.gif", "*.mp4", "*.png", "*.jpg", "*.svg" ]
+    (Const.outputDirectory <//>) <$> copyExtensions |%> \out -> do
+      let inputPath = Const.contentDirectory </> Shake.dropDirectory1 out
+      Shake.copyFileChanged inputPath out
+
+    -- Generate website pages.
+    Const.outputDirectory <//> "*.html" %> \out -> do
 
       -- Read the markdown
       let
         readerOpts = Pandoc.def
           { Pandoc.readerExtensions = Pandoc.getDefaultExtensions "markdown"
           }
-        inputPath = Const.contentDirectory </> Shake.dropDirectory1 out -<.> "md"
+        inputPath =
+              Const.contentDirectory
+          </> Shake.dropDirectory1 out -<.> "md"
       md <- T.pack <$> readFile' inputPath
       pandoc <-
             convertVideoEmbeds
@@ -53,10 +62,10 @@ main = do
       needImageDependencies workingDirectory pandoc
 
       -- Generate the HTML
-      template <- buildTemplate "static/templates/default.html"
+      template <- buildTemplate (Const.staticDirectory </> "templates/default.html")
       Shake.need
-        [ "_site/style.css"
-        , "_site/logo.svg"
+        [ Const.outputDirectory </> "style.css"
+        , Const.outputDirectory </> "logo.svg"
         ]
       let
         writerOpts = Pandoc.def
@@ -98,7 +107,6 @@ needImageDependencies dir pandoc =
 
 buildTemplate :: DocTemplates.TemplateTarget a => FilePath -> Shake.Action (Pandoc.Template a)
 buildTemplate path = do
-  -- Shake.need [path]
   result <- liftIO (DocTemplates.compileTemplateFile path)
   case result of
     Left err -> error (T.pack err)
