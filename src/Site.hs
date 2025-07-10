@@ -9,6 +9,7 @@ import qualified Exo.Const as Const
 import qualified Data.Text as T
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
+import qualified Text.DocTemplates as DocTemplates
 
 main :: IO ()
 main = do
@@ -29,14 +30,17 @@ main = do
         inputPath = Const.contentDirectory </> Shake.dropDirectory1 out
       Shake.copyFileChanged inputPath out
 
-    "//*.html" %> \out -> do
+    "_site/*.css" %> \out -> do
+      let
+        inputPath = "static/style" </> Shake.dropDirectory1 out
+      Shake.copyFileChanged inputPath out
+
+    "_site//*.html" %> \out -> do
 
       -- Read the markdown
       let
         readerOpts = Pandoc.def
-          { Pandoc.readerExtensions =
-                Pandoc.enableExtension Pandoc.Ext_yaml_metadata_block
-              $ Pandoc.readerExtensions Pandoc.def
+          { Pandoc.readerExtensions = Pandoc.getDefaultExtensions "markdown"
           }
         inputPath = Const.contentDirectory </> Shake.dropDirectory1 out -<.> "md"
       md <- T.pack <$> readFile' inputPath
@@ -49,7 +53,18 @@ main = do
       needImageDependencies workingDirectory pandoc
 
       -- Generate the HTML
-      html <- runPandoc (Pandoc.writeHtml5String Pandoc.def pandoc)
+      template <- buildTemplate "static/templates/default.html"
+      Shake.need
+        [ "_site/style.css"
+        , "_site/logo.svg"
+        ]
+      let
+        writerOpts = Pandoc.def
+          { Pandoc.writerTemplate = Just template
+          , Pandoc.writerTableOfContents = True
+          , Pandoc.writerExtensions = Pandoc.getDefaultExtensions "html"
+          }
+      html <- runPandoc (Pandoc.writeHtml5String writerOpts pandoc)
       Shake.writeFileChanged out (T.unpack html)
 
 convertVideoEmbeds :: Pandoc.Pandoc -> Pandoc.Pandoc
@@ -80,6 +95,14 @@ needImageDependencies dir pandoc =
 --------------------------------------------------------------------------------
 -- Helpers
 --------------------------------------------------------------------------------
+
+buildTemplate :: DocTemplates.TemplateTarget a => FilePath -> Shake.Action (Pandoc.Template a)
+buildTemplate path = do
+  -- Shake.need [path]
+  result <- liftIO (DocTemplates.compileTemplateFile path)
+  case result of
+    Left err -> error (T.pack err)
+    Right a -> pure a
 
 runPandoc :: Pandoc.PandocPure a -> Shake.Action a
 runPandoc pandoc =

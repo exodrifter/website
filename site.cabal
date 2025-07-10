@@ -37,6 +37,7 @@ executable site
 
     , containers
     , directory
+    , doctemplates
     , extra
     , filepath
     , http-types
