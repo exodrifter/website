@@ -6,8 +6,9 @@ modified: 2024-09-19T23:54:07Z
 
 # about
 
-<div style="display: flex; flex-direction: row; align-items: center;">
-<img src="blog/avatar.png" alt="exodrifter avatar" align="left" style="width: 7rem; margin-right: 2rem;"/>
+<div class="home-banner">
+
+![](blog/avatar.png)
 
 I'm **exodrifter** (she/her), a Cambodian American indie game developer, vtuber, functional programmer, and musician based in Austin, Texas. I love yuri, space, and heavy board games. Making games that connect with people in emotional and meaningful ways is my passion.
 

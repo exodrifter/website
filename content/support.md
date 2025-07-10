@@ -9,6 +9,7 @@ aliases:
 # support
 
 If you like the work that I do, I accept donations at the following places:
+
 - <i class="ri-cup-fill"></i> [Ko-fi](https://ko-fi.com/exodrifter)
 - <i class="ri-patreon-fill"></i> [Patreon](https://patreon.com/exodrifter)
 
