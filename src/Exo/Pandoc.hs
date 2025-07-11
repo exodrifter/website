@@ -1,6 +1,7 @@
 -- Pure, bespoke functions for building the website with Pandoc.
 module Exo.Pandoc
 ( module X
+, TemplateArgs(..)
 , parseMarkdown
 , makeHtml
 ) where
@@ -12,10 +13,10 @@ import qualified Data.Map as Map
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
 import qualified Data.Time as Time
+import qualified Development.Shake.FilePath as FilePath
 import qualified Network.HTTP.Client as HTTP
 import qualified Network.HTTP.Simple as HTTP
 import qualified Network.URI as URI
-import qualified System.FilePath as FilePath
 import qualified Text.DocTemplates as DocTemplates
 
 -- Parses a markdown document just the way I want it.
@@ -50,12 +51,20 @@ parseMarkdown markdown =
 -- HTML
 --------------------------------------------------------------------------------
 
+data TemplateArgs = TemplateArgs
+  { canonicalPath :: FilePath
+    -- ^ The path of this file on the website.
+  , indexListing :: [FilePath]
+    -- ^ If this file is an index, then this is a list of all of the other files
+    -- in the index.
+  }
+
 -- Makes an HTML document just the way I want it.
 --
 -- In particular, all links use "clean" URLs for paths leading to HTML files,
 -- which means URLs will not contain the ".html" extension or end in "index".
-makeHtml :: FilePath -> Template Text -> Pandoc -> Either Text Text
-makeHtml path template pandoc = do
+makeHtml :: TemplateArgs -> Template Text -> Pandoc -> Either Text Text
+makeHtml args template pandoc = do
 
   -- Make additional template variables
   crossposts <- makeCrossposts pandoc
@@ -63,8 +72,9 @@ makeHtml path template pandoc = do
     variables :: Map Text (DocTemplates.Val Text)
     variables = do
       Map.fromList
-        [ ("breadcrumb", DocTemplates.toVal (makeBreadcrumbs path))
+        [ ("breadcrumb", makeBreadcrumbs (canonicalPath args))
         , ("crosspost", crossposts)
+        , ("file", makeFileListing (canonicalPath args) (indexListing args))
         ]
 
     writerOptions = def
@@ -81,24 +91,16 @@ makeHtml path template pandoc = do
 preparePandoc :: Pandoc -> Pandoc
 preparePandoc =
     convertVideoEmbeds
-  . updateLinks
+  . convertCleanLinks
 
 -- All of the linked markdown will be converted to HTML, so we also want to
 -- update markdown links to clean links.
-updateLinks :: Pandoc -> Pandoc
-updateLinks =
+convertCleanLinks :: Pandoc -> Pandoc
+convertCleanLinks =
   walk \inline ->
     case inline of
       (Link a i (u, t)) ->
-        case FilePath.splitExtension <$> FilePath.splitFileName (T.unpack u) of
-
-          (path, ("index", ".md")) ->
-            Link a i (T.pack (FilePath.addTrailingPathSeparator path), t)
-
-          (path, (file, ".md")) ->
-            Link a i (T.pack (path </> file), t)
-
-          _ -> inline
+        Link a i (makeCleanLink (T.unpack u), t)
       _ -> inline
 
 -- Pandoc doesn't have a type which represents embeds, so we need to convert
@@ -142,7 +144,7 @@ makeYoutubeEmbed v =
 -- A breadcrumb is a navigational element that:
 -- * Shows users their current position in a hierarchical structure
 -- * Helps users navigate to different parts of a hierarchical structure
-makeBreadcrumbs :: FilePath -> [Text]
+makeBreadcrumbs :: FilePath -> DocTemplates.Val Text
 makeBreadcrumbs path =
   -- Make a list of (crumb, path) tuples
   let
@@ -161,7 +163,10 @@ makeBreadcrumbs path =
       <> "</a>"
     mkP (crumb, _) =
       "<p>" <> crumb <> "</p>"
-  in T.pack <$> ((mkA <$> init crumbs) <> [mkP (last crumbs)])
+    breadcrumbs = (mkA <$> init crumbs) <> [mkP (last crumbs)]
+
+  in
+    DocTemplates.toVal (T.pack <$> breadcrumbs)
 
 -- Creates a list of crossposts.
 makeCrossposts :: Pandoc -> Either Text (DocTemplates.Val Text)
@@ -258,6 +263,24 @@ formatTime text =
       Nothing -> Left ("Unsupported format for time \"" <> text <> "\"")
       Just formattedTime -> Right formattedTime
 
+makeFileListing :: FilePath -> [FilePath] -> DocTemplates.Val Text
+makeFileListing canonicalPath files =
+  let
+    make :: FilePath -> DocTemplates.Val Text
+    make file = do
+      let
+        path =
+          FilePath.makeRelative
+            (FilePath.takeDirectory canonicalPath)
+            (FilePath.dropDirectory1 file)
+      DocTemplates.toVal $ Map.fromList
+        [ ("path" :: Text, makeCleanLink path)
+        , ("name", T.pack (FilePath.takeBaseName path))
+        ]
+
+  in
+    DocTemplates.ListVal (make <$> files)
+
 --------------------------------------------------------------------------------
 -- Helpers
 --------------------------------------------------------------------------------
@@ -281,3 +304,19 @@ justElse err ma =
   case ma of
     Just a -> Right a
     Nothing -> Left err
+
+-- Removes the extension from all markdown links and remaps index links to the
+-- parent directory, so that they match the canonical URLs of the HTML pages
+-- that will be generated.
+makeCleanLink :: FilePath -> Text
+makeCleanLink path =
+  let
+    cleanPath =
+      case FilePath.splitExtension <$> FilePath.splitFileName path of
+        (folder, ("index", ".md")) ->
+          FilePath.addTrailingPathSeparator folder
+        (folder, (file, ".md")) ->
+          folder </> file
+        _ -> path
+  in
+    T.pack cleanPath

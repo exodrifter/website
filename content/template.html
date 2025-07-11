@@ -36,12 +36,24 @@
                     $sep$<p>/</p>
                     $endfor$
                 </nav>
+
+                $if(body)$
                 <section id="_content">
-                    <h1><i class="ri-file-2-fill"></i> content</a></h1>
+                    <h1><i class="ri-article-fill"></i> content</a></h1>
                     <article>
                         $body$
                     </article>
                 </section>
+                $endif$
+
+                $if(file)$
+                <section id="_files">
+                    <h1><i class="ri-file-2-fill"></i> files</i></h1>
+                    $for(file)$
+                    <p class="meta"><a href="$file.path$">$file.name$</a></p>
+                    $endfor$
+                </section>
+                $endif$
 
                 <section id="_meta">
                     <h1><i class="ri-database-2-fill"></i> meta</i></h1>
