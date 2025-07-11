@@ -9,8 +9,11 @@ import Text.Pandoc as X
 import Text.Pandoc.Walk as X
 import qualified Data.Map as Map
 import qualified Data.Text as T
+import qualified Data.Text.Encoding as TE
 import qualified Data.Time as Time
 import qualified Network.URI as URI
+import qualified Network.HTTP.Client as HTTP
+import qualified Network.HTTP.Simple as HTTP
 import qualified System.FilePath as FilePath
 import qualified Text.DocTemplates as DocTemplates
 
@@ -97,13 +100,34 @@ convertVideoEmbeds :: Pandoc -> Pandoc
 convertVideoEmbeds =
   walk \inline ->
     case inline of
-      (Image _ _ (u, _)) ->
-        -- TODO: Oops, I need to actually implement this. Also, I should use a
-        -- URI parser.
-        if "http" `T.isPrefixOf` u
-        then RawInline (Format "html") u
-        else inline
+      (Image _ _ (u, _)) -> do
+        let mReq = HTTP.parseUrlThrow (T.unpack u)
+        case mReq of
+          Just req
+
+            -- Youtube embeds
+            | HTTP.host req == "www.youtube.com"
+            , let q = Map.fromList (HTTP.getRequestQueryString req) ->
+                case TE.decodeUtf8' <$> join (Map.lookup "v" q) of
+                  Just (Right v) ->
+                    RawInline (Format "html") (makeYoutubeEmbed v)
+                  _ ->
+                    inline
+
+          _ -> inline
+
       _ -> inline
+
+makeYoutubeEmbed :: Text -> Text
+makeYoutubeEmbed v =
+  "<iframe width=\"560\" height=\"315\" \
+    \src=\"https://www.youtube.com/embed/" <> v <> "\" \
+    \title=\"YouTube video player\" \
+    \frameborder=\"0\" \
+    \allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" \
+    \referrerpolicy=\"strict-origin-when-cross-origin\" \
+    \allowfullscreen>\
+  \</iframe>"
 
 -- Creates a list of breadcrumbs. Each breadcrumb is a link to that respective
 -- location, except for the last one (since you are already at that location).

@@ -40,6 +40,8 @@ executable site
     , doctemplates
     , extra
     , filepath
+    , http-client
+    , http-conduit
     , http-types
     , mime-types
     , network-uri
