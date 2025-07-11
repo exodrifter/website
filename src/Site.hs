@@ -26,21 +26,8 @@ main = do
 
     Shake.action Shake.wantWebsite
 
-    -- Copy static files.
-    Const.outputDirectory </> "*.css" %> \out -> do
-      let
-        inputPath =
-              Const.staticDirectory
-          </> "style"
-          </> Shake.dropDirectory1 out
-      Shake.copyFileChanged inputPath out
-
-    Const.outputDirectory </> "*.txt" %> \out -> do
-      let inputPath = Const.staticDirectory </> Shake.dropDirectory1 out
-      Shake.copyFileChanged inputPath out
-
-    -- Copy website assets.
-    let copyExtensions = [ "*.gif", "*.mp4", "*.png", "*.jpg", "*.svg" ]
+    -- Copy files.
+    let copyExtensions = [ "*.css", "*.gif", "*.mp4", "*.png", "*.jpg", "*.svg", "*.txt" ]
     (Const.outputDirectory <//>) <$> copyExtensions |%> \out -> do
       let inputPath = Const.contentDirectory </> Shake.dropDirectory1 out
       Shake.copyFileChanged inputPath out
@@ -68,11 +55,7 @@ main = do
       needImageDependencies workingDirectory pandoc
 
       -- Generate the HTML
-      template <- buildTemplate (Const.staticDirectory </> "templates/default.html")
-      Shake.need
-        [ Const.outputDirectory </> "style.css"
-        , Const.outputDirectory </> "logo.svg"
-        ]
+      template <- Shake.buildTemplate (Const.contentDirectory </> "template.html")
       let
         variables :: Map Text (DocTemplates.Val Text)
         variables =
@@ -210,13 +193,6 @@ makeCrossposts (Pandoc.Pandoc (Pandoc.Meta meta) _) =
 --------------------------------------------------------------------------------
 -- Helpers
 --------------------------------------------------------------------------------
-
-buildTemplate :: DocTemplates.TemplateTarget a => FilePath -> Shake.Action (Pandoc.Template a)
-buildTemplate path = do
-  result <- liftIO (DocTemplates.compileTemplateFile path)
-  case result of
-    Left err -> error (T.pack err)
-    Right a -> pure a
 
 runPandoc :: Pandoc.PandocPure a -> Shake.Action a
 runPandoc pandoc =

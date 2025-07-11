@@ -6,16 +6,22 @@ module Exo.Shake
 -- Rules
 , cleanPhony
 , serverPhony
+
+-- Actions
 , wantWebsite
+, buildTemplate
 ) where
 
 import Data.List ((\\))
 import Development.Shake as X
 import Development.Shake.FilePath as X
 import Development.Shake.Util as X
+import qualified Data.Text as T
 import qualified Exo.Const as Const
 import qualified Exo.Scotty as Scotty
 import qualified System.Directory.Extra as Directory
+import qualified Text.DocTemplates as DocTemplates
+import qualified Text.Pandoc as Pandoc
 
 runShake :: Rules () -> IO ()
 runShake rules = do
@@ -29,7 +35,7 @@ runShake rules = do
     -- Prune stale files in the output folder.
     pruner :: [FilePath] -> IO ()
     pruner live = do
-      -- The directory might not exist if we ran the clean action
+      -- The directory might not exist if we ran the clean action.
       directoryExists <- Directory.doesDirectoryExist Const.outputDirectory
       if directoryExists
       then do
@@ -62,32 +68,46 @@ serverPhony =
 -- Actions
 --------------------------------------------------------------------------------
 
--- Creates a list of needed files for the website.
+-- Creates a list of files needed for the website.
 wantWebsite :: Action ()
 wantWebsite = do
-  let
-    wantedStaticFiles =
-      (Const.outputDirectory </>) <$>
-        [ "keybase.txt"
-        ]
-  wantedWebpages <- determineWebpages
-
-  need . concat $
-    [ wantedStaticFiles
-    , wantedWebpages
-    ]
-
--- Creates a list of webpages needed for the website.
-determineWebpages :: Action [FilePath]
-determineWebpages = do
-  -- Right now, we only generate webpages from markdown.
+  -- Generate webpages from markdown.
   sourceFiles <- getDirectoryFiles Const.contentDirectory ["//*.md"]
-
-  -- Ignore non-source files.
   let
     ignoreObsidianDirectory =
       filter (notElem ".obsidian" . splitDirectories)
-    files = ignoreObsidianDirectory sourceFiles
+    toOutputPath path = Const.outputDirectory </> path -<.> "html"
+    webpages = toOutputPath <$> ignoreObsidianDirectory sourceFiles
 
-  let toOutputPath path = Const.outputDirectory </> path -<.> "html"
-  pure (toOutputPath <$> files)
+    -- Static files to copy.
+    staticFiles =
+      (Const.outputDirectory </>) <$>
+        [ "keybase.txt"
+        , "logo.svg"
+        , "style.css"
+        ]
+
+  need . concat $
+    [ staticFiles
+    , webpages
+    ]
+
+-- Builds a template on disk.
+buildTemplate :: DocTemplates.TemplateTarget a
+              => FilePath -> Action (Pandoc.Template a)
+buildTemplate path = do
+  fileExists <- liftIO (Directory.doesFileExist path)
+  if fileExists
+  then do
+    -- Since the file already exists on disk, this won't actually trigger
+    -- another rule since the file appears to be built already. Instead, all
+    -- this does is make sure the rule is re-run when the file is changed.
+    need [path]
+    result <- liftIO (DocTemplates.compileTemplateFile path)
+
+    case result of
+      Left err -> error (T.pack err)
+      Right template -> pure template
+
+  else
+    error ("Cannot find template at path \"" <> T.pack path <> "\"")

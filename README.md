@@ -8,7 +8,7 @@ posts and notes turned into a static site with the help of Quartz and Nix.
 You can use ghcid to build and run the website:
 
 ```sh
-ghcid --target=site --run --setup=":set args watch"
+ghcid --target=site --run --setup=":set args --prune --lint server"
 ```
 
 # feedback
