@@ -10,6 +10,7 @@ module Exo.Shake
 -- Actions
 , wantWebsite
 , buildTemplate
+, runEither
 ) where
 
 import Data.List ((\\))
@@ -111,3 +112,10 @@ buildTemplate path = do
 
   else
     error ("Cannot find template at path \"" <> T.pack path <> "\"")
+
+-- Fails the action if the Either is a Left.
+runEither :: Either Text a -> Action a
+runEither e =
+  case e of
+    Right a -> pure a
+    Left err -> error err
