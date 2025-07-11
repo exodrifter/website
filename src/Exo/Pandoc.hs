@@ -5,15 +5,16 @@ module Exo.Pandoc
 , makeHtml
 ) where
 
+import System.FilePath((</>))
 import Text.Pandoc as X
 import Text.Pandoc.Walk as X
 import qualified Data.Map as Map
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
 import qualified Data.Time as Time
-import qualified Network.URI as URI
 import qualified Network.HTTP.Client as HTTP
 import qualified Network.HTTP.Simple as HTTP
+import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
 import qualified Text.DocTemplates as DocTemplates
 
@@ -89,8 +90,14 @@ updateLinks =
   walk \inline ->
     case inline of
       (Link a i (u, t)) ->
-        case FilePath.splitExtension (T.unpack u) of
-          (path, ".md") -> Link a i (T.pack path, t)
+        case FilePath.splitExtension <$> FilePath.splitFileName (T.unpack u) of
+
+          (path, ("index", ".md")) ->
+            Link a i (T.pack (FilePath.addTrailingPathSeparator path), t)
+
+          (path, (file, ".md")) ->
+            Link a i (T.pack (path </> file), t)
+
           _ -> inline
       _ -> inline
 
@@ -147,7 +154,11 @@ makeBreadcrumbs path =
 
     -- Make every breadcrumb into a link except for the last element
     mkA (crumb, p) =
-      "<a href=/" <> FilePath.joinPath p <> ">" <> crumb <> "</a>"
+         "<a href=\""
+      <> ("/" </> FilePath.addTrailingPathSeparator (FilePath.joinPath p))
+      <> "\">"
+      <> crumb
+      <> "</a>"
     mkP (crumb, _) =
       "<p>" <> crumb <> "</p>"
   in T.pack <$> ((mkA <$> init crumbs) <> [mkP (last crumbs)])
