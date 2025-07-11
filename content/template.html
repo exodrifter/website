@@ -67,7 +67,11 @@
                     <div class="meta">
                     <p class="meta">crossposts:</p>
                     $for(crosspost)$
-                    <p class="meta"><a href="$crosspost.url$">$crosspost.site$</a> @ <time datetime="$crosspost.time$" title="$crosspost.time$">$crosspost.time$</time></span>
+                    <p class="meta">
+                        <time datetime="$crosspost.time$" title="$crosspost.time$">$crosspost.time$</time>
+                        @
+                        <a href="$crosspost.url$">$crosspost.site$</a>
+                    </p>
                     $endfor$
                     </div>
                     $endif$

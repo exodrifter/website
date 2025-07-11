@@ -26,6 +26,12 @@ parseMarkdown markdown =
             enableExtension Ext_lists_without_preceding_blankline
             -- ^ I have a lot of lists that don't have a preceding blankline,
             -- because Obsidian allows that.
+          . disableExtension Ext_smart
+            -- ^ Some data in my YAML frontmatter have character sequences that
+            -- will become invalid if they are converted by this extension. For
+            -- example, some URLs have two consecutive dashes.
+            -- TODO: Figure out how to store the data in a way that it won't be
+            -- affected by this extension.
           . disableExtension Ext_citations
             -- ^ For some reason, this breaks bsky links in my YAML frontmatter,
             -- probably because of the `@` character.
@@ -45,22 +51,26 @@ parseMarkdown markdown =
 -- In particular, all links use "clean" URLs for paths leading to HTML files,
 -- which means URLs will not contain the ".html" extension or end in "index".
 makeHtml :: FilePath -> Template Text -> Pandoc -> Either Text Text
-makeHtml path template pandoc =
+makeHtml path template pandoc = do
+
+  -- Make additional template variables
+  crossposts <- makeCrossposts pandoc
   let
     variables :: Map Text (DocTemplates.Val Text)
-    variables =
+    variables = do
       Map.fromList
         [ ("breadcrumb", DocTemplates.toVal (makeBreadcrumbs path))
-        , ("crosspost", makeCrossposts pandoc)
+        , ("crosspost", crossposts)
         ]
+
     writerOptions = def
       { writerTemplate = Just template
       , writerVariables = DocTemplates.toContext variables
       , writerTableOfContents = True
       , writerExtensions = getDefaultExtensions "html"
       }
-  in
-    runPandoc (writeHtml5String writerOptions (preparePandoc pandoc))
+
+  runPandoc (writeHtml5String writerOptions (preparePandoc pandoc))
 
 -- Does all of the transformations needed to prepare a Pandoc for being written
 -- to HTML.
@@ -119,74 +129,86 @@ makeBreadcrumbs path =
   in T.pack <$> ((mkA <$> init crumbs) <> [mkP (last crumbs)])
 
 -- Creates a list of crossposts.
-makeCrossposts :: Pandoc -> DocTemplates.Val Text
+makeCrossposts :: Pandoc -> Either Text (DocTemplates.Val Text)
 makeCrossposts (Pandoc (Meta meta) _) =
   let
-    toTextValWith :: (Text -> Text)
-                  -> Maybe MetaValue
-                  -> DocTemplates.Val Text
-    toTextValWith fn m =
-      case m of
+    toTextValWith :: (Text -> Either Text Text)
+                  -> Text
+                  -> Map Text MetaValue
+                  -> Either Text (DocTemplates.Val Text)
+    toTextValWith fn key m =
+      case Map.lookup key m of
         Just (MetaInlines [Str text]) ->
-          DocTemplates.toVal (fn text)
+          DocTemplates.toVal <$> fn text
+        Just _ ->
+          Left ("Key \"" <> key <> "\" is not a string!")
         _ ->
-          DocTemplates.NullVal
+          Left ("Key \"" <> key <> "\" does not exist!")
 
-    extractSite :: Text -> Text
-    extractSite text =
-      let
-        auth = URI.parseURI (T.unpack text) >>= URI.uriAuthority
-      in
-        case URI.uriRegName <$> auth of
-          Nothing -> "unknown"
-          Just "bsky.app" -> "bsky"
-          Just "cohost.org" -> "cohost!"
-          Just "exodrifter.itch.io" -> "itch.io"
-          Just "forum.tsuki.games" -> "t/suki"
-          Just "ko-fi.com" -> "ko-fi"
-          Just "music.exodrifter.space" -> "bandcamp"
-          Just "soundcloud.com" -> "soundcloud"
-          Just "store.steampowered.com" -> "steam"
-          Just "twitter.com" -> "twitter"
-          Just "www.patreon.com" -> "patreon"
-          Just "www.youtube.com" -> "youtube"
-          Just "x.com" -> "twitter"
-          Just "steamcommunity.com" -> "steam"
-          Just a -> T.pack a
+    extractSite :: Text -> Either Text Text
+    extractSite text = do
+      uri <- justElse
+        ("Key \"url\" is not a URI! Saw: \"" <> text <> "\"")
+        (URI.parseURI (T.unpack text))
+      auth <- justElse
+        ("Key \"url\" does not have an authority! Saw: \"" <> text <> "\"")
+        (URI.uriAuthority uri)
+      case URI.uriRegName auth of
+        "bsky.app" -> Right "bsky"
+        "cohost.org" -> Right "cohost!"
+        "exodrifter.itch.io" -> Right "itch.io"
+        "forum.tsuki.games" -> Right "t/suki"
+        "ko-fi.com" -> Right "ko-fi"
+        "music.exodrifter.space" -> Right "bandcamp"
+        "soundcloud.com" -> Right "soundcloud"
+        "store.steampowered.com" -> Right "steam"
+        "twitter.com" -> Right "twitter"
+        "www.patreon.com" -> Right "patreon"
+        "www.youtube.com" -> Right "youtube"
+        "x.com" -> Right "twitter"
+        "steamcommunity.com" -> Right "steam"
+        a -> Right (T.pack a)
 
-    convertCrosspost :: MetaValue -> Maybe (DocTemplates.Val Text)
-    convertCrosspost c =
-      case c of
-        MetaMap m ->
-          let
-            crosspost :: Map Text (DocTemplates.Val Text)
-            crosspost = Map.fromList
-              [ ("url", toTextValWith identity (Map.lookup "url" m))
-              , ("site", toTextValWith extractSite (Map.lookup "url" m))
-              , ("time", toTextValWith formatTime (Map.lookup "time" m))
-              ]
-          in
-            Just (DocTemplates.toVal crosspost)
-        _ ->
-          Nothing
+    withMetaMap :: MetaValue -> Either Text (Map Text MetaValue)
+    withMetaMap v =
+      case v of
+        MetaMap m -> Right m
+        _ -> Left "metadata is not a map!"
+
+    convertCrosspost :: MetaValue -> Either Text (DocTemplates.Val Text)
+    convertCrosspost c = do
+      m <- withMetaMap c
+      url <- toTextValWith pure "url" m
+      site <- toTextValWith extractSite "url" m
+      time <- toTextValWith formatTime "time" m
+
+      pure . DocTemplates.toVal $ Map.fromList
+        [ ("url" :: Text, url)
+        , ("site", site)
+        , ("time", time)
+        ]
   in
     case Map.lookup "crossposts" meta of
       Just (MetaList arr) ->
-        DocTemplates.ListVal (mapMaybe convertCrosspost arr)
-      _ ->
-        DocTemplates.NullVal
+        DocTemplates.ListVal <$> traverse convertCrosspost arr
+      Just _ ->
+        Left "\"crossposts\" metadata is not a list!"
+      Nothing ->
+        Right DocTemplates.NullVal
 
 -- Formats a time for the website. All times are rendered in UTC in as much
 -- detail as is available.
 --
 -- My notes have accumulated a variety of different time formats over the years,
 -- so this function tries several different formats until one of them works.
-formatTime :: Text -> Text
+formatTime :: Text -> Either Text Text
 formatTime text =
   let
     validFormats =
-      [ ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d %H:%M:%S")
+      [ ("%Y-%m-%dT%H:%M:%S%QZ", "%Y-%m-%d %H:%M:%S")
+      , ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d %H:%M:%S")
       , ("%Y-%m-%dT%H:%MZ", "%Y-%m-%d %H:%M")
+      , ("%Y-%m-%d", "%Y-%m-%d")
       ]
     locale = Time.defaultTimeLocale
 
@@ -197,9 +219,9 @@ formatTime text =
     tryFormat (parseFormat, format) =
       T.pack . Time.formatTime locale format <$> tryParse parseFormat
   in
-    -- TODO: Instead of using the raw text, it would be nice if we failed
-    -- so I can know which formats need to be handled by this function.
-    fromMaybe text (viaNonEmpty head (mapMaybe tryFormat validFormats))
+    case viaNonEmpty head (mapMaybe tryFormat validFormats) of
+      Nothing -> Left ("Unsupported format for time \"" <> text <> "\"")
+      Just formattedTime -> Right formattedTime
 
 --------------------------------------------------------------------------------
 -- Helpers
@@ -218,3 +240,9 @@ runPandoc pandoc =
     case result of
       Right a -> Right a
       Left err -> Left (renderError err)
+
+justElse :: e -> Maybe a -> Either e a
+justElse err ma =
+  case ma of
+    Just a -> Right a
+    Nothing -> Left err
