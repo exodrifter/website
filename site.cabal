@@ -35,6 +35,8 @@ executable site
       base >= 4.11
     , relude ^>= 1.2.1.0
 
+    , aeson
+    , binary
     , containers
     , directory
     , doctemplates

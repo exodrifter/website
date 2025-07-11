@@ -1,3 +1,5 @@
+{-# LANGUAGE TypeFamilies #-}
+
 -- Helpers for using Shake.
 module Exo.Shake
 ( module X
@@ -6,6 +8,9 @@ module Exo.Shake
 -- Rules
 , cleanPhony
 , serverPhony
+
+-- Oracles
+, cachePandoc
 
 -- Actions
 , wantWebsite
@@ -17,6 +22,9 @@ import Data.List ((\\))
 import Development.Shake as X
 import Development.Shake.FilePath as X
 import Development.Shake.Util as X
+import qualified Data.Aeson as Aeson
+import qualified Data.Binary as Binary
+import qualified Data.ByteString.Lazy as BSL
 import qualified Data.Text as T
 import qualified Exo.Const as Const
 import qualified Exo.Scotty as Scotty
@@ -64,6 +72,33 @@ serverPhony =
   phony "server" do
     wantWebsite
     liftIO Scotty.runServer
+
+--------------------------------------------------------------------------------
+-- Oracles
+--------------------------------------------------------------------------------
+
+newtype CachePandoc = CachePandoc FilePath
+  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
+
+type instance RuleResult CachePandoc = ByteString
+
+-- We can cache parsed Pandoc documents by serializing them to JSON.
+cachePandoc :: (FilePath -> Action Pandoc.Pandoc)
+            -> Rules (FilePath -> Action Pandoc.Pandoc)
+cachePandoc parse =
+  unpackCache <$>
+    ( addOracleCache \(CachePandoc path) -> do
+        pandoc <- parse path
+        pure (BSL.toStrict (Aeson.encode pandoc))
+    )
+
+unpackCache :: (CachePandoc -> Action ByteString)
+            -> (FilePath -> Action Pandoc.Pandoc)
+unpackCache runCache = \filepath -> do
+  bytes <- runCache (CachePandoc filepath)
+  case Aeson.eitherDecode (BSL.fromStrict bytes) of
+    Left  err -> fail err
+    Right res -> pure res
 
 --------------------------------------------------------------------------------
 -- Actions

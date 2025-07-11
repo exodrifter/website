@@ -27,13 +27,17 @@ main = Shake.runShake $ do
     let inputPath = Const.contentDirectory </> Shake.dropDirectory1 out
     Shake.copyFileChanged inputPath out
 
+  -- Parse markdown files
+  getPandoc <- Shake.cachePandoc \path -> do
+    md <- T.pack <$> readFile' path
+    Shake.runEither (Pandoc.parseMarkdown md)
+
   -- Generate website pages.
   Const.outputDirectory <//> "*.html" %> \out -> do
     let
       canonicalPath = Shake.dropDirectory1 out
       inputPath = Const.contentDirectory </> canonicalPath -<.> "md"
-    md <- T.pack <$> readFile' inputPath
-    pandoc <- Shake.runEither (Pandoc.parseMarkdown md)
+    pandoc <- getPandoc inputPath
 
     -- Find dependencies
     let workingDirectory = Shake.takeDirectory out
