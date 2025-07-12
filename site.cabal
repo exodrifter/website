@@ -41,6 +41,7 @@ executable site
     , directory
     , doctemplates
     , extra
+    , feed
     , filepath
     , http-client
     , http-conduit

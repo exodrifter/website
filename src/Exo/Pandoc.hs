@@ -4,11 +4,17 @@ module Exo.Pandoc
 , TemplateArgs(..)
 , parseMarkdown
 , makeHtml
+
+-- Helpers
+, lookupMetaString
+, makeCleanLink
+, timeFormats
 ) where
 
 import System.FilePath((</>))
 import Text.Pandoc as X
 import Text.Pandoc.Walk as X
+import Text.Pandoc.Shared as X
 import qualified Data.Map as Map
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
@@ -176,14 +182,9 @@ makeCrossposts (Pandoc (Meta meta) _) =
                   -> Text
                   -> Map Text MetaValue
                   -> Either Text (DocTemplates.Val Text)
-    toTextValWith fn key m =
-      case Map.lookup key m of
-        Just (MetaInlines [Str text]) ->
-          DocTemplates.toVal <$> fn text
-        Just _ ->
-          Left ("Key \"" <> key <> "\" is not a string!")
-        _ ->
-          Left ("Key \"" <> key <> "\" does not exist!")
+    toTextValWith fn key m = do
+      text <- lookupMetaString key m
+      DocTemplates.toVal <$> fn text
 
     extractSite :: Text -> Either Text Text
     extractSite text = do
@@ -236,33 +237,6 @@ makeCrossposts (Pandoc (Meta meta) _) =
       Nothing ->
         Right DocTemplates.NullVal
 
--- Formats a time for the website. All times are rendered in UTC in as much
--- detail as is available.
---
--- My notes have accumulated a variety of different time formats over the years,
--- so this function tries several different formats until one of them works.
-formatTime :: Text -> Either Text Text
-formatTime text =
-  let
-    validFormats =
-      [ ("%Y-%m-%dT%H:%M:%S%QZ", "%Y-%m-%d %H:%M:%S")
-      , ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d %H:%M:%S")
-      , ("%Y-%m-%dT%H:%MZ", "%Y-%m-%d %H:%M")
-      , ("%Y-%m-%d", "%Y-%m-%d")
-      ]
-    locale = Time.defaultTimeLocale
-
-    tryParse :: String -> Maybe Time.UTCTime
-    tryParse format = Time.parseTimeM False locale format (T.unpack text)
-
-    tryFormat :: (String, String) -> Maybe Text
-    tryFormat (parseFormat, format) =
-      T.pack . Time.formatTime locale format <$> tryParse parseFormat
-  in
-    case viaNonEmpty head (mapMaybe tryFormat validFormats) of
-      Nothing -> Left ("Unsupported format for time \"" <> text <> "\"")
-      Just formattedTime -> Right formattedTime
-
 makeFileListing :: FilePath -> [FilePath] -> DocTemplates.Val Text
 makeFileListing canonicalPath files =
   let
@@ -305,6 +279,16 @@ justElse err ma =
     Just a -> Right a
     Nothing -> Left err
 
+lookupMetaString :: Text -> Map Text MetaValue -> Either Text Text
+lookupMetaString key meta =
+  case Map.lookup key meta of
+    Just (MetaString text) -> Right text
+    Just (MetaInlines inlines) -> Right (stringify inlines)
+    Just _ ->
+      Left ("Key \"" <> key <> "\" is not a string!")
+    _ ->
+      Left ("Key \"" <> key <> "\" does not exist!")
+
 -- Removes the extension from all markdown links and remaps index links to the
 -- parent directory, so that they match the canonical URLs of the HTML pages
 -- that will be generated.
@@ -320,3 +304,41 @@ makeCleanLink path =
         _ -> path
   in
     T.pack cleanPath
+
+-- Formats a time for the website. All times are rendered in UTC in as much
+-- detail as is available.
+--
+-- My notes have accumulated a variety of different time formats over the years,
+-- so this function tries several different formats until one of them works.
+formatTime :: Text -> Either Text Text
+formatTime text =
+  let
+    locale = Time.defaultTimeLocale
+
+    tryParse :: String -> Maybe Time.UTCTime
+    tryParse format = Time.parseTimeM False locale format (T.unpack text)
+
+    tryFormat :: (String, String) -> Maybe Text
+    tryFormat (parseFormat, format) =
+      T.pack . Time.formatTime locale format <$> tryParse parseFormat
+  in
+    case viaNonEmpty head (mapMaybe tryFormat timeFormats) of
+      Nothing -> Left ("Unsupported format for time \"" <> text <> "\"")
+      Just formattedTime -> Right formattedTime
+
+-- The valid input time formats and their corresponding output formats.
+timeFormats :: [(String, String)]
+timeFormats =
+  -- UTC Times
+  [ ("%Y-%m-%dT%H:%M:%S%QZ", "%Y-%m-%d %H:%M:%S")
+  , ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d %H:%M:%S")
+  , ("%Y-%m-%dT%H:%MZ", "%Y-%m-%d %H:%M")
+
+  -- Zoned Times
+  , ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%d %H:%M:%S")
+  , ("%Y-%m-%dT%H:%M%z", "%Y-%m-%d %H:%M")
+  , ("%Y-%m-%d %H:%M%z", "%Y-%m-%d %H:%M")
+
+  -- Dates
+  , ("%Y-%m-%d", "%Y-%m-%d")
+  ]

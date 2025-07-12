@@ -5,6 +5,7 @@ module Site
 import Exo.Shake ((<//>), (</>), (-<.>), (|%>), (%>))
 import qualified Exo.Const as Const
 import qualified Exo.Pandoc as Pandoc
+import qualified Exo.RSS as RSS
 import qualified Exo.Shake as Shake
 
 import qualified Data.Text as T
@@ -29,6 +30,7 @@ main = Shake.runShake $ do
 
   -- Parse markdown files
   getPandoc <- Shake.cachePandoc \path -> do
+    Shake.need [path]
     md <- T.pack <$> readFile' path
     Shake.runEither (Pandoc.parseMarkdown md)
 
@@ -58,6 +60,20 @@ main = Shake.runShake $ do
     template <- Shake.buildTemplate (Const.contentDirectory </> "template.html")
     html <- Shake.runEither (Pandoc.makeHtml args template pandoc)
     Shake.writeFileChanged out (T.unpack html)
+
+  -- Generate RSS feeds
+  Const.outputDirectory <//> "*.xml" %> \out -> do
+    let
+      folderPath =
+        FilePath.takeDirectory (Shake.dropDirectory1 out)
+
+    sourceFiles <-
+          filter (\p -> FilePath.takeFileName p /= "index.md")
+      <$> Shake.findSourceFiles folderPath
+    pandocs <- traverse (\p -> (,) p <$> getPandoc p) sourceFiles
+
+    feed <- Shake.runEither (RSS.makeRss folderPath pandocs)
+    Shake.writeFileChanged out (T.unpack feed)
 
 -- Marks every locally referenced image as needed.
 needImageDependencies :: FilePath -> Pandoc.Pandoc -> Shake.Action ()

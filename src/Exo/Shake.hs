@@ -14,6 +14,7 @@ module Exo.Shake
 
 -- Actions
 , wantWebsite
+, findSourceFiles
 , buildTemplate
 , runEither
 ) where
@@ -108,12 +109,20 @@ unpackCache runCache = \filepath -> do
 wantWebsite :: Action ()
 wantWebsite = do
   -- Generate webpages from markdown.
-  sourceFiles <- getDirectoryFiles Const.contentDirectory ["//*.md"]
+  sourceFiles <- findSourceFiles "."
   let
-    ignoreObsidianDirectory =
-      filter (notElem ".obsidian" . splitDirectories)
-    toOutputPath path = Const.outputDirectory </> path -<.> "html"
-    webpages = toOutputPath <$> ignoreObsidianDirectory sourceFiles
+    toOutputPath path =
+      Const.outputDirectory </> X.dropDirectory1 path -<.> "html"
+    webpages = toOutputPath <$> sourceFiles
+
+    -- Feeds to generate.
+    feedFiles =
+      (Const.outputDirectory </>) <$>
+        [ "index.xml"
+        , "blog/index.xml"
+        , "entries/index.xml"
+        , "notes/index.xml"
+        ]
 
     -- Static files to copy.
     staticFiles =
@@ -124,9 +133,20 @@ wantWebsite = do
         ]
 
   need . concat $
-    [ staticFiles
-    , webpages
+    [ webpages
+    , feedFiles
+    , staticFiles
     ]
+
+-- Finds all files that will become webpages in the content directory.
+findSourceFiles :: FilePath -> Action [FilePath]
+findSourceFiles dir = do
+  sourceFiles <- getDirectoryFiles (Const.contentDirectory </> dir) ["//*.md"]
+  let
+    rebuildPath path = Const.contentDirectory </> dir </> path
+    ignoreObsidianDirectory =
+      filter (notElem ".obsidian" . splitDirectories)
+  pure (rebuildPath <$> ignoreObsidianDirectory sourceFiles)
 
 -- Builds a template on disk.
 buildTemplate :: DocTemplates.TemplateTarget a
