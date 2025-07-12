@@ -73,13 +73,29 @@ makeHtml args template pandoc = do
 
   -- Make additional template variables
   crossposts <- makeCrossposts pandoc
+  created <-
+    -- TODO: Assert that this exists on all files and add missing data.
+    if hasMetaKey "created" pandoc
+    then DocTemplates.toVal <$> getCreatedText pandoc
+    else Right DocTemplates.NullVal
+  published <-
+    if hasMetaKey "published" pandoc
+    then DocTemplates.toVal <$> getPublishedText pandoc
+    else Right DocTemplates.NullVal
+  modified <-
+    if hasMetaKey "modified" pandoc
+    then DocTemplates.toVal <$> getModifiedText pandoc
+    else Right DocTemplates.NullVal
   let
     variables :: Map Text (DocTemplates.Val Text)
     variables = do
       Map.fromList
         [ ("breadcrumb", makeBreadcrumbs (canonicalPath args))
-        , ("crosspost", crossposts)
         , ("file", makeFileListing (canonicalPath args) (indexListing args))
+        , ("created", created)
+        , ("published", published)
+        , ("modified", modified)
+        , ("crosspost", crossposts)
         ]
 
     writerOptions = def

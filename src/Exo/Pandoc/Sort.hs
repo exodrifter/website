@@ -19,6 +19,6 @@ type Pandocs = [(FilePath, Pandoc.Pandoc)]
 sortPandocsNewestFirst :: Pandocs -> Pandocs
 sortPandocsNewestFirst pandocs =
   flip sortBy pandocs \(lf, l) (rf, r) ->
-      comparing (Down . rightToMaybe . Meta.getPublished) l r
-    <> comparing (Down . rightToMaybe . Meta.getLastUpdated) l r
+      comparing (Down . rightToMaybe . Meta.getPublishedTime) l r
+    <> comparing (Down . rightToMaybe . Meta.getLastUpdatedTime) l r
     <> compare (Down lf) (Down rf)

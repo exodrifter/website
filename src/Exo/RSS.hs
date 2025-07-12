@@ -48,7 +48,7 @@ toRssItem path pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) =
         then Pandoc.lookupMetaString "title" meta
         else Right (T.pack (FilePath.takeBaseName path))
       pubDate <-
-        case (Pandoc.getPublished pandoc, Pandoc.getCreated pandoc) of
+        case (Pandoc.getPublishedTime pandoc, Pandoc.getCreatedTime pandoc) of
           (Right published, _) -> Right published
           (_, Right created) -> Right created
           (Left err1, Left err2) ->
