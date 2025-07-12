@@ -10,6 +10,7 @@ import qualified Exo.Shake as Shake
 
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
+import qualified Data.Text.Encoding as TE
 import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
 
@@ -32,7 +33,9 @@ main = Shake.runShake $ do
   -- Parse markdown files
   getPandoc <- Shake.cachePandoc \path -> do
     Shake.need [path]
-    md <- T.pack <$> readFile' path
+    bs <- readFileBS path
+    md <- Shake.runEither $
+      first (T.pack . displayException) (TE.decodeUtf8' bs)
     Shake.runEither (Pandoc.parseMarkdown md)
 
   -- Cache parsed metadata

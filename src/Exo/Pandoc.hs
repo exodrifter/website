@@ -140,7 +140,7 @@ convertVideoEmbeds =
 
             -- Youtube embeds
             | getHost req `elem` (Just <$> ["youtube.com", "www.youtube.com"])
-            , let q = T.stripPrefix "v=" (T.pack (URI.query req)) ->
+            , let q = T.stripPrefix "?v=" (T.pack (URI.uriQuery req)) ->
                 case q of
                   Just v ->
                     RawInline (Format "html") (makeYoutubeEmbed v)

@@ -19,7 +19,6 @@ executable site
     -threaded
     -rtsopts
     -with-rtsopts=-N
-    -Wno-deprecations
 
   default-extensions:
     BlockArguments,
