@@ -1,7 +1,7 @@
 ---
 title: no signal press kit
 created: 2023-11-04
-modified: 2025-07-12T10:34:26Z
+modified: 2025-07-12T10:48:43Z
 aliases:
 - no signal press kit
 permalink: /no-signal
@@ -57,56 +57,56 @@ demo trailer ([link](https://www.youtube.com/watch?v=Ed8CmFCwBzI))
 ![](https://www.youtube.com/watch?v=Ed8CmFCwBzI)
 
 devlog ([playlist](https://www.youtube.com/playlist?list=PLd8SaP0bJwZK-WMlO0YxpJi3ZRxAqq2Ap))
-- [lost contact devlog 1](../blog/20231224031713.md)
-- [lost contact devlog 2](../blog/20231231003839.md)
-- [lost contact devlog 3](../blog/20240106154120.md)
-- [lost contact devlog 4](../blog/20240114134443.md)
-- [lost contact devlog 5](../blog/20240120223842.md)
-- [lost contact devlog 6](../blog/20240128044819.md)
-- [lost contact devlog 7](../blog/20240204054934.md)
-- [lost contact devlog 8](../blog/20240212031904.md)
-- [lost contact devlog 9](../blog/20240221200148.md)
-- [lost contact devlog 10](../blog/20240225175931.md)
+- [lost contact devlog 1](../../blog/20231224031713.md)
+- [lost contact devlog 2](../../blog/20231231003839.md)
+- [lost contact devlog 3](../../blog/20240106154120.md)
+- [lost contact devlog 4](../../blog/20240114134443.md)
+- [lost contact devlog 5](../../blog/20240120223842.md)
+- [lost contact devlog 6](../../blog/20240128044819.md)
+- [lost contact devlog 7](../../blog/20240204054934.md)
+- [lost contact devlog 8](../../blog/20240212031904.md)
+- [lost contact devlog 9](../../blog/20240221200148.md)
+- [lost contact devlog 10](../../blog/20240225175931.md)
 
 vods ([link](https://vods.exodrifter.space/tag/lost-contact/))
 
 # images
 
-![](no-signal/screen-1.png)
+![](screen-1.png)
 
-![](no-signal/screen-2.png)
+![](screen-2.png)
 
-![](no-signal/screen-3.png)
+![](screen-3.png)
 
-![](no-signal/screen-4.png)
+![](screen-4.png)
 
-![](no-signal/screen-5.png)
+![](screen-5.png)
 
-![](no-signal/screen-6.png)
+![](screen-6.png)
 
 # branding
 
 icon
 
-![](no-signal/icon.svg)
+![](icon.svg)
 
 logo
 
-![](no-signal/logo.svg)
+![](logo.svg)
 
 wordmark
 
-![](no-signal/wordmark.png)
+![](wordmark.png)
 
 # pamphlet
 
 Front
 
-![](no-signal/pamphlet-front.png)
+![](pamphlet-front.png)
 
 Back
 
-![](no-signal/pamphlet-back.png)
+![](pamphlet-back.png)
 
 # monetization permission
 

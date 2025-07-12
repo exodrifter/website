@@ -12,4 +12,4 @@ tags:
 
 </div>
 
-For more information about _no signal_, see the [press kit](../press-kits/no-signal.md).
+For more information about _no signal_, see the [press kit](../press-kits/no-signal/index.md).

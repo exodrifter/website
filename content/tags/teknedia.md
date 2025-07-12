@@ -12,4 +12,4 @@ tags:
 
 </div>
 
-For more information about _Teknedia_, see the [press kit](../press-kits/teknedia.md).
+For more information about _Teknedia_, see the [press kit](../press-kits/teknedia/index.md).

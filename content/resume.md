@@ -17,9 +17,9 @@ Experienced Software Engineer located in the San Francisco Bay Area with a demon
 # experience
 
 **Indie Game Developer<span style="float: right">February 2022 - Present</span>**
-- I extensively develop an escape room game called [no signal](press-kits/no-signal.md) live on [Twitch](https://twitch.tv/exodrifter_), where I answer questions and explain the development process to an audience.
-- Self-published an interactive fiction game named _[Gender Dysphoria](press-kits/gender-dysphoria.md)_ which uses a custom scripting language.
-- Worked with Iron Circus Games to make _[voluntary commitment](press-kits/voluntary-commitment.md)_ for a crowdfunded game bundle.
+- I extensively develop an escape room game called [no signal](press-kits/no-signal/index.md) live on [Twitch](https://twitch.tv/exodrifter_), where I answer questions and explain the development process to an audience.
+- Self-published an interactive fiction game named _[Gender Dysphoria](press-kits/gender-dysphoria/index.md)_ which uses a custom scripting language.
+- Worked with Iron Circus Games to make _[voluntary commitment](press-kits/voluntary-commitment/index.md)_ for a crowdfunded game bundle.
 
 <br/>
 
@@ -74,22 +74,22 @@ visualization contract.
 
 # projects
 
-**[no signal](press-kits/no-signal.md)<span style="float: right">November 2023 - Present</span>**
+**[no signal](press-kits/no-signal/index.md)<span style="float: right">November 2023 - Present</span>**
 - A hard sci-fi point and click adventure game about loneliness about a crew space station orbiting a black hole, trying to get home. It's written in Godot and was developed almost entirely while live on Twitch.
 
 <br/>
 
-**[Gender Dysphoria](press-kits/gender-dysphoria.md)<span style="float: right">September 2020 - April 2023</span>**
+**[Gender Dysphoria](press-kits/gender-dysphoria/index.md)<span style="float: right">September 2020 - April 2023</span>**
 - A short, powerful 20 minute non-linear narrative game about negative experiences after coming out as transgender. Notably contains the use of a custom narrative scripting language I developed called Rumor.
 
 <br/>
 
-**[Teknedia](press-kits/teknedia.md)<span style="float: right">January 2012 - January 2021</span>**
+**[Teknedia](press-kits/teknedia/index.md)<span style="float: right">January 2012 - January 2021</span>**
 - A first person, 3D platformer for the PC to race from point A to point B as quickly as possible while avoiding all traps and hazards along the way. The game is built from scratch in a custom game engine made in C++ using open source libraries such as Boost, Bullet, Lua, and OpenGL.
 
 <br/>
 
-**[Port of Call](press-kits/port-of-call.md)<span style="float: right">January 2014 - August 2014</span>**
+**[Port of Call](press-kits/port-of-call/port-of-call.md)<span style="float: right">January 2014 - August 2014</span>**
 - A narrative experimental exploration game about uncovering the secret of your past. Interact with other passengers on the ship, explore your surroundings, and satisfy the demands of the captain.
 
 <br/>

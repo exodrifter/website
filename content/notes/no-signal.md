@@ -12,7 +12,7 @@ tags:
 
 # no signal logs
 
-These are the development notes for _no signal_. For more information, see the [press kit](../press-kits/no-signal.md).
+These are the development notes for _no signal_. For more information, see the [press kit](../press-kits/no-signal/index.md).
 
 If you've been asked to playtest the game, please see the [playtesting steps](no-signal-playtesting-steps.md).
 

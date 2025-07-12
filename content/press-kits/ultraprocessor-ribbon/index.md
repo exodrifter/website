@@ -1,7 +1,7 @@
 ---
 title: Ultraprocessor Ribbon press kit
 created: 2023-12-31
-modified: 2024-02-04
+modified: 2025-07-12T10:51:45Z
 aliases:
 - Ultraprocessor Ribbon press kit
 permalink: /ultraprocessor-ribbon
@@ -45,17 +45,17 @@ Demuresoft is a doujinsoft circle based in Austin, TX, formed by Jennifer Raye t
 
 # images
 
-![](ultraprocessor-ribbon/screen-1.png)
+![](screen-1.png)
 
-![](ultraprocessor-ribbon/screen-2.png)
+![](screen-2.png)
 
-![](ultraprocessor-ribbon/screen-3.png)
+![](screen-3.png)
 
 # branding
 
 logo
 
-![](ultraprocessor-ribbon/logo.png)
+![](logo.png)
 
 # credits
 

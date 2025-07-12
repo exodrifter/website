@@ -1,6 +1,7 @@
 ---
 title: voluntary commitment press kit
 created: 2023-03-09
+modified: 2025-07-12T10:52:49Z
 aliases:
 - voluntary commitment press kit
 permalink: /voluntary-commitment
@@ -53,15 +54,15 @@ vods ([link](https://vods.exodrifter.space/tag/null/))
 
 # images
 
-![](voluntary-commitment/screen-1.png)
+![](screen-1.png)
 
-![](voluntary-commitment/screen-2.png)
+![](screen-2.png)
 
 # branding
 
 icon
 
-![](voluntary-commitment/icon.svg)
+![](icon.svg)
 
 # credits
 

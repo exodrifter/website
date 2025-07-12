@@ -10,7 +10,7 @@ tags:
 
 # Gender Dysphoria logs
 
-These are the development notes for _Gender Dysphoria_. For more information, see the [press kit](../press-kits/gender-dysphoria.md).
+These are the development notes for _Gender Dysphoria_. For more information, see the [press kit](../press-kits/gender-dysphoria/index.md).
 
 # log
 

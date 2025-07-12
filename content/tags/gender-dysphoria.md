@@ -12,4 +12,4 @@ tags:
 
 </div>
 
-For more information about _Gender Dysphoria_, see the [press kit](../press-kits/gender-dysphoria.md).
+For more information about _Gender Dysphoria_, see the [press kit](../press-kits/gender-dysphoria/index.md).

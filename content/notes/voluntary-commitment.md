@@ -11,7 +11,7 @@ tags:
 
 # voluntary commitment logs
 
-These are the development notes for _voluntary commitment_. For more information, see the [press kit](../press-kits/voluntary-commitment.md).
+These are the development notes for _voluntary commitment_. For more information, see the [press kit](../press-kits/voluntary-commitment/index.md).
 
 ## log
 

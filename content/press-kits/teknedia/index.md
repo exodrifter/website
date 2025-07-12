@@ -1,8 +1,8 @@
 ---
 title: Teknedia press kit
 created: 2011-02-25
-modified: 2012-01-17
 published: 2021-01-08
+modified: 2025-07-12T10:51:05Z
 aliases:
 - Teknedia press kit
 permalink: /teknedia
@@ -50,45 +50,45 @@ trailer ([link](https://store.steampowered.com/app/354780/Teknedia/))
 
 # images
 
-![](teknedia/screen-1.jpg)
+![](screen-1.jpg)
 
-![](teknedia/screen-2.jpg)
+![](screen-2.jpg)
 
-![](teknedia/screen-3.jpg)
+![](screen-3.jpg)
 
-![](teknedia/screen-4.jpg)
+![](screen-4.jpg)
 
-![](teknedia/screen-5.jpg)
+![](screen-5.jpg)
 
-![](teknedia/screen-6.jpg)
+![](screen-6.jpg)
 
-![](teknedia/screen-7.jpg)
+![](screen-7.jpg)
 
-![](teknedia/screen-8.jpg)
+![](screen-8.jpg)
 
-![](teknedia/screen-9.jpg)
+![](screen-9.jpg)
 
-![](teknedia/screen-10.jpg)
+![](screen-10.jpg)
 
-![](teknedia/screen-11.jpg)
+![](screen-11.jpg)
 
-![](teknedia/screen-12.jpg)
+![](screen-12.jpg)
 
-![](teknedia/screen-13.jpg)
+![](screen-13.jpg)
 
-![](teknedia/screen-14.jpg)
+![](screen-14.jpg)
 
-![](teknedia/screen-15.jpg)
+![](screen-15.jpg)
 
-![](teknedia/screen-16.jpg)
+![](screen-16.jpg)
 
-![](teknedia/screen-17.jpg)
+![](screen-17.jpg)
 
 # branding
 
 logo
 
-![](teknedia/logo.png)
+![](logo.png)
 
 # credits
 

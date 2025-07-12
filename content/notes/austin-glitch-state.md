@@ -12,6 +12,6 @@ https://austinglitchstate.com/
 
 **Austin Glitch State** is a playtesting event that meets every other month in Austin, Texas at the Game Worlds Facility. [^1]
 
-I've shown _[no signal](../press-kits/no-signal.md)_ here twice. ([log](no-signal.md))
+I've shown _[no signal](../press-kits/no-signal/index.md)_ here twice. ([log](no-signal.md))
 
 [^1]: [20240724214830](../entries/20240724214830.md)

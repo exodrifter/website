@@ -77,9 +77,13 @@ main = Shake.runShake $ do
       if fileName == "index"
       then do
         let
-          isImmediate =
-            filter (\p -> FilePath.takeDirectory p == inputFolderPath)
-        sourceFiles <- isImmediate <$> Shake.findSourceFiles inputFolderPath
+          -- Include either files immediately under this folder or index files
+          -- for folders immediately under this folder.
+          isImmediate p =
+            if FilePath.takeBaseName p == "index"
+            then FilePath.takeDirectory (FilePath.takeDirectory p) == inputFolderPath
+            else FilePath.takeDirectory p == inputFolderPath
+        sourceFiles <- filter isImmediate <$> Shake.findSourceFiles inputFolderPath
         pandocs <- traverse (\p -> (,) p <$> getPandoc p) sourceFiles
         pure (Pandoc.sortPandocsNewestFirst pandocs)
       else pure []

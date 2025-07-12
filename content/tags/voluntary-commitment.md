@@ -12,4 +12,4 @@ tags:
 
 </div>
 
-For more information about _voluntary commitment_, see the [press kit](../press-kits/voluntary-commitment.md).
+For more information about _voluntary commitment_, see the [press kit](../press-kits/voluntary-commitment/index.md).

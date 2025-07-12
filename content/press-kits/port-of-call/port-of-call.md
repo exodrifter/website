@@ -2,6 +2,7 @@
 title: Port of Call press kit
 created: 2014-02-03
 published: 2015-08-28
+modified: 2025-07-12T10:50:06Z
 aliases:
 - Port of Call press kit
 permalink: /port-of-call
@@ -51,29 +52,29 @@ trailer ([link](https://www.youtube.com/watch?v=ACe8NJ5Y2iE))
 
 # images
 
-![](port-of-call/screen-1.jpg)
+![](screen-1.jpg)
 
-![](port-of-call/screen-2.jpg)
+![](screen-2.jpg)
 
-![](port-of-call/screen-3.jpg)
+![](screen-3.jpg)
 
-![](port-of-call/screen-4.jpg)
+![](screen-4.jpg)
 
-![](port-of-call/screen-5.jpg)
+![](screen-5.jpg)
 
 # branding
 
 application icon
 
-![](port-of-call/icon.jpg)
+![](icon.jpg)
 
 icon
 
-![](port-of-call/icon.png)
+![](icon.png)
 
 logo
 
-![](port-of-call/logo.png)
+![](logo.png)
 
 # credits
 

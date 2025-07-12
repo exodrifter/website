@@ -2,6 +2,7 @@
 title: Gender Dysphoria press kit
 created: 2020-07-03
 published: 2020-09-19
+modified: 2025-07-12T10:46:55Z
 aliases:
 - Gender Dysphoria press kit
 permalink: /gender-dysphoria
@@ -30,7 +31,7 @@ _**Gender Dysphoria**_ is a short 20 minute non-linear narrative game about nega
 **engine:** Unity<br/>
 **stores:** [itch.io](https://exodrifter.itch.io/gender-dysphoria), [Steam](https://store.steampowered.com/app/2310400/Gender_Dysphoria), [Tape Club](https://pizzapranks.com/product/gender-dysphoria-by-exodrifter/)<br/>
 **price:** \$5 USD<br/>
-**source:** [gitea](https://gitea.arcturuscollective.com/exodrifter/gender-dysphoria/), [gitlab](https://gitlab.com/exodrifter/gender-dysphoria)<br/>
+**source:** [gitea](https://gitea.arcturuscollective.com/exodrifter/), [gitlab](https://gitlab.com/exodrifter/gender-dysphoria)<br/>
 
 </div>
 </div>
@@ -51,37 +52,37 @@ trailer ([link](https://www.youtube.com/watch?v=ZJO9Rm3nxmw))
 
 ![](https://www.youtube.com/watch?v=ZJO9Rm3nxmw)
 
-vods ([link](https://vods.exodrifter.space/tag/gender-dysphoria/))
+vods ([link](https://vods.exodrifter.space/tag/))
 
 # images
 
-![](gender-dysphoria/screen-1.png)
+![](screen-1.png)
 
-![](gender-dysphoria/screen-2.png)
+![](screen-2.png)
 
-![](gender-dysphoria/screen-3.png)
+![](screen-3.png)
 
-![](gender-dysphoria/screen-4.png)
+![](screen-4.png)
 
-![](gender-dysphoria/screen-5.png)
+![](screen-5.png)
 
 # branding
 
 icon
 
-![](gender-dysphoria/icon.svg)
+![](icon.svg)
 
 logo
 
-![](gender-dysphoria/logo.png)
+![](logo.png)
 
 wordmark
 
-![](gender-dysphoria/wordmark.png)
+![](wordmark.png)
 
 transparent wordmark
 
-![](gender-dysphoria/wordmark-transparent.png)
+![](wordmark-transparent.png)
 
 # monetization permission
 

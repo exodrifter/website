@@ -11,7 +11,7 @@ tags:
 
 # Ultraprocessor Ribbon logs
 
-These are the development notes for _Ultraprocessor Ribbon_. For more information, see the [press kit](../press-kits/ultraprocessor-ribbon.md).
+These are the development notes for _Ultraprocessor Ribbon_. For more information, see the [press kit](../press-kits/ultraprocessor-ribbon/index.md).
 
 ## Log
 
