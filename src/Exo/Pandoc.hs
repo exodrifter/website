@@ -17,10 +17,7 @@ import Text.Pandoc as X
 import Text.Pandoc.Walk as X
 import qualified Data.Map as Map
 import qualified Data.Text as T
-import qualified Data.Text.Encoding as TE
 import qualified Development.Shake.FilePath as FilePath
-import qualified Network.HTTP.Client as HTTP
-import qualified Network.HTTP.Simple as HTTP
 import qualified Network.URI as URI
 import qualified Text.DocTemplates as DocTemplates
 
@@ -137,23 +134,29 @@ convertVideoEmbeds =
   walk \inline ->
     case inline of
       (Image _ _ (u, _)) -> do
-        let mReq = HTTP.parseUrlThrow (T.unpack u)
-        case mReq of
+        let getHost = fmap URI.uriRegName . URI.uriAuthority
+        case URI.parseURI (T.unpack u) of
           Just req
 
             -- Youtube embeds
-            | HTTP.host req == "www.youtube.com"
-            , let q = Map.fromList (HTTP.getRequestQueryString req) ->
-                case TE.decodeUtf8' <$> join (Map.lookup "v" q) of
-                  Just (Right v) ->
+            | getHost req `elem` (Just <$> ["youtube.com", "www.youtube.com"])
+            , let q = T.stripPrefix "v=" (T.pack (URI.query req)) ->
+                case q of
+                  Just v ->
                     RawInline (Format "html") (makeYoutubeEmbed v)
-                  _ ->
+                  Nothing ->
                     inline
+
+            -- Vimeo embeds
+            | getHost req `elem` (Just <$> ["vimeo.com", "www.vimeo.com"])
+            , let v = T.drop 1 (T.pack (URI.uriPath req)) ->
+                RawInline (Format "html") (makeVimeoEmbed v)
 
           _ -> inline
 
       _ -> inline
 
+-- Same as the official YouTube embed code
 makeYoutubeEmbed :: Text -> Text
 makeYoutubeEmbed v =
   "<iframe width=\"560\" height=\"315\" \
@@ -164,6 +167,22 @@ makeYoutubeEmbed v =
     \referrerpolicy=\"strict-origin-when-cross-origin\" \
     \allowfullscreen>\
   \</iframe>"
+
+-- Almost the same as the official Vimeo embed code; the only difference is that
+-- when you generate Vimeo embeds online, it uses the name of the video as the
+-- title attribute for the iframe.
+makeVimeoEmbed :: Text -> Text
+makeVimeoEmbed v =
+  "<div style=\"padding:56.25% 0 0 0;position:relative;\">\
+  \<iframe src=\"https://player.vimeo.com/video/" <> v <> "?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" \
+    \frameborder=\"0\" \
+    \allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share\" \
+    \style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" \
+    \title=\"Vimeo video player\">\
+  \</iframe>\
+  \</div>\
+  \<script src=\"https://player.vimeo.com/api/player.js\">\
+  \</script>"
 
 -- Creates a list of breadcrumbs. Each breadcrumb is a link to that respective
 -- location, except for the last one (since you are already at that location).

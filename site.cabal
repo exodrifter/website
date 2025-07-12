@@ -43,9 +43,6 @@ executable site
     , extra
     , feed
     , filepath
-    , http-client
-    , http-conduit
-    , http-types
     , mime-types
     , network-uri
     , pandoc
