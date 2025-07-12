@@ -3,16 +3,16 @@ module Exo.RSS
 ( makeRss
 ) where
 
-import qualified Exo.Const as Const
-import qualified Exo.Pandoc as Pandoc
-import qualified Development.Shake.FilePath as FilePath
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
-import qualified Data.Time as Time
 import qualified Data.Text.Lazy as TL
-import qualified Text.RSS.Syntax as RSS
-import qualified Text.Feed.Types as Feed
+import qualified Development.Shake.FilePath as FilePath
+import qualified Exo.Const as Const
+import qualified Exo.Pandoc as Pandoc
+import qualified Exo.Time as Time
 import qualified Text.Feed.Export as Feed
+import qualified Text.Feed.Types as Feed
+import qualified Text.RSS.Syntax as RSS
 
 makeRss :: FilePath -> [(FilePath, Pandoc.Pandoc)] -> Either Text Text
 makeRss path pandocs = do
@@ -85,18 +85,7 @@ toRssItem path pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) =
 extractTime :: Text -> Pandoc.Pandoc -> Either Text Time.UTCTime
 extractTime key (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
   text <- Pandoc.lookupMetaString key meta
-  parseTime text
-
-parseTime :: Text -> Either Text Time.UTCTime
-parseTime text =
-  let
-    parse format =
-      Time.parseTimeM False Time.defaultTimeLocale format (T.unpack text)
-  in
-    case viaNonEmpty head (mapMaybe parse (fst <$> Pandoc.timeFormats)) of
-      Nothing -> Left ("Cannot parse time \"" <> text <> "\"")
-      Just time -> Right time
+  Time.parseTime text
 
 rfc822Format :: Time.UTCTime -> Text
-rfc822Format =
-  T.pack . Time.formatTime Time.defaultTimeLocale "%a, %d %b %Y %H:%M:%S GMT"
+rfc822Format = Time.formatTime "%a, %d %b %Y %H:%M:%S GMT"

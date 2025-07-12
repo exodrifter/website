@@ -8,7 +8,6 @@ module Exo.Pandoc
 -- Helpers
 , lookupMetaString
 , makeCleanLink
-, timeFormats
 ) where
 
 import System.FilePath((</>))
@@ -18,8 +17,8 @@ import Text.Pandoc.Shared as X
 import qualified Data.Map as Map
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
-import qualified Data.Time as Time
 import qualified Development.Shake.FilePath as FilePath
+import qualified Exo.Time as Time
 import qualified Network.HTTP.Client as HTTP
 import qualified Network.HTTP.Simple as HTTP
 import qualified Network.URI as URI
@@ -221,7 +220,7 @@ makeCrossposts (Pandoc (Meta meta) _) =
       m <- withMetaMap c
       url <- toTextValWith pure "url" m
       site <- toTextValWith extractSite "url" m
-      time <- toTextValWith formatTime "time" m
+      time <- toTextValWith Time.reformatTime "time" m
 
       pure . DocTemplates.toVal $ Map.fromList
         [ ("url" :: Text, url)
@@ -304,41 +303,3 @@ makeCleanLink path =
         _ -> path
   in
     T.pack cleanPath
-
--- Formats a time for the website. All times are rendered in UTC in as much
--- detail as is available.
---
--- My notes have accumulated a variety of different time formats over the years,
--- so this function tries several different formats until one of them works.
-formatTime :: Text -> Either Text Text
-formatTime text =
-  let
-    locale = Time.defaultTimeLocale
-
-    tryParse :: String -> Maybe Time.UTCTime
-    tryParse format = Time.parseTimeM False locale format (T.unpack text)
-
-    tryFormat :: (String, String) -> Maybe Text
-    tryFormat (parseFormat, format) =
-      T.pack . Time.formatTime locale format <$> tryParse parseFormat
-  in
-    case viaNonEmpty head (mapMaybe tryFormat timeFormats) of
-      Nothing -> Left ("Unsupported format for time \"" <> text <> "\"")
-      Just formattedTime -> Right formattedTime
-
--- The valid input time formats and their corresponding output formats.
-timeFormats :: [(String, String)]
-timeFormats =
-  -- UTC Times
-  [ ("%Y-%m-%dT%H:%M:%S%QZ", "%Y-%m-%d %H:%M:%S")
-  , ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d %H:%M:%S")
-  , ("%Y-%m-%dT%H:%MZ", "%Y-%m-%d %H:%M")
-
-  -- Zoned Times
-  , ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%d %H:%M:%S")
-  , ("%Y-%m-%dT%H:%M%z", "%Y-%m-%d %H:%M")
-  , ("%Y-%m-%d %H:%M%z", "%Y-%m-%d %H:%M")
-
-  -- Dates
-  , ("%Y-%m-%d", "%Y-%m-%d")
-  ]
