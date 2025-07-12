@@ -29,8 +29,18 @@ executable site
     OverloadedStrings,
     RecordWildCards,
 
-  main-is: Site.hs
+  main-is: Main.hs
   hs-source-dirs: src
+  other-modules:
+    Exo.Const
+    Exo.Pandoc
+    Exo.Pandoc.Meta
+    Exo.Pandoc.Sort
+    Exo.Pandoc.Time
+    Exo.RSS
+    Exo.Scotty
+    Exo.Shake
+
   build-depends:
       base >= 4.11
     , relude ^>= 1.2.1.0

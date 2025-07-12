@@ -1,4 +1,4 @@
-module Site
+module Main
 ( main
 ) where
 

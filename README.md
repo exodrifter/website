@@ -5,11 +5,24 @@ posts and notes turned into a static site with the help of Quartz and Nix.
 
 # development
 
-You can use ghcid to build and run the website:
+You can use ghcid to continuously build and run the website:
 
 ```sh
 ghcid --target=site --run --setup=":set args --prune --lint server"
 ```
+
+Unfortunately, it does not detect changes to input files automatically because
+shake does not have filewatch. Instead, you have to run the command again.
+
+# build
+
+To build the website, run:
+
+```sh
+cabal run site -- --prune --lint
+```
+
+The generated website will be in the directory `_site`.
 
 # feedback
 
