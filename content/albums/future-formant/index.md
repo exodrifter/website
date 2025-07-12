@@ -14,7 +14,7 @@ tag:
 
 <div style="width: 50%;">
 
-![future formant album art, which is a picture of a snowy hiking path surrounded by trees and bushes.](../cascade/cover.png)
+![future formant album art, which is a picture of a snowy hiking path surrounded by trees and bushes.](cover.png)
 
 </div>
 

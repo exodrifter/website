@@ -1,6 +1,7 @@
 ---
 title: lonely metro
 published: 2023-01-22
+modified: 2025-07-12T10:44:08Z
 aliases:
 - lonely metro
 crossposts:
