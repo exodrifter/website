@@ -26,6 +26,7 @@ main = Shake.runShake $ do
     copyExtensions = [ "*.css", "*.gif", "*.mp4", "*.png", "*.jpg", "*.svg", "*.txt" ]
   (Const.outputDirectory <//>) <$> copyExtensions |%> \out -> do
     let inputPath = Const.contentDirectory </> Shake.dropDirectory1 out
+    Shake.need [inputPath]
     Shake.copyFileChanged inputPath out
 
   -- Parse markdown files
