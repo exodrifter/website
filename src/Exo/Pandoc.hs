@@ -196,7 +196,7 @@ makeBreadcrumbs path =
   let
     pieces =
         fmap FilePath.dropExtension
-      . filter (/= "index.md") -- Drop index for clean URLs
+      . filter (/= "index.html") -- Drop index for clean URLs
       $ FilePath.splitDirectories path
     crumbs = ("home", []) :| zip pieces [take n pieces | n <- [1..]]
 
