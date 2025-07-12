@@ -10,6 +10,7 @@ module Exo.Shake
 , serverPhony
 
 -- Oracles
+, cacheOracle
 , cachePandoc
 
 -- Actions
@@ -78,28 +79,40 @@ serverPhony =
 -- Oracles
 --------------------------------------------------------------------------------
 
-newtype CachePandoc = CachePandoc FilePath
+-- Generic caching
+newtype Cache q = Cache q
   deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
 
-type instance RuleResult CachePandoc = ByteString
+type instance RuleResult (Cache q) = ByteString
+
+cacheOracle :: (Binary.Binary q, Hashable q, NFData q, Show q, Typeable q)
+            => (q -> Action ByteString)
+            -> (ByteString -> Action a)
+            -> Rules (q -> Action a)
+cacheOracle encode decode =
+  decodeCache decode <$> (addOracleCache \(Cache q) -> encode q)
+
+decodeCache :: (ByteString -> Action a)
+            -> (Cache q -> Action ByteString)
+            -> (q -> Action a)
+decodeCache decode runCache = \filepath -> do
+  bs <- runCache (Cache filepath)
+  decode bs
 
 -- We can cache parsed Pandoc documents by serializing them to JSON.
 cachePandoc :: (FilePath -> Action Pandoc.Pandoc)
             -> Rules (FilePath -> Action Pandoc.Pandoc)
 cachePandoc parse =
-  unpackCache <$>
-    ( addOracleCache \(CachePandoc path) -> do
+  cacheOracle
+    ( \path -> do
         pandoc <- parse path
         pure (BSL.toStrict (Aeson.encode pandoc))
     )
-
-unpackCache :: (CachePandoc -> Action ByteString)
-            -> (FilePath -> Action Pandoc.Pandoc)
-unpackCache runCache = \filepath -> do
-  bytes <- runCache (CachePandoc filepath)
-  case Aeson.eitherDecode (BSL.fromStrict bytes) of
-    Left  err -> fail err
-    Right res -> pure res
+    ( \bs ->
+        case Aeson.eitherDecode (BSL.fromStrict bs) of
+          Left err -> fail err
+          Right res -> pure res
+    )
 
 --------------------------------------------------------------------------------
 -- Actions
