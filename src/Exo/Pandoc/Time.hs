@@ -2,7 +2,7 @@
 --
 -- Generally, all of the times are rendered in UTC on the website, but the
 -- source files have a variety of times in different formats.
-module Exo.Time
+module Exo.Pandoc.Time
 ( Time.UTCTime
 , parseTime
 , reformatTime

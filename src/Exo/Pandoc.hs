@@ -6,19 +6,19 @@ module Exo.Pandoc
 , makeHtml
 
 -- Helpers
-, lookupMetaString
 , makeCleanLink
 ) where
 
 import System.FilePath((</>))
+import Exo.Pandoc.Meta as X
+import Exo.Pandoc.Sort as X
+import Exo.Pandoc.Time as X
 import Text.Pandoc as X
 import Text.Pandoc.Walk as X
-import Text.Pandoc.Shared as X
 import qualified Data.Map as Map
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
 import qualified Development.Shake.FilePath as FilePath
-import qualified Exo.Time as Time
 import qualified Network.HTTP.Client as HTTP
 import qualified Network.HTTP.Simple as HTTP
 import qualified Network.URI as URI
@@ -220,7 +220,7 @@ makeCrossposts (Pandoc (Meta meta) _) =
       m <- withMetaMap c
       url <- toTextValWith pure "url" m
       site <- toTextValWith extractSite "url" m
-      time <- toTextValWith Time.reformatTime "time" m
+      time <- toTextValWith reformatTime "time" m
 
       pure . DocTemplates.toVal $ Map.fromList
         [ ("url" :: Text, url)
@@ -277,16 +277,6 @@ justElse err ma =
   case ma of
     Just a -> Right a
     Nothing -> Left err
-
-lookupMetaString :: Text -> Map Text MetaValue -> Either Text Text
-lookupMetaString key meta =
-  case Map.lookup key meta of
-    Just (MetaString text) -> Right text
-    Just (MetaInlines inlines) -> Right (stringify inlines)
-    Just _ ->
-      Left ("Key \"" <> key <> "\" is not a string!")
-    _ ->
-      Left ("Key \"" <> key <> "\" does not exist!")
 
 -- Removes the extension from all markdown links and remaps index links to the
 -- parent directory, so that they match the canonical URLs of the HTML pages

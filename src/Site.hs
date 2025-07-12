@@ -10,7 +10,6 @@ import qualified Exo.Shake as Shake
 
 import qualified Data.Text as T
 import qualified Network.URI as URI
-import qualified System.Directory.Extra as Directory
 import qualified System.FilePath as FilePath
 
 main :: IO ()
@@ -52,8 +51,8 @@ main = Shake.runShake $ do
     indexListing <-
       if fileName == "index"
       then do
-        listing <- liftIO (Directory.listFiles inputFolderPath)
-        pure (filter (/= inputPath) listing)
+        pandocs <- getIndexList getPandoc (Shake.dropDirectory1 inputFolderPath)
+        pure (fst <$> Pandoc.sortPandocsNewestFirst pandocs)
       else pure []
 
     let args = Pandoc.TemplateArgs {..}
@@ -74,6 +73,16 @@ main = Shake.runShake $ do
 
     feed <- Shake.runEither (RSS.makeRss folderPath pandocs)
     Shake.writeFileChanged out (T.unpack feed)
+
+-- Lists all the non-index files in a directory.
+getIndexList :: (FilePath -> Shake.Action Pandoc.Pandoc)
+             -> FilePath
+             -> Shake.Action [(FilePath, Pandoc.Pandoc)]
+getIndexList getPandoc path = do
+  sourceFiles <-
+        filter (\p -> FilePath.takeFileName p /= "index.md")
+    <$> Shake.findSourceFiles path
+  traverse (\p -> (,) p <$> getPandoc p) sourceFiles
 
 -- Marks every locally referenced image as needed.
 needImageDependencies :: FilePath -> Pandoc.Pandoc -> Shake.Action ()

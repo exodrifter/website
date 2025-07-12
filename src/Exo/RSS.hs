@@ -9,23 +9,13 @@ import qualified Data.Text.Lazy as TL
 import qualified Development.Shake.FilePath as FilePath
 import qualified Exo.Const as Const
 import qualified Exo.Pandoc as Pandoc
-import qualified Exo.Time as Time
 import qualified Text.Feed.Export as Feed
 import qualified Text.Feed.Types as Feed
 import qualified Text.RSS.Syntax as RSS
 
 makeRss :: FilePath -> [(FilePath, Pandoc.Pandoc)] -> Either Text Text
 makeRss path pandocs = do
-  -- Sort the pandocs from newest to oldest
-  let
-    extractUpdatedTime p =
-          rightToMaybe (extractTime "modified" p)
-      <|> rightToMaybe (extractTime "created" p)
-
-    sortedPandocs = flip sortBy pandocs \(lf, l) (rf, r) ->
-         comparing (Down . extractTime "published") l r
-      <> comparing (Down . extractUpdatedTime) l r
-      <> compare lf rf
+  let sortedPandocs = Pandoc.sortPandocsNewestFirst pandocs
 
   -- Convert the pandocs into an RSS feed
   items <- sequence (uncurry toRssItem <$> sortedPandocs)
@@ -58,7 +48,7 @@ toRssItem path pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) =
         then Pandoc.lookupMetaString "title" meta
         else Right (T.pack (FilePath.takeBaseName path))
       pubDate <-
-        case (extractTime "published" pandoc, extractTime "created" pandoc) of
+        case (Pandoc.getPublished pandoc, Pandoc.getCreated pandoc) of
           (Right published, _) -> Right published
           (_, Right created) -> Right created
           (Left err1, Left err2) ->
@@ -82,10 +72,5 @@ toRssItem path pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) =
         Left ("Failed to make RSS item for " <> T.pack path <> "; " <> err)
       Right item -> Right item
 
-extractTime :: Text -> Pandoc.Pandoc -> Either Text Time.UTCTime
-extractTime key (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
-  text <- Pandoc.lookupMetaString key meta
-  Time.parseTime text
-
-rfc822Format :: Time.UTCTime -> Text
-rfc822Format = Time.formatTime "%a, %d %b %Y %H:%M:%S GMT"
+rfc822Format :: Pandoc.UTCTime -> Text
+rfc822Format = Pandoc.formatTime "%a, %d %b %Y %H:%M:%S GMT"
