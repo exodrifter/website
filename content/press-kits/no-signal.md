@@ -1,6 +1,7 @@
 ---
 title: no signal press kit
 created: 2023-11-04
+modified: 2025-07-12T10:34:26Z
 aliases:
 - no signal press kit
 permalink: /no-signal
@@ -12,7 +13,7 @@ tags:
 
 # no signal
 
-_**no signal**_ is a science fiction escape room game about loneliness, fixing broken machinery, and reading old logs. You're stuck by yourself on a space station orbiting a black hole, trying to get home. There's no one to call for help.
+_**no signal**_ is a hard sci-fi point-and-click adventure game where you explore an abandoned space station orbiting a black hole. You control PGEIST, a ghost-like entity that can move through furniture, while following messages left by the long-gone staff to learn the outcome of the research team and discover the secrets they left behind.
 
 # facts
 

@@ -1,7 +1,9 @@
 ---
 title: resume
 created: 2024-09-16T00:56:40Z
-modified: 2025-04-25T21:35:31Z
+modified: 2025-07-12T10:34:40Z
+aliases:
+- resume
 ---
 
 # Ava Pek (exodrifter)
@@ -9,6 +11,8 @@ modified: 2025-04-25T21:35:31Z
 Experienced Software Engineer located in the San Francisco Bay Area with a demonstrated history of working in the software development industry and a Bachelor of Science focused in Computer Science from The University of Texas at Austin. Skilled in Godot, Unity3D, and Haskell. I promise I won't [alias all of your mutable buffers](blog/20240225042654.md).
 
 [Contact me...](contact.md)
+
+<br/>
 
 # experience
 
@@ -66,16 +70,29 @@ visualization contract.
 **Intern - ABB<span style="float: right">May 2009 - August 2009</span>**
 - Used in-house drawing applications to create tabular displays that showed data from the database with color codes that alerted users of abnormal conditions, according to the specifications of engineers and developers of the energy management system.
 
+<br/>
+
 # projects
+
+**[no signal](press-kits/no-signal.md)<span style="float: right">November 2023 - Present</span>**
+- A hard sci-fi point and click adventure game about loneliness about a crew space station orbiting a black hole, trying to get home. It's written in Godot and was developed almost entirely while live on Twitch.
+
+<br/>
 
 **[Gender Dysphoria](press-kits/gender-dysphoria.md)<span style="float: right">September 2020 - April 2023</span>**
 - A short, powerful 20 minute non-linear narrative game about negative experiences after coming out as transgender. Notably contains the use of a custom narrative scripting language I developed called Rumor.
 
+<br/>
+
 **[Teknedia](press-kits/teknedia.md)<span style="float: right">January 2012 - January 2021</span>**
 - A first person, 3D platformer for the PC to race from point A to point B as quickly as possible while avoiding all traps and hazards along the way. The game is built from scratch in a custom game engine made in C++ using open source libraries such as Boost, Bullet, Lua, and OpenGL.
 
+<br/>
+
 **[Port of Call](press-kits/port-of-call.md)<span style="float: right">January 2014 - August 2014</span>**
 - A narrative experimental exploration game about uncovering the secret of your past. Interact with other passengers on the ship, explore your surroundings, and satisfy the demands of the captain.
+
+<br/>
 
 # education
 
@@ -86,6 +103,8 @@ visualization contract.
 
 **High School Summer Program - Stanford University<span style="float: right">June 2010 - August 2010</span>**
 - Computer Science (CS 106B) and Statistics (PSYCH 10 / STATS 60)
+
+<br/>
 
 # skills
 
