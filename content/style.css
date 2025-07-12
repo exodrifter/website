@@ -86,6 +86,7 @@ body {
     flex-wrap: wrap;
     padding: var(--grid-size);
     gap: var(--grid-size);
+    height: 100vh;
 }
 
 .sidebar {
@@ -131,7 +132,7 @@ body {
     }
 }
 
-article > * + *, section > * + *, .main > * + *, .tools  > * + * {
+article > * + *, blockquote > * + *, section > * + *, .main > * + *, .tools  > * + * {
     margin-top: var(--grid-size);
 }
 
@@ -213,7 +214,7 @@ pre, code {
     font-size: calc(var(--grid-size)*0.57);
 }
 
-p > code {
+li > code, p > code {
     background-color: var(--bg2);
     border-radius: calc(var(--grid-size)*.3);
     padding: 0 .4rem;
@@ -275,6 +276,11 @@ figcaption {
     margin-left: var(--grid-size);
     margin-right: var(--grid-size);
     margin-top: var(--grid-size);
+}
+
+blockquote {
+    margin-left: var(--grid-size);
+    margin-right: var(--grid-size);
 }
 
 table {
