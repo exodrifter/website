@@ -52,9 +52,9 @@ main = Shake.runShake $ do
     taggedPandocs <- traverse fetchData pandocs
 
     let
-      fn acc (path, _, tags) =
-        Map.unionWithKey
-          (const (<>)) acc (Map.fromList [(tag, [path]) | tag <- tags])
+      fn acc (path, pandoc, tags) =
+        let thisMap = Map.fromList [(tag, [(path, pandoc)]) | tag <- tags]
+        in  Map.unionWithKey (const (<>)) acc thisMap
     pure (foldl' fn Map.empty taggedPandocs)
 
   -- Generate website pages.
@@ -80,7 +80,7 @@ main = Shake.runShake $ do
             filter (\p -> FilePath.takeDirectory p == inputFolderPath)
         sourceFiles <- isImmediate <$> Shake.findSourceFiles inputFolderPath
         pandocs <- traverse (\p -> (,) p <$> getPandoc p) sourceFiles
-        pure (fst <$> Pandoc.sortPandocsNewestFirst pandocs)
+        pure (Pandoc.sortPandocsNewestFirst pandocs)
       else pure []
 
     -- If this is a tag, list other files with this tag.

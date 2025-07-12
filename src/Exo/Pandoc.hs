@@ -61,10 +61,10 @@ data TemplateArgs = TemplateArgs
     -- ^ The path of this file on the website.
   , inputPath :: FilePath
     -- ^ The path to this file's source.
-  , indexListing :: [FilePath]
+  , indexListing :: [(FilePath, Pandoc)]
     -- ^ If this file is an index, then this is a list of all of the other files
     -- in the index.
-  , taggedListing :: [FilePath]
+  , taggedListing :: [(FilePath, Pandoc)]
     -- ^ If this file is a tag page, then this is a list of all of the other
     -- files with this tag.
   }
@@ -259,19 +259,25 @@ makeCrossposts (Pandoc (Meta meta) _) =
         Right DocTemplates.NullVal
 
 -- Makes a listing of files that doesn't include the current file
-makeFileListing :: FilePath -> [FilePath] -> DocTemplates.Val Text
+makeFileListing :: FilePath -> [(FilePath, Pandoc)] -> DocTemplates.Val Text
 makeFileListing inputFile files =
   let
-    make :: FilePath -> DocTemplates.Val Text
-    make file = do
-      let path = "/" </> FilePath.dropDirectory1 file
+    make :: (FilePath, Pandoc) -> DocTemplates.Val Text
+    make (file, pandoc) = do
+      let
+        path = "/" </> FilePath.dropDirectory1 file
+        name =
+          fromRight
+            (T.pack (FilePath.takeBaseName path))
+            (getTitle pandoc)
       DocTemplates.toVal $ Map.fromList
         [ ("path" :: Text, makeCleanLink path)
-        , ("name", T.pack (FilePath.takeBaseName path))
+        , ("name", name)
         ]
 
+    isNotInputFile (file, _) = file /= inputFile
   in
-    DocTemplates.ListVal (make <$> filter (/= inputFile) files)
+    DocTemplates.ListVal (make <$> filter isNotInputFile files)
 
 --------------------------------------------------------------------------------
 -- Helpers

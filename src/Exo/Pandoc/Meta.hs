@@ -1,6 +1,7 @@
 -- Loads known metadata fields from Pandoc documents.
 module Exo.Pandoc.Meta
-( getPublishedTime
+( getTitle
+, getPublishedTime
 , getPublishedText
 , getCreatedTime
 , getCreatedText
@@ -18,6 +19,10 @@ import qualified Data.Map.Strict as Map
 import qualified Exo.Pandoc.Time as Time
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
+
+getTitle :: Pandoc.Pandoc -> Either Text Text
+getTitle (Pandoc.Pandoc (Pandoc.Meta meta) _) =
+  lookupMetaString "title" meta
 
 -- The time the file was published to the internet. This type of time is only
 -- used for articles like blog posts. It can be older than the creation time of
