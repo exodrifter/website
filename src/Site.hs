@@ -8,6 +8,7 @@ import qualified Exo.Pandoc as Pandoc
 import qualified Exo.RSS as RSS
 import qualified Exo.Shake as Shake
 
+import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
@@ -33,6 +34,29 @@ main = Shake.runShake $ do
     md <- T.pack <$> readFile' path
     Shake.runEither (Pandoc.parseMarkdown md)
 
+  -- Cache parsed metadata
+  getTagMap <- Shake.cacheJSON \() -> do
+    sourceFiles <- Shake.findSourceFiles "."
+    let
+      fetchPandocs path = do
+        pandoc <- getPandoc path
+        pure (path, pandoc)
+    pandocs <-
+      Pandoc.sortPandocsNewestFirst
+        <$> traverse fetchPandocs sourceFiles
+
+    let
+      fetchData (path, pandoc) = do
+        tags <- Shake.runEither (Pandoc.getTags pandoc)
+        pure (path, pandoc, tags)
+    taggedPandocs <- traverse fetchData pandocs
+
+    let
+      fn acc (path, _, tags) =
+        Map.unionWithKey
+          (const (<>)) acc (Map.fromList [(tag, [path]) | tag <- tags])
+    pure (foldl' fn Map.empty taggedPandocs)
+
   -- Generate website pages.
   Const.outputDirectory <//> "*.html" %> \out -> do
     let
@@ -51,8 +75,20 @@ main = Shake.runShake $ do
     indexListing <-
       if fileName == "index"
       then do
-        pandocs <- getIndexList getPandoc (Shake.dropDirectory1 inputFolderPath)
+        let
+          isImmediate =
+            filter (\p -> FilePath.takeDirectory p == inputFolderPath)
+        sourceFiles <- isImmediate <$> Shake.findSourceFiles inputFolderPath
+        pandocs <- traverse (\p -> (,) p <$> getPandoc p) sourceFiles
         pure (fst <$> Pandoc.sortPandocsNewestFirst pandocs)
+      else pure []
+
+    -- If this is a tag, list other files with this tag.
+    taggedListing <-
+      if inputFolderPath == "content/tags" && fileName /= "index"
+      then do
+        tagMap <- getTagMap ()
+        pure (fromMaybe [] (Map.lookup (T.pack fileName) tagMap))
       else pure []
 
     let args = Pandoc.TemplateArgs {..}
@@ -63,26 +99,17 @@ main = Shake.runShake $ do
   -- Generate RSS feeds
   Const.outputDirectory <//> "*.xml" %> \out -> do
     let
-      folderPath =
-        FilePath.takeDirectory (Shake.dropDirectory1 out)
+      canonicalPath = Shake.dropDirectory1 out
+      canonicalFolder = FilePath.takeDirectory canonicalPath
+      inputPath = Const.contentDirectory </> canonicalFolder
 
     sourceFiles <-
           filter (\p -> FilePath.takeFileName p /= "index.md")
-      <$> Shake.findSourceFiles folderPath
+      <$> Shake.findSourceFiles inputPath
     pandocs <- traverse (\p -> (,) p <$> getPandoc p) sourceFiles
 
-    feed <- Shake.runEither (RSS.makeRss folderPath pandocs)
+    feed <- Shake.runEither (RSS.makeRss canonicalFolder pandocs)
     Shake.writeFileChanged out (T.unpack feed)
-
--- Lists all the non-index files in a directory.
-getIndexList :: (FilePath -> Shake.Action Pandoc.Pandoc)
-             -> FilePath
-             -> Shake.Action [(FilePath, Pandoc.Pandoc)]
-getIndexList getPandoc path = do
-  sourceFiles <-
-        filter (\p -> FilePath.takeFileName p /= "index.md")
-    <$> Shake.findSourceFiles path
-  traverse (\p -> (,) p <$> getPandoc p) sourceFiles
 
 -- Marks every locally referenced image as needed.
 needImageDependencies :: FilePath -> Pandoc.Pandoc -> Shake.Action ()

@@ -7,6 +7,7 @@ module Exo.Pandoc.Meta
 , getModifiedTime
 , getModifiedText
 , getLastUpdatedTime
+, getTags
 
 -- Helpers
 , hasMetaKey
@@ -55,6 +56,12 @@ getLastUpdatedTime p =
         Right time -> Right time
         Left err2 -> Left (err1 <> " and " <> err2)
 
+getTags :: Pandoc.Pandoc -> Either Text [Text]
+getTags pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) =
+  if hasMetaKey "tags" pandoc
+  then lookupMetaStrings "tags" meta
+  else Right []
+
 --------------------------------------------------------------------------------
 -- Pandoc Helpers
 --------------------------------------------------------------------------------
@@ -69,6 +76,17 @@ extractTime key (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
 --------------------------------------------------------------------------------
 -- Meta Helpers
 --------------------------------------------------------------------------------
+
+lookupMetaStrings :: Text -> Map Text Pandoc.MetaValue -> Either Text [Text]
+lookupMetaStrings key meta =
+  case Map.lookup key meta of
+    Just (Pandoc.MetaString text) -> Right [text]
+    Just (Pandoc.MetaInlines inlines) -> Right (Pandoc.stringify <$> inlines)
+    Just (Pandoc.MetaList inlines) -> Right (Pandoc.stringify <$> inlines)
+    Just _ ->
+      Left ("Key \"" <> key <> "\" is not a list of strings!")
+    _ ->
+      Left ("Key \"" <> key <> "\" does not exist!")
 
 lookupMetaString :: Text -> Map Text Pandoc.MetaValue -> Either Text Text
 lookupMetaString key meta =

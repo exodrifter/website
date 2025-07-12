@@ -55,6 +55,15 @@
                 </section>
                 $endif$
 
+                $if(tagged)$
+                <section id="_tagged">
+                    <h1><i class="ri-price-tag-3-fill"></i> tagged</i></h1>
+                    $for(tagged)$
+                    <p class="meta"><a href="$tagged.path$">$tagged.name$</a></p>
+                    $endfor$
+                </section>
+                $endif$
+
                 <section id="_meta">
                     <h1><i class="ri-database-2-fill"></i> meta</i></h1>
                     $if(tags)$

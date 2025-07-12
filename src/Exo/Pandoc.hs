@@ -59,9 +59,14 @@ parseMarkdown markdown =
 data TemplateArgs = TemplateArgs
   { canonicalPath :: FilePath
     -- ^ The path of this file on the website.
+  , inputPath :: FilePath
+    -- ^ The path to this file's source.
   , indexListing :: [FilePath]
     -- ^ If this file is an index, then this is a list of all of the other files
     -- in the index.
+  , taggedListing :: [FilePath]
+    -- ^ If this file is a tag page, then this is a list of all of the other
+    -- files with this tag.
   }
 
 -- Makes an HTML document just the way I want it.
@@ -91,7 +96,8 @@ makeHtml args template pandoc = do
     variables = do
       Map.fromList
         [ ("breadcrumb", makeBreadcrumbs (canonicalPath args))
-        , ("file", makeFileListing (canonicalPath args) (indexListing args))
+        , ("file", makeFileListing (inputPath args) (indexListing args))
+        , ("tagged", makeFileListing (inputPath args) (taggedListing args))
         , ("created", created)
         , ("published", published)
         , ("modified", modified)
@@ -252,23 +258,20 @@ makeCrossposts (Pandoc (Meta meta) _) =
       Nothing ->
         Right DocTemplates.NullVal
 
+-- Makes a listing of files that doesn't include the current file
 makeFileListing :: FilePath -> [FilePath] -> DocTemplates.Val Text
-makeFileListing canonicalPath files =
+makeFileListing inputFile files =
   let
     make :: FilePath -> DocTemplates.Val Text
     make file = do
-      let
-        path =
-          FilePath.makeRelative
-            (FilePath.takeDirectory canonicalPath)
-            (FilePath.dropDirectory1 file)
+      let path = "/" </> FilePath.dropDirectory1 file
       DocTemplates.toVal $ Map.fromList
         [ ("path" :: Text, makeCleanLink path)
         , ("name", T.pack (FilePath.takeBaseName path))
         ]
 
   in
-    DocTemplates.ListVal (make <$> files)
+    DocTemplates.ListVal (make <$> filter (/= inputFile) files)
 
 --------------------------------------------------------------------------------
 -- Helpers

@@ -11,6 +11,7 @@ module Exo.Shake
 
 -- Oracles
 , cacheOracle
+, cacheJSON
 , cachePandoc
 
 -- Actions
@@ -30,6 +31,7 @@ import qualified Data.ByteString.Lazy as BSL
 import qualified Data.Text as T
 import qualified Exo.Const as Const
 import qualified Exo.Scotty as Scotty
+import qualified System.FilePath as FilePath
 import qualified System.Directory.Extra as Directory
 import qualified Text.DocTemplates as DocTemplates
 import qualified Text.Pandoc as Pandoc
@@ -99,20 +101,24 @@ decodeCache decode runCache = \filepath -> do
   bs <- runCache (Cache filepath)
   decode bs
 
+-- Cache anything that can be serialized to JSON.
+cacheJSON :: (Binary.Binary q, Hashable q, NFData q, Show q, Typeable q)
+          => (Aeson.FromJSON a, Aeson.ToJSON a)
+          => (q -> Action a)
+          -> Rules (q -> Action a)
+cacheJSON parse =
+  cacheOracle
+    (\path -> BSL.toStrict . Aeson.encode <$> parse path)
+    (\bs ->
+        case Aeson.eitherDecode (BSL.fromStrict bs) of
+          Left err -> fail err
+          Right a -> pure a
+    )
+
 -- We can cache parsed Pandoc documents by serializing them to JSON.
 cachePandoc :: (FilePath -> Action Pandoc.Pandoc)
             -> Rules (FilePath -> Action Pandoc.Pandoc)
-cachePandoc parse =
-  cacheOracle
-    ( \path -> do
-        pandoc <- parse path
-        pure (BSL.toStrict (Aeson.encode pandoc))
-    )
-    ( \bs ->
-        case Aeson.eitherDecode (BSL.fromStrict bs) of
-          Left err -> fail err
-          Right res -> pure res
-    )
+cachePandoc parse = cacheJSON parse
 
 --------------------------------------------------------------------------------
 -- Actions
@@ -122,7 +128,7 @@ cachePandoc parse =
 wantWebsite :: Action ()
 wantWebsite = do
   -- Generate webpages from markdown.
-  sourceFiles <- findSourceFiles "."
+  sourceFiles <- findSourceFiles Const.contentDirectory
   let
     toOutputPath path =
       Const.outputDirectory </> X.dropDirectory1 path -<.> "html"
@@ -153,13 +159,14 @@ wantWebsite = do
 
 -- Finds all files that will become webpages in the content directory.
 findSourceFiles :: FilePath -> Action [FilePath]
-findSourceFiles dir = do
-  sourceFiles <- getDirectoryFiles (Const.contentDirectory </> dir) ["//*.md"]
+findSourceFiles searchDirectory = do
+  sourceFiles <- getDirectoryFiles searchDirectory ["//*.md"]
+
   let
-    rebuildPath path = Const.contentDirectory </> dir </> path
-    ignoreObsidianDirectory =
-      filter (notElem ".obsidian" . splitDirectories)
-  pure (rebuildPath <$> ignoreObsidianDirectory sourceFiles)
+    rebuildPath path = FilePath.normalise (searchDirectory </> path)
+    -- ^ We need to normalize the path because you can pass "." as the `dir`.
+    ignoreObsidianFiles = filter (notElem ".obsidian" . splitDirectories)
+  pure (rebuildPath <$> ignoreObsidianFiles sourceFiles)
 
 -- Builds a template on disk.
 buildTemplate :: DocTemplates.TemplateTarget a
