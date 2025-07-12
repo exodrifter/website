@@ -1,0 +1,70 @@
+cabal-version: 3.4
+name: site
+version: 0.1.0.0
+
+synopsis: exodrifter's website
+homepage: exodrifter.space
+license: NONE
+license-file: LICENSE.md
+author: exodrifter
+maintainer: code@exodrifter.space
+category: Web
+build-type: Simple
+
+executable site
+  default-language: Haskell2010
+  ghc-options:
+    -Wall
+    -Wcompat
+    -threaded
+    -rtsopts
+    -with-rtsopts=-N
+    -Wno-deprecations
+
+  default-extensions:
+    BlockArguments,
+    DerivingStrategies,
+    GeneralizedNewtypeDeriving,
+    NamedFieldPuns,
+    OverloadedStrings,
+    RecordWildCards,
+
+  main-is: Main.hs
+  hs-source-dirs: src
+  other-modules:
+    Exo.Const
+    Exo.Pandoc
+    Exo.Pandoc.Meta
+    Exo.Pandoc.Sort
+    Exo.Pandoc.Time
+    Exo.RSS
+    Exo.Scotty
+    Exo.Shake
+
+  build-depends:
+      base >= 4.11
+    , relude ^>= 1.2.1.0
+
+    , aeson
+    , binary
+    , containers
+    , directory
+    , doctemplates
+    , extra
+    , feed
+    , filepath
+    , mime-types
+    , network-uri
+    , pandoc
+    , pandoc-types
+    , scotty
+    , shake
+    , text
+    , time
+    , wai
+
+  mixins:
+    base hiding (Prelude),
+    relude (Relude as Prelude),
+    relude,
+

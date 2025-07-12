@@ -4,12 +4,25 @@ created: 2024-09-19T23:54:07Z
 modified: 2025-07-08T06:29:28Z
 ---
 
-<div style="display: flex; flex-direction: row; align-items: center;">
-<img src="blog/avatar.png" alt="exodrifter avatar" align="left" style="width: 7rem; margin-right: 2rem;"/>
+<div class="home-banner">
 
-▒▒▒▒ Hello? ▒▒▒▒ ...can you hear me? ▒▒▒▒ <br/><br/>
-[About me...](about.md)
+![](blog/avatar.png)
 
+<section>
+
+▒▒▒▒ Hello? ▒▒▒▒ ...can you hear me? ▒▒▒▒
+
+<span>
+<i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)
+</span>
+<span>
+<i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)
+</span>
+<span>
+<i class="ri-user-fill"></i> [About me...](about.md)
+</span>
+
+</section>
 </div>
 
 # blog
@@ -47,16 +60,6 @@ modified: 2025-07-08T06:29:28Z
 - [music study](notes/music-study.md)
 
 [See all logs...](tags/log.md)
-
-# links
-
-Generally speaking, I'm only active on Discord and Twitch:
-- <i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)
-- <i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)
-
-[About me...](about.md)<br/>
-[Contact me...](contact.md)<br/>
-[See resume...](resume.md)
 
 # coolzone
 

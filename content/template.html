@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>$title$</title>
+        <meta charset="utf-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space Mono&amp;family=Space Grotesk:wght@400;700&amp;family=Space Grotesk:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class="page">
+            <aside class="sidebar">
+                <div class="logo">
+                    <a href="/"><img src="/logo.svg" alt="exodrifter logo" draggable="false"></a>
+                </div>
+                <div class="tools">
+                    <div class="search">
+                        <label><i class="ri-search-fill"></i></label>
+                        <input type="text" placeholder="search...">
+                    </div>
+                    $if(toc)$
+                    <section>
+                        <h1><i class="ri-list-unordered"></i> toc</h1>
+                        $toc$
+                    </section>
+                    $endif$
+                </div>
+            </aside>
+            <div class="main">
+                <nav>
+                    <i class="ri-folder-fill"></i>
+                    $for(breadcrumb)$
+                    $breadcrumb$
+                    $sep$<p>/</p>
+                    $endfor$
+                </nav>
+
+                $if(body)$
+                <section id="_content">
+                    <h1><i class="ri-article-fill"></i> content</a></h1>
+                    <article>
+                        $body$
+                    </article>
+                </section>
+                $endif$
+
+                $if(file)$
+                <section id="_files">
+                    <h1><i class="ri-file-2-fill"></i> files</i></h1>
+                    $for(file)$
+                    <p class="meta"><a href="$file.path$">$file.name$</a></p>
+                    $endfor$
+                </section>
+                $endif$
+
+                $if(tagged)$
+                <section id="_tagged">
+                    <h1><i class="ri-price-tag-3-fill"></i> tagged</i></h1>
+                    $for(tagged)$
+                    <p class="meta"><a href="$tagged.path$">$tagged.name$</a></p>
+                    $endfor$
+                </section>
+                $endif$
+
+                <section id="_meta">
+                    <h1><i class="ri-database-2-fill"></i> meta</i></h1>
+                    $if(tags)$
+                    <p class="meta">
+                        tags:
+                        $for(tags)$
+                        <a href="/tags/$tags$">$tags$</a>
+                        $sep$<span> </span>
+                        $endfor$
+                    </p>
+                    $endif$
+                    <p class="meta">
+                    $if(created)$
+                        created: $created$
+                    $endif$
+                    $if(published)$
+                    <br>
+                        published: $published$
+                    $endif$
+                    $if(modified)$
+                    <br>
+                        modified: $modified$
+                    $endif$
+                    </p>
+                    $if(crosspost)$
+                    <div class="meta">
+                    <p class="meta">crossposts:</p>
+                    $for(crosspost)$
+                    <p class="meta">
+                        <time datetime="$crosspost.time$" title="$crosspost.time$">$crosspost.time$</time>
+                        @
+                        <a href="$crosspost.url$">$crosspost.site$</a>
+                    </p>
+                    $endfor$
+                    </div>
+                    $endif$
+                </section>
+
+                <footer>
+                    <p class="meta"><i class="ri-copyright-fill"></i> exodrifter</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

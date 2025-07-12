@@ -1,5 +1,8 @@
-content/.trash/*
+/content/.trash/*
 /content/.obsidian/*
 !/content/.obsidian/app.json
 !/content/.obsidian/core-plugins.json
-/result
+
+/dist-newstyle/
+/.shake/
+/_site/

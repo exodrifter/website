@@ -1,6 +1,6 @@
 ---
 title: Leitmotif
-created: 2024-06-03T03:47:23
+created: 2024-06-03T03:47:23Z
 aliases:
 - leitmotif
 - leitmotifs
