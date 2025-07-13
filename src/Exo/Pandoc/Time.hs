@@ -6,9 +6,6 @@ module Exo.Pandoc.Time
 ( Time.UTCTime
 , parseTime
 , reformatTime
-
--- Helpers
-, parseTimeM
 , formatTime
 ) where
 
@@ -17,28 +14,33 @@ import qualified Data.Time as Time
 
 -- My notes have accumulated a variety of different time formats over the years,
 -- so this function tries several different formats until one of them works.
-parseTime :: Text -> Either Text Time.UTCTime
+parseTime :: Text -> Either Text (Time.UTCTime, String)
 parseTime text =
-  firstRightOr
-    ("Cannot parse time \"" <> text <> "\"")
-    (flip parseTimeM text . fst <$> timeFormats)
-
--- Reformats a time for the website. All times are rendered in UTC in as much
--- detail as is available.
-reformatTime :: Text -> Either Text Text
-reformatTime text =
   let
-    tryReformat :: (Text, Text) -> Either Text Text
-    tryReformat (inFormat, outFormat) = do
-      time <- parseTimeM inFormat text
-      pure (formatTime outFormat time)
+    parseTimeM :: String -> String -> Either Text Time.UTCTime
+    parseTimeM = Time.parseTimeM False Time.defaultTimeLocale
+
+    tryParse :: (String, String) -> Either Text (Time.UTCTime, String)
+    tryParse (inFormat, outFormat) = do
+      time <- parseTimeM inFormat (T.unpack text)
+      pure (time, outFormat)
   in
     firstRightOr
       ("Cannot parse time \"" <> text <> "\"")
-      (tryReformat <$> timeFormats)
+      (tryParse <$> timeFormats)
+
+-- Formats a time for the website. All times are rendered in UTC in as much
+-- detail as is available.
+formatTime :: (Time.UTCTime, String) -> Text
+formatTime (time, outFormat) =
+  T.pack (Time.formatTime Time.defaultTimeLocale outFormat time)
+
+-- Reformats a time.
+reformatTime :: Text -> Either Text Text
+reformatTime = fmap formatTime . parseTime
 
 -- The valid input time formats and their corresponding output formats.
-timeFormats :: [(Text, Text)]
+timeFormats :: [(String, String)]
 timeFormats =
   -- UTC Times
   [ ("%Y-%m-%dT%H:%M:%S%QZ", "%Y-%m-%d %H:%M:%S")
@@ -64,10 +66,3 @@ firstRightOr err results =
     Nothing -> Left err
     Just a -> Right a
 
-parseTimeM :: Text -> Text -> Either Text Time.UTCTime
-parseTimeM format =
-  Time.parseTimeM False Time.defaultTimeLocale (T.unpack format) . T.unpack
-
-formatTime :: Text -> Time.UTCTime -> Text
-formatTime format =
-  T.pack . Time.formatTime Time.defaultTimeLocale (T.unpack format)

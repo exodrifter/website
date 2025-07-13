@@ -34,6 +34,7 @@ executable site
     Exo.Const
     Exo.Pandoc
     Exo.Pandoc.Meta
+    Exo.Pandoc.Metadata
     Exo.Pandoc.Sort
     Exo.Pandoc.Time
     Exo.RSS

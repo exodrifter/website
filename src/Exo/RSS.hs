@@ -6,6 +6,7 @@ module Exo.RSS
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
+import qualified Data.Time as Time
 import qualified Development.Shake.FilePath as FilePath
 import qualified Exo.Const as Const
 import qualified Exo.Pandoc as Pandoc
@@ -72,5 +73,6 @@ toRssItem path pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) =
         Left ("Failed to make RSS item for " <> T.pack path <> "; " <> err)
       Right item -> Right item
 
-rfc822Format :: Pandoc.UTCTime -> Text
-rfc822Format = Pandoc.formatTime "%a, %d %b %Y %H:%M:%S GMT"
+rfc822Format :: Time.UTCTime -> Text
+rfc822Format =
+  T.pack . Time.formatTime Time.defaultTimeLocale "%a, %d %b %Y %H:%M:%S GMT"

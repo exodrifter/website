@@ -13,6 +13,7 @@ module Exo.Pandoc.Meta
 -- Helpers
 , hasMetaKey
 , lookupMetaString
+, lookupMetaStrings
 ) where
 
 import qualified Data.Map.Strict as Map
@@ -28,7 +29,7 @@ getTitle (Pandoc.Pandoc (Pandoc.Meta meta) _) =
 -- used for articles like blog posts. It can be older than the creation time of
 -- the file, if the article was migrated from a different site.
 getPublishedTime :: Pandoc.Pandoc -> Either Text Time.UTCTime
-getPublishedTime = Time.parseTime <=< extractTime "published"
+getPublishedTime = fmap fst . Time.parseTime <=< extractTime "published"
 
 getPublishedText :: Pandoc.Pandoc -> Either Text Text
 getPublishedText = Time.reformatTime <=< extractTime "published"
@@ -37,7 +38,7 @@ getPublishedText = Time.reformatTime <=< extractTime "published"
 -- which case it indicates that I wrote and published the article's content
 -- elsewhere before I migrated it to my personal site.
 getCreatedTime :: Pandoc.Pandoc -> Either Text Time.UTCTime
-getCreatedTime = Time.parseTime <=< extractTime "created"
+getCreatedTime = fmap fst . Time.parseTime <=< extractTime "created"
 
 getCreatedText :: Pandoc.Pandoc -> Either Text Text
 getCreatedText = Time.reformatTime <=< extractTime "created"
@@ -46,7 +47,7 @@ getCreatedText = Time.reformatTime <=< extractTime "created"
 -- document was last edited. This time is not updated when the metadata of the
 -- document is edited.
 getModifiedTime :: Pandoc.Pandoc -> Either Text Time.UTCTime
-getModifiedTime = Time.parseTime <=< extractTime "modified"
+getModifiedTime = fmap fst . Time.parseTime <=< extractTime "modified"
 
 getModifiedText :: Pandoc.Pandoc -> Either Text Text
 getModifiedText = Time.reformatTime <=< extractTime "modified"
