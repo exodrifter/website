@@ -16,7 +16,7 @@
         color: black;
         color-scheme: light dark;
       }
-      @media (prefers-color-scheme: dark) {
+      @media all and (prefers-color-scheme: dark) {
         svg {
           color: white;
         }
