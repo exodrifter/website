@@ -9,6 +9,7 @@ module Exo.Pandoc
 import System.FilePath((</>))
 import Exo.Pandoc.Link as X
 import Exo.Pandoc.Meta as X
+import Exo.Pandoc.Metadata as X
 import Exo.Pandoc.Sort as X
 import Exo.Pandoc.Time as X
 import Text.Pandoc as X
@@ -59,7 +60,7 @@ data TemplateArgs = TemplateArgs
   , indexListing :: [(FilePath, Pandoc)]
     -- ^ If this file is an index, then this is a list of all of the other files
     -- in the index.
-  , taggedListing :: [(FilePath, Pandoc)]
+  , taggedListing :: [Metadata]
     -- ^ If this file is a tag page, then this is a list of all of the other
     -- files with this tag.
   }
@@ -92,7 +93,7 @@ makeHtml args template pandoc = do
       Map.fromList
         [ ("breadcrumb", makeBreadcrumbs (canonicalPath args))
         , ("file", makeFileListing (inputPath args) (indexListing args))
-        , ("tagged", makeFileListing (inputPath args) (taggedListing args))
+        , ("tagged", makeFileListing' (inputPath args) (taggedListing args))
         , ("created", created)
         , ("published", published)
         , ("modified", modified)
@@ -295,6 +296,21 @@ makeFileListing inputFile files =
     isNotInputFile (file, _) = file /= inputFile
   in
     DocTemplates.ListVal (make <$> filter isNotInputFile files)
+
+-- Makes a listing of files that doesn't include the current file
+makeFileListing' :: FilePath -> [Metadata] -> DocTemplates.Val Text
+makeFileListing' inputFile metas =
+  let
+    make :: Metadata -> DocTemplates.Val Text
+    make meta = do
+      DocTemplates.toVal $ Map.fromList
+        [ ("path" :: Text, T.pack ("/" </> metaCanonicalPath meta))
+        , ("name", metaTitle meta)
+        ]
+
+    isNotInputFile meta = metaInputPath meta /= inputFile
+  in
+    DocTemplates.ListVal (make <$> filter isNotInputFile metas)
 
 --------------------------------------------------------------------------------
 -- Helpers

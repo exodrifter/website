@@ -8,11 +8,19 @@ import qualified Exo.Pandoc as Pandoc
 import qualified Exo.RSS as RSS
 import qualified Exo.Shake as Shake
 
+import qualified Data.Binary as Binary
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
 import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
+
+-- If we use the same input type for multiple oracles, Shake will think that
+-- the oracles are recursive.
+newtype PandocOracle = PandocOracle FilePath
+  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
+newtype MetaOracle = MetaOracle FilePath
+  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
 
 main :: IO ()
 main = Shake.runShake $ do
@@ -22,7 +30,7 @@ main = Shake.runShake $ do
 
   Shake.action Shake.wantWebsite
 
-  -- Copy files.
+  -- Copy static files.
   let
     copyExtensions = [ "*.css", "*.gif", "*.mp4", "*.png", "*.jpg", "*.svg", "*.txt" ]
   (Const.outputDirectory <//>) <$> copyExtensions |%> \out -> do
@@ -30,36 +38,29 @@ main = Shake.runShake $ do
     Shake.need [inputPath]
     Shake.copyFileChanged inputPath out
 
-  -- Parse markdown files
-  getPandoc <- Shake.cachePandoc \path -> do
+  -- Parse markdown files.
+  getPandoc <- (. PandocOracle) <$> Shake.cacheJSON \(PandocOracle path) -> do
     Shake.need [path]
     bs <- readFileBS path
     md <- Shake.runEither $
       first (T.pack . displayException) (TE.decodeUtf8' bs)
     Shake.runEither (Pandoc.parseMarkdown md)
 
-  -- Cache parsed metadata
+  -- Parse metadata.
+  getMetadata <-  (. MetaOracle) <$> Shake.cacheJSON \(MetaOracle path) -> do
+    pandoc <- getPandoc path
+    Shake.runEither (Pandoc.parseMetadata path pandoc)
+
+  -- Create a map of tags to files.
   getTagMap <- Shake.cacheJSON \() -> do
     sourceFiles <- Shake.findSourceFiles "."
+    metas <- traverse getMetadata sourceFiles
     let
-      fetchPandocs path = do
-        pandoc <- getPandoc path
-        pure (path, pandoc)
-    pandocs <-
-      Pandoc.sortPandocsNewestFirst
-        <$> traverse fetchPandocs sourceFiles
-
-    let
-      fetchData (path, pandoc) = do
-        tags <- Shake.runEither (Pandoc.getTags pandoc)
-        pure (path, pandoc, tags)
-    taggedPandocs <- traverse fetchData pandocs
-
-    let
-      fn acc (path, pandoc, tags) =
-        let thisMap = Map.fromList [(tag, [(path, pandoc)]) | tag <- tags]
-        in  Map.unionWithKey (const (<>)) acc thisMap
-    pure (foldl' fn Map.empty taggedPandocs)
+      sortedMetas =
+        sortBy (comparing (Down . fmap fst . Pandoc.metaUpdated)) metas
+      metaToMap meta =
+        Map.fromList [(tag, [meta]) | tag <- Pandoc.metaTags meta]
+    pure (Map.unionsWith (<>) (metaToMap <$> sortedMetas))
 
   -- Generate website pages.
   Const.outputDirectory <//> "*.html" %> \out -> do

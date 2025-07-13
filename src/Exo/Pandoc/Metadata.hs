@@ -1,14 +1,17 @@
+{-# LANGUAGE DeriveGeneric #-}
+
 -- Loads known metadata fields from Pandoc documents.
 module Exo.Pandoc.Metadata
 ( Metadata(..)
 , metaUpdated
 
 -- Conversions
-, extractMetadata
+, parseMetadata
 , toVariables
 ) where
 
 import System.FilePath((</>), (-<.>))
+import qualified Data.Aeson as Aeson
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Development.Shake.FilePath as FilePath
@@ -53,7 +56,10 @@ data Metadata =
     -- ^ The manually curated tags that have been added to this document, which
     -- are used for categorization and search.
     }
-  deriving stock (Eq, Show)
+  deriving stock (Eq, Generic, Show)
+
+instance Aeson.FromJSON Metadata
+instance Aeson.ToJSON Metadata
 
 metaUpdated :: Metadata -> Maybe (Time.UTCTime, String)
 metaUpdated metadata =
@@ -63,8 +69,8 @@ metaUpdated metadata =
 -- Conversions
 --------------------------------------------------------------------------------
 
-extractMetadata :: FilePath -> Pandoc.Pandoc -> Either Text Metadata
-extractMetadata metaInputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
+parseMetadata :: FilePath -> Pandoc.Pandoc -> Either Text Metadata
+parseMetadata metaInputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
   -- Paths
   let
     path = FilePath.dropDirectory1 metaInputPath

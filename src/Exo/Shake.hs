@@ -12,7 +12,6 @@ module Exo.Shake
 -- Oracles
 , cacheOracle
 , cacheJSON
-, cachePandoc
 
 -- Actions
 , wantWebsite
@@ -92,7 +91,7 @@ cacheOracle :: (Binary.Binary q, Hashable q, NFData q, Show q, Typeable q)
             -> (ByteString -> Action a)
             -> Rules (q -> Action a)
 cacheOracle encode decode =
-  decodeCache decode <$> (addOracleCache \(Cache q) -> encode q)
+  decodeCache decode <$> addOracleCache \(Cache q) -> encode q
 
 decodeCache :: (ByteString -> Action a)
             -> (Cache q -> Action ByteString)
@@ -114,11 +113,6 @@ cacheJSON parse =
           Left err -> fail err
           Right a -> pure a
     )
-
--- We can cache parsed Pandoc documents by serializing them to JSON.
-cachePandoc :: (FilePath -> Action Pandoc.Pandoc)
-            -> Rules (FilePath -> Action Pandoc.Pandoc)
-cachePandoc parse = cacheJSON parse
 
 --------------------------------------------------------------------------------
 -- Actions
