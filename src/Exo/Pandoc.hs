@@ -4,12 +4,10 @@ module Exo.Pandoc
 , TemplateArgs(..)
 , parseMarkdown
 , makeHtml
-
--- Helpers
-, makeCleanLink
 ) where
 
 import System.FilePath((</>))
+import Exo.Pandoc.Link as X
 import Exo.Pandoc.Meta as X
 import Exo.Pandoc.Sort as X
 import Exo.Pandoc.Time as X
@@ -124,7 +122,7 @@ convertCleanLinks =
   walk \inline ->
     case inline of
       (Link a i (u, t)) ->
-        Link a i (makeCleanLink (T.unpack u), t)
+        Link a i (T.pack (cleanLink (T.unpack u)), t)
       _ -> inline
 
 -- Pandoc doesn't have a type which represents embeds, so we need to convert
@@ -290,7 +288,7 @@ makeFileListing inputFile files =
             (T.pack (FilePath.takeBaseName path))
             (getTitle pandoc)
       DocTemplates.toVal $ Map.fromList
-        [ ("path" :: Text, makeCleanLink path)
+        [ ("path" :: Text, T.pack (cleanLink path))
         , ("name", name)
         ]
 
@@ -321,19 +319,3 @@ justElse err ma =
   case ma of
     Just a -> Right a
     Nothing -> Left err
-
--- Removes the extension from all markdown links and remaps index links to the
--- parent directory, so that they match the canonical URLs of the HTML pages
--- that will be generated.
-makeCleanLink :: FilePath -> Text
-makeCleanLink path =
-  let
-    cleanPath =
-      case FilePath.splitExtension <$> FilePath.splitFileName path of
-        (folder, ("index", ".md")) ->
-          FilePath.addTrailingPathSeparator folder
-        (folder, (file, ".md")) ->
-          folder </> file
-        _ -> path
-  in
-    T.pack cleanPath

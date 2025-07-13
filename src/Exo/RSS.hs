@@ -59,7 +59,7 @@ toRssItem path pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) =
               )
       let
         link = Const.baseUrl
-            <> Pandoc.makeCleanLink (FilePath.dropDirectory1 path)
+            <> T.pack (Pandoc.cleanLink (FilePath.dropDirectory1 path))
       Right (RSS.nullItem title)
         { RSS.rssItemPubDate = Just (rfc822Format pubDate)
         , RSS.rssItemLink = Just link
