@@ -2,24 +2,18 @@
 
 -- Loads known metadata fields from Pandoc documents.
 module Exo.Pandoc.Metadata
-( Metadata(..)
-, metaUpdated
-
--- Conversions
+( Metadata(..), metaUpdated
 , parseMetadata
-, toVariables
 ) where
 
 import System.FilePath((</>), (-<.>))
 import qualified Data.Aeson as Aeson
-import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Development.Shake.FilePath as FilePath
 import qualified Exo.Const as Const
 import qualified Exo.Pandoc.Link as Link
 import qualified Exo.Pandoc.Meta as Meta
 import qualified Exo.Pandoc.Time as Time
-import qualified Text.DocTemplates as DocTemplates
 import qualified Text.Pandoc as Pandoc
 
 data Metadata =
@@ -93,13 +87,3 @@ parseMetadata metaInputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
 
   pure Metadata {..}
 
-toVariables :: Metadata -> Map Text (DocTemplates.Val Text)
-toVariables metadata =
-  let
-    toVal = maybe DocTemplates.NullVal DocTemplates.toVal
-  in
-    Map.fromList
-      [ ("created", toVal (Time.formatTime <$> metaCreated metadata))
-      , ("published", toVal (Time.formatTime <$> metaPublished metadata))
-      , ("modified", toVal (Time.formatTime <$> metaModified metadata))
-      ]

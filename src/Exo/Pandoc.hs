@@ -80,19 +80,7 @@ makeHtml args template pandoc = do
 
   -- Make additional template variables
   crossposts <- makeCrossposts pandoc
-  created <-
-    -- TODO: Assert that this exists on all files and add missing data.
-    if hasMetaKey "created" pandoc
-    then DocTemplates.toVal <$> getCreatedText pandoc
-    else Right DocTemplates.NullVal
-  published <-
-    if hasMetaKey "published" pandoc
-    then DocTemplates.toVal <$> getPublishedText pandoc
-    else Right DocTemplates.NullVal
-  modified <-
-    if hasMetaKey "modified" pandoc
-    then DocTemplates.toVal <$> getModifiedText pandoc
-    else Right DocTemplates.NullVal
+  dateList <- makeDateList pandoc
   let
     variables :: Map Text (DocTemplates.Val Text)
     variables = do
@@ -101,9 +89,7 @@ makeHtml args template pandoc = do
         , ("breadcrumb", makeBreadcrumbs (canonicalPath args))
         , ("file", makeFileListing (inputPath args) (indexListing args))
         , ("tagged", makeFileListing' (inputPath args) (taggedListing args))
-        , ("created", created)
-        , ("published", published)
-        , ("modified", modified)
+        , ("date", DocTemplates.toVal dateList)
         , ("crosspost", crossposts)
         ]
 
@@ -215,6 +201,35 @@ makeBreadcrumbs path =
 
   in
     DocTemplates.toVal (T.pack <$> breadcrumbs)
+
+makeDateList :: Pandoc -> Either Text (DocTemplates.Val Text)
+makeDateList pandoc = do
+  published <-
+    if hasMetaKey "published" pandoc
+    then Just <$> getPublishedText pandoc
+    else Right Nothing
+  created <-
+    -- TODO: Assert that this exists on all files and add missing data.
+    if hasMetaKey "created" pandoc
+    then Just <$> getCreatedText pandoc
+    else Right Nothing
+  modified <-
+    if hasMetaKey "modified" pandoc
+    then Just <$> getModifiedText pandoc
+    else Right Nothing
+
+  let
+    toDateVar t d =
+      Map.fromList
+        [ ("type" :: Text, t)
+        , ("time", d)
+        ]
+  
+  pure . DocTemplates.toVal $ catMaybes
+    [ toDateVar "published" <$> published
+    , toDateVar "created" <$> created
+    , toDateVar "modified" <$> modified
+    ]
 
 -- Creates a list of crossposts.
 makeCrossposts :: Pandoc -> Either Text (DocTemplates.Val Text)

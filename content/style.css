@@ -399,10 +399,7 @@ iframe {
     font-family: 'Space Mono', monospace;
     font-size: calc(var(--grid-size)*2/3);
     color: var(--subtext);
-
-    > *:not(:first-child) {
-        margin-left: var(--grid-size);
-    }
+    white-space: preserve;
 }
 
 /* Unique style for a banner on the homepage. */

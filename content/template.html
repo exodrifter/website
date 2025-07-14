@@ -65,38 +65,17 @@
             <section id="_meta">
                 <h1><i class="ri-database-2-fill"></i> meta</i></h1>
                 $if(tags)$
-                <p class="meta">
-                    tags:
-                    $for(tags)$
-                    <a href="/tags/$tags$">$tags$</a>
-                    $sep$<span> </span>
-                    $endfor$
-                </p>
+                <p class="meta">tags: $for(tags)$<a href="/tags/$tags$">$tags$</a>$sep$ $endfor$</p>
                 $endif$
-                <p class="meta">
-                $if(created)$
-                    created: $created$
+                $if(date)$
+                <p class="meta">$for(date)$$date.type$: <time datetime="$date.time$">$date.time$</time>
+$endfor$</p>
                 $endif$
-                $if(published)$
-                <br>
-                    published: $published$
-                $endif$
-                $if(modified)$
-                <br>
-                    modified: $modified$
-                $endif$
-                </p>
                 $if(crosspost)$
-                <div class="meta">
-                <p class="meta">crossposts:</p>
-                $for(crosspost)$
-                <p class="meta">
-                    <time datetime="$crosspost.time$" title="$crosspost.time$">$crosspost.time$</time>
-                    @
-                    <a href="$crosspost.url$">$crosspost.site$</a>
-                </p>
-                $endfor$
-                </div>
+                <p class="meta">crossposts:
+$for(crosspost)$
+  <time datetime="$crosspost.time$">$crosspost.time$</time> @ <a href="$crosspost.url$">$crosspost.site$</a>
+$endfor$</p>
                 $endif$
             </section>
 
