@@ -63,6 +63,12 @@ data TemplateArgs = TemplateArgs
   , taggedListing :: [Metadata]
     -- ^ If this file is a tag page, then this is a list of all of the other
     -- files with this tag.
+  , logoSource :: Text
+    -- ^ This is the SVG source of the logo. We have to include this directly
+    -- into the source of the generated HTML in order for the logo to respond to
+    -- the user's color scheme, because of WebKit bug 199134 "SVG images don't
+    -- support prefers-color-scheme adjustments when embedded in a page".
+    -- https://bugs.webkit.org/show_bug.cgi?id=199134
   }
 
 -- Makes an HTML document just the way I want it.
@@ -91,7 +97,8 @@ makeHtml args template pandoc = do
     variables :: Map Text (DocTemplates.Val Text)
     variables = do
       Map.fromList
-        [ ("breadcrumb", makeBreadcrumbs (canonicalPath args))
+        [ ("logo", DocTemplates.toVal (logoSource args))
+        , ("breadcrumb", makeBreadcrumbs (canonicalPath args))
         , ("file", makeFileListing (inputPath args) (indexListing args))
         , ("tagged", makeFileListing' (inputPath args) (taggedListing args))
         , ("created", created)

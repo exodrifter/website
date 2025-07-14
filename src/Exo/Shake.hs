@@ -18,6 +18,7 @@ module Exo.Shake
 , findSourceFiles
 , buildTemplate
 , runEither
+, decodeByteString
 ) where
 
 import Data.List ((\\))
@@ -188,3 +189,7 @@ runEither e =
   case e of
     Right a -> pure a
     Left err -> error err
+
+decodeByteString :: ByteString -> Action Text
+decodeByteString bs =
+  runEither (first (T.pack . displayException) (decodeUtf8' bs))

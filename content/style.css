@@ -91,9 +91,10 @@ article > * + *, aside > * + *, blockquote > * + *, section > * + *,
 
 /* The logo is always a fixed size. */
 .logo {
+    display: block;
     width: var(--sidebar-size);
     height: calc(var(--grid-size)*4);
-    object-fit: contain;
+    text-align: center;
 }
 
 /* Custom style for the search bar. */

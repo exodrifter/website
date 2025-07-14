@@ -11,7 +11,6 @@ import qualified Exo.Shake as Shake
 import qualified Data.Binary as Binary
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
-import qualified Data.Text.Encoding as TE
 import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
 
@@ -41,9 +40,7 @@ main = Shake.runShake $ do
   -- Parse markdown files.
   getPandoc <- (. PandocOracle) <$> Shake.cacheJSON \(PandocOracle path) -> do
     Shake.need [path]
-    bs <- readFileBS path
-    md <- Shake.runEither $
-      first (T.pack . displayException) (TE.decodeUtf8' bs)
+    md <- Shake.decodeByteString =<< readFileBS path
     Shake.runEither (Pandoc.parseMarkdown md)
 
   -- Parse metadata.
@@ -68,6 +65,10 @@ main = Shake.runShake $ do
       canonicalPath = Shake.dropDirectory1 out
       inputPath = Const.contentDirectory </> canonicalPath -<.> "md"
     pandoc <- getPandoc inputPath
+
+    let logoPath = Const.contentDirectory </> "logo.svg"
+    Shake.need [logoPath]
+    logoSource <- Shake.decodeByteString =<< readFileBS logoPath
 
     -- Find dependencies
     let workingDirectory = Shake.takeDirectory out
