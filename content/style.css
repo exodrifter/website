@@ -385,6 +385,12 @@ code span.wa { font-style: italic; } /* Warning */
     text-align: center;
 }
 
+/* Embeds */
+iframe {
+    width: 100%;
+    height: calc(var(--grid-size) * 18)
+}
+
 /* Manually-applied styles
 ==============================================================================*/
 
