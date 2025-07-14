@@ -44,7 +44,7 @@ main = Shake.runShake $ do
     Shake.runEither (Pandoc.parseMarkdown md)
 
   -- Parse metadata.
-  getMetadata <-  (. MetaOracle) <$> Shake.cacheJSON \(MetaOracle path) -> do
+  getMetadata <- (. MetaOracle) <$> Shake.cacheJSON \(MetaOracle path) -> do
     pandoc <- getPandoc path
     Shake.runEither (Pandoc.parseMetadata path pandoc)
 
@@ -65,6 +65,7 @@ main = Shake.runShake $ do
       canonicalPath = Shake.dropDirectory1 out
       inputPath = Const.contentDirectory </> canonicalPath -<.> "md"
     pandoc <- getPandoc inputPath
+    metadata <- getMetadata inputPath
 
     let logoPath = Const.contentDirectory </> "logo.svg"
     Shake.need [logoPath]

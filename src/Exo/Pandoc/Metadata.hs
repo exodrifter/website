@@ -3,17 +3,20 @@
 -- Loads known metadata fields from Pandoc documents.
 module Exo.Pandoc.Metadata
 ( Metadata(..), metaUpdated
+, Crosspost(..)
 , parseMetadata
 ) where
 
 import System.FilePath((</>), (-<.>))
 import qualified Data.Aeson as Aeson
+import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Development.Shake.FilePath as FilePath
 import qualified Exo.Const as Const
 import qualified Exo.Pandoc.Link as Link
 import qualified Exo.Pandoc.Meta as Meta
 import qualified Exo.Pandoc.Time as Time
+import qualified Network.URI as URI
 import qualified Text.Pandoc as Pandoc
 
 data Metadata =
@@ -46,6 +49,9 @@ data Metadata =
     -- not meaningfully change (such as when link urls are updated to point to
     -- the new location of moved documents).
 
+    , metaCrossposts :: [Crosspost]
+    -- ^ The places where either this document has been posted or an
+    -- announcement of this document was posted.
     , metaTags :: [Text]
     -- ^ The manually curated tags that have been added to this document, which
     -- are used for categorization and search.
@@ -58,6 +64,17 @@ instance Aeson.ToJSON Metadata
 metaUpdated :: Metadata -> Maybe (Time.UTCTime, String)
 metaUpdated metadata =
   metaModified metadata <|> metaPublished metadata
+
+data Crosspost =
+  Crosspost
+    { crosspostUrl :: Text
+    , crosspostSite :: Text
+    , crosspostTime :: (Time.UTCTime, String)
+    }
+  deriving stock (Eq, Generic, Show)
+
+instance Aeson.FromJSON Crosspost
+instance Aeson.ToJSON Crosspost
 
 --------------------------------------------------------------------------------
 -- Conversions
@@ -82,8 +99,49 @@ parseMetadata metaInputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
   metaPublished <- extractTime "published" meta <> pure Nothing
   metaModified <- extractTime "modified" meta <> pure Nothing
 
-  -- Tags
+  metaCrossposts <- parseCrossposts meta
   metaTags <- Meta.lookupMetaStrings "tags" meta <> pure []
-
   pure Metadata {..}
 
+parseCrossposts :: Map Text Pandoc.MetaValue -> Either Text [Crosspost]
+parseCrossposts meta =
+  case Map.lookup "crossposts" meta of
+    Just (Pandoc.MetaList arr) -> traverse parseCrosspost arr
+    Just _ -> Left "\"crossposts\" metadata is not a list!"
+    Nothing -> Right []
+
+parseCrosspost :: Pandoc.MetaValue -> Either Text Crosspost
+parseCrosspost v =
+  case v of
+    Pandoc.MetaMap m -> do
+      crosspostUrl <- Meta.lookupMetaString "url" m
+      crosspostSite <- extractSite =<< Meta.lookupMetaString "url" m
+      crosspostTime <- Time.parseTime =<< Meta.lookupMetaString "time" m
+      pure Crosspost {..}
+    _ -> Left "\"crosspost\" metadata list item is not a map!"
+
+extractSite :: Text -> Either Text Text
+extractSite text = do
+  uri <-
+    case URI.parseURI (T.unpack text) of
+      Just u -> Right u
+      Nothing -> Left ("Key \"url\" is not a URI! Saw: \"" <> text <> "\"")
+  auth <-
+    case URI.uriAuthority uri of
+      Just u -> Right u
+      Nothing -> Left ("Key \"url\" has no authority! Saw: \"" <> text <> "\"")
+  case URI.uriRegName auth of
+    "bsky.app" -> Right "bsky"
+    "cohost.org" -> Right "cohost!"
+    "exodrifter.itch.io" -> Right "itch.io"
+    "forum.tsuki.games" -> Right "t/suki"
+    "ko-fi.com" -> Right "ko-fi"
+    "music.exodrifter.space" -> Right "bandcamp"
+    "soundcloud.com" -> Right "soundcloud"
+    "store.steampowered.com" -> Right "steam"
+    "twitter.com" -> Right "twitter"
+    "www.patreon.com" -> Right "patreon"
+    "www.youtube.com" -> Right "youtube"
+    "x.com" -> Right "twitter"
+    "steamcommunity.com" -> Right "steam"
+    a -> Right (T.pack a)

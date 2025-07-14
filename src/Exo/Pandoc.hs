@@ -53,7 +53,9 @@ parseMarkdown markdown =
 --------------------------------------------------------------------------------
 
 data TemplateArgs = TemplateArgs
-  { canonicalPath :: FilePath
+  { metadata :: Metadata
+    -- ^ The metadata extracted from the Pandoc.
+  , canonicalPath :: FilePath
     -- ^ The path of this file on the website.
   , inputPath :: FilePath
     -- ^ The path to this file's source.
@@ -76,21 +78,20 @@ data TemplateArgs = TemplateArgs
 -- In particular, all links use "clean" URLs for paths leading to HTML files,
 -- which means URLs will not contain the ".html" extension or end in "index".
 makeHtml :: TemplateArgs -> Template Text -> Pandoc -> Either Text Text
-makeHtml args template pandoc = do
+makeHtml TemplateArgs{..} template pandoc = do
 
   -- Make additional template variables
-  crossposts <- makeCrossposts pandoc
   dateList <- makeDateList pandoc
   let
     variables :: Map Text (DocTemplates.Val Text)
     variables = do
       Map.fromList
-        [ ("logo", DocTemplates.toVal (logoSource args))
-        , ("breadcrumb", makeBreadcrumbs (canonicalPath args))
-        , ("file", makeFileListing (inputPath args) (indexListing args))
-        , ("tagged", makeFileListing' (inputPath args) (taggedListing args))
+        [ ("logo", DocTemplates.toVal logoSource)
+        , ("breadcrumb", makeBreadcrumbs canonicalPath)
+        , ("file", makeFileListing inputPath indexListing)
+        , ("tagged", makeFileListing' inputPath taggedListing)
         , ("date", DocTemplates.toVal dateList)
-        , ("crosspost", crossposts)
+        , ("crosspost", makeCrossposts (metaCrossposts metadata))
         ]
 
     writerOptions = def
@@ -232,67 +233,17 @@ makeDateList pandoc = do
     ]
 
 -- Creates a list of crossposts.
-makeCrossposts :: Pandoc -> Either Text (DocTemplates.Val Text)
-makeCrossposts (Pandoc (Meta meta) _) =
+makeCrossposts :: [Crosspost] -> DocTemplates.Val Text
+makeCrossposts crossposts =
   let
-    toTextValWith :: (Text -> Either Text Text)
-                  -> Text
-                  -> Map Text MetaValue
-                  -> Either Text (DocTemplates.Val Text)
-    toTextValWith fn key m = do
-      text <- lookupMetaString key m
-      DocTemplates.toVal <$> fn text
-
-    extractSite :: Text -> Either Text Text
-    extractSite text = do
-      uri <- justElse
-        ("Key \"url\" is not a URI! Saw: \"" <> text <> "\"")
-        (URI.parseURI (T.unpack text))
-      auth <- justElse
-        ("Key \"url\" does not have an authority! Saw: \"" <> text <> "\"")
-        (URI.uriAuthority uri)
-      case URI.uriRegName auth of
-        "bsky.app" -> Right "bsky"
-        "cohost.org" -> Right "cohost!"
-        "exodrifter.itch.io" -> Right "itch.io"
-        "forum.tsuki.games" -> Right "t/suki"
-        "ko-fi.com" -> Right "ko-fi"
-        "music.exodrifter.space" -> Right "bandcamp"
-        "soundcloud.com" -> Right "soundcloud"
-        "store.steampowered.com" -> Right "steam"
-        "twitter.com" -> Right "twitter"
-        "www.patreon.com" -> Right "patreon"
-        "www.youtube.com" -> Right "youtube"
-        "x.com" -> Right "twitter"
-        "steamcommunity.com" -> Right "steam"
-        a -> Right (T.pack a)
-
-    withMetaMap :: MetaValue -> Either Text (Map Text MetaValue)
-    withMetaMap v =
-      case v of
-        MetaMap m -> Right m
-        _ -> Left "metadata is not a map!"
-
-    convertCrosspost :: MetaValue -> Either Text (DocTemplates.Val Text)
-    convertCrosspost c = do
-      m <- withMetaMap c
-      url <- toTextValWith pure "url" m
-      site <- toTextValWith extractSite "url" m
-      time <- toTextValWith reformatTime "time" m
-
-      pure . DocTemplates.toVal $ Map.fromList
-        [ ("url" :: Text, url)
-        , ("site", site)
-        , ("time", time)
+    makeCrosspost Crosspost{..} =
+      Map.fromList
+        [ ("url" :: Text, crosspostUrl)
+        , ("site", crosspostSite)
+        , ("time", formatTime crosspostTime)
         ]
   in
-    case Map.lookup "crossposts" meta of
-      Just (MetaList arr) ->
-        DocTemplates.ListVal <$> traverse convertCrosspost arr
-      Just _ ->
-        Left "\"crossposts\" metadata is not a list!"
-      Nothing ->
-        Right DocTemplates.NullVal
+    DocTemplates.toVal (makeCrosspost <$> crossposts)
 
 -- Makes a listing of files that doesn't include the current file
 makeFileListing :: FilePath -> [(FilePath, Pandoc)] -> DocTemplates.Val Text
@@ -347,9 +298,3 @@ runPandoc pandoc =
     case result of
       Right a -> Right a
       Left err -> Left (renderError err)
-
-justElse :: e -> Maybe a -> Either e a
-justElse err ma =
-  case ma of
-    Just a -> Right a
-    Nothing -> Left err
