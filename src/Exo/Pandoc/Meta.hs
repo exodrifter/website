@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 
 -- Loads known metadata fields from Pandoc documents.
-module Exo.Pandoc.Metadata
+module Exo.Pandoc.Meta
 ( Metadata(..), metaUpdated
 , Crosspost(..)
 , parseMetadata
