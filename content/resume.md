@@ -89,7 +89,7 @@ visualization contract.
 
 <br/>
 
-**[Port of Call](press-kits/port-of-call/port-of-call.md)<span style="float: right">January 2014 - August 2014</span>**
+**[Port of Call](press-kits/port-of-call/index.md)<span style="float: right">January 2014 - August 2014</span>**
 - A narrative experimental exploration game about uncovering the secret of your past. Interact with other passengers on the ship, explore your surroundings, and satisfy the demands of the captain.
 
 <br/>
