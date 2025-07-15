@@ -1,9 +1,11 @@
 ---
-title: teknedia
 created: 2024-09-16T21:19:53Z
 modified: 2024-09-19T21:37:56Z
+aliases:
+- teknedia
 tags:
 - teknedia
+- video-game
 ---
 
 <div class="banner">

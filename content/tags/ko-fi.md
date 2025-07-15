@@ -1,6 +1,7 @@
 ---
-title: Ko-fi
 created: 2024-10-10T20:08:53Z
+aliases:
+- Ko-fi
 tags:
 - ko-fi
 ---

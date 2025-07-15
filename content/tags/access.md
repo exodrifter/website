@@ -1,7 +1,8 @@
 ---
-title: Access
 created: 2024-10-10T20:26:54Z
 modified: 2024-10-15T08:29:00Z
+aliases:
+- access
 tags:
 - access
 ---

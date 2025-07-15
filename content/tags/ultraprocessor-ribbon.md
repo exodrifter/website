@@ -1,6 +1,7 @@
 ---
-title: Ultraprocessor Ribbon
 created: 2024-09-16T22:57:30Z
+aliases:
+- Ultraprocessor Ribbon
 tags:
 - ultraprocessor-ribbon
 ---

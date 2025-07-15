@@ -1,6 +1,8 @@
 ---
-title: log
 created: 2024-10-10T20:02:42Z
+aliases:
+- log
+- logs
 tags:
 - log
 ---

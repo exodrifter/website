@@ -1,6 +1,7 @@
 ---
-title: Patreon
 created: 2024-09-25T08:22:12Z
+aliases:
+- Patreon
 tags:
 - patreon
 ---

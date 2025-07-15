@@ -1,7 +1,8 @@
 ---
-title: Obsidian
 created: 2024-09-18T04:29:04Z
 modified: 2024-10-11T06:12:39Z
+aliases:
+- Obsidian
 tags:
 - obsidian
 ---

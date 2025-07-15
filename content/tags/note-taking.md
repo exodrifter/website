@@ -1,6 +1,7 @@
 ---
-title: note-taking
 created: 2024-09-18T04:31:36Z
+aliases:
+- note taking
 tags:
 - note-taking
 ---

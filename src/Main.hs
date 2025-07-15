@@ -104,9 +104,18 @@ main = Shake.runShake $ do
     taggedListing <-
       if inputFolderPath == "content/tags" && fileName /= "index"
       then do
+        let tag = T.pack fileName
         tagMap <- getTagMap ()
-        pure (fromMaybe [] (Map.lookup (T.pack fileName) tagMap))
+        case Map.lookup tag tagMap of
+          Nothing -> error ("Tag " <> tag <> " has no tagged pages!")
+          Just a -> pure a
       else pure []
+
+    -- Make sure the tag pages exist for the tags used.
+    let
+      tagPath p = Const.outputDirectory </> "tags" </> T.unpack p -<.> ".html"
+      tagPaths = tagPath <$> Pandoc.metaTags metadata
+    Shake.need (filter (Pandoc.metaOutputPath metadata /=) tagPaths)
 
     let args = Pandoc.TemplateArgs {..}
     template <- Shake.buildTemplate (Const.contentDirectory </> "template.html")
@@ -146,9 +155,7 @@ needImageDependencies dir pandoc =
     Shake.need (Pandoc.query extractUrl pandoc)
 
 tagSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
-tagSort =
-     comparing (Down . fmap fst . Pandoc.metaUpdated)
-  <> comparing (Down . Pandoc.metaTitle)
+tagSort = comparing Pandoc.metaTitle
 
 indexSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
 indexSort =

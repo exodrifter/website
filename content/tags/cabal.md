@@ -1,7 +1,8 @@
 ---
-title: Cabal
 created: 2024-11-21T20:28:25Z
 modified: 2025-04-19T08:10:47Z
+aliases:
+- Cabal
 tags:
 - cabal
 - haskell
