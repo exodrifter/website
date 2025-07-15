@@ -1,6 +1,6 @@
 ---
 title: voluntary commitment press kit
-created: 2023-03-09
+created: 2024-09-15T14:18:54-05:00
 modified: 2025-07-12T10:52:49Z
 aliases:
 - voluntary commitment press kit

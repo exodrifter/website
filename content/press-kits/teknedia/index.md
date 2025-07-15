@@ -1,7 +1,6 @@
 ---
 title: Teknedia press kit
-created: 2011-02-25
-published: 2021-01-08
+created: 2024-09-15T14:18:54-05:00
 modified: 2025-07-12T10:51:05Z
 aliases:
 - Teknedia press kit

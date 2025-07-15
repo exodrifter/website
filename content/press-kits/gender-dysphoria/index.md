@@ -1,7 +1,6 @@
 ---
 title: Gender Dysphoria press kit
-created: 2020-07-03
-published: 2020-09-19
+created: 2024-02-28T19:31:09-06:00
 modified: 2025-07-12T10:46:55Z
 aliases:
 - Gender Dysphoria press kit

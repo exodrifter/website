@@ -1,6 +1,6 @@
 ---
 title: no signal press kit
-created: 2023-11-04
+created: 2024-02-28T18:42:17-06:00
 modified: 2025-07-12T10:48:43Z
 aliases:
 - no signal press kit
