@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-07-12T10:53:10Z
+modified: 2025-07-15T16:12:47-0700
 ---
 
 <div class="home-banner">
@@ -19,12 +19,12 @@ modified: 2025-07-12T10:53:10Z
 
 # blog
 
+- **2025-07-15** - [new website powered by shake and pandoc](blog/20250715200219.md)
 - **2025-07-08** - [offkai recap and being myself](blog/20250707063429.md)
 - **2025-06-25** - [no signal release date](blog/20250625201455.md)
 - **2025-05-16** - [godotcon boston 2025](blog/20250516012109.md)
 - **2025-03-17** - [no signal dev hiatus](blog/20250317203824.md)
 - **2025-01-01** - [2024 review](blog/20250101011413.md)
-- **2024-11-24** - [toronto game expo 2024](blog/20241124185224.md)
 
 [<i class="ri-rss-fill"></i> RSS](blog/index.xml)
 [See all posts...](blog/index.md)
