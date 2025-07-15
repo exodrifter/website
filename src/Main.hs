@@ -33,7 +33,7 @@ main = Shake.runShake $ do
   let
     copyExtensions = [ "*.css", "*.gif", "*.mp4", "*.png", "*.jpg", "*.svg", "*.txt" ]
   (Const.outputDirectory <//>) <$> copyExtensions |%> \out -> do
-    let inputPath = Const.contentDirectory </> Shake.dropDirectory1 out
+    let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
     Shake.need [inputPath]
     Shake.copyFileChanged inputPath out
 
@@ -69,9 +69,7 @@ main = Shake.runShake $ do
 
   -- Generate website pages.
   Const.outputDirectory <//> "*.html" %> \out -> do
-    let
-      canonicalPath = Shake.dropDirectory1 out
-      inputPath = Const.contentDirectory </> canonicalPath -<.> "md"
+    let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
     pandoc <- getPandoc inputPath
     metadata <- getMetadata inputPath
 

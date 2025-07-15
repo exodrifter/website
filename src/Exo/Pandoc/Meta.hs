@@ -2,17 +2,19 @@
 
 -- Loads known metadata fields from Pandoc documents.
 module Exo.Pandoc.Meta
-( Metadata(..), metaUpdated
-, Crosspost(..)
+( Metadata(..), Crosspost(..)
 , parseMetadata
+
+, metaInputPath
+, metaOutputPath
+, metaCanonicalPath
+, metaLink
+, metaUpdated
 ) where
 
-import System.FilePath((</>), (-<.>))
 import qualified Data.Aeson as Aeson
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
-import qualified Development.Shake.FilePath as FilePath
-import qualified Exo.Const as Const
 import qualified Exo.Pandoc.Link as Link
 import qualified Exo.Pandoc.Time as Time
 import qualified Network.URI as URI
@@ -21,14 +23,8 @@ import qualified Text.Pandoc.Shared as Pandoc
 
 data Metadata =
   Metadata
-    { metaInputPath :: FilePath
-    -- ^ The path to the input source file.
-    , metaOutputPath :: FilePath
-    -- ^ The path to the output source file.
-    , metaCanonicalPath :: FilePath
-    -- ^ The absolute path to the document on the website.
-    , metaLink :: Text
-    -- ^ The URL to the document on the website.
+    { metaPath :: Link.PathInfo
+    -- ^ The paths associated with this file.
 
     , metaTitle :: Text
     -- ^ The title of the document.
@@ -61,9 +57,24 @@ data Metadata =
 instance Aeson.FromJSON Metadata
 instance Aeson.ToJSON Metadata
 
+-- The path to the input source file.
+metaInputPath :: Metadata -> FilePath
+metaInputPath Metadata{..} = Link.pathInput metaPath
+
+-- The path to the output source file.
+metaOutputPath :: Metadata -> FilePath
+metaOutputPath Metadata{..} = Link.pathOutput metaPath
+
+-- The absolute path to the document on the website.
+metaCanonicalPath :: Metadata -> FilePath
+metaCanonicalPath Metadata{..} = Link.pathCanonical metaPath
+
+-- The URL to the document on the website.
+metaLink :: Metadata -> Text
+metaLink Metadata{..} = Link.pathLink metaPath
+
 metaUpdated :: Metadata -> Maybe (Time.UTCTime, String)
-metaUpdated metadata =
-  metaModified metadata <|> metaPublished metadata
+metaUpdated Metadata{..} = metaModified <|> metaPublished
 
 data Crosspost =
   Crosspost
@@ -81,16 +92,12 @@ instance Aeson.ToJSON Crosspost
 --------------------------------------------------------------------------------
 
 parseMetadata :: FilePath -> Pandoc.Pandoc -> Either Text Metadata
-parseMetadata metaInputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
+parseMetadata inputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
   -- Paths
-  let
-    path = FilePath.dropDirectory1 metaInputPath
-    metaOutputPath = Const.outputDirectory </> path -<.> "html"
-    metaCanonicalPath = Link.cleanLink path
-    metaLink = Const.baseUrl <> T.pack metaCanonicalPath
+  let metaPath = Link.pathInfoFromInput inputPath
 
   -- Title
-  let baseName = FilePath.takeBaseName metaInputPath
+  let baseName = Link.pathFile metaPath
   metaTitle <- lookupMetaString "title" meta <> pure (T.pack baseName)
 
   -- Times

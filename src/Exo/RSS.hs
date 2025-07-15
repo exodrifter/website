@@ -37,12 +37,12 @@ makeRss path metas = do
       Right (TL.toStrict text)
 
 toRssItem :: Pandoc.Metadata -> Either Text RSS.RSSItem
-toRssItem Pandoc.Metadata{..} = do
+toRssItem metadata@Pandoc.Metadata{..} = do
   let pubDate = fromMaybe metaCreated metaPublished
   Right (RSS.nullItem metaTitle)
     { RSS.rssItemPubDate = Just (rfc822Format (fst pubDate))
-    , RSS.rssItemLink = Just metaLink
-    , RSS.rssItemGuid = Just (RSS.nullGuid metaLink)
+    , RSS.rssItemLink = Just (Pandoc.metaLink metadata)
+    , RSS.rssItemGuid = Just (RSS.nullGuid (Pandoc.metaLink metadata))
       { RSS.rssGuidPermanentURL = Just True
       }
     }
