@@ -48,16 +48,25 @@ main = Shake.runShake $ do
     pandoc <- getPandoc path
     Shake.runEither (Pandoc.parseMetadata path pandoc)
 
+  -- Helper function for listing and sorting files based on their metadata
+  let
+    listFiles :: (FilePath -> Bool)
+            -> (Pandoc.Metadata -> Pandoc.Metadata -> Ordering)
+            -> Shake.Action [Pandoc.Metadata]
+    listFiles filterFn sortFn = do
+      sourceFiles <- filter filterFn <$> Shake.findSourceFiles "."
+      metas <- traverse getMetadata sourceFiles
+      pure (sortBy sortFn metas)
+
   -- Create a map of tags to files.
   getTagMap <- Shake.cacheJSON \() -> do
-    sourceFiles <- Shake.findSourceFiles "."
-    metas <- traverse getMetadata sourceFiles
+    metas <- listFiles
+      (const True)
+      (comparing (Down . fmap fst . Pandoc.metaUpdated))
     let
-      sortedMetas =
-        sortBy (comparing (Down . fmap fst . Pandoc.metaUpdated)) metas
       metaToMap meta =
         Map.fromList [(tag, [meta]) | tag <- Pandoc.metaTags meta]
-    pure (Map.unionsWith (<>) (metaToMap <$> sortedMetas))
+    pure (Map.unionsWith (<>) (metaToMap <$> metas))
 
   -- Generate website pages.
   Const.outputDirectory <//> "*.html" %> \out -> do
@@ -89,9 +98,12 @@ main = Shake.runShake $ do
             if FilePath.takeBaseName p == "index"
             then FilePath.takeDirectory (FilePath.takeDirectory p) == inputFolderPath
             else FilePath.takeDirectory p == inputFolderPath
-        sourceFiles <- filter isImmediate <$> Shake.findSourceFiles inputFolderPath
-        pandocs <- traverse (\p -> (,) p <$> getPandoc p) sourceFiles
-        pure (Pandoc.sortPandocsNewestFirst pandocs)
+        listFiles
+          isImmediate
+          (  comparing (Down . fmap fst . Pandoc.metaPublished)
+          <> comparing (Down . fmap fst . Pandoc.metaUpdated)
+          <> comparing (Down . Pandoc.metaTitle)
+          )
       else pure []
 
     -- If this is a tag, list other files with this tag.

@@ -55,7 +55,7 @@ parseMarkdown markdown =
 data TemplateArgs = TemplateArgs
   { metadata :: Metadata
     -- ^ The metadata extracted from the Pandoc.
-  , indexListing :: [(FilePath, Pandoc)]
+  , indexListing :: [Metadata]
     -- ^ If this file is an index, then this is a list of all of the other files
     -- in the index.
   , taggedListing :: [Metadata]
@@ -75,8 +75,6 @@ data TemplateArgs = TemplateArgs
 -- which means URLs will not contain the ".html" extension or end in "index".
 makeHtml :: TemplateArgs -> Template Text -> Pandoc -> Either Text Text
 makeHtml TemplateArgs{..} template pandoc = do
-
-  -- Make additional template variables
   let
     variables :: Map Text (DocTemplates.Val Text)
     variables = do
@@ -84,7 +82,7 @@ makeHtml TemplateArgs{..} template pandoc = do
         [ ("logo", DocTemplates.toVal logoSource)
         , ("breadcrumb", makeBreadcrumbs (metaCanonicalPath metadata))
         , ("file", makeFileListing (metaInputPath metadata) indexListing)
-        , ("tagged", makeFileListing' (metaInputPath metadata) taggedListing)
+        , ("tagged", makeFileListing (metaInputPath metadata) taggedListing)
         , ("date", makeDateItems metadata)
         , ("crosspost", makeCrossposts (metaCrossposts metadata))
         ]
@@ -226,29 +224,8 @@ makeCrossposts crossposts =
     DocTemplates.toVal (makeCrosspost <$> crossposts)
 
 -- Makes a listing of files that doesn't include the current file
-makeFileListing :: FilePath -> [(FilePath, Pandoc)] -> DocTemplates.Val Text
-makeFileListing inputFile files =
-  let
-    make :: (FilePath, Pandoc) -> DocTemplates.Val Text
-    make (file, pandoc) = do
-      let
-        path = "/" </> FilePath.dropDirectory1 file
-        name =
-          fromRight
-            (T.pack (FilePath.takeBaseName path))
-            (getTitle pandoc)
-      DocTemplates.toVal $ Map.fromList
-        [ ("path" :: Text, T.pack (cleanLink path))
-        , ("name", name)
-        ]
-
-    isNotInputFile (file, _) = file /= inputFile
-  in
-    DocTemplates.ListVal (make <$> filter isNotInputFile files)
-
--- Makes a listing of files that doesn't include the current file
-makeFileListing' :: FilePath -> [Metadata] -> DocTemplates.Val Text
-makeFileListing' inputFile metas =
+makeFileListing :: FilePath -> [Metadata] -> DocTemplates.Val Text
+makeFileListing inputFile metas =
   let
     make :: Metadata -> DocTemplates.Val Text
     make meta = do
