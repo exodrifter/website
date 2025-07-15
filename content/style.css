@@ -412,6 +412,10 @@ iframe {
         margin-left: var(--grid-size);
     }
 
+    div > * + * {
+        margin-top: var(--grid-size);
+    }
+
     img {
         width: calc(var(--grid-size)*5);
         height: calc(var(--grid-size)*5);

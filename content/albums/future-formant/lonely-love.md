@@ -27,37 +27,37 @@ crossposts:
 
 <iframe style="border: 0; width: 100%; max-width: 700px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=253081176/size=small/bgcol=ffffff/linkcol=0687f5/track=4107904221/transparent=true/" seamless><a href="https://music.exodrifter.space/album/future-formant">future formant by exodrifter</a></iframe>
 
-looking for your text<br/>
-pictures I took next<br/>
-recall how it went<br/>
-in my lonely love<br/>
+looking for your text
+pictures I took next
+recall how it went
+in my lonely love
 
-x-ray, my mind<br/>
-your gaze, those eyes<br/>
-heart pierced, how kind<br/>
-i cried, many times<br/>
+x-ray, my mind
+your gaze, those eyes
+heart pierced, how kind
+i cried, many times
 
-things i would say back<br/>
-you just had a knack<br/>
-to know what i meant<br/>
-in my lonely love<br/>
+things i would say back
+you just had a knack
+to know what i meant
+in my lonely love
 
-online, ghost touch<br/>
-your voice, that sound<br/>
-held close, so much<br/>
-in warm tears i drowned<br/>
+online, ghost touch
+your voice, that sound
+held close, so much
+in warm tears i drowned
 
-you say we never change<br/>
-i tried to fix my ways<br/>
-it can seem so strange when<br/>
-things remain the same<br/>
+you say we never change
+i tried to fix my ways
+it can seem so strange when
+things remain the same
 
-online, ghost touch<br/>
-your voice, that sound<br/>
-held close, so much<br/>
-in warm tears i drowned<br/>
+online, ghost touch
+your voice, that sound
+held close, so much
+in warm tears i drowned
 
-you say we never change<br/>
-tried to fix all my ways<br/>
-but things remain<br/>
-but things remain<br/>
+you say we never change
+tried to fix all my ways
+but things remain
+but things remain

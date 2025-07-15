@@ -19,17 +19,17 @@ _**Ultraprocessor Ribbon**_ is a 2D block breaking and visual novel erogame abou
 <div class="flex">
 <div style="flex-grow: 1">
 
-**working title:** Ultraprocessor Ribbon<br/>
-**release date:** tba<br/>
-**developer:** Demuresoft<br/>
-**publisher:** Demuresoft<br/>
+**working title:** Ultraprocessor Ribbon
+**release date:** tba
+**developer:** Demuresoft
+**publisher:** Demuresoft
 
 </div>
 <div style="flex-grow: 1">
 
-**engine:** Godot<br/>
-**stores:** [itch.io](https://jenniferraye.itch.io/ultraprocessor-ribbon)<br/>
-**price:** tba<br/>
+**engine:** Godot
+**stores:** [itch.io](https://jenniferraye.itch.io/ultraprocessor-ribbon)
+**price:** tba
 
 </div>
 </div>

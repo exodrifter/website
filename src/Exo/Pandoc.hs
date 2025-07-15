@@ -30,6 +30,8 @@ parseMarkdown markdown =
             enableExtension Ext_lists_without_preceding_blankline
             -- ^ I have a lot of lists that don't have a preceding blankline,
             -- because Obsidian allows that.
+          . enableExtension Ext_hard_line_breaks
+            -- ^ Obsidian treats all newlines as line breaks.
           . disableExtension Ext_smart
             -- ^ Some data in my YAML frontmatter have character sequences that
             -- will become invalid if they are converted by this extension. For

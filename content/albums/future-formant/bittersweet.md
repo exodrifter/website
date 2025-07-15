@@ -27,43 +27,43 @@ crossposts:
 
 <iframe style="border: 0; width: 100%; max-width: 700px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=253081176/size=small/bgcol=ffffff/linkcol=0687f5/track=2964576184/transparent=true/" seamless><a href="https://music.exodrifter.space/album/future-formant">future formant by exodrifter</a></iframe>
 
-coffee drinks are bittersweet<br/>
-memories of you<br/>
-addicted to another waking<br/>
-moment of you<br/>
+coffee drinks are bittersweet
+memories of you
+addicted to another waking
+moment of you
 
-and then the sun sets<br/>
-i have to work again<br/>
-imagine shadows<br/>
-to keep me company<br/>
+and then the sun sets
+i have to work again
+imagine shadows
+to keep me company
 
-hypnotic rhythm<br/>
-nodding off now and then<br/>
-it's all so breathless<br/>
-a silent symphony<br/>
+hypnotic rhythm
+nodding off now and then
+it's all so breathless
+a silent symphony
 
-but days fly by<br/>
-before my eyes<br/>
-memories are lost<br/>
+but days fly by
+before my eyes
+memories are lost
 
-forgetting to<br/>
-remember all the<br/>
-moments with you<br/>
+forgetting to
+remember all the
+moments with you
 
-but days fly by<br/>
-before my eyes<br/>
-memories are lost<br/>
+but days fly by
+before my eyes
+memories are lost
 
-forgetting to<br/>
-remember all the<br/>
-moments with you<br/>
+forgetting to
+remember all the
+moments with you
 
-but coffee drinks are bittersweet<br/>
-memories of you<br/>
-addicted to another waking<br/>
-moment of you<br/>
+but coffee drinks are bittersweet
+memories of you
+addicted to another waking
+moment of you
 
-but coffee drinks are bittersweet<br/>
-memories of you<br/>
-addicted to another waking<br/>
-moment of you<br/>
+but coffee drinks are bittersweet
+memories of you
+addicted to another waking
+moment of you

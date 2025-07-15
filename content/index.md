@@ -8,21 +8,13 @@ modified: 2025-07-12T10:53:10Z
 
 ![](blog/avatar.png)
 
-<section>
+<div>
 
 ▒▒▒▒ Hello? ▒▒▒▒ ...can you hear me? ▒▒▒▒
 
-<span>
-<i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)
-</span>
-<span>
-<i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)
-</span>
-<span>
-<i class="ri-user-fill"></i> [About me...](about.md)
-</span>
+<span><i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)</span><span><i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)</span><span><i class="ri-user-fill"></i> [About me...](about.md)</span>
 
-</section>
+</div>
 </div>
 
 # blog
@@ -34,7 +26,7 @@ modified: 2025-07-12T10:53:10Z
 - **2025-01-01** - [2024 review](blog/20250101011413.md)
 - **2024-11-24** - [toronto game expo 2024](blog/20241124185224.md)
 
-[<i class="ri-rss-fill"></i> RSS](blog/index.xml) <br/>
+[<i class="ri-rss-fill"></i> RSS](blog/index.xml)
 [See all posts...](blog/index.md)
 
 # press kits

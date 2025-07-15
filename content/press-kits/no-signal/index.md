@@ -20,17 +20,17 @@ _**no signal**_ is a hard sci-fi point-and-click adventure game where you explo
 <div class="flex">
 <div style="flex-grow: 1">
 
-**working title:** lost contact<br/>
-**release date:** July 25, 2025 at 21:00 UTC<br/>
-**developer:** exodrifter<br/>
-**publisher:** exodrifter<br/>
+**working title:** lost contact
+**release date:** July 25, 2025 at 21:00 UTC
+**developer:** exodrifter
+**publisher:** exodrifter
 
 </div>
 <div style="flex-grow: 1">
 
-**engine:** Godot<br/>
-**stores:** [itch.io](https://exodrifter.itch.io/lost-contact), [Steam](https://store.steampowered.com/app/2840590/no_signal)<br/>
-**price:** $14.99, with a 7-day 20% release discount<br/>
+**engine:** Godot
+**stores:** [itch.io](https://exodrifter.itch.io/lost-contact), [Steam](https://store.steampowered.com/app/2840590/no_signal)
+**price:** $14.99, with a 7-day 20% release discount
 
 </div>
 </div>
