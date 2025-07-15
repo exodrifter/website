@@ -1,6 +1,7 @@
 ---
 title: whale fall
 published: 2023-08-11T05:29:45Z
+created: 2025-02-05T17:45:22-06:00
 aliases:
 - whale fall
 crossposts:

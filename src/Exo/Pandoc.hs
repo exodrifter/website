@@ -204,7 +204,7 @@ makeDateItems Metadata{..} = do
         ]
   DocTemplates.toVal $ catMaybes
     [ makeDateItem "published" <$> metaPublished
-    , makeDateItem "created" <$> metaCreated
+    , Just (makeDateItem "created" metaCreated)
     , makeDateItem "modified" <$> metaModified
     ]
 

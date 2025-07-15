@@ -1,6 +1,7 @@
 ---
 title: interpreter
 published: 2023-01-22
+created: 2024-09-16T03:22:11-05:00
 aliases:
 - interpreter
 crossposts:

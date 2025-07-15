@@ -38,10 +38,7 @@ makeRss path metas = do
 
 toRssItem :: Pandoc.Metadata -> Either Text RSS.RSSItem
 toRssItem Pandoc.Metadata{..} = do
-  pubDate <-
-    case metaPublished <|> metaCreated of
-      Just a -> Right a
-      Nothing -> Left ("No publish date for \"" <> T.pack metaInputPath)
+  let pubDate = fromMaybe metaCreated metaPublished
   Right (RSS.nullItem metaTitle)
     { RSS.rssItemPubDate = Just (rfc822Format (fst pubDate))
     , RSS.rssItemLink = Just metaLink

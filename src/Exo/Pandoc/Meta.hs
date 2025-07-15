@@ -33,7 +33,7 @@ data Metadata =
     , metaTitle :: Text
     -- ^ The title of the document.
 
-    , metaCreated :: Maybe (Time.UTCTime, String)
+    , metaCreated :: (Time.UTCTime, String)
     -- ^ The time the document was created. This time can be after the publish
     -- date, in which case it indicates that I wrote and published the
     -- document's content elsewhere before I migrated it to my personal site.
@@ -94,10 +94,16 @@ parseMetadata metaInputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
   metaTitle <- lookupMetaString "title" meta <> pure (T.pack baseName)
 
   -- Times
-  let extractTime k = fmap Just . Time.parseTime <=< lookupMetaString k
-  metaCreated <- extractTime "created" meta <> pure Nothing
-  metaPublished <- extractTime "published" meta <> pure Nothing
-  metaModified <- extractTime "modified" meta <> pure Nothing
+  let extractTime k = Time.parseTime <=< lookupMetaString k
+  metaCreated <- extractTime "created" meta
+  metaPublished <-
+    if Map.member "published" meta
+    then Just <$> extractTime "published" meta
+    else pure Nothing
+  metaModified <-
+    if Map.member "modified" meta
+    then Just <$> extractTime "modified" meta
+    else pure Nothing
 
   metaCrossposts <- parseCrossposts meta
   metaTags <- lookupMetaStrings "tags" meta <> pure []

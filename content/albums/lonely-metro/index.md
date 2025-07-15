@@ -1,6 +1,7 @@
 ---
 title: lonely metro
 published: 2023-01-22
+created: 2024-09-16T03:22:11-05:00
 modified: 2025-07-12T10:44:08Z
 aliases:
 - lonely metro

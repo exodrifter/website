@@ -1,6 +1,7 @@
 ---
 title: lonely love
 published: 2024-03-05T06:56:32Z
+created: 2025-02-05T17:45:22-06:00
 aliases:
 - lonely love
 crossposts:

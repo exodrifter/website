@@ -1,6 +1,7 @@
 ---
 title: her reflection
 published: 2023-02-25T01:25:03Z
+created: 2025-02-05T17:45:22-06:00
 aliases:
 - her reflection
 crossposts:

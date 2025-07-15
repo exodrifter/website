@@ -1,6 +1,7 @@
 ---
 title: tessellated landscape
 published: 2021-07-12T13:42:01Z
+created: 2024-09-19T00:52:09-05:00
 aliases:
 - tessellated landscape
 crossposts:
