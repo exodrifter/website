@@ -217,6 +217,7 @@ img {
 }
 
 figcaption {
+    text-align: center;
     color: var(--subtext);
     margin-left: var(--grid-size);
     margin-right: var(--grid-size);
@@ -442,6 +443,21 @@ iframe {
     display: flex;
     flex-wrap: wrap;
     column-gap: var(--grid-size)
+}
+
+/* Used when I want to layout images in a grid. */
+.image-grid {
+  display: grid;
+  grid-template-columns: calc((var(--main-size) - var(--grid-size)) / 2) calc((var(--main-size) - var(--grid-size)) / 2);
+  gap: var(--grid-size);
+
+  figure {
+    margin: 0;
+
+    img {
+        height: calc(var(--grid-size) * 8)
+    }
+  }
 }
 
 /* Animations
