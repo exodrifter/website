@@ -44,6 +44,8 @@ data Metadata =
     -- metadata of the document is edited or when the document's content does
     -- not meaningfully change (such as when link urls are updated to point to
     -- the new location of moved documents).
+    , metaTranscribed :: Maybe (Time.UTCTime, String)
+    -- ^ The time the document was transcribed from a physical medium.
 
     , metaCrossposts :: [Crosspost]
     -- ^ The places where either this document has been posted or an
@@ -110,6 +112,10 @@ parseMetadata inputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
   metaModified <-
     if Map.member "modified" meta
     then Just <$> extractTime "modified" meta
+    else pure Nothing
+  metaTranscribed <-
+    if Map.member "transcribed" meta
+    then Just <$> extractTime "transcribed" meta
     else pure Nothing
 
   metaCrossposts <- parseCrossposts meta
