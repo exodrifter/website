@@ -223,6 +223,15 @@ figcaption {
     margin-top: var(--grid-size);
 }
 
+/* We have to move this element up a little bit if we want it to appear exactly
+   on the grid.
+*/
+hr {
+    border-bottom: solid var(--bg2) 2px;
+    margin-top: calc(var(--grid-size) - 1px);
+    margin-bottom: -1px;
+}
+
 /* Tables are a bit tricky. We want to draw them aligned to the grid, but the
    only way we can draw grid lines is by adding a border, which this changes the
    size of our element.
