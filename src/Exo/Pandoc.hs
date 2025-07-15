@@ -55,10 +55,6 @@ parseMarkdown markdown =
 data TemplateArgs = TemplateArgs
   { metadata :: Metadata
     -- ^ The metadata extracted from the Pandoc.
-  , canonicalPath :: FilePath
-    -- ^ The path of this file on the website.
-  , inputPath :: FilePath
-    -- ^ The path to this file's source.
   , indexListing :: [(FilePath, Pandoc)]
     -- ^ If this file is an index, then this is a list of all of the other files
     -- in the index.
@@ -81,16 +77,15 @@ makeHtml :: TemplateArgs -> Template Text -> Pandoc -> Either Text Text
 makeHtml TemplateArgs{..} template pandoc = do
 
   -- Make additional template variables
-  dateList <- makeDateList pandoc
   let
     variables :: Map Text (DocTemplates.Val Text)
     variables = do
       Map.fromList
         [ ("logo", DocTemplates.toVal logoSource)
-        , ("breadcrumb", makeBreadcrumbs canonicalPath)
-        , ("file", makeFileListing inputPath indexListing)
-        , ("tagged", makeFileListing' inputPath taggedListing)
-        , ("date", DocTemplates.toVal dateList)
+        , ("breadcrumb", makeBreadcrumbs (metaCanonicalPath metadata))
+        , ("file", makeFileListing (metaInputPath metadata) indexListing)
+        , ("tagged", makeFileListing' (metaInputPath metadata) taggedListing)
+        , ("date", makeDateItems metadata)
         , ("crosspost", makeCrossposts (metaCrossposts metadata))
         ]
 
@@ -203,33 +198,18 @@ makeBreadcrumbs path =
   in
     DocTemplates.toVal (T.pack <$> breadcrumbs)
 
-makeDateList :: Pandoc -> Either Text (DocTemplates.Val Text)
-makeDateList pandoc = do
-  published <-
-    if hasMetaKey "published" pandoc
-    then Just <$> getPublishedText pandoc
-    else Right Nothing
-  created <-
-    -- TODO: Assert that this exists on all files and add missing data.
-    if hasMetaKey "created" pandoc
-    then Just <$> getCreatedText pandoc
-    else Right Nothing
-  modified <-
-    if hasMetaKey "modified" pandoc
-    then Just <$> getModifiedText pandoc
-    else Right Nothing
-
+makeDateItems :: Metadata -> DocTemplates.Val Text
+makeDateItems Metadata{..} = do
   let
-    toDateVar t d =
+    makeDateItem t d =
       Map.fromList
         [ ("type" :: Text, t)
-        , ("time", d)
+        , ("time", formatTime d)
         ]
-  
-  pure . DocTemplates.toVal $ catMaybes
-    [ toDateVar "published" <$> published
-    , toDateVar "created" <$> created
-    , toDateVar "modified" <$> modified
+  DocTemplates.toVal $ catMaybes
+    [ makeDateItem "published" <$> metaPublished
+    , makeDateItem "created" <$> metaCreated
+    , makeDateItem "modified" <$> metaModified
     ]
 
 -- Creates a list of crossposts.
