@@ -14,10 +14,10 @@ import qualified Data.Text as T
 import qualified Development.Shake.FilePath as FilePath
 import qualified Exo.Const as Const
 import qualified Exo.Pandoc.Link as Link
-import qualified Exo.Pandoc.Meta as Meta
 import qualified Exo.Pandoc.Time as Time
 import qualified Network.URI as URI
 import qualified Text.Pandoc as Pandoc
+import qualified Text.Pandoc.Shared as Pandoc
 
 data Metadata =
   Metadata
@@ -77,7 +77,7 @@ instance Aeson.FromJSON Crosspost
 instance Aeson.ToJSON Crosspost
 
 --------------------------------------------------------------------------------
--- Conversions
+-- Parser
 --------------------------------------------------------------------------------
 
 parseMetadata :: FilePath -> Pandoc.Pandoc -> Either Text Metadata
@@ -91,16 +91,16 @@ parseMetadata metaInputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
 
   -- Title
   let baseName = FilePath.takeBaseName metaInputPath
-  metaTitle <- Meta.lookupMetaString "title" meta <> pure (T.pack baseName)
+  metaTitle <- lookupMetaString "title" meta <> pure (T.pack baseName)
 
   -- Times
-  let extractTime k = fmap Just . Time.parseTime <=< Meta.lookupMetaString k
+  let extractTime k = fmap Just . Time.parseTime <=< lookupMetaString k
   metaCreated <- extractTime "created" meta <> pure Nothing
   metaPublished <- extractTime "published" meta <> pure Nothing
   metaModified <- extractTime "modified" meta <> pure Nothing
 
   metaCrossposts <- parseCrossposts meta
-  metaTags <- Meta.lookupMetaStrings "tags" meta <> pure []
+  metaTags <- lookupMetaStrings "tags" meta <> pure []
   pure Metadata {..}
 
 parseCrossposts :: Map Text Pandoc.MetaValue -> Either Text [Crosspost]
@@ -114,9 +114,9 @@ parseCrosspost :: Pandoc.MetaValue -> Either Text Crosspost
 parseCrosspost v =
   case v of
     Pandoc.MetaMap m -> do
-      crosspostUrl <- Meta.lookupMetaString "url" m
-      crosspostSite <- extractSite =<< Meta.lookupMetaString "url" m
-      crosspostTime <- Time.parseTime =<< Meta.lookupMetaString "time" m
+      crosspostUrl <- lookupMetaString "url" m
+      crosspostSite <- extractSite =<< lookupMetaString "url" m
+      crosspostTime <- Time.parseTime =<< lookupMetaString "time" m
       pure Crosspost {..}
     _ -> Left "\"crosspost\" metadata list item is not a map!"
 
@@ -145,3 +145,28 @@ extractSite text = do
     "x.com" -> Right "twitter"
     "steamcommunity.com" -> Right "steam"
     a -> Right (T.pack a)
+
+--------------------------------------------------------------------------------
+-- Meta Helpers
+--------------------------------------------------------------------------------
+
+lookupMetaStrings :: Text -> Map Text Pandoc.MetaValue -> Either Text [Text]
+lookupMetaStrings key meta =
+  case Map.lookup key meta of
+    Just (Pandoc.MetaString text) -> Right [text]
+    Just (Pandoc.MetaInlines inlines) -> Right (Pandoc.stringify <$> inlines)
+    Just (Pandoc.MetaList inlines) -> Right (Pandoc.stringify <$> inlines)
+    Just _ ->
+      Left ("Key \"" <> key <> "\" is not a list of strings!")
+    _ ->
+      Left ("Key \"" <> key <> "\" does not exist!")
+
+lookupMetaString :: Text -> Map Text Pandoc.MetaValue -> Either Text Text
+lookupMetaString key meta =
+  case Map.lookup key meta of
+    Just (Pandoc.MetaString text) -> Right text
+    Just (Pandoc.MetaInlines inlines) -> Right (Pandoc.stringify inlines)
+    Just _ ->
+      Left ("Key \"" <> key <> "\" is not a string!")
+    _ ->
+      Left ("Key \"" <> key <> "\" does not exist!")
