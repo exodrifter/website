@@ -50,19 +50,18 @@ main = Shake.runShake $ do
 
   -- Helper function for listing and sorting files based on their metadata
   let
-    listFiles :: (FilePath -> Bool)
-            -> (Pandoc.Metadata -> Pandoc.Metadata -> Ordering)
-            -> Shake.Action [Pandoc.Metadata]
-    listFiles filterFn sortFn = do
-      sourceFiles <- filter filterFn <$> Shake.findSourceFiles "."
+    listFiles :: FilePath
+              -> (FilePath -> Bool)
+              -> (Pandoc.Metadata -> Pandoc.Metadata -> Ordering)
+              -> Shake.Action [Pandoc.Metadata]
+    listFiles dir filterFn sortFn = do
+      sourceFiles <- filter filterFn <$> Shake.findSourceFiles dir
       metas <- traverse getMetadata sourceFiles
       pure (sortBy sortFn metas)
 
   -- Create a map of tags to files.
   getTagMap <- Shake.cacheJSON \() -> do
-    metas <- listFiles
-      (const True)
-      (comparing (Down . fmap fst . Pandoc.metaUpdated))
+    metas <- listFiles "." (const True) tagSort
     let
       metaToMap meta =
         Map.fromList [(tag, [meta]) | tag <- Pandoc.metaTags meta]
@@ -98,12 +97,7 @@ main = Shake.runShake $ do
             if FilePath.takeBaseName p == "index"
             then FilePath.takeDirectory (FilePath.takeDirectory p) == inputFolderPath
             else FilePath.takeDirectory p == inputFolderPath
-        listFiles
-          isImmediate
-          (  comparing (Down . fmap fst . Pandoc.metaPublished)
-          <> comparing (Down . fmap fst . Pandoc.metaUpdated)
-          <> comparing (Down . Pandoc.metaTitle)
-          )
+        listFiles "." isImmediate indexSort
       else pure []
 
     -- If this is a tag, list other files with this tag.
@@ -124,14 +118,13 @@ main = Shake.runShake $ do
     let
       canonicalPath = Shake.dropDirectory1 out
       canonicalFolder = FilePath.takeDirectory canonicalPath
-      inputPath = Const.contentDirectory </> canonicalFolder
 
-    sourceFiles <-
-          filter (\p -> FilePath.takeFileName p /= "index.md")
-      <$> Shake.findSourceFiles inputPath
-    pandocs <- traverse (\p -> (,) p <$> getPandoc p) sourceFiles
+    metas <- listFiles
+      canonicalFolder
+      (\p -> FilePath.takeFileName p /= "index.md")
+      indexSort
 
-    feed <- Shake.runEither (RSS.makeRss canonicalFolder pandocs)
+    feed <- Shake.runEither (RSS.makeRss canonicalFolder metas)
     Shake.writeFileChanged out (T.unpack feed)
 
 -- Marks every locally referenced image as needed.
@@ -151,3 +144,14 @@ needImageDependencies dir pandoc =
         _ -> []
   in
     Shake.need (Pandoc.query extractUrl pandoc)
+
+tagSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
+tagSort =
+     comparing (Down . fmap fst . Pandoc.metaUpdated)
+  <> comparing (Down . Pandoc.metaTitle)
+
+indexSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
+indexSort =
+     comparing (Down . fmap fst . Pandoc.metaPublished)
+  <> comparing (Down . fmap fst . Pandoc.metaUpdated)
+  <> comparing (Down . Pandoc.metaTitle)

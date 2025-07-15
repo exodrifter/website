@@ -10,7 +10,6 @@ import System.FilePath((</>))
 import Exo.Pandoc.Link as X
 import Exo.Pandoc.Meta as X
 import Exo.Pandoc.Metadata as X
-import Exo.Pandoc.Sort as X
 import Exo.Pandoc.Time as X
 import Text.Pandoc as X
 import Text.Pandoc.Walk as X

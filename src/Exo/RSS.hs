@@ -3,23 +3,19 @@ module Exo.RSS
 ( makeRss
 ) where
 
-import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
 import qualified Data.Time as Time
 import qualified Development.Shake.FilePath as FilePath
-import qualified Exo.Const as Const
 import qualified Exo.Pandoc as Pandoc
 import qualified Text.Feed.Export as Feed
 import qualified Text.Feed.Types as Feed
 import qualified Text.RSS.Syntax as RSS
 
-makeRss :: FilePath -> [(FilePath, Pandoc.Pandoc)] -> Either Text Text
-makeRss path pandocs = do
-  let sortedPandocs = Pandoc.sortPandocsNewestFirst pandocs
-
+makeRss :: FilePath -> [Pandoc.Metadata] -> Either Text Text
+makeRss path metas = do
   -- Convert the pandocs into an RSS feed
-  items <- sequence (uncurry toRssItem <$> sortedPandocs)
+  items <- traverse toRssItem metas
   let
     folderName = FilePath.takeBaseName path
     rss =
@@ -40,38 +36,19 @@ makeRss path pandocs = do
     Just text ->
       Right (TL.toStrict text)
 
-toRssItem :: FilePath -> Pandoc.Pandoc -> Either Text RSS.RSSItem
-toRssItem path pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) =
-  let
-    result = do
-      title <-
-        if Map.member "title" meta
-        then Pandoc.lookupMetaString "title" meta
-        else Right (T.pack (FilePath.takeBaseName path))
-      pubDate <-
-        case (Pandoc.getPublishedTime pandoc, Pandoc.getCreatedTime pandoc) of
-          (Right published, _) -> Right published
-          (_, Right created) -> Right created
-          (Left err1, Left err2) ->
-            Left
-              ( "Could not find publish date for \"" <> T.pack path <> "\"; "
-              <> err1 <> " and " <> err2
-              )
-      let
-        link = Const.baseUrl
-            <> T.pack (Pandoc.cleanLink (FilePath.dropDirectory1 path))
-      Right (RSS.nullItem title)
-        { RSS.rssItemPubDate = Just (rfc822Format pubDate)
-        , RSS.rssItemLink = Just link
-        , RSS.rssItemGuid = Just (RSS.nullGuid link)
-          { RSS.rssGuidPermanentURL = Just True
-          }
-        }
-  in
-    case result of
-      Left err ->
-        Left ("Failed to make RSS item for " <> T.pack path <> "; " <> err)
-      Right item -> Right item
+toRssItem :: Pandoc.Metadata -> Either Text RSS.RSSItem
+toRssItem Pandoc.Metadata{..} = do
+  pubDate <-
+    case metaPublished <|> metaCreated of
+      Just a -> Right a
+      Nothing -> Left ("No publish date for \"" <> T.pack metaInputPath)
+  Right (RSS.nullItem metaTitle)
+    { RSS.rssItemPubDate = Just (rfc822Format (fst pubDate))
+    , RSS.rssItemLink = Just metaLink
+    , RSS.rssItemGuid = Just (RSS.nullGuid metaLink)
+      { RSS.rssGuidPermanentURL = Just True
+      }
+    }
 
 rfc822Format :: Time.UTCTime -> Text
 rfc822Format =

@@ -123,7 +123,7 @@ cacheJSON parse =
 wantWebsite :: Action ()
 wantWebsite = do
   -- Generate webpages from markdown.
-  sourceFiles <- findSourceFiles Const.contentDirectory
+  sourceFiles <- findSourceFiles "."
   let
     toOutputPath path =
       Const.outputDirectory </> X.dropDirectory1 path -<.> "html"
@@ -154,12 +154,13 @@ wantWebsite = do
 
 -- Finds all files that will become webpages in the content directory.
 findSourceFiles :: FilePath -> Action [FilePath]
-findSourceFiles searchDirectory = do
-  sourceFiles <- getDirectoryFiles searchDirectory ["//*.md"]
+findSourceFiles dir = do
+  sourceFiles <- getDirectoryFiles (Const.contentDirectory </> dir) ["//*.md"]
 
   let
-    rebuildPath path = FilePath.normalise (searchDirectory </> path)
-    -- ^ We need to normalize the path because you can pass "." as the `dir`.
+    rebuildPath path =
+      FilePath.normalise (Const.contentDirectory </> dir </> path)
+      -- ^ We need to normalize the path because you can pass "." as the `dir`.
     ignoreObsidianFiles = filter (notElem ".obsidian" . splitDirectories)
   pure (rebuildPath <$> ignoreObsidianFiles sourceFiles)
 
