@@ -65,7 +65,7 @@
             <section id="_meta">
                 <h1><i class="ri-database-2-fill"></i> meta</i></h1>
                 $if(tags)$
-                <p class="meta">tags: $for(tags)$<a href="/tags/$tags$">$tags$</a>$sep$ $endfor$</p>
+                <p class="meta">tags: $for(tags)$<a href="/tags/$tags$">$tags$</a>$sep$, $endfor$</p>
                 $endif$
                 $if(date)$
                 <p class="meta">$for(date)$$date.type$: <time datetime="$date.time$">$date.time$</time>
