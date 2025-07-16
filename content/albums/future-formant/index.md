@@ -8,6 +8,7 @@ crossposts:
 - url: https://music.exodrifter.space/album/future-formant
   time: 2025-01-22
 tag:
+- album
 - fl-studio
 ---
 

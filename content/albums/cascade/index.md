@@ -8,6 +8,7 @@ crossposts:
 - url: https://music.exodrifter.space/album/cascade
   time: 2022-01-22
 tag:
+- album
 - fl-studio
 ---
 

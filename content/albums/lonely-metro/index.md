@@ -9,6 +9,7 @@ crossposts:
 - url: https://music.exodrifter.space/album/lonely-metro
   time: 2022-01-22
 tags:
+- album
 - fl-studio
 ---
 
