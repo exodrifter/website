@@ -6,6 +6,7 @@ aliases:
 - Port of Call press kit
 permalink: /port-of-call
 tags:
+- press-kit
 - unity
 ---
 

@@ -6,6 +6,7 @@ aliases:
 - Teknedia press kit
 permalink: /teknedia
 tags:
+- press-kit
 - teknedia
 ---
 

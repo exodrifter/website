@@ -7,6 +7,7 @@ aliases:
 permalink: /voluntary-commitment
 tags:
 - godot
+- press-kit
 - voluntary-commitment
 ---
 

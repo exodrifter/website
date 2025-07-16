@@ -7,6 +7,7 @@ aliases:
 permalink: /ultraprocessor-ribbon
 tags:
 - godot
+- press-kit
 - ultraprocessor-ribbon
 ---
 
