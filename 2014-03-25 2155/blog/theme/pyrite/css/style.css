@@ -1,0 +1,155 @@
+html { overflow-y: scroll; }
+
+body {
+	color: #FFF;
+	background-color: #333;
+	font-family: sans-serif;
+	letter-spacing: .035em;
+	line-height: 1.5em;
+	min-height: 100%;
+}
+
+#header {
+	background-color: #A33;
+	padding: 1em 0 1em 0;
+	margin: 2em 0 2em 0;
+	width: 100%;
+}
+
+#footer {
+	margin: 5em 0 2em 0;
+}
+
+.video {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px; height: 0; overflow: hidden;
+	margin-bottom: 1em;
+}
+ 
+.video iframe, .video object, .video embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.title {
+	font-size: 2em;
+	font-family: "Andale Mono", AndaleMono, monospace;
+	margin-bottom: 0;
+}
+
+a:link.nav, a:visited.nav { color: #FFF; text-decoration: none; }
+a:hover.nav, a:active.nav { background-color: #C66; color: #FFF; text-decoration: none; }
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif; letter-spacing:.1em;
+	color: #FFF;
+	font-weight: bold;
+	margin-bottom: .4em;
+}
+h1 { font-size: 1.7em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
+h6 { font-size: 1em; }
+
+hr { background: url("../img/hr.png") repeat-x top left; border:0 !important; height: 2px; }
+.divider { margin: 1.5em 0 1.5em 0; }
+
+p { font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; margin: 0 0 1em 0; }
+p.nospace { margin: 0; }
+b { font-weight: bold; }
+u { text-decoration: underline; }
+i { font-style: italic; }
+
+li { margin-bottom: 1em; margin-left: 30px; list-style-type: circle; }
+
+img {
+	max-width: 100%; height: auto; width: auto\9; /* ie8 */
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: .5em;
+}
+
+em { font-style: italic; }
+
+a:link, a:visited { color: #78F; }
+a:hover, a:active { color: #ACF; }
+
+div .notice-info {
+	background-color: #444;
+	margin-bottom: 2em;
+	padding: 1em;
+}
+
+div .info {
+	margin-right: .8em;
+	width: 25px; height: 25px;
+	background: url('../img/ico-info.png') no-repeat left top;
+}
+
+.quote { padding: .5em 2em .5em 2em; font-style: italic; }
+
+.code {
+	background-color: #444;
+	margin: 1em 1em 1em 1em;
+	padding: 0 .5em 0 .5em;
+	font-family: "Andale Mono", AndaleMono, monospace;
+}
+
+.date { font-size: 1em; font-family: "Andale Mono", AndaleMono, monospace; }
+
+.post-footer { font-size: 1em; font-family: "Andale Mono", AndaleMono, monospace; color: #AAA; }
+
+div.tumblr {
+	width: 25px; height: 25px;
+	background: url('../img/ico-tumblr.png') no-repeat left top;
+}
+div.tumblr:hover { background-position: -25px 0 }
+
+.sidebar { margin-bottom: 2em; }
+.sidebar-header { margin-bottom: .3em; }
+
+.align-center { text-align: center; }
+.align-left { float: left; }
+.align-right { float: right; }
+
+.banner { width:100%; }
+
+#contactform {
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#contactform input[type="text"],
+#contactform input[type="email"],
+#contactform textarea {
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	width:100%;
+	min-width:100%;
+	max-width:100%;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+	margin-bottom: 1em;
+}
+
+#contactform button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:#666;
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}

@@ -1,0 +1,2 @@
+<?php namespace Pyrite; ?>
+window._skel_config={prefix:'<?php echo getURLTheme(); ?>css/style',resetCSS:true,boxModel:'border',grid:{gutters:2},breakpoints:{wide:{range:'1200-',containers:1080,grid:{gutters:40}},narrow:{range:'700-1199',containers:'90%',grid:{gutters:20}},mobile:{range:'-699',containers:'fluid',lockViewport:true,grid:{collapse:true}}}};
