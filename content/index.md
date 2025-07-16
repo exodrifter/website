@@ -19,7 +19,7 @@ modified: 2025-07-15T16:12:47-0700
 
 # blog
 
-- **2025-07-15** - [new website powered by shake and pandoc](blog/20250715200219.md)
+- **2025-07-15** - [new website, and the Bad Shape](blog/20250715200219.md)
 - **2025-07-08** - [offkai recap and being myself](blog/20250707063429.md)
 - **2025-06-25** - [no signal release date](blog/20250625201455.md)
 - **2025-05-16** - [godotcon boston 2025](blog/20250516012109.md)
