@@ -68,7 +68,8 @@ pathInfoFromOutput path =
 
 pathInput :: PathInfo -> FilePath
 pathInput PathInfo{..} =
-  Const.contentDirectory </> pathDirectory </> pathFile -<.> pathExtension
+  FilePath.normalise
+    (Const.contentDirectory </> pathDirectory </> pathFile -<.> pathExtension)
 
 pathOutput :: PathInfo -> FilePath
 pathOutput PathInfo{..} =
@@ -78,14 +79,16 @@ pathOutput PathInfo{..} =
         ".md" -> ".html"
         a -> a
   in
-    Const.outputDirectory </> pathDirectory </> pathFile -<.> newExtension
+    FilePath.normalise
+      (Const.outputDirectory </> pathDirectory </> pathFile -<.> newExtension)
 
 pathCanonical :: PathInfo -> FilePath
 pathCanonical PathInfo{..} =
-  case (pathFile, pathExtension) of
-    ("index", ".md") -> FilePath.addTrailingPathSeparator pathDirectory
-    (_, ".md") -> pathDirectory </> pathFile
-    _ -> pathDirectory </> pathFile -<.> pathExtension
+  FilePath.normalise
+    case (pathFile, pathExtension) of
+      ("index", ".md") -> FilePath.addTrailingPathSeparator pathDirectory
+      (_, ".md") -> pathDirectory </> pathFile
+      _ -> pathDirectory </> pathFile -<.> pathExtension
 
 pathLink :: PathInfo -> Text
 pathLink pathInfo = Const.baseUrl <> T.pack (pathCanonical pathInfo)
