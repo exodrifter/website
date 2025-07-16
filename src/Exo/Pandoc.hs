@@ -55,6 +55,8 @@ parseMarkdown markdown =
 data TemplateArgs = TemplateArgs
   { metadata :: Metadata
     -- ^ The metadata extracted from the Pandoc.
+  , commitHash :: Text
+    -- ^ The current git commit hash.
   , indexListing :: [Metadata]
     -- ^ If this file is an index, then this is a list of all of the other files
     -- in the index.
@@ -85,6 +87,7 @@ makeHtml TemplateArgs{..} template pandoc = do
         , ("tagged", makeFileListing (metaInputPath metadata) taggedListing)
         , ("date", makeDateItems metadata)
         , ("crosspost", makeCrossposts (metaCrossposts metadata))
+        , ("commitHash", DocTemplates.toVal commitHash)
         ]
 
     writerOptions = def
