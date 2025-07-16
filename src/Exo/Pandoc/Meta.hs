@@ -1,4 +1,5 @@
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 
 -- Loads known metadata fields from Pandoc documents.
 module Exo.Pandoc.Meta
@@ -18,6 +19,7 @@ import qualified Data.Text as T
 import qualified Exo.Pandoc.Link as Link
 import qualified Exo.Pandoc.Time as Time
 import qualified Network.URI as URI
+import qualified Text.DocTemplates as DocTemplates
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 
@@ -59,6 +61,24 @@ data Metadata =
 instance Aeson.FromJSON Metadata
 instance Aeson.ToJSON Metadata
 
+instance DocTemplates.ToContext Text Metadata where
+  toVal meta@Metadata{..} =
+    let
+      maybeToVal = maybe DocTemplates.NullVal DocTemplates.toVal
+      items = Map.fromList
+        [ ("path", DocTemplates.toVal metaPath)
+        , ("title", DocTemplates.toVal metaTitle)
+        , ("published", maybeToVal (Time.formatTime <$> metaPublished))
+        , ("created", DocTemplates.toVal (Time.formatTime metaCreated))
+        , ("modified", maybeToVal (Time.formatTime <$> metaModified))
+        , ("transcribed", maybeToVal (Time.formatTime <$> metaTranscribed))
+        , ("updated", maybeToVal (Time.formatTime <$> metaUpdated meta))
+        , ("crossposts", DocTemplates.toVal metaCrossposts)
+        , ("tags", DocTemplates.toVal metaTags)
+        ]
+    in
+      DocTemplates.MapVal (DocTemplates.Context items)
+
 -- The path to the input source file.
 metaInputPath :: Metadata -> FilePath
 metaInputPath Metadata{..} = Link.pathInput metaPath
@@ -89,6 +109,16 @@ data Crosspost =
 instance Aeson.FromJSON Crosspost
 instance Aeson.ToJSON Crosspost
 
+instance DocTemplates.ToContext Text Crosspost where
+  toVal Crosspost{..} =
+    let
+      items = Map.fromList
+        [ ("url", DocTemplates.toVal crosspostUrl)
+        , ("site", DocTemplates.toVal crosspostSite)
+        , ("time", DocTemplates.toVal (Time.formatTime crosspostTime))
+        ]
+    in
+      DocTemplates.MapVal (DocTemplates.Context items)
 --------------------------------------------------------------------------------
 -- Parser
 --------------------------------------------------------------------------------

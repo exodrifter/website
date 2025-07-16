@@ -225,6 +225,10 @@ figcaption {
     margin-top: var(--grid-size);
 }
 
+time {
+    font-family: 'Space Mono', monospace;
+}
+
 /* We have to move this element up a little bit if we want it to appear exactly
    on the grid.
 */
@@ -253,6 +257,7 @@ table {
     th, td {
         border: solid 2px var(--bg2);
         padding: calc(var(--grid-size)/2 - 1px);
+        vertical-align: top;
     }
 
     /* For reasons unknown to me, even though we have no margin or padding,
@@ -261,6 +266,14 @@ table {
     */
     tr:first-child > td {
         padding-top: calc(var(--grid-size)/2 - 3px);
+    }
+}
+
+/* Shrink the first column in file listings. */
+.listing {
+    th:first-child, td:first-child {
+        width: 0.1%;
+        white-space: nowrap;
     }
 }
 

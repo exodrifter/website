@@ -173,13 +173,10 @@ makeVimeoEmbed v =
 -- * Shows users their current position in a hierarchical structure
 -- * Helps users navigate to different parts of a hierarchical structure
 makeBreadcrumbs :: FilePath -> DocTemplates.Val Text
-makeBreadcrumbs path =
+makeBreadcrumbs canonical =
   -- Make a list of (crumb, path) tuples
   let
-    pieces =
-        fmap FilePath.dropExtension
-      . filter (/= "index.html") -- Drop index for clean URLs
-      $ FilePath.splitDirectories path
+    pieces = drop 1 (FilePath.splitDirectories canonical)
     crumbs = ("home", []) :| zip pieces [take n pieces | n <- [1..]]
 
     -- Make every breadcrumb into a link except for the last element
@@ -228,16 +225,9 @@ makeCrossposts crossposts =
 makeFileListing :: FilePath -> [Metadata] -> DocTemplates.Val Text
 makeFileListing inputFile metas =
   let
-    make :: Metadata -> DocTemplates.Val Text
-    make meta = do
-      DocTemplates.toVal $ Map.fromList
-        [ ("path" :: Text, T.pack ("/" </> metaCanonicalPath meta))
-        , ("name", metaTitle meta)
-        ]
-
     isNotInputFile meta = metaInputPath meta /= inputFile
   in
-    DocTemplates.ListVal (make <$> filter isNotInputFile metas)
+    DocTemplates.toVal (filter isNotInputFile metas)
 
 --------------------------------------------------------------------------------
 -- Helpers

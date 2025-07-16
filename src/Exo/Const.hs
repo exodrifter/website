@@ -15,4 +15,4 @@ contentDirectory = "content"
 
 -- The base URL of the website.
 baseUrl :: Text
-baseUrl = "https://www.exodrifter.space/"
+baseUrl = "https://www.exodrifter.space"

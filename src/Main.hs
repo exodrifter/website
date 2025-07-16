@@ -61,7 +61,7 @@ main = Shake.runShake $ do
 
   -- Create a map of tags to files.
   getTagMap <- Shake.cacheJSON \() -> do
-    metas <- listFiles "." (const True) tagSort
+    metas <- listFiles "." (const True) listingSort
     let
       metaToMap meta =
         Map.fromList [(tag, [meta]) | tag <- Pandoc.metaTags meta]
@@ -95,7 +95,7 @@ main = Shake.runShake $ do
             if FilePath.takeBaseName p == "index"
             then FilePath.takeDirectory (FilePath.takeDirectory p) == inputFolderPath
             else FilePath.takeDirectory p == inputFolderPath
-        listFiles "." isImmediate indexSort
+        listFiles "." isImmediate listingSort
       else pure []
 
     -- If this is a tag, list other files with this tag.
@@ -129,7 +129,7 @@ main = Shake.runShake $ do
     metas <- listFiles
       canonicalFolder
       (\p -> FilePath.takeFileName p /= "index.md")
-      indexSort
+      listingSort
 
     feed <- Shake.runEither (RSS.makeRss canonicalFolder metas)
     Shake.writeFileChanged out (T.unpack feed)
@@ -152,11 +152,8 @@ needImageDependencies dir pandoc =
   in
     Shake.need (Pandoc.query extractUrl pandoc)
 
-tagSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
-tagSort = comparing Pandoc.metaTitle
-
-indexSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
-indexSort =
+listingSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
+listingSort =
      comparing (Down . fmap fst . Pandoc.metaPublished)
   <> comparing (Down . fmap fst . Pandoc.metaUpdated)
-  <> comparing (Down . Pandoc.metaTitle)
+  <> comparing (Down . Pandoc.metaCreated)

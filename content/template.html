@@ -47,18 +47,50 @@
             $if(file)$
             <section id="_files">
                 <h1><i class="ri-file-2-fill"></i> files</i></h1>
-                $for(file)$
-                <p class="meta"><a href="$file.path$">$file.name$</a></p>
-                $endfor$
+                <table class="listing">
+                    <tr><th>timestamp</th><th>title</th></tr>
+                    $for(file)$
+                    <tr>
+                        <td>
+                            $if(file.published)$
+                            <time datetime="$file.published$">$file.published$</time>
+                            $elseif(file.updated)$
+                            <time datetime="$file.updated$">$file.updated$</time>
+                            $else$
+                            <time datetime="$file.created$">$file.created$</time>
+                            $endif$
+                        </td>
+                        <td>
+                            <a href="$file.path.canonical$">$file.title$</a>
+                        </td>
+                    </tr>
+                    $endfor$
+                </table>
             </section>
             $endif$
 
             $if(tagged)$
             <section id="_tagged">
-                <h1><i class="ri-price-tag-3-fill"></i> tagged</i></h1>
-                $for(tagged)$
-                <p class="meta"><a href="$tagged.path$">$tagged.name$</a></p>
-                $endfor$
+                <h1><i class="ri-file-2-fill"></i> tagged</i></h1>
+                <table class="listing">
+                    <tr><th>timestamp</th><th>title</th></tr>
+                    $for(tagged)$
+                    <tr>
+                        <td>
+                            $if(tagged.published)$
+                            <time datetime="$tagged.published$">$tagged.published$</time>
+                            $elseif(tagged.updated)$
+                            <time datetime="$tagged.updated$">$tagged.updated$</time>
+                            $else$
+                            <time datetime="$tagged.created$">$tagged.created$</time>
+                            $endif$
+                        </td>
+                        <td>
+                            <a href="$tagged.path.canonical$">$tagged.title$</a>
+                        </td>
+                    </tr>
+                    $endfor$
+                </table>
             </section>
             $endif$
 

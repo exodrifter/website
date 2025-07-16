@@ -1,4 +1,5 @@
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 
 module Exo.Pandoc.Link
 ( PathInfo(pathFile)
@@ -15,9 +16,11 @@ module Exo.Pandoc.Link
 
 import System.FilePath ((</>), (-<.>))
 import qualified Data.Aeson as Aeson
+import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Development.Shake.FilePath as FilePath
 import qualified Exo.Const as Const
+import qualified Text.DocTemplates as DocTemplates
 
 -- Each source file gets associated with multiple different kinds of paths:
 -- the input path, output path, canonical path, and link. However, we often only
@@ -37,6 +40,18 @@ data PathInfo =
 
 instance Aeson.FromJSON PathInfo
 instance Aeson.ToJSON PathInfo
+
+instance DocTemplates.ToContext Text PathInfo where
+  toVal path =
+    let
+      items = Map.fromList
+        [ ("input" :: Text, T.pack (pathInput path))
+        , ("output", T.pack (pathOutput path))
+        , ("canonical", T.pack (pathCanonical path))
+        , ("url", pathLink path)
+        ]
+    in
+      DocTemplates.toVal items
 
 -- Parses path info from a path pointing to a source file in the contents
 -- folder.
@@ -84,11 +99,12 @@ pathOutput PathInfo{..} =
 
 pathCanonical :: PathInfo -> FilePath
 pathCanonical PathInfo{..} =
-  FilePath.normalise
-    case (pathFile, pathExtension) of
-      ("index", ".md") -> FilePath.addTrailingPathSeparator pathDirectory
-      (_, ".md") -> pathDirectory </> pathFile
-      _ -> pathDirectory </> pathFile -<.> pathExtension
+  FilePath.normalise $
+    "/" </>
+      case (pathFile, pathExtension) of
+        ("index", ".md") -> FilePath.addTrailingPathSeparator pathDirectory
+        (_, ".md") -> pathDirectory </> pathFile
+        _ -> pathDirectory </> pathFile -<.> pathExtension
 
 pathLink :: PathInfo -> Text
 pathLink pathInfo = Const.baseUrl <> T.pack (pathCanonical pathInfo)
