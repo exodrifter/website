@@ -24,7 +24,7 @@ I really feel like my music is getting better these days and I have many new fri
 
 # player
 
-<iframe style="border: 0; width: 100%; max-width: 700px; height: 472px;" src="https://bandcamp.com/EmbeddedPlayer/album=477085509/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/" seamless><a href="https://music.exodrifter.space/album/lonely-metro">lonely metro by exodrifter</a></iframe>
+<iframe style="max-width: 700px;" src="https://bandcamp.com/EmbeddedPlayer/album=477085509/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/" seamless><a href="https://music.exodrifter.space/album/lonely-metro">lonely metro by exodrifter</a></iframe>
 
 # tracks
 

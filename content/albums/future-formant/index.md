@@ -27,7 +27,7 @@ thanks for taking the time to listen!
 
 # player
 
-<iframe style="border: 0; width: 100%; max-width: 700px; height: 373px;" src="https://bandcamp.com/EmbeddedPlayer/album=253081176/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/" seamless><a href="https://music.exodrifter.space/album/future-formant">future formant by exodrifter</a></iframe>
+<iframe style="max-width: 700px;" src="https://bandcamp.com/EmbeddedPlayer/album=253081176/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/" seamless><a href="https://music.exodrifter.space/album/future-formant">future formant by exodrifter</a></iframe>
 
 # tracks
 
