@@ -5,4 +5,5 @@ aliases:
 - albums
 tags:
 - album
+- index
 ---

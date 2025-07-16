@@ -100,7 +100,7 @@ main = Shake.runShake $ do
 
     -- If this is a tag, list other files with this tag.
     taggedListing <-
-      if inputFolderPath == "content/tags" && fileName /= "index"
+      if inputFolderPath == "content/tags"
       then do
         let tag = T.pack fileName
         tagMap <- getTagMap ()

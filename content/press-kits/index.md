@@ -4,5 +4,6 @@ created: 2024-09-16T03:22:47-05:00
 aliases:
 - press kits
 tags:
+- index
 - press-kit
 ---

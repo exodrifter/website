@@ -2,6 +2,8 @@
 title: exodrifter
 created: 2024-09-19T23:54:07Z
 modified: 2025-07-15T16:12:47-0700
+tags:
+- index
 ---
 
 <div class="home-banner">
