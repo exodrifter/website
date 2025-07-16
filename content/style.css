@@ -445,21 +445,6 @@ iframe {
     column-gap: var(--grid-size)
 }
 
-/* Used when I want to layout images in a grid. */
-.image-grid {
-  display: grid;
-  grid-template-columns: calc((var(--main-size) - var(--grid-size)) / 2) calc((var(--main-size) - var(--grid-size)) / 2);
-  gap: var(--grid-size);
-
-  figure {
-    margin: 0;
-
-    img {
-        height: calc(var(--grid-size) * 8)
-    }
-  }
-}
-
 /* Animations
 ==============================================================================*/
 
