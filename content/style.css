@@ -22,7 +22,7 @@
 
     color-scheme: light dark;
     --bg1: light-dark(hsl(240 4 92), hsl(240 4 8));
-    --bg2: light-dark(hsl(0 0 80), hsl(0 0 20));
+    --bg2: light-dark(hsl(0 0 85), hsl(0 0 15));
     --text: light-dark(hsl(0 0 5), hsl(0 0 95));
     --subtext: light-dark(hsl(240 8 45), hsl(240 8 55));
     --link: light-dark(hsl(204 28 33), hsl(204 28 67));
@@ -72,7 +72,7 @@ body {
 */
 .main, .sidebar {
     background-color: var(--bg1);
-    background-image: radial-gradient(var(--bg2) .075rem, transparent 0);
+    background-image: radial-gradient(var(--bg2) .1rem, transparent 0);
     background-size: var(--grid-size) var(--grid-size);
     background-position: calc(var(--grid-size)/2) calc(var(--grid-size)/2);
 }
