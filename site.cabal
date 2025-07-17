@@ -36,6 +36,7 @@ executable site
     Exo.Pandoc.Link
     Exo.Pandoc.Meta
     Exo.Pandoc.Time
+    Exo.Shake.Oracle
     Exo.RSS
     Exo.Scotty
     Exo.Shake

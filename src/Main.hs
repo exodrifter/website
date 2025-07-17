@@ -9,20 +9,10 @@ import qualified Exo.RSS as RSS
 import qualified Exo.Shake as Shake
 
 import qualified Codec.Picture as Picture
-import qualified Data.Binary as Binary
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
-
--- If we use the same input type for multiple oracles, Shake will think that
--- the oracles are recursive.
-newtype PandocOracle = PandocOracle FilePath
-  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
-newtype MetaOracle = MetaOracle FilePath
-  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
-newtype CommitHashOracle = CommitHashOracle FilePath
-  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
 
 main :: IO ()
 main = Shake.runShake $ do
@@ -41,27 +31,7 @@ main = Shake.runShake $ do
     Shake.copyFileChanged inputPath out
 
   -- Parse markdown files.
-  getPandoc <- (. PandocOracle) <$> Shake.cacheJSON \(PandocOracle path) -> do
-    Shake.need [path]
-    md <- Shake.decodeByteString =<< readFileBS path
-    Shake.runEither (Pandoc.parseMarkdown md)
-
-  -- Parse metadata.
-  getMetadata <- (. MetaOracle) <$> Shake.cacheJSON \(MetaOracle path) -> do
-    pandoc <- getPandoc path
-    Shake.runEither (Pandoc.parseMetadata path pandoc)
-
-  -- Get commit hash.
-  getCommitHash <- (. CommitHashOracle) <$> Shake.cacheJSON \(CommitHashOracle path) -> do
-    Shake.StdoutTrim result <- Shake.cmd
-      ( "git rev-list" :: String )
-      [ "--abbrev-commit"
-      , "-1"
-      , "HEAD"
-      , "--"
-      , path
-      ]
-    pure (T.pack result)
+  (getPandoc, getMetadata, getCommitHash) <- Shake.getOracleRules
 
   -- Helper function for listing and sorting files based on their metadata
   let

@@ -1,5 +1,3 @@
-{-# LANGUAGE TypeFamilies #-}
-
 -- Helpers for using Shake.
 module Exo.Shake
 ( module X
@@ -9,25 +7,17 @@ module Exo.Shake
 , cleanPhony
 , serverPhony
 
--- Oracles
-, cacheOracle
-, cacheJSON
-
 -- Actions
 , wantWebsite
 , findSourceFiles
 , buildTemplate
-, runEither
-, decodeByteString
 ) where
 
 import Data.List ((\\))
 import Development.Shake as X
 import Development.Shake.FilePath as X
 import Development.Shake.Util as X
-import qualified Data.Aeson as Aeson
-import qualified Data.Binary as Binary
-import qualified Data.ByteString.Lazy as BSL
+import Exo.Shake.Oracle as X
 import qualified Data.Text as T
 import qualified Exo.Const as Const
 import qualified Exo.Scotty as Scotty
@@ -76,44 +66,6 @@ serverPhony =
   phony "server" do
     wantWebsite
     liftIO Scotty.runServer
-
---------------------------------------------------------------------------------
--- Oracles
---------------------------------------------------------------------------------
-
--- Generic caching
-newtype Cache q = Cache q
-  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
-
-type instance RuleResult (Cache q) = ByteString
-
-cacheOracle :: (Binary.Binary q, Hashable q, NFData q, Show q, Typeable q)
-            => (q -> Action ByteString)
-            -> (ByteString -> Action a)
-            -> Rules (q -> Action a)
-cacheOracle encode decode =
-  decodeCache decode <$> addOracleCache \(Cache q) -> encode q
-
-decodeCache :: (ByteString -> Action a)
-            -> (Cache q -> Action ByteString)
-            -> (q -> Action a)
-decodeCache decode runCache = \filepath -> do
-  bs <- runCache (Cache filepath)
-  decode bs
-
--- Cache anything that can be serialized to JSON.
-cacheJSON :: (Binary.Binary q, Hashable q, NFData q, Show q, Typeable q)
-          => (Aeson.FromJSON a, Aeson.ToJSON a)
-          => (q -> Action a)
-          -> Rules (q -> Action a)
-cacheJSON parse =
-  cacheOracle
-    (\path -> BSL.toStrict . Aeson.encode <$> parse path)
-    (\bs ->
-        case Aeson.eitherDecode (BSL.fromStrict bs) of
-          Left err -> fail err
-          Right a -> pure a
-    )
 
 --------------------------------------------------------------------------------
 -- Actions
@@ -183,14 +135,3 @@ buildTemplate path = do
 
   else
     error ("Cannot find template at path \"" <> T.pack path <> "\"")
-
--- Fails the action if the Either is a Left.
-runEither :: Either Text a -> Action a
-runEither e =
-  case e of
-    Right a -> pure a
-    Left err -> error err
-
-decodeByteString :: ByteString -> Action Text
-decodeByteString bs =
-  runEither (first (T.pack . displayException) (decodeUtf8' bs))
