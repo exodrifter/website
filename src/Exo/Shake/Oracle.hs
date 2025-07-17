@@ -15,10 +15,6 @@ module Exo.Shake.Oracle
 
 -- Generic caching
 , cacheJSON
-
--- Helpers
-, runEither
-, decodeByteString
 ) where
 
 import qualified Data.Aeson as Aeson
@@ -27,6 +23,7 @@ import qualified Data.ByteString.Lazy as BSL
 import qualified Data.Text as T
 import qualified Development.Shake as Shake
 import qualified Exo.Pandoc as Pandoc
+import qualified Exo.Shake.Action as Action
 
 -- Adds all of the oracle rules so that they can be used.
 oracleRules :: Shake.Rules ()
@@ -45,13 +42,13 @@ newtype PandocOracle = PandocOracle FilePath
 type instance Shake.RuleResult PandocOracle = ByteString
 
 getPandoc :: FilePath -> Shake.Action Pandoc.Pandoc
-getPandoc = decodeAeson <=< Shake.askOracle . PandocOracle
+getPandoc = Action.decodeAeson <=< Shake.askOracle . PandocOracle
 
 pandocOracle :: PandocOracle -> Shake.Action ByteString
 pandocOracle (PandocOracle path) = do
   Shake.need [path]
-  md <- decodeByteString =<< readFileBS path
-  pandoc <- runEither (Pandoc.parseMarkdown md)
+  md <- Action.decodeByteString =<< readFileBS path
+  pandoc <- Action.runEither (Pandoc.parseMarkdown md)
   pure (BSL.toStrict (Aeson.encode pandoc))
 
 -- Parses metadata from a Pandoc document.
@@ -60,12 +57,12 @@ newtype MetaOracle = MetaOracle FilePath
 type instance Shake.RuleResult MetaOracle = ByteString
 
 getMetadata :: FilePath -> Shake.Action Pandoc.Metadata
-getMetadata = decodeAeson <=< Shake.askOracle . MetaOracle
+getMetadata = Action.decodeAeson <=< Shake.askOracle . MetaOracle
 
 metaOracle :: MetaOracle -> Shake.Action ByteString
 metaOracle (MetaOracle path) = do
   pandoc <- getPandoc path
-  meta <- runEither (Pandoc.parseMetadata path pandoc)
+  meta <- Action.runEither (Pandoc.parseMetadata path pandoc)
   pure (BSL.toStrict (Aeson.encode meta))
 
 -- Gets the latest commit hash for a file.
@@ -120,25 +117,3 @@ cacheJSON parse =
           Left err -> fail err
           Right a -> pure a
     )
-
---------------------------------------------------------------------------------
--- Helpers
---------------------------------------------------------------------------------
-
--- Fails the action if the Either is a Left.
-runEither :: Either Text a -> Shake.Action a
-runEither e =
-  case e of
-    Right a -> pure a
-    Left err -> error err
-
-runEitherWith :: (err -> Text) -> Either err a -> Shake.Action a
-runEitherWith fn e = runEither (first fn e)
-
-decodeByteString :: ByteString -> Shake.Action Text
-decodeByteString bs =
-  runEitherWith (T.pack . displayException) (decodeUtf8' bs)
-
-decodeAeson :: Aeson.FromJSON a => ByteString -> Shake.Action a
-decodeAeson bs =
-  runEitherWith T.pack (Aeson.eitherDecode (BSL.fromStrict bs))

@@ -17,6 +17,7 @@ import Data.List ((\\))
 import Development.Shake as X
 import Development.Shake.FilePath as X
 import Development.Shake.Util as X
+import Exo.Shake.Action as X
 import Exo.Shake.Oracle as X
 import qualified Data.Text as T
 import qualified Exo.Const as Const
