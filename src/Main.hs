@@ -21,6 +21,7 @@ main = Shake.runShake $ do
   Shake.serverPhony
 
   Shake.action Shake.wantWebsite
+  Shake.oracleRules
 
   -- Copy static files.
   let
@@ -30,9 +31,6 @@ main = Shake.runShake $ do
     Shake.need [inputPath]
     Shake.copyFileChanged inputPath out
 
-  -- Parse markdown files.
-  (getPandoc, getMetadata, getCommitHash) <- Shake.getOracleRules
-
   -- Helper function for listing and sorting files based on their metadata
   let
     listFiles :: FilePath
@@ -41,7 +39,7 @@ main = Shake.runShake $ do
               -> Shake.Action [Pandoc.Metadata]
     listFiles dir filterFn sortFn = do
       sourceFiles <- filter filterFn <$> Shake.findSourceFiles dir
-      metas <- traverse getMetadata sourceFiles
+      metas <- traverse Shake.getMetadata sourceFiles
       pure (sortBy sortFn metas)
 
   -- Create a map of tags to files.
@@ -55,9 +53,9 @@ main = Shake.runShake $ do
   -- Generate website pages.
   Const.outputDirectory <//> "*.html" %> \out -> do
     let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
-    pandoc <- getPandoc inputPath
-    metadata <- getMetadata inputPath
-    commitHash <- getCommitHash inputPath
+    pandoc <- Shake.getPandoc inputPath
+    metadata <- Shake.getMetadata inputPath
+    commitHash <- Shake.getCommitHash inputPath
 
     let logoPath = Const.contentDirectory </> "logo.svg"
     Shake.need [logoPath]
