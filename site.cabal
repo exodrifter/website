@@ -34,6 +34,7 @@ executable site
     Exo.Build
     Exo.Build.Action
     Exo.Build.Oracle
+    Exo.Build.Shake
     Exo.Const
     Exo.Pandoc
     Exo.Pandoc.Link

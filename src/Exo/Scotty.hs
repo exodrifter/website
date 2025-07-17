@@ -10,19 +10,19 @@ import qualified Data.List.Extra as List
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
 import qualified Data.Text.Lazy as TL
-import qualified Exo.Const as Const
 import qualified Network.Mime as Mime
 import qualified Network.Wai as Wai
 import qualified System.Directory as Directory
 import qualified System.FilePath as FilePath
 import qualified Web.Scotty as Scotty
 
-runServer :: IO ()
-runServer =
+-- Runs a server which serves files at the specified directory.
+runServer :: FilePath -> IO ()
+runServer dir =
   Scotty.scotty 8000 do
     Scotty.notFound do
       req <- Scotty.request
-      serveFile (T.unpack <$> pathInfo req)
+      serveFile dir (T.unpack <$> pathInfo req)
 
 -- Does the same as Scotty's `pathInfo`, but with an empty string at the end of
 -- the list if there is a trailing forward slash.
@@ -45,8 +45,8 @@ pathInfo req =
     then path <> [""]
     else path
 
-serveFile :: [FilePath] -> Scotty.ActionM ()
-serveFile pieces = do
+serveFile :: FilePath -> [FilePath] -> Scotty.ActionM ()
+serveFile dir pieces = do
   let respond404 = Scotty.text "File not found"
 
   case fromMaybe ([], "") (List.unsnoc pieces) of
@@ -54,7 +54,7 @@ serveFile pieces = do
     -- Serve the index
     (folderPieces, file)
       | file `elem` ["", "index", "index.html"] -> do
-        let folder = FilePath.joinPath (Const.outputDirectory : folderPieces)
+        let folder = FilePath.joinPath (dir : folderPieces)
         indexExists <- liftIO (Directory.doesFileExist (folder </> "index.html"))
         if indexExists
         then do
@@ -65,7 +65,7 @@ serveFile pieces = do
 
       | otherwise -> do
         -- Serve the file if it exists.
-        let path = FilePath.joinPath (Const.outputDirectory : pieces)
+        let path = FilePath.joinPath (dir : pieces)
         fileExists <- liftIO (Directory.doesFileExist path)
         if fileExists
         then do

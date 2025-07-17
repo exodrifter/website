@@ -15,13 +15,11 @@ import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
 
 main :: IO ()
-main = Build.runShake $ do
-
-  Build.cleanPhony
-  Build.serverPhony
-
-  Build.action Build.wantWebsite
+main = Build.runShake Build.wantWebsite $ do
   Build.oracleRules
+
+  -- By default, if no commands are given, build the website.
+  Build.action Build.wantWebsite
 
   -- Copy static files.
   let
