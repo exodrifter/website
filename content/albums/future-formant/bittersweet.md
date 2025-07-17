@@ -1,7 +1,8 @@
 ---
 title: bittersweet
 published: 2024-08-01T18:19:18Z
-created: 2025-02-05T17:45:22-06:00
+created: 2024-08-01T18:19:18Z
+migrated: 2025-02-05T17:45:22-06:00
 aliases:
 - bittersweet
 crossposts:

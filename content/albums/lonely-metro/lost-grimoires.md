@@ -1,7 +1,8 @@
 ---
 title: lost grimoires
 published: 2022-09-20T07:10:15Z
-created: 2024-09-16T03:22:11-05:00
+created: 2022-09-20T07:10:15Z
+migrated: 2024-09-16T03:22:11-05:00
 aliases:
 - lost grimoires
 crossposts:

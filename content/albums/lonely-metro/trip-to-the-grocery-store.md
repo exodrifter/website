@@ -1,7 +1,8 @@
 ---
 title: trip to the grocery store
 published: 2022-06-18T06:57:13Z
-created: 2024-09-16T03:22:11-05:00
+created: 2022-06-18T06:57:13Z
+migrated: 2024-09-16T03:22:11-05:00
 aliases:
 - trip to the grocery store
 crossposts:

@@ -1,7 +1,8 @@
 ---
 title: apparition
 published: 2021-10-24T02:30:40Z
-created: 2024-09-19T00:52:09-05:00
+created: 2021-10-24T02:30:40Z
+migrated: 2024-09-19T00:52:09-05:00
 aliases:
 - apparition
 crossposts:

@@ -1,7 +1,8 @@
 ---
 title: the creek next to my home
 published: 2024-12-16T19:12:23Z
-created: 2025-02-05T17:45:22-06:00
+created: 2024-12-16T19:12:23Z
+migrated: 2025-02-05T17:45:22-06:00
 aliases:
 - the creek next to my home
 crossposts:

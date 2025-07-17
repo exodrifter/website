@@ -1,7 +1,8 @@
 ---
 title: starfire funk
 published: 2022-09-14T04:33:50Z
-created: 2024-09-16T03:22:11-05:00
+created: 2022-09-14T04:33:50Z
+migrated: 2024-09-16T03:22:11-05:00
 aliases:
 - starfire funk
 crossposts:

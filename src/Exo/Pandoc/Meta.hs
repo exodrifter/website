@@ -32,22 +32,26 @@ data Metadata =
     -- ^ The title of the document.
 
     , metaCreated :: (Time.UTCTime, String)
-    -- ^ The time the document was created. This time can be after the publish
-    -- date, in which case it indicates that I wrote and published the
-    -- document's content elsewhere before I migrated it to my personal site.
+    -- ^ The best-known time for when the document was originally created. For
+    -- documents originally created on this website, this is the time the note
+    -- was added to the file system. For documents created on other websites,
+    -- this is the earliest time it was posted on another website. For physical
+    -- documents, this is the best-known time that the document was written.
     , metaPublished :: Maybe (Time.UTCTime, String)
     -- ^ The time the document was published to the internet. This type of time
-    -- is only used for documents like blog posts. It can be older than the
-    -- creation time of the document, if the document was migrated from a
-    -- different site.
+    -- is only used for documents meant to be published in whole at a specific
+    -- time, like blog posts. This must always be after the created date.
     , metaModified :: Maybe (Time.UTCTime, String)
     -- ^ The time the document was modified. This indicates the time the content
     -- of the document was last edited. This time is not updated when the
     -- metadata of the document is edited or when the document's content does
     -- not meaningfully change (such as when link urls are updated to point to
-    -- the new location of moved documents).
-    , metaTranscribed :: Maybe (Time.UTCTime, String)
-    -- ^ The time the document was transcribed from a physical medium.
+    -- the new location of moved documents). This must always be after the
+    -- created date.
+    , metaMigrated :: Maybe (Time.UTCTime, String)
+    -- ^ The time the document was either transcribed from a physical medium
+    -- into this website or copied into this website from an external source.
+    -- This must always be after the created date.
 
     , metaCrossposts :: [Crosspost]
     -- ^ The places where either this document has been posted or an
@@ -71,7 +75,7 @@ instance DocTemplates.ToContext Text Metadata where
         , ("published", maybeToVal (Time.formatTime <$> metaPublished))
         , ("created", DocTemplates.toVal (Time.formatTime metaCreated))
         , ("modified", maybeToVal (Time.formatTime <$> metaModified))
-        , ("transcribed", maybeToVal (Time.formatTime <$> metaTranscribed))
+        , ("migrated", maybeToVal (Time.formatTime <$> metaMigrated))
         , ("updated", maybeToVal (Time.formatTime <$> metaUpdated meta))
         , ("crossposts", DocTemplates.toVal metaCrossposts)
         , ("tags", DocTemplates.toVal metaTags)
@@ -143,10 +147,24 @@ parseMetadata inputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
     if Map.member "modified" meta
     then Just <$> extractTime "modified" meta
     else pure Nothing
-  metaTranscribed <-
-    if Map.member "transcribed" meta
-    then Just <$> extractTime "transcribed" meta
+  metaMigrated <-
+    if Map.member "migrated" meta
+    then Just <$> extractTime "migrated" meta
     else pure Nothing
+
+  let
+    checkTimeValidity mTime =
+      case mTime of
+        Just time@(t, _) | t < fst metaCreated ->
+          error
+            (  "\"" <> T.pack inputPath <> "\""
+            <> " has timestamp "
+            <> Time.formatTime time
+            <> " which is before the created timestamp."
+            )
+        _ ->
+          pure ()
+  traverse_ checkTimeValidity [metaPublished, metaModified, metaMigrated]
 
   metaCrossposts <- parseCrossposts meta
   metaTags <- lookupMetaStrings "tags" meta <> pure []

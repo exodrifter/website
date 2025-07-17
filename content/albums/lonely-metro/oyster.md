@@ -1,7 +1,8 @@
 ---
 title: oyster
 published: 2022-12-06T22:55:32Z
-created: 2024-09-16T03:22:11-05:00
+created: 2022-12-06T22:55:32Z
+migrated: 2024-09-16T03:22:11-05:00
 aliases:
 - oyster
 crossposts:

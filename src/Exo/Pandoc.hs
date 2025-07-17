@@ -207,7 +207,7 @@ makeDateItems Metadata{..} = do
   DocTemplates.toVal $ catMaybes
     [ makeDateItem "published" <$> metaPublished
     , Just (makeDateItem "created" metaCreated)
-    , makeDateItem "transcribed" <$> metaTranscribed
+    , makeDateItem "migrated" <$> metaMigrated
     , makeDateItem "modified" <$> metaModified
     ]
 
