@@ -40,12 +40,10 @@ runShake rules = do
     pruner live = do
       -- The directory might not exist if we ran the clean action.
       directoryExists <- Directory.doesDirectoryExist Const.outputDirectory
-      if directoryExists
-      then do
+      when directoryExists do
         present <- Directory.listFilesRecursive Const.outputDirectory
         let toRemove = present \\ live
         traverse_ Directory.removeFile toRemove
-      else pure ()
 
   shakeArgsPrune options pruner rules
 
