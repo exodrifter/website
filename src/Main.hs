@@ -2,11 +2,11 @@ module Main
 ( main
 ) where
 
-import Exo.Shake ((<//>), (</>), (-<.>), (|%>), (%>))
+import Exo.Build ((<//>), (</>), (-<.>), (|%>), (%>))
+import qualified Exo.Build as Build
 import qualified Exo.Const as Const
 import qualified Exo.Pandoc as Pandoc
 import qualified Exo.RSS as RSS
-import qualified Exo.Shake as Shake
 
 import qualified Codec.Picture as Picture
 import qualified Data.Map.Strict as Map
@@ -15,35 +15,35 @@ import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
 
 main :: IO ()
-main = Shake.runShake $ do
+main = Build.runShake $ do
 
-  Shake.cleanPhony
-  Shake.serverPhony
+  Build.cleanPhony
+  Build.serverPhony
 
-  Shake.action Shake.wantWebsite
-  Shake.oracleRules
+  Build.action Build.wantWebsite
+  Build.oracleRules
 
   -- Copy static files.
   let
     copyExtensions = [ "*.css", "*.gif", "*.mp4", "*.png", "*.jpg", "*.svg", "*.txt" ]
   (Const.outputDirectory <//>) <$> copyExtensions |%> \out -> do
     let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
-    Shake.need [inputPath]
-    Shake.copyFileChanged inputPath out
+    Build.need [inputPath]
+    Build.copyFileChanged inputPath out
 
   -- Helper function for listing and sorting files based on their metadata
   let
     listFiles :: FilePath
               -> (FilePath -> Bool)
               -> (Pandoc.Metadata -> Pandoc.Metadata -> Ordering)
-              -> Shake.Action [Pandoc.Metadata]
+              -> Build.Action [Pandoc.Metadata]
     listFiles dir filterFn sortFn = do
-      sourceFiles <- filter filterFn <$> Shake.findSourceFiles dir
-      metas <- traverse Shake.getMetadata sourceFiles
+      sourceFiles <- filter filterFn <$> Build.findSourceFiles dir
+      metas <- traverse Build.getMetadata sourceFiles
       pure (sortBy sortFn metas)
 
   -- Create a map of tags to files.
-  getTagMap <- Shake.cacheJSON \() -> do
+  getTagMap <- Build.cacheJSON \() -> do
     metas <- listFiles "." (const True) listingSort
     let
       metaToMap meta =
@@ -53,16 +53,16 @@ main = Shake.runShake $ do
   -- Generate website pages.
   Const.outputDirectory <//> "*.html" %> \out -> do
     let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
-    pandoc <- Shake.getPandoc inputPath
-    metadata <- Shake.getMetadata inputPath
-    commitHash <- Shake.getCommitHash inputPath
+    pandoc <- Build.getPandoc inputPath
+    metadata <- Build.getMetadata inputPath
+    commitHash <- Build.getCommitHash inputPath
 
     let logoPath = Const.contentDirectory </> "logo.svg"
-    Shake.need [logoPath]
-    logoSource <- Shake.decodeByteString =<< readFileBS logoPath
+    Build.need [logoPath]
+    logoSource <- Build.decodeByteString =<< readFileBS logoPath
 
     -- Find dependencies
-    let workingDirectory = Shake.takeDirectory out
+    let workingDirectory = Build.takeDirectory out
     referencedImages <- needImageDependencies workingDirectory pandoc
 
     -- If this is an index, list other files in the directory.
@@ -97,17 +97,17 @@ main = Shake.runShake $ do
     let
       tagPath p = Const.outputDirectory </> "tags" </> T.unpack p -<.> ".html"
       tagPaths = tagPath <$> Pandoc.metaTags metadata
-    Shake.need (filter (Pandoc.metaOutputPath metadata /=) tagPaths)
+    Build.need (filter (Pandoc.metaOutputPath metadata /=) tagPaths)
 
     let args = Pandoc.TemplateArgs {..}
-    template <- Shake.buildTemplate (Const.contentDirectory </> "template.html")
-    html <- Shake.runEither (Pandoc.makeHtml args template pandoc)
-    Shake.writeFileChanged out (T.unpack html)
+    template <- Build.buildTemplate (Const.contentDirectory </> "template.html")
+    html <- Build.runEither (Pandoc.makeHtml args template pandoc)
+    Build.writeFileChanged out (T.unpack html)
 
   -- Generate RSS feeds
   Const.outputDirectory <//> "*.xml" %> \out -> do
     let
-      canonicalPath = Shake.dropDirectory1 out
+      canonicalPath = Build.dropDirectory1 out
       canonicalFolder = FilePath.takeDirectory canonicalPath
 
     metas <- listFiles
@@ -115,13 +115,13 @@ main = Shake.runShake $ do
       (\p -> FilePath.takeFileName p /= "index.md")
       listingSort
 
-    feed <- Shake.runEither (RSS.makeRss canonicalFolder metas)
-    Shake.writeFileChanged out (T.unpack feed)
+    feed <- Build.runEither (RSS.makeRss canonicalFolder metas)
+    Build.writeFileChanged out (T.unpack feed)
 
 -- Marks every locally referenced image as needed.
 needImageDependencies :: FilePath
                       -> Pandoc.Pandoc
-                      -> Shake.Action (Map Text Picture.DynamicImage)
+                      -> Build.Action (Map Text Picture.DynamicImage)
 needImageDependencies dir pandoc = do
   -- Mark the images as needed.
   let
@@ -138,7 +138,7 @@ needImageDependencies dir pandoc = do
         _ -> []
 
     urls = Pandoc.query extractUrl pandoc
-  Shake.need ((dir </>) <$> urls)
+  Build.need ((dir </>) <$> urls)
 
   -- Try to load the images, so we can reference them when generating the HTML.
   let

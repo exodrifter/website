@@ -7,7 +7,7 @@
 -- this is done by relying on the JSON serialization for some types. We use
 -- JSON serialization because its' widely available, and this lets us avoid
 -- needing to implement the other classes necessary for caching.
-module Exo.Shake.Oracle
+module Exo.Build.Oracle
 ( oracleRules
 , getPandoc
 , getMetadata
@@ -22,8 +22,8 @@ import qualified Data.Binary as Binary
 import qualified Data.ByteString.Lazy as BSL
 import qualified Data.Text as T
 import qualified Development.Shake as Shake
+import qualified Exo.Build.Action as Action
 import qualified Exo.Pandoc as Pandoc
-import qualified Exo.Shake.Action as Action
 
 -- Adds all of the oracle rules so that they can be used.
 oracleRules :: Shake.Rules ()

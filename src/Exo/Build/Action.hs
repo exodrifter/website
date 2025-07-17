@@ -1,5 +1,5 @@
 -- Helper actions for building the website.
-module Exo.Shake.Action
+module Exo.Build.Action
 ( runEither
 , decodeAeson
 , decodeByteString

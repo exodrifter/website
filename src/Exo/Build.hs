@@ -1,5 +1,6 @@
--- Helpers for using Shake.
-module Exo.Shake
+-- The build module is where the "glue" code is, and has all of the functions
+-- for building the website with Shake.
+module Exo.Build
 ( module X
 , runShake
 
@@ -17,8 +18,8 @@ import Data.List ((\\))
 import Development.Shake as X
 import Development.Shake.FilePath as X
 import Development.Shake.Util as X
-import Exo.Shake.Action as X
-import Exo.Shake.Oracle as X
+import Exo.Build.Action as X
+import Exo.Build.Oracle as X
 import qualified Data.Text as T
 import qualified Exo.Const as Const
 import qualified Exo.Scotty as Scotty
