@@ -17,11 +17,11 @@ import qualified System.FilePath as FilePath
 
 -- If we use the same input type for multiple oracles, Shake will think that
 -- the oracles are recursive.
-newtype CommitHashOracle = CommitHashOracle ()
-  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
 newtype PandocOracle = PandocOracle FilePath
   deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
 newtype MetaOracle = MetaOracle FilePath
+  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
+newtype CommitHashOracle = CommitHashOracle FilePath
   deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
 
 main :: IO ()
@@ -31,15 +31,6 @@ main = Shake.runShake $ do
   Shake.serverPhony
 
   Shake.action Shake.wantWebsite
-
-  -- Parse markdown files.
-  getCommitHash <- (. CommitHashOracle) <$> Shake.cacheJSON \(CommitHashOracle ()) -> do
-    Shake.Stdout result <- Shake.cmd
-      ( "git describe" :: String )
-      [ "--always" :: String
-      , "--dirty"
-      ]
-    pure (T.pack result)
 
   -- Copy static files.
   let
@@ -59,6 +50,18 @@ main = Shake.runShake $ do
   getMetadata <- (. MetaOracle) <$> Shake.cacheJSON \(MetaOracle path) -> do
     pandoc <- getPandoc path
     Shake.runEither (Pandoc.parseMetadata path pandoc)
+
+  -- Get commit hash.
+  getCommitHash <- (. CommitHashOracle) <$> Shake.cacheJSON \(CommitHashOracle path) -> do
+    Shake.StdoutTrim result <- Shake.cmd
+      ( "git rev-list" :: String )
+      [ "--abbrev-commit"
+      , "-1"
+      , "HEAD"
+      , "--"
+      , path
+      ]
+    pure (T.pack result)
 
   -- Helper function for listing and sorting files based on their metadata
   let
@@ -84,7 +87,7 @@ main = Shake.runShake $ do
     let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
     pandoc <- getPandoc inputPath
     metadata <- getMetadata inputPath
-    commitHash <- getCommitHash ()
+    commitHash <- getCommitHash inputPath
 
     let logoPath = Const.contentDirectory </> "logo.svg"
     Shake.need [logoPath]
