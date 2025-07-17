@@ -12,6 +12,7 @@ import Exo.Pandoc.Meta as X
 import Exo.Pandoc.Time as X
 import Text.Pandoc as X
 import Text.Pandoc.Walk as X
+import qualified Codec.Picture as Picture
 import qualified Data.Map as Map
 import qualified Data.Text as T
 import qualified Development.Shake.FilePath as FilePath
@@ -63,6 +64,8 @@ data TemplateArgs = TemplateArgs
   , taggedListing :: [Metadata]
     -- ^ If this file is a tag page, then this is a list of all of the other
     -- files with this tag.
+  , referencedImages :: Map Text Picture.DynamicImage
+    -- ^ The images that this document references.
   , logoSource :: Text
     -- ^ This is the SVG source of the logo. We have to include this directly
     -- into the source of the generated HTML in order for the logo to respond to
@@ -97,13 +100,15 @@ makeHtml TemplateArgs{..} template pandoc = do
       , writerExtensions = getDefaultExtensions "html"
       }
 
-  runPandoc (writeHtml5String writerOptions (preparePandoc pandoc))
+    newPandoc = preparePandoc referencedImages pandoc
+  runPandoc (writeHtml5String writerOptions newPandoc)
 
 -- Does all of the transformations needed to prepare a Pandoc for being written
 -- to HTML.
-preparePandoc :: Pandoc -> Pandoc
-preparePandoc =
-    convertVideoEmbeds
+preparePandoc :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
+preparePandoc referencedImages =
+    embedImageRatios referencedImages
+  . convertVideoEmbeds
   . convertCleanLinks
 
 -- All of the linked markdown will be converted to HTML, so we also want to
@@ -142,6 +147,51 @@ convertVideoEmbeds =
                 RawInline (Format "html") (makeVimeoEmbed v)
 
           _ -> inline
+
+      _ -> inline
+
+embedImageRatios :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
+embedImageRatios images =
+  walk \inline ->
+    case inline of
+      (Image (n, c, kvps) i (url, t)) ->
+        let
+          style w h = "--ratio:calc(" <> show w <> "/" <> show h <> ")"
+          embedRatio w h =
+            Image (n, c, ("style", style w h):kvps) i (url, t)
+
+        in
+          case Map.lookup url images of
+            Just (Picture.ImageY8 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageY16 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageY32 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageYF image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageYA8 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageYA16 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageRGB8 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageRGB16 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageRGBF image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageRGBA8 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageRGBA16 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageYCbCr8 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageCMYK8 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Just (Picture.ImageCMYK16 image) ->
+              embedRatio (Picture.imageWidth image) (Picture.imageHeight image)
+            Nothing ->
+              inline
 
       _ -> inline
 

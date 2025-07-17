@@ -211,10 +211,28 @@ blockquote {
     padding-left: calc(var(--grid-size) - 0.2rem);
 }
 
-img {
-    width: 100%;
-    height: calc(var(--grid-size) * 12);
-    object-fit: contain;
+/* Image sizing is a bit tricky. We want the images to take up 100% of the
+   width and then resize the height to the appropriate value to maintain the
+   aspect ratio. However, we also want the height to be a multiple of the grid
+   size so that elements after the image are aligned correctly.
+
+   So, we need to set the height of the image manually. We do this by adding the
+   image aspect ratio as an element style when generating the HTML, and then use
+   that along with the width of the parent to find the size of the height.
+   Finally, we round that height up to the nearest grid size.
+
+   However, in order to get the width of the parent while calculating the
+   height, we need to make the parent of the image into a container so we can
+   get access to the cqi unit.
+*/
+article > p:has(> img), figure:has(> img) {
+    container-type: inline-size;
+
+    img {
+        width: 100%;
+        height: round(up, calc(100cqi / var(--ratio)), var(--grid-size));
+        object-fit: contain;
+    }
 }
 
 figcaption {

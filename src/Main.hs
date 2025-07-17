@@ -8,6 +8,7 @@ import qualified Exo.Pandoc as Pandoc
 import qualified Exo.RSS as RSS
 import qualified Exo.Shake as Shake
 
+import qualified Codec.Picture as Picture
 import qualified Data.Binary as Binary
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
@@ -91,7 +92,7 @@ main = Shake.runShake $ do
 
     -- Find dependencies
     let workingDirectory = Shake.takeDirectory out
-    needImageDependencies workingDirectory pandoc
+    referencedImages <- needImageDependencies workingDirectory pandoc
 
     -- If this is an index, list other files in the directory.
     let
@@ -147,8 +148,11 @@ main = Shake.runShake $ do
     Shake.writeFileChanged out (T.unpack feed)
 
 -- Marks every locally referenced image as needed.
-needImageDependencies :: FilePath -> Pandoc.Pandoc -> Shake.Action ()
-needImageDependencies dir pandoc =
+needImageDependencies :: FilePath
+                      -> Pandoc.Pandoc
+                      -> Shake.Action (Map Text Picture.DynamicImage)
+needImageDependencies dir pandoc = do
+  -- Mark the images as needed.
   let
     extractUrl :: Pandoc.Inline -> [FilePath]
     extractUrl i =
@@ -157,12 +161,28 @@ needImageDependencies dir pandoc =
         (Pandoc.Image _ _ (u,_)) ->
           -- Ignore URIs
           case URI.parseURI (T.unpack u) of
-            Nothing -> [dir </> T.unpack u]
+            Nothing -> [T.unpack u]
             Just _ -> []
 
         _ -> []
-  in
-    Shake.need (Pandoc.query extractUrl pandoc)
+
+    urls = Pandoc.query extractUrl pandoc
+  Shake.need ((dir </>) <$> urls)
+
+  -- Try to load the images, so we can reference them when generating the HTML.
+  let
+    maybeGetImage url = do
+      case FilePath.takeExtension url of
+        ".gif" -> Just <$> getImage url
+        ".jpg" -> Just <$> getImage url
+        ".png" -> Just <$> getImage url
+        _ -> pure Nothing
+    getImage url = do
+      result <- liftIO (Picture.readImage (dir </> url))
+      case result of
+        Left err -> error (T.pack err)
+        Right i -> pure (T.pack url, i)
+  Map.fromList . catMaybes <$> traverse maybeGetImage urls
 
 listingSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
 listingSort =

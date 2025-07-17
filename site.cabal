@@ -52,6 +52,7 @@ executable site
     , extra
     , feed
     , filepath
+    , JuicyPixels
     , mime-types
     , network-uri
     , pandoc

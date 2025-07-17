@@ -7,6 +7,7 @@ module Exo.Pandoc.Link
 , pathInfoFromOutput
 
 , pathInput
+, pathInputFolder
 , pathOutput
 , pathCanonical
 , pathLink
@@ -85,6 +86,10 @@ pathInput :: PathInfo -> FilePath
 pathInput PathInfo{..} =
   FilePath.normalise
     (Const.contentDirectory </> pathDirectory </> pathFile -<.> pathExtension)
+
+pathInputFolder :: PathInfo -> FilePath
+pathInputFolder PathInfo{..} =
+  FilePath.normalise (Const.contentDirectory </> pathDirectory)
 
 pathOutput :: PathInfo -> FilePath
 pathOutput PathInfo{..} =
