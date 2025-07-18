@@ -47,6 +47,7 @@
             $if(file)$
             <section id="_files">
                 <h1><i class="ri-file-2-fill"></i> files</i></h1>
+                <div>
                 <table class="listing">
                     <tr><th>timestamp</th><th>title</th></tr>
                     $for(file)$
@@ -64,12 +65,14 @@
                     </tr>
                     $endfor$
                 </table>
+                </div>
             </section>
             $endif$
 
             $if(tagged)$
             <section id="_tagged">
                 <h1><i class="ri-file-2-fill"></i> tagged</i></h1>
+                <div>
                 <table class="listing">
                     <tr><th>timestamp</th><th>title</th></tr>
                     $for(tagged)$
@@ -87,6 +90,7 @@
                     </tr>
                     $endfor$
                 </table>
+                </div>
             </section>
             $endif$
 

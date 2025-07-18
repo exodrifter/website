@@ -288,12 +288,17 @@ table {
     }
 }
 
-/* Shrink the first column in file listings. */
+/* Shrink the first column in file listings; that's where our timestamp is. */
 .listing {
     th:first-child, td:first-child {
         width: 0.1%;
         white-space: nowrap;
     }
+}
+
+/* Add horizontal scroll if there isn't enough space for the listing. */
+div:has(> .listing) {
+    overflow-x: scroll;
 }
 
 /* Task list
