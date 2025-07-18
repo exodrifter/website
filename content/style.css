@@ -230,6 +230,7 @@ article > p:has(> img), figure:has(> img) {
 
     img {
         width: 100%;
+        max-height: round(down, 40vh, var(--grid-size));
         height: round(up, calc(100cqi / var(--ratio)), var(--grid-size));
         object-fit: contain;
     }
