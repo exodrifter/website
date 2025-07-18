@@ -1,7 +1,7 @@
 ---
 title: contact
 created: 2024-09-16T00:56:40Z
-modified: 2024-09-18T22:59:26Z
+modified: 2025-07-18T06:12:41-07:00
 ---
 
 # contact
@@ -10,11 +10,11 @@ To contact me, use one of the following methods:
 - <i class="ri-mail-fill"></i> [skeleton@exodrifter.space](mailto:skeleton@exodrifter.space)
 - <i class="ri-discord-fill"></i> `@exodrifter` on Discord
 
-Please note that I am highly likely to ignore Discord messages unless you share a mutual server with me. To support me, see [support](support.md).
+Please note that I am highly likely to ignore Discord messages unless you share a mutual server with me. If you like the work I do, consider [supporting me](support.md).
 
 # all links
 
-These are all of my social media links. Please note that I am not generally active on most social media sites, with the exception of Cohost, Discord, and Twitch.
+These are all of my social media links. Please note that I am not generally active on most social media sites, with the exception of Discord and Twitch.
 
 <div class="flex">
 
