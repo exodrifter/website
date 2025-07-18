@@ -1,9 +1,9 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-07-15T16:12:47-0700
+modified: 2025-07-18T06:20:29-07:00
 tags:
-- index
+  - index
 ---
 
 <div class="home-banner">
@@ -74,6 +74,8 @@ tags:
 [Nova Liminal Retro Website](https://novashy.com/webjam/index.html)
 
 [prod @ Cyberspace](https://pub.colonq.computer/~prod/)
+
+[t/suki](https://forum.tsuki.games)
 
 [Xenon Fossil Games](http://xenonfossil.games)
 
