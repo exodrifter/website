@@ -1,11 +1,11 @@
 ---
 title: Godot Twitch streamers
 created: 2024-02-23T07:30:13.352Z
-modified: 2024-07-23
+modified: 2025-07-18T01:22:00-07:00
 aliases:
-- Godot Twitch streamers
+  - Godot Twitch streamers
 tags:
-- godot
+  - godot
 ---
 
 # Godot Twitch streamers
@@ -18,7 +18,7 @@ no | [Cammymoop](https://www.twitch.tv/cammymoop) | [Textmode Collab](https://ca
 yes | [ChronoCarl](https://www.twitch.tv/chronocarl) | First time Godot dev making a multiplayer game [^1]
 yes | [CreaseVT](https://www.twitch.tv/CreaseVT) | [Shadow of the Eggtree](https://creasevt.itch.io/shadow-of-the-eggtree) [^1]
 no | [DeveloperEzra](https://www.twitch.tv/developerezra) | [EzDialogue](https://github.com/real-ezTheDev/GodotEzDialoguePlugin) [^2]
-no | [earend](https://www.twitch.tv/earend) | [Hello, This Is Bear](https://store.steampowered.com/app/2645770/Hello_This_Is_Bear) [^1]
+no | [earend](https://www.twitch.tv/earend) | [Bear Defense Situation](https://store.steampowered.com/app/3778320/Bear_Defence_Situation/) [^3]
 yes | [exodrifter_](https://www.twitch.tv/exodrifter_) | [no signal](https://exodrifter.itch.io/lost-contact) [^1]
 yes | [ExpiredPopsicle](https://www.twitch.tv/expiredpopsicle) | Stream overlay in Godot, FPS gamedev [^1]
 yes | [fatalvampire](https://www.twitch.tv/fatalvampire) | Monster taming game [^1]
@@ -49,3 +49,4 @@ no | [walaber](https://www.twitch.tv/walaber) | [Parking Garage Rally Circuit](h
 
 [^1]: [20250509213746](../entries/20250509213746.md)
 [^2]: [20250509214014](../entries/20250509214014.md)
+[^3]: [20250718082011](../entries/20250718082011.md)
