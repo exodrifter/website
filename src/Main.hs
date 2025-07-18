@@ -9,10 +9,16 @@ import qualified Exo.Pandoc as Pandoc
 import qualified Exo.RSS as RSS
 
 import qualified Codec.Picture as Picture
+import qualified Data.Binary as Binary
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
+
+newtype TagMapOracle = TagMapOracle ()
+  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
+newtype BacklinksOracle = BacklinksOracle ()
+  deriving newtype (Binary.Binary, Eq, Hashable, NFData, Show)
 
 main :: IO ()
 main = Build.runShake Build.wantWebsite $ do
@@ -41,12 +47,20 @@ main = Build.runShake Build.wantWebsite $ do
       pure (sortBy sortFn metas)
 
   -- Create a map of tags to files.
-  getTagMap <- Build.cacheJSON \() -> do
+  getTagMap <- (. TagMapOracle) <$> Build.cacheJSON \(TagMapOracle ()) -> do
     metas <- listFiles "." (const True) listingSort
     let
       metaToMap meta =
         Map.fromList [(tag, [meta]) | tag <- Pandoc.metaTags meta]
     pure (Map.unionsWith (<>) (metaToMap <$> metas))
+
+  -- Create a map of backlinks, which is a list of files that link to a file.
+  getBacklinks <- (. BacklinksOracle) <$> Build.cacheJSON \(BacklinksOracle ()) -> do
+    metas <- listFiles "." (const True) (comparing Pandoc.metaTitle)
+    let
+      infoToMap meta =
+        Map.fromList [(link, [meta]) | link <- toList (Pandoc.metaOutgoingLinks meta)]
+    pure (Map.unionsWith (<>) (infoToMap <$> metas))
 
   -- Generate website pages.
   Const.outputDirectory <//> "*.html" %> \out -> do
@@ -59,9 +73,15 @@ main = Build.runShake Build.wantWebsite $ do
     Build.need [logoPath]
     logoSource <- Build.decodeByteString =<< readFileBS logoPath
 
-    -- Find dependencies
+    -- Find image dependencies.
     let workingDirectory = Build.takeDirectory out
     referencedImages <- needImageDependencies workingDirectory pandoc
+
+    -- Find tagged page dependencies.
+    let
+      tagPath p = Const.outputDirectory </> "tags" </> T.unpack p -<.> ".html"
+      tagPaths = tagPath <$> Pandoc.metaTags metadata
+    Build.need (filter (Pandoc.metaOutputPath metadata /=) tagPaths)
 
     -- If this is an index, list other files in the directory.
     let
@@ -91,11 +111,9 @@ main = Build.runShake Build.wantWebsite $ do
           Just a -> pure a
       else pure []
 
-    -- Make sure the tag pages exist for the tags used.
-    let
-      tagPath p = Const.outputDirectory </> "tags" </> T.unpack p -<.> ".html"
-      tagPaths = tagPath <$> Pandoc.metaTags metadata
-    Build.need (filter (Pandoc.metaOutputPath metadata /=) tagPaths)
+    -- Find all of the backlinks.
+    let canonicalPath = Pandoc.metaCanonicalPath metadata
+    backlinks <- Map.lookup canonicalPath <$> getBacklinks ()
 
     let args = Pandoc.TemplateArgs {..}
     template <- Build.buildTemplate (Const.contentDirectory </> "template.html")

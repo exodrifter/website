@@ -105,6 +105,12 @@ $for(crosspost)$
   <time datetime="$crosspost.time$">$crosspost.time$</time> @ <a href="$crosspost.url$">$crosspost.site$</a>
 $endfor$</p>
                 $endif$
+                $if(backlinks)$
+                <p class="meta">backlinks:
+$for(backlinks)$
+  <a href="$backlinks.path.canonical$">$backlinks.title$</a>
+$endfor$</p>
+                $endif$
                 <p class="meta">commit: <a href="https://www.github.com/exodrifter/website/commit/$commitHash$">$commitHash$</a></p>
             </section>
 

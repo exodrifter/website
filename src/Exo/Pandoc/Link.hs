@@ -10,8 +10,10 @@ module Exo.Pandoc.Link
 , pathInputFolder
 , pathOutput
 , pathCanonical
+, pathCanonicalFolder
 , pathLink
 
+, canonicalizeLink
 , cleanLink
 ) where
 
@@ -111,12 +113,38 @@ pathCanonical PathInfo{..} =
         (_, ".md") -> pathDirectory </> pathFile
         _ -> pathDirectory </> pathFile -<.> pathExtension
 
+pathCanonicalFolder :: PathInfo -> FilePath
+pathCanonicalFolder = FilePath.takeDirectory . pathCanonical
+
 pathLink :: PathInfo -> Text
 pathLink pathInfo = Const.baseUrl <> T.pack (pathCanonical pathInfo)
 
 --------------------------------------------------------------------------------
 -- Helpers
 --------------------------------------------------------------------------------
+
+-- Makes a relative link into a canonical one.
+--
+-- FilePath utilities don't let us normalise special directories, because of
+-- symlinks. But, since these actually represent URLs instead of symlinks
+-- and we don't have any symlinks, I think it's fine for us to normalise
+-- special directories.
+canonicalizeLink :: PathInfo -> FilePath -> FilePath
+canonicalizeLink currentPath link =
+  let
+    pieces =
+      FilePath.splitDirectories (pathCanonicalFolder currentPath </> link)
+    processSpecial =
+      foldl'
+        (\acc d ->
+          case d of
+            ".." -> take (length acc - 1) acc
+            "." -> acc
+            _ -> acc <> [d]
+        )
+        []
+  in
+    FilePath.joinPath (processSpecial pieces)
 
 -- Removes the extension from all markdown links and remaps index links to the
 -- parent directory, so that they match the canonical URLs of the HTML pages

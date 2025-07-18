@@ -19,12 +19,16 @@ import qualified Development.Shake.FilePath as FilePath
 import qualified Network.URI as URI
 import qualified Text.DocTemplates as DocTemplates
 
+--------------------------------------------------------------------------------
+-- Markdown
+--------------------------------------------------------------------------------
+
 -- Parses a markdown document just the way I want it.
 --
 -- In general, this function will tend towards maintaining compatability with
 -- Obsidian, since that's the note-taking application I personally use.
 parseMarkdown :: Text -> Either Text Pandoc
-parseMarkdown markdown =
+parseMarkdown markdown = do
   let
     readerOptions = def
       { readerExtensions =
@@ -46,8 +50,19 @@ parseMarkdown markdown =
             -- anything.
           $ getDefaultExtensions "markdown"
       }
-  in
-    runPandoc (readMarkdown readerOptions markdown)
+
+  pandoc <- runPandoc (readMarkdown readerOptions markdown)
+  pure (convertCleanLinks pandoc)
+
+-- All of the linked markdown will be converted to HTML, so we also want to
+-- update markdown links to clean links.
+convertCleanLinks :: Pandoc -> Pandoc
+convertCleanLinks =
+  walk \inline ->
+    case inline of
+      (Link a i (u, t)) ->
+        Link a i (T.pack (cleanLink (T.unpack u)), t)
+      _ -> inline
 
 --------------------------------------------------------------------------------
 -- HTML
@@ -64,6 +79,8 @@ data TemplateArgs = TemplateArgs
   , taggedListing :: [Metadata]
     -- ^ If this file is a tag page, then this is a list of all of the other
     -- files with this tag.
+  , backlinks :: Maybe [Metadata]
+    -- ^ All of the backlinked files.
   , referencedImages :: Map Text Picture.DynamicImage
     -- ^ The images that this document references.
   , logoSource :: Text
@@ -90,6 +107,7 @@ makeHtml TemplateArgs{..} template pandoc = do
         , ("tagged", makeFileListing (metaInputPath metadata) taggedListing)
         , ("date", makeDateItems metadata)
         , ("crosspost", makeCrossposts (metaCrossposts metadata))
+        , ("backlinks", maybe DocTemplates.NullVal DocTemplates.toVal backlinks)
         , ("commitHash", DocTemplates.toVal commitHash)
         ]
 
@@ -100,26 +118,15 @@ makeHtml TemplateArgs{..} template pandoc = do
       , writerExtensions = getDefaultExtensions "html"
       }
 
-    newPandoc = preparePandoc referencedImages pandoc
+    newPandoc = preparePandocForHTML referencedImages pandoc
   runPandoc (writeHtml5String writerOptions newPandoc)
 
 -- Does all of the transformations needed to prepare a Pandoc for being written
 -- to HTML.
-preparePandoc :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
-preparePandoc referencedImages =
+preparePandocForHTML :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
+preparePandocForHTML referencedImages =
     embedImageRatios referencedImages
   . convertVideoEmbeds
-  . convertCleanLinks
-
--- All of the linked markdown will be converted to HTML, so we also want to
--- update markdown links to clean links.
-convertCleanLinks :: Pandoc -> Pandoc
-convertCleanLinks =
-  walk \inline ->
-    case inline of
-      (Link a i (u, t)) ->
-        Link a i (T.pack (cleanLink (T.unpack u)), t)
-      _ -> inline
 
 -- Pandoc doesn't have a type which represents embeds, so we need to convert
 -- those links to their respective embed codes.

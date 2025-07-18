@@ -9,6 +9,7 @@ module Exo.Pandoc.Meta
 , metaInputPath
 , metaOutputPath
 , metaCanonicalPath
+, metaCanonicalFolder
 , metaLink
 , metaUpdated
 ) where
@@ -22,6 +23,7 @@ import qualified Network.URI as URI
 import qualified Text.DocTemplates as DocTemplates
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
+import qualified Text.Pandoc.Walk as Pandoc
 
 data Metadata =
   Metadata
@@ -53,6 +55,8 @@ data Metadata =
     -- into this website or copied into this website from an external source.
     -- This must always be after the created date.
 
+    , metaOutgoingLinks :: Set FilePath
+    -- ^ All outgoing internal links.
     , metaCrossposts :: [Crosspost]
     -- ^ The places where either this document has been posted or an
     -- announcement of this document was posted.
@@ -95,6 +99,10 @@ metaOutputPath Metadata{..} = Link.pathOutput metaPath
 metaCanonicalPath :: Metadata -> FilePath
 metaCanonicalPath Metadata{..} = Link.pathCanonical metaPath
 
+-- The absolute path to the folder containing the document on the website.
+metaCanonicalFolder :: Metadata -> FilePath
+metaCanonicalFolder Metadata{..} = Link.pathCanonicalFolder metaPath
+
 -- The URL to the document on the website.
 metaLink :: Metadata -> Text
 metaLink Metadata{..} = Link.pathLink metaPath
@@ -129,7 +137,7 @@ instance DocTemplates.ToContext Text Crosspost where
 --------------------------------------------------------------------------------
 
 parseMetadata :: FilePath -> Pandoc.Pandoc -> Either Text Metadata
-parseMetadata inputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
+parseMetadata inputPath pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) = do
   -- Paths
   let metaPath = Link.pathInfoFromInput inputPath
 
@@ -167,6 +175,7 @@ parseMetadata inputPath (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
           pure ()
   traverse_ checkTimeValidity [metaPublished, metaModified, metaMigrated]
 
+  let metaOutgoingLinks = parseOutgoingLinks metaPath pandoc
   metaCrossposts <- parseCrossposts meta
   metaTags <- lookupMetaStrings "tags" meta <> pure []
   pure Metadata {..}
@@ -177,6 +186,21 @@ parseCrossposts meta =
     Just (Pandoc.MetaList arr) -> traverse parseCrosspost arr
     Just _ -> Left "\"crossposts\" metadata is not a list!"
     Nothing -> Right []
+
+parseOutgoingLinks :: Link.PathInfo -> Pandoc.Pandoc -> Set FilePath
+parseOutgoingLinks path pandoc =
+  let
+    extractLink inline =
+      case inline of
+        (Pandoc.Link _ _ (url, _))
+          | "http:" `T.isPrefixOf` url -> []
+          | "https:" `T.isPrefixOf` url -> []
+          | "mailto:" `T.isPrefixOf` url -> []
+          | otherwise -> [T.unpack url]
+        _ -> []
+    links = Pandoc.query extractLink pandoc
+  in
+    fromList (Link.canonicalizeLink path <$> links)
 
 parseCrosspost :: Pandoc.MetaValue -> Either Text Crosspost
 parseCrosspost v =
