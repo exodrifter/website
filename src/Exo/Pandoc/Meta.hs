@@ -76,7 +76,7 @@ instance DocTemplates.ToContext Text Metadata where
         , ("created", DocTemplates.toVal (Time.formatTime metaCreated))
         , ("modified", maybeToVal (Time.formatTime <$> metaModified))
         , ("migrated", maybeToVal (Time.formatTime <$> metaMigrated))
-        , ("updated", maybeToVal (Time.formatTime <$> metaUpdated meta))
+        , ("updated", DocTemplates.toVal (Time.formatTime (metaUpdated meta)))
         , ("crossposts", DocTemplates.toVal metaCrossposts)
         , ("tags", DocTemplates.toVal metaTags)
         ]
@@ -99,8 +99,9 @@ metaCanonicalPath Metadata{..} = Link.pathCanonical metaPath
 metaLink :: Metadata -> Text
 metaLink Metadata{..} = Link.pathLink metaPath
 
-metaUpdated :: Metadata -> Maybe (Time.UTCTime, String)
-metaUpdated Metadata{..} = metaModified <|> metaPublished
+-- The most recent time the file was updated.
+metaUpdated :: Metadata -> (Time.UTCTime, String)
+metaUpdated Metadata{..} = fromMaybe metaCreated metaModified
 
 data Crosspost =
   Crosspost

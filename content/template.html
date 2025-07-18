@@ -54,10 +54,8 @@
                         <td>
                             $if(file.published)$
                             <time datetime="$file.published$">$file.published$</time>
-                            $elseif(file.updated)$
-                            <time datetime="$file.updated$">$file.updated$</time>
                             $else$
-                            <time datetime="$file.created$">$file.created$</time>
+                            <time datetime="$file.updated$">$file.updated$</time>
                             $endif$
                         </td>
                         <td>
@@ -79,10 +77,8 @@
                         <td>
                             $if(tagged.published)$
                             <time datetime="$tagged.published$">$tagged.published$</time>
-                            $elseif(tagged.updated)$
-                            <time datetime="$tagged.updated$">$tagged.updated$</time>
                             $else$
-                            <time datetime="$tagged.created$">$tagged.created$</time>
+                            <time datetime="$tagged.updated$">$tagged.updated$</time>
                             $endif$
                         </td>
                         <td>
