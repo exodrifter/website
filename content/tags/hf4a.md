@@ -8,8 +8,4 @@ tags:
 - space
 ---
 
-<div class="banner">
-
 ![](../blog/20240505195015-map.jpg)
-
-</div>

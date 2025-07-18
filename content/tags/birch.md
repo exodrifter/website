@@ -6,8 +6,4 @@ tags:
 - birch
 ---
 
-<div class="banner">
-
 ![](../blog/202212311833-birch.png)
-
-</div>

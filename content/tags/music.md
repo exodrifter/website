@@ -8,8 +8,4 @@ tags:
 - music
 ---
 
-<div class="banner">
-
 ![](../albums/lonely-metro/oyster.png)
-
-</div>

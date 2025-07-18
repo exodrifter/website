@@ -8,10 +8,6 @@ tags:
 - video-game
 ---
 
-<div class="banner">
-
 ![](../press-kits/teknedia/screen-15.jpg)
-
-</div>
 
 For more information about _Teknedia_, see the [press kit](../press-kits/teknedia/index.md).

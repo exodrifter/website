@@ -9,10 +9,6 @@ tags:
 - video-game
 ---
 
-<div class="banner">
-
 ![](../press-kits/no-signal/screen-3.png)
-
-</div>
 
 For more information about _no signal_, see the [press kit](../press-kits/no-signal/index.md).

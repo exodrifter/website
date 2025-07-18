@@ -7,10 +7,6 @@ tags:
 - access
 ---
 
-<div class="banner">
-
 ![](../blog/201710190302-banner.png)
-
-</div>
 
 **[Access](https://exodrifter.itch.io/access)** is a narrative puzzle game about telepathic detectives.
