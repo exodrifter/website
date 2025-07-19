@@ -97,7 +97,7 @@ data TemplateArgs = TemplateArgs
   , taggedListing :: [Metadata]
     -- ^ If this file is a tag page, then this is a list of all of the other
     -- files with this tag.
-  , backlinks :: Maybe [Metadata]
+  , backlinks :: [Metadata]
     -- ^ All of the backlinked files.
   , referencedImages :: Map Text Picture.DynamicImage
     -- ^ The images that this document references.
@@ -125,7 +125,7 @@ makeHtml TemplateArgs{..} template pandoc = do
         , ("tagged", makeFileListing (metaInputPath metadata) taggedListing)
         , ("date", makeDateItems metadata)
         , ("crosspost", makeCrossposts (metaCrossposts metadata))
-        , ("backlinks", maybe DocTemplates.NullVal DocTemplates.toVal backlinks)
+        , ("backlinks", DocTemplates.toVal backlinks)
         , ("commitHash", DocTemplates.toVal commitHash)
         ]
 

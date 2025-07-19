@@ -46,21 +46,48 @@ main = Build.runShake Build.wantWebsite $ do
       metas <- traverse Build.getMetadata sourceFiles
       pure (sortBy sortFn metas)
 
+    -- Helper function for iterating one-by-one over the metadata for a list of
+    -- file paths.
+    forFiles :: (a -> Pandoc.Metadata -> a)
+             -> a
+             -> [FilePath]
+             -> Build.Action a
+    forFiles fn =
+      foldlM \a path -> fn a <$> Build.getMetadata path
+
   -- Create a map of tags to files.
   getTagMap <- (. TagMapOracle) <$> Build.cacheJSON \(TagMapOracle ()) -> do
-    metas <- listFiles "." (const True) listingSort
+    Build.putInfo "Creating tag map..."
     let
-      metaToMap meta =
-        Map.fromList [(tag, [meta]) | tag <- Pandoc.metaTags meta]
-    pure (Map.unionsWith (<>) (metaToMap <$> metas))
+      metaToTagMap :: Pandoc.Metadata -> Map Text [FilePath]
+      metaToTagMap meta =
+        fromList
+          [ (tag, [Pandoc.metaInputPath meta])
+          | tag <- Pandoc.metaTags meta
+          ]
+
+      fn :: Map Text [FilePath] -> Pandoc.Metadata -> Map Text [FilePath]
+      fn acc meta = Map.unionWith (<>) acc (metaToTagMap meta)
+
+    sourceFiles <- Build.findSourceFiles "."
+    forFiles fn Map.empty sourceFiles
 
   -- Create a map of backlinks, which is a list of files that link to a file.
   getBacklinks <- (. BacklinksOracle) <$> Build.cacheJSON \(BacklinksOracle ()) -> do
-    metas <- listFiles "." (const True) (comparing Pandoc.metaTitle)
+    Build.putInfo "Creating backlinks..."
     let
-      infoToMap meta =
-        Map.fromList [(link, [meta]) | link <- toList (Pandoc.metaOutgoingLinks meta)]
-    pure (Map.unionsWith (<>) (infoToMap <$> metas))
+      metaToBacklinkMap :: Pandoc.Metadata -> Map FilePath [FilePath]
+      metaToBacklinkMap meta =
+        fromList
+          [ (link, [Pandoc.metaInputPath meta])
+          | link <- toList (Pandoc.metaOutgoingLinks meta)
+          ]
+
+      fn :: Map FilePath [FilePath] -> Pandoc.Metadata -> Map FilePath [FilePath]
+      fn acc meta = Map.unionWith (<>) acc (metaToBacklinkMap meta)
+
+    sourceFiles <- Build.findSourceFiles "."
+    forFiles fn Map.empty sourceFiles
 
   -- Generate website pages.
   Const.outputDirectory <//> "*.html" %> \out -> do
@@ -108,12 +135,17 @@ main = Build.runShake Build.wantWebsite $ do
         tagMap <- getTagMap ()
         case Map.lookup tag tagMap of
           Nothing -> error ("Tag " <> tag <> " has no tagged pages!")
-          Just a -> pure a
+          Just a -> sortBy listingSort <$> traverse Build.getMetadata a
       else pure []
 
     -- Find all of the backlinks.
-    let canonicalPath = Pandoc.metaCanonicalPath metadata
-    backlinks <- Map.lookup canonicalPath <$> getBacklinks ()
+    allBacklinks <- getBacklinks ()
+    let
+      canonicalPath = Pandoc.metaCanonicalPath metadata
+      backlinkPaths = fromMaybe [] (Map.lookup canonicalPath allBacklinks)
+    backlinks <-
+          sortBy (comparing Pandoc.metaTitle)
+      <$> traverse Build.getMetadata backlinkPaths
 
     let args = Pandoc.TemplateArgs {..}
     template <- Build.buildTemplate (Const.contentDirectory </> "template.html")
