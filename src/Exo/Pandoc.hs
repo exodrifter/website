@@ -52,7 +52,11 @@ parseMarkdown markdown = do
       }
 
   pandoc <- runPandoc (readMarkdown readerOptions markdown)
-  pure (convertCleanLinks pandoc)
+  pure
+    ( convertTextLinks
+    . convertCleanLinks
+    $ pandoc
+    )
 
 -- All of the linked markdown will be converted to HTML, so we also want to
 -- update markdown links to clean links.
@@ -62,6 +66,20 @@ convertCleanLinks =
     case inline of
       (Link a i (u, t)) ->
         Link a i (T.pack (cleanLink (T.unpack u)), t)
+      _ -> inline
+
+-- Convert text that contains an HTTP or HTTPS link into a link.
+convertTextLinks :: Pandoc -> Pandoc
+convertTextLinks =
+  walk \inline ->
+    case inline of
+      Str url
+        | "http:" `T.isPrefixOf` url ->
+            Link nullAttr [Str url] (url, "")
+        | "https:" `T.isPrefixOf` url ->
+            Link nullAttr [Str url] (url, "")
+        | otherwise ->
+            inline
       _ -> inline
 
 --------------------------------------------------------------------------------
