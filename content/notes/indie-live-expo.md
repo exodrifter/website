@@ -3,6 +3,9 @@ title: INDIE Live Expo
 created: 2024-09-22T21:05:08Z
 aliases:
 - INDIE Live Expo
+tags:
+- annual-event
+- expo
 ---
 
 # INDIE Live Expo

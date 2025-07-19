@@ -1,17 +1,18 @@
 ---
 title: OffKai Expo
 created: 2025-07-07T06:39:44Z
+modified: 2025-07-18T17:18:04-07:00
 aliases:
-- OffKai Expo
+  - OffKai Expo
 tags:
-- annual-event
-- expo
-- offkai-expo
+  - annual-event
+  - expo
+  - offkai-expo
 ---
 
 # OffKai Expo
 
-**OffKai Expo** is a volunteer-run convention focused on VTubing streamers and fans which both celebrates and educates about the subculture, technology, history, and performance art of VTubing. [^1]
+**OffKai Expo** is a volunteer-run expo focused on VTubing streamers and fans which both celebrates and educates about the subculture, technology, history, and performance art of VTubing. [^1]
 
 | Year | Dates | Name |
 |------|-------|------|

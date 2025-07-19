@@ -4,6 +4,9 @@ created: 2024-09-22T15:35:20Z
 aliases:
 - Next Fest
 - Steam Next Fest
+tags:
+- festival
+- steam-next-fest
 ---
 
 # Next Fest

@@ -3,6 +3,9 @@ title: Ushicon
 created: 2024-09-19T01:02:15Z
 aliases:
 - Ushicon
+tags:
+- annual-event
+- convention
 ---
 
 # Ushicon

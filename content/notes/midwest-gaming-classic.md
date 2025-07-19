@@ -3,6 +3,9 @@ title: Midwest Gaming Classic
 created: 2024-10-21T15:03:29Z
 aliases:
 - Midwest Gaming Classic
+tags:
+- annual-event
+- convention
 ---
 
 # Midwest Gaming Classic

@@ -5,3 +5,6 @@ aliases:
 tags:
 - annual-event
 ---
+
+Related:
+- [semiannual-event](semiannual-event.md)

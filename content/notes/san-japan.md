@@ -4,6 +4,10 @@ created: 2024-07-24T22:07:41Z
 modified: 2024-09-19T00:46:40Z
 aliases:
 - San Japan
+tags:
+- annual-event
+- convention
+- san-japan
 ---
 
 # San Japan

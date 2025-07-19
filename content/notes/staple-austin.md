@@ -5,6 +5,10 @@ modified: 2024-09-19T00:46:40Z
 aliases:
 - STAPLE!
 - STAPLE! Austin
+tags:
+- annual-event
+- expo
+- staple-austin
 ---
 
 # STAPLE! Austin

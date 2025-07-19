@@ -3,6 +3,9 @@ title: ArmadilloCon
 created: 2024-08-11T04:00:18Z
 aliases:
 - ArmadilloCon
+tags:
+- annual-event
+- convention
 ---
 
 # ArmadilloCon
