@@ -270,7 +270,9 @@ hr {
      that the entire table cell is exactly two grid cells tall.
 */
 table {
+    display: block;
     width: round(down, 100%, var(--grid-size));
+    overflow-x: scroll;
     border-collapse: collapse;
 
     th, td {
@@ -300,11 +302,6 @@ table {
     i {
         color: var(--subtext);
     }
-}
-
-/* Add horizontal scroll if there isn't enough space for the listing. */
-div:has(> .listing) {
-    overflow-x: scroll;
 }
 
 /* Task list
