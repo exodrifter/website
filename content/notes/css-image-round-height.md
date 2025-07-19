@@ -1,6 +1,7 @@
 ---
 title: How to round the height of an image with CSS
 created: 2025-07-18T03:47:11-07:00
+modified: 2025-07-19T00:35:40-07:00
 aliases:
   - How to round the height of an image with CSS
 tags:
@@ -19,7 +20,10 @@ In order to do this, we must first embed the aspect ratio of the image into the 
 
 ```html
 <figure>
-<img src="20250516012109_crowd.jpg" style="--ratio:calc(4032/1794)" alt="The crowded showcase area in the Garage on the first day. My game no signal is partially visible at the bottom.">
+<img
+  src="20250516012109_crowd.jpg"
+  style="--ratio:calc(4032/1794)"
+  alt="The crowded showcase area in the Garage on the first day.">
 </figure>
 ```
 
