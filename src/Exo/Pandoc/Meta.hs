@@ -12,6 +12,7 @@ module Exo.Pandoc.Meta
 , metaCanonicalFolder
 , metaLink
 , metaUpdated
+, metaTypeIcon
 ) where
 
 import qualified Data.Aeson as Aeson
@@ -20,6 +21,7 @@ import qualified Data.Text as T
 import qualified Exo.Pandoc.Link as Link
 import qualified Exo.Pandoc.Time as Time
 import qualified Network.URI as URI
+import qualified System.FilePath as FilePath
 import qualified Text.DocTemplates as DocTemplates
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
@@ -84,6 +86,7 @@ instance DocTemplates.ToContext Text Metadata where
         , ("outgoing", DocTemplates.toVal (T.pack <$> toList metaOutgoingLinks))
         , ("crossposts", DocTemplates.toVal metaCrossposts)
         , ("tags", DocTemplates.toVal metaTags)
+        , ("typeIcon", DocTemplates.toVal (metaTypeIcon meta))
         ]
     in
       DocTemplates.MapVal (DocTemplates.Context items)
@@ -111,6 +114,17 @@ metaLink Metadata{..} = Link.pathLink metaPath
 -- The most recent time the file was updated.
 metaUpdated :: Metadata -> (Time.UTCTime, String)
 metaUpdated Metadata{..} = fromMaybe metaCreated metaModified
+
+metaTypeIcon :: Metadata -> Text
+metaTypeIcon meta =
+  case FilePath.splitDirectories (metaCanonicalFolder meta) of
+    "/":"albums":_ -> "ri-album-fill"
+    "/":"blog":_ -> "ri-article-fill"
+    "/":"entries":_ -> "ri-sticky-note-fill"
+    "/":"notes":_ -> "ri-booklet-fill"
+    "/":"press-kits":_ -> "ri-pages-fill"
+    "/":"tags":_ -> "ri-price-tag-3-fill"
+    _ -> "ri-booklet-fill"
 
 data Crosspost =
   Crosspost

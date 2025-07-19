@@ -288,11 +288,17 @@ table {
     }
 }
 
-/* Shrink the first column in file listings; that's where our timestamp is. */
+/* File listings */
 .listing {
+    /* Shrink the first column; that's where our timestamp is. */
     th:first-child, td:first-child {
         width: 0.1%;
         white-space: nowrap;
+    }
+
+    /* Make the icon less bright. */
+    i {
+        color: var(--subtext);
     }
 }
 

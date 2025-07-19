@@ -37,7 +37,7 @@
 
             $if(body)$
             <section id="_content">
-                <h1><i class="ri-article-fill"></i> content</a></h1>
+                <h1><i class="$typeIcon$"></i> content</a></h1>
                 <article>
                     $body$
                 </article>
@@ -60,7 +60,7 @@
                             $endif$
                         </td>
                         <td>
-                            <a href="$list.file.path.canonical$">$list.file.title$</a>
+                            <i class=$list.file.typeIcon$></i> <a href="$list.file.path.canonical$">$list.file.title$</a>
                         </td>
                     </tr>
                     $endfor$

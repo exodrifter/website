@@ -123,7 +123,7 @@ makeHtml TemplateArgs{..} template pandoc = do
         , ("breadcrumb", makeBreadcrumbs (metaCanonicalPath metadata))
         , ("list"
           , DocTemplates.toVal $ catMaybes
-            [ makeFileListing "files" "ri-file-2-fill" (metaInputPath metadata) indexListing
+            [ makeFileListing "files" "ri-file-3-fill" (metaInputPath metadata) indexListing
             , makeFileListing "tagged" "ri-price-tag-3-fill" (metaInputPath metadata) taggedListing
             ]
           )
@@ -131,6 +131,7 @@ makeHtml TemplateArgs{..} template pandoc = do
         , ("crosspost", makeCrossposts (metaCrossposts metadata))
         , ("backlink", DocTemplates.toVal backlinks)
         , ("commitHash", DocTemplates.toVal commitHash)
+        , ("typeIcon", DocTemplates.toVal (metaTypeIcon metadata))
         ]
 
     writerOptions = def
