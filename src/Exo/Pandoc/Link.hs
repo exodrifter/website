@@ -51,6 +51,7 @@ instance DocTemplates.ToContext Text PathInfo where
         [ ("input" :: Text, T.pack (pathInput path))
         , ("output", T.pack (pathOutput path))
         , ("canonical", T.pack (pathCanonical path))
+        , ("canonicalFolder", T.pack (pathCanonicalFolder path))
         , ("url", pathLink path)
         ]
     in

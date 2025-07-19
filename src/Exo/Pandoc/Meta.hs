@@ -76,11 +76,12 @@ instance DocTemplates.ToContext Text Metadata where
       items = Map.fromList
         [ ("path", DocTemplates.toVal metaPath)
         , ("title", DocTemplates.toVal metaTitle)
-        , ("published", maybeToVal (Time.formatTime <$> metaPublished))
         , ("created", DocTemplates.toVal (Time.formatTime metaCreated))
+        , ("published", maybeToVal (Time.formatTime <$> metaPublished))
         , ("modified", maybeToVal (Time.formatTime <$> metaModified))
         , ("migrated", maybeToVal (Time.formatTime <$> metaMigrated))
         , ("updated", DocTemplates.toVal (Time.formatTime (metaUpdated meta)))
+        , ("outgoing", DocTemplates.toVal (T.pack <$> toList metaOutgoingLinks))
         , ("crossposts", DocTemplates.toVal metaCrossposts)
         , ("tags", DocTemplates.toVal metaTags)
         ]
