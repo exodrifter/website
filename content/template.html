@@ -44,55 +44,30 @@
             </section>
             $endif$
 
-            $if(file)$
-            <section id="_files">
-                <h1><i class="ri-file-2-fill"></i> files</i></h1>
+            $for(list)$
+            <section id="_$list.name$">
+                <h1><i class=$list.icon$></i> $list.name$</i></h1>
                 <div>
                 <table class="listing">
                     <tr><th>timestamp</th><th>title</th></tr>
-                    $for(file)$
+                    $for(list.file)$
                     <tr>
                         <td>
-                            $if(file.published)$
-                            <time datetime="$file.published$">$file.published$</time>
+                            $if(list.file.published)$
+                            <time datetime="$list.file.published$">$list.file.published$</time>
                             $else$
-                            <time datetime="$file.updated$">$file.updated$</time>
+                            <time datetime="$list.file.updated$">$list.file.updated$</time>
                             $endif$
                         </td>
                         <td>
-                            <a href="$file.path.canonical$">$file.title$</a>
+                            <a href="$list.file.path.canonical$">$list.file.title$</a>
                         </td>
                     </tr>
                     $endfor$
                 </table>
                 </div>
             </section>
-            $endif$
-
-            $if(tagged)$
-            <section id="_tagged">
-                <h1><i class="ri-file-2-fill"></i> tagged</i></h1>
-                <div>
-                <table class="listing">
-                    <tr><th>timestamp</th><th>title</th></tr>
-                    $for(tagged)$
-                    <tr>
-                        <td>
-                            $if(tagged.published)$
-                            <time datetime="$tagged.published$">$tagged.published$</time>
-                            $else$
-                            <time datetime="$tagged.updated$">$tagged.updated$</time>
-                            $endif$
-                        </td>
-                        <td>
-                            <a href="$tagged.path.canonical$">$tagged.title$</a>
-                        </td>
-                    </tr>
-                    $endfor$
-                </table>
-                </div>
-            </section>
-            $endif$
+            $endfor$
 
             <section id="_meta">
                 <h1><i class="ri-database-2-fill"></i> meta</i></h1>
@@ -109,10 +84,10 @@ $for(crosspost)$
   <time datetime="$crosspost.time$">$crosspost.time$</time> @ <a href="$crosspost.url$">$crosspost.site$</a>
 $endfor$</p>
                 $endif$
-                $if(backlinks)$
+                $if(backlink)$
                 <p class="meta">backlinks:
-$for(backlinks)$
-  <a href="$backlinks.path.canonical$">$backlinks.title$</a>
+$for(backlink)$
+  <a href="$backlink.path.canonical$">$backlink.title$</a>
 $endfor$</p>
                 $endif$
                 <p class="meta">commit: <a href="https://www.github.com/exodrifter/website/commit/$commitHash$">$commitHash$</a></p>

@@ -121,11 +121,15 @@ makeHtml TemplateArgs{..} template pandoc = do
       Map.fromList
         [ ("logo", DocTemplates.toVal logoSource)
         , ("breadcrumb", makeBreadcrumbs (metaCanonicalPath metadata))
-        , ("file", makeFileListing (metaInputPath metadata) indexListing)
-        , ("tagged", makeFileListing (metaInputPath metadata) taggedListing)
+        , ("list"
+          , DocTemplates.toVal $ catMaybes
+            [ makeFileListing "files" "ri-file-2-fill" (metaInputPath metadata) indexListing
+            , makeFileListing "tagged" "ri-price-tag-3-fill" (metaInputPath metadata) taggedListing
+            ]
+          )
         , ("date", makeDateItems metadata)
         , ("crosspost", makeCrossposts (metaCrossposts metadata))
-        , ("backlinks", DocTemplates.toVal backlinks)
+        , ("backlink", DocTemplates.toVal backlinks)
         , ("commitHash", DocTemplates.toVal commitHash)
         ]
 
@@ -300,12 +304,19 @@ makeCrossposts crossposts =
     DocTemplates.toVal (makeCrosspost <$> crossposts)
 
 -- Makes a listing of files that doesn't include the current file
-makeFileListing :: FilePath -> [Metadata] -> DocTemplates.Val Text
-makeFileListing inputFile metas =
+makeFileListing :: Text -> Text -> FilePath -> [Metadata] -> Maybe (Map Text (DocTemplates.Val Text))
+makeFileListing name icon inputFile metas =
   let
     isNotInputFile meta = metaInputPath meta /= inputFile
   in
-    DocTemplates.toVal (filter isNotInputFile metas)
+    case metas of
+      [] -> Nothing
+      _ ->
+        Just $ fromList
+          [ ("name", DocTemplates.toVal name)
+          , ("icon", DocTemplates.toVal icon)
+          , ("file", DocTemplates.toVal (filter isNotInputFile metas))
+          ]
 
 --------------------------------------------------------------------------------
 -- Helpers
