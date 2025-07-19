@@ -4,7 +4,10 @@ created: 2025-05-09T06:23:51Z
 aliases:
 - GodotCon Boston 2025
 tags:
+- annual-event
+- convention
 - godot
+- godot-con
 ---
 
 # GodotCon Boston 2025

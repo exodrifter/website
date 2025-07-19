@@ -5,6 +5,10 @@ edited: 2025-06-23T07:05:22Z
 aliases:
 - OffKai Expo Gen 4
 - OffKai Expo 2025
+tags:
+- annual-event
+- expo
+- offkai-expo
 ---
 
 # OffKai Expo Gen 4

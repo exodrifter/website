@@ -4,6 +4,10 @@ created: 2024-07-24T21:40:26Z
 modified: 2024-09-19T00:46:40Z
 aliases:
 - Delta H Con
+tags:
+- annual-event
+- convention
+- delta-h-con
 ---
 
 # Delta H Con

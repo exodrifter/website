@@ -3,6 +3,10 @@ title: OffKai Expo
 created: 2025-07-07T06:39:44Z
 aliases:
 - OffKai Expo
+tags:
+- annual-event
+- expo
+- offkai-expo
 ---
 
 # OffKai Expo

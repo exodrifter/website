@@ -3,6 +3,10 @@ title: 2D Con
 created: 2024-07-24T22:07:41Z
 aliases:
 - 2D Con
+tags:
+- 2d-con
+- annual-event
+- convention
 ---
 
 # 2D Con
