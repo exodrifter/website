@@ -14,10 +14,10 @@ import Development.Shake as X
 import Development.Shake.FilePath as X
 import Development.Shake.Util as X
 import Exo.Build.Action as X
+import Exo.Build.Const as X
 import Exo.Build.Oracle as X
 import Exo.Build.Shake as X
 import qualified Data.Text as T
-import qualified Exo.Const as Const
 import qualified System.FilePath as FilePath
 import qualified System.Directory.Extra as Directory
 import qualified Text.DocTemplates as DocTemplates
@@ -34,12 +34,12 @@ wantWebsite = do
   sourceFiles <- findSourceFiles "."
   let
     toOutputPath path =
-      Const.outputDirectory </> X.dropDirectory1 path -<.> "html"
+      outputDirectory </> X.dropDirectory1 path -<.> "html"
     webpages = toOutputPath <$> sourceFiles
 
     -- Feeds to generate.
     feedFiles =
-      (Const.outputDirectory </>) <$>
+      (outputDirectory </>) <$>
         [ "index.xml"
         , "blog/index.xml"
         , "entries/index.xml"
@@ -48,7 +48,7 @@ wantWebsite = do
 
     -- Static files to copy.
     staticFiles =
-      (Const.outputDirectory </>) <$>
+      (outputDirectory </>) <$>
         [ "keybase.txt"
         , "logo.svg"
         , "style.css"
@@ -63,11 +63,11 @@ wantWebsite = do
 -- Finds all files that will become webpages in the content directory.
 findSourceFiles :: FilePath -> Action [FilePath]
 findSourceFiles dir = do
-  sourceFiles <- getDirectoryFiles (Const.contentDirectory </> dir) ["//*.md"]
+  sourceFiles <- getDirectoryFiles (contentDirectory </> dir) ["//*.md"]
 
   let
     rebuildPath path =
-      FilePath.normalise (Const.contentDirectory </> dir </> path)
+      FilePath.normalise (contentDirectory </> dir </> path)
       -- ^ We need to normalize the path because you can pass "." as the `dir`.
     ignoreObsidianFiles = filter (notElem ".obsidian" . splitDirectories)
   pure (rebuildPath <$> ignoreObsidianFiles sourceFiles)

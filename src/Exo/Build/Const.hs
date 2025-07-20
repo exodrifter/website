@@ -1,5 +1,5 @@
 -- Stores constants for building the website.
-module Exo.Const
+module Exo.Build.Const
 ( outputDirectory
 , contentDirectory
 , baseUrl

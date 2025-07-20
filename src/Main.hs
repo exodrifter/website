@@ -4,7 +4,6 @@ module Main
 
 import Exo.Build ((<//>), (</>), (-<.>), (|%>), (%>))
 import qualified Exo.Build as Build
-import qualified Exo.Const as Const
 import qualified Exo.Pandoc as Pandoc
 import qualified Exo.RSS as RSS
 
@@ -30,7 +29,7 @@ main = Build.runShake Build.wantWebsite $ do
   -- Copy static files.
   let
     copyExtensions = [ "*.css", "*.gif", "*.mp4", "*.png", "*.jpg", "*.svg", "*.txt" ]
-  (Const.outputDirectory <//>) <$> copyExtensions |%> \out -> do
+  (Build.outputDirectory <//>) <$> copyExtensions |%> \out -> do
     let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
     Build.need [inputPath]
     Build.copyFileChanged inputPath out
@@ -90,13 +89,13 @@ main = Build.runShake Build.wantWebsite $ do
     forFiles fn Map.empty sourceFiles
 
   -- Generate website pages.
-  Const.outputDirectory <//> "*.html" %> \out -> do
+  Build.outputDirectory <//> "*.html" %> \out -> do
     let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
     pandoc <- Build.getPandoc inputPath
     metadata <- Build.getMetadata inputPath
     commitHash <- Build.getCommitHash inputPath
 
-    let logoPath = Const.contentDirectory </> "logo.svg"
+    let logoPath = Build.contentDirectory </> "logo.svg"
     Build.need [logoPath]
     logoSource <- Build.decodeByteString =<< readFileBS logoPath
 
@@ -106,7 +105,7 @@ main = Build.runShake Build.wantWebsite $ do
 
     -- Find tagged page dependencies.
     let
-      tagPath p = Const.outputDirectory </> "tags" </> T.unpack p -<.> ".html"
+      tagPath p = Build.outputDirectory </> "tags" </> T.unpack p -<.> ".html"
       tagPaths = tagPath <$> Pandoc.metaTags metadata
     Build.need (filter (Pandoc.metaOutputPath metadata /=) tagPaths)
 
@@ -148,12 +147,12 @@ main = Build.runShake Build.wantWebsite $ do
       <$> traverse Build.getMetadata backlinkPaths
 
     let args = Pandoc.TemplateArgs {..}
-    template <- Build.buildTemplate (Const.contentDirectory </> "template.html")
+    template <- Build.buildTemplate (Build.contentDirectory </> "template.html")
     html <- Build.runEither (Pandoc.makeHtml args template pandoc)
     Build.writeFileChanged out (T.unpack html)
 
   -- Generate RSS feeds
-  Const.outputDirectory <//> "*.xml" %> \out -> do
+  Build.outputDirectory <//> "*.xml" %> \out -> do
     let
       canonicalPath = Build.dropDirectory1 out
       canonicalFolder = FilePath.takeDirectory canonicalPath

@@ -33,9 +33,9 @@ executable site
   other-modules:
     Exo.Build
     Exo.Build.Action
+    Exo.Build.Const
     Exo.Build.Oracle
     Exo.Build.Shake
-    Exo.Const
     Exo.Pandoc
     Exo.Pandoc.Link
     Exo.Pandoc.Meta

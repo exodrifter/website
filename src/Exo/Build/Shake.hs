@@ -10,7 +10,7 @@ module Exo.Build.Shake
 import Data.List ((\\))
 import qualified Development.Shake as Shake
 import qualified Development.Shake.Util as Util
-import qualified Exo.Const as Const
+import qualified Exo.Build.Const as Const
 import qualified Exo.Scotty as Scotty
 import qualified System.Directory.Extra as Directory
 

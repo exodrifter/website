@@ -22,7 +22,7 @@ import qualified Data.Aeson as Aeson
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
 import qualified Development.Shake.FilePath as FilePath
-import qualified Exo.Const as Const
+import qualified Exo.Build.Const as Const
 import qualified Text.DocTemplates as DocTemplates
 
 -- Each source file gets associated with multiple different kinds of paths:
