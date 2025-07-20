@@ -46,7 +46,13 @@
 
             $for(list)$
             <section id="_$list.name$">
-                <h1><i class=$list.icon$></i> $list.name$</i></h1>
+                $if(list.type.tagged)$
+                <h1><i class="ri-price-tag-3-fill"></i> $list.name$</i></h1>
+                $elseif(list.type.files)$
+                <h1><i class="ri-file-3-fill"></i> $list.name$</i></h1>
+                $else$
+                <h1>$list.name$</i></h1>
+                $endif$
                 <table class="listing">
                     <thead>
                         <tr><th>timestamp</th><th>title</th></tr>

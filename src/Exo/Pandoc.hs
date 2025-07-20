@@ -124,8 +124,8 @@ makeHtml TemplateArgs{..} template pandoc = do
         , ("breadcrumb", makeBreadcrumbs (metaCanonicalPath metadata))
         , ("list"
           , DocTemplates.toVal $ catMaybes
-            [ makeFileListing "files" "ri-file-3-fill" (metaInputPath metadata) indexListing
-            , makeFileListing "tagged" "ri-price-tag-3-fill" (metaInputPath metadata) taggedListing
+            [ makeFileListing "files"  (metaInputPath metadata) indexListing
+            , makeFileListing "tagged" (metaInputPath metadata) taggedListing
             ]
           )
         , ("backlink", DocTemplates.toVal backlinks)
@@ -275,17 +275,21 @@ makeBreadcrumbs canonical =
     DocTemplates.toVal (T.pack <$> breadcrumbs)
 
 -- Makes a listing of files that doesn't include the current file
-makeFileListing :: Text -> Text -> FilePath -> [Metadata] -> Maybe (Map Text (DocTemplates.Val Text))
-makeFileListing name icon inputFile metas =
+makeFileListing :: Text -> FilePath -> [Metadata] -> Maybe (Map Text (DocTemplates.Val Text))
+makeFileListing name inputFile metas =
   let
+    -- Pandoc doesn't let us check the name of variables, but it does let us
+    -- check for the existence of them. So, we can add the type as a variable.
+    -- The value doesn't matter, but it needs to be non-empty for it to exist.
+    typeMap = Map.fromList [(name, name)]
     isNotInputFile meta = metaInputPath meta /= inputFile
   in
     case metas of
       [] -> Nothing
       _ ->
         Just $ fromList
-          [ ("name", DocTemplates.toVal name)
-          , ("icon", DocTemplates.toVal icon)
+          [ ("type", DocTemplates.toVal typeMap)
+          , ("name", DocTemplates.toVal name)
           , ("file", DocTemplates.toVal (filter isNotInputFile metas))
           ]
 
