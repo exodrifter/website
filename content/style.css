@@ -458,13 +458,12 @@ iframe {
     display: flex;
     flex-direction: row;
     align-items: center;
+    column-gap: var(--grid-size);
 
-    > * + * {
-        margin-left: var(--grid-size);
-    }
-
-    div > * + * {
-        margin-top: var(--grid-size);
+    > div {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--grid-size);
     }
 
     img {

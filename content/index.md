@@ -14,7 +14,15 @@ tags:
 
 ▒▒▒▒ Hello? ▒▒▒▒ ...can you hear me? ▒▒▒▒
 
-<span><i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)</span><span><i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)</span><span><i class="ri-user-fill"></i> [About me...](about.md)</span>
+<div class="flex">
+
+<i class="ri-discord-fill"></i> [Discord](https://discord.gg/arqFQVt)
+
+<i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)
+
+<i class="ri-user-fill"></i> [About me...](about.md)
+
+</div>
 
 </div>
 </div>
