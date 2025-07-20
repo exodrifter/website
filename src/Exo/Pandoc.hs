@@ -119,7 +119,8 @@ makeHtml TemplateArgs{..} template pandoc = do
     variables :: Map Text (DocTemplates.Val Text)
     variables = do
       Map.fromList
-        [ ("logo", DocTemplates.toVal logoSource)
+        [ ("meta", DocTemplates.toVal metadata)
+        , ("commitHash", DocTemplates.toVal commitHash)
         , ("breadcrumb", makeBreadcrumbs (metaCanonicalPath metadata))
         , ("list"
           , DocTemplates.toVal $ catMaybes
@@ -127,11 +128,8 @@ makeHtml TemplateArgs{..} template pandoc = do
             , makeFileListing "tagged" "ri-price-tag-3-fill" (metaInputPath metadata) taggedListing
             ]
           )
-        , ("date", makeDateItems metadata)
-        , ("crosspost", makeCrossposts (metaCrossposts metadata))
         , ("backlink", DocTemplates.toVal backlinks)
-        , ("commitHash", DocTemplates.toVal commitHash)
-        , ("typeIcon", DocTemplates.toVal (metaTypeIcon metadata))
+        , ("logo", DocTemplates.toVal logoSource)
         ]
 
     writerOptions = def
@@ -275,34 +273,6 @@ makeBreadcrumbs canonical =
 
   in
     DocTemplates.toVal (T.pack <$> breadcrumbs)
-
-makeDateItems :: Metadata -> DocTemplates.Val Text
-makeDateItems Metadata{..} = do
-  let
-    makeDateItem t d =
-      Map.fromList
-        [ ("type" :: Text, t)
-        , ("time", formatTime d)
-        ]
-  DocTemplates.toVal $ catMaybes
-    [ makeDateItem "published" <$> metaPublished
-    , Just (makeDateItem "created" metaCreated)
-    , makeDateItem "migrated" <$> metaMigrated
-    , makeDateItem "modified" <$> metaModified
-    ]
-
--- Creates a list of crossposts.
-makeCrossposts :: [Crosspost] -> DocTemplates.Val Text
-makeCrossposts crossposts =
-  let
-    makeCrosspost Crosspost{..} =
-      Map.fromList
-        [ ("url" :: Text, crosspostUrl)
-        , ("site", crosspostSite)
-        , ("time", formatTime crosspostTime)
-        ]
-  in
-    DocTemplates.toVal (makeCrosspost <$> crossposts)
 
 -- Makes a listing of files that doesn't include the current file
 makeFileListing :: Text -> Text -> FilePath -> [Metadata] -> Maybe (Map Text (DocTemplates.Val Text))

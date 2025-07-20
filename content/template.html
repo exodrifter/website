@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>$title$</title>
+        <title>$meta.title$</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,7 @@
 
             $if(body)$
             <section id="_content">
-                <h1><i class="$typeIcon$"></i> content</a></h1>
+                <h1><i class="$meta.typeIcon$"></i> content</a></h1>
                 <article>
                     $body$
                 </article>
@@ -69,17 +69,23 @@
 
             <section id="_meta">
                 <h1><i class="ri-database-2-fill"></i> meta</i></h1>
-                $if(tags)$
-                <p class="meta">tags: $for(tags)$<a href="/tags/$tags$">$tags$</a>$sep$, $endfor$</p>
+                $if(meta.tags)$
+                <p class="meta">tags: $for(meta.tags)$<a href="/tags/$meta.tags$">$meta.tags$</a>$sep$, $endfor$</p>
                 $endif$
-                $if(date)$
-                <p class="meta">$for(date)$$date.type$: <time datetime="$date.time$">$date.time$</time>
-$endfor$</p>
-                $endif$
-                $if(crosspost)$
+                <p class="meta">created: <time datetime="$meta.created$">$meta.created$</time>
+$if(meta.published)$
+published: <time datetime="$meta.published$">$meta.published$</time>
+$endif$
+$if(meta.modified)$
+modified: <time datetime="$meta.modified$">$meta.modified$</time>
+$endif$
+$if(meta.migrated)$
+migrated: <time datetime="$meta.migrated$">$meta.migrated$</time>
+$endif$</p>
+                $if(meta.crosspost)$
                 <p class="meta">crossposts:
-$for(crosspost)$
-  <time datetime="$crosspost.time$">$crosspost.time$</time> @ <a href="$crosspost.url$">$crosspost.site$</a>
+$for(meta.crosspost)$
+  <time datetime="$meta.crosspost.time$">$meta.crosspost.time$</time> @ <a href="$meta.crosspost.url$">$meta.crosspost.site$</a>
 $endfor$</p>
                 $endif$
                 $if(backlink)$
