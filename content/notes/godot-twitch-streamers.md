@@ -1,7 +1,7 @@
 ---
 title: Godot Twitch streamers
 created: 2024-02-23T07:30:13.352Z
-modified: 2025-07-18T01:22:00-07:00
+modified: 2025-07-21T02:12:21-07:00
 aliases:
   - Godot Twitch streamers
 tags:
@@ -44,9 +44,11 @@ no | [Outfrost](https://www.twitch.tv/outfrost) | [Re:Placement](https://outfros
 no | [PracticalNPC](https://www.twitch.tv/practicalnpc) | [Memori](https://store.steampowered.com/app/1712700/Memori/) [^1]
 no | [SJHDoesGames](https://www.twitch.tv/sjhdoesgames) | [Shootlanzer](https://munity.itch.io/shootlanzer-prototype) [^1]
 yes | [SpaceyBat_](https://www.twitch.tv/spaceybat_) | [Chrono Gear](https://spaceybat.itch.io/project-chrono-gear) [^1]
+yes | [ti_tyme](https://www.twitch.tv/ti_tyme) | [Duck Dating Sim](https://store.steampowered.com/app/3402150/Duck_Dating_Sim/) [^4]
 yes | [Titanseek3r](https://www.twitch.tv/titanseek3r) | [no signal](https://exodrifter.itch.io/lost-contact) [^1]
 no | [walaber](https://www.twitch.tv/walaber) | [Parking Garage Rally Circuit](https://store.steampowered.com/app/2737300/Parking_Garage_Rally_Circuit/) [^1]
 
 [^1]: [20250509213746](../entries/20250509213746.md)
 [^2]: [20250509214014](../entries/20250509214014.md)
 [^3]: [20250718082011](../entries/20250718082011.md)
+[^4]: [20250721090811](../entries/20250721090811.md)
