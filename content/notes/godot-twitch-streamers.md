@@ -1,7 +1,7 @@
 ---
 title: Godot Twitch streamers
 created: 2024-02-23T07:30:13.352Z
-modified: 2025-07-21T02:12:21-07:00
+modified: 2025-07-22T01:49:47-07:00
 aliases:
   - Godot Twitch streamers
 tags:
@@ -21,6 +21,7 @@ no | [DeveloperEzra](https://www.twitch.tv/developerezra) | [EzDialogue](https:/
 no | [earend](https://www.twitch.tv/earend) | [Bear Defense Situation](https://store.steampowered.com/app/3778320/Bear_Defence_Situation/) [^3]
 yes | [exodrifter_](https://www.twitch.tv/exodrifter_) | [no signal](https://exodrifter.itch.io/lost-contact) [^1]
 yes | [ExpiredPopsicle](https://www.twitch.tv/expiredpopsicle) | Stream overlay in Godot, FPS gamedev [^1]
+no | [Falinere](https://www.twitch.tv/falinere) | [Falinere Fantasy](https://store.steampowered.com/app/1976930/Falinere_Fantasy/) [^5]
 yes | [fatalvampire](https://www.twitch.tv/fatalvampire) | Monster taming game [^1]
 yes | [FixItFreb](https://www.twitch.tv/fixitfreb) | [DungeonTubers](https://fixitfreb.itch.io/dungeontubers), Porting [Beepobox](https://fixitfreb.itch.io/beepo-box) to Godot [^1]
 no | [GodotGameDev](https://www.twitch.tv/godotgamedev) | Learning Godot [^1]
@@ -52,3 +53,4 @@ no | [walaber](https://www.twitch.tv/walaber) | [Parking Garage Rally Circuit](h
 [^2]: [20250509214014](../entries/20250509214014.md)
 [^3]: [20250718082011](../entries/20250718082011.md)
 [^4]: [20250721090811](../entries/20250721090811.md)
+[^5]: [20250722084802](../entries/20250722084802.md)
