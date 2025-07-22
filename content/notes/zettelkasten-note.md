@@ -1,17 +1,17 @@
 ---
 title: Zettelkasten Note
 created: 2024-07-24T20:16:46Z
-modified: 2024-09-19T04:26:37Z
+modified: 2025-07-22T00:56:09-07:00
 aliases:
-- Zettelkasten Note
-- Zettelkasten Notes
+  - Zettelkasten note
+  - Zettelkasten notes
 tags:
-- note-taking
+  - note-taking
 ---
 
 # Zettelkasten Note
 
-A [note-taking-strategy](note-taking-strategy.md) where each note contains a single unit of information which can be composed into larger notes. It should:
+A [note-taking strategy](note-taking-strategy.md) where each note contains a single unit of information which can be composed into larger notes. It should:
 
 * **Have one concise, complete piece of information.** Making notes in this fashion allows me to connect and disconnect relationships between notes freely, allowing them to be composed together to form larger ideas. [^1]
 * **Be written in my own words.** The note should always represent my current understanding of what I'm trying to learn so that I can both understand it in the future and so I can see how my understanding has developed over time. [^2]

@@ -6,3 +6,5 @@ aliases:
 tags:
 - index
 ---
+
+This folder contains all of the blog posts I've written. Some of these posts were originally written on other platforms, then migrated here.
