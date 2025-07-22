@@ -35,24 +35,24 @@ data Metadata =
     , metaTitle :: Text
     -- ^ The title of the document.
 
-    , metaCreated :: (Time.UTCTime, String)
+    , metaCreated :: Time.Timestamp
     -- ^ The best-known time for when the document was originally created. For
     -- documents originally created on this website, this is the time the note
     -- was added to the file system. For documents created on other websites,
     -- this is the earliest time it was posted on another website. For physical
     -- documents, this is the best-known time that the document was written.
-    , metaPublished :: Maybe (Time.UTCTime, String)
+    , metaPublished :: Maybe Time.Timestamp
     -- ^ The time the document was published to the internet. This type of time
     -- is only used for documents meant to be published in whole at a specific
     -- time, like blog posts. This must always be after the created date.
-    , metaModified :: Maybe (Time.UTCTime, String)
+    , metaModified :: Maybe Time.Timestamp
     -- ^ The time the document was modified. This indicates the time the content
     -- of the document was last edited. This time is not updated when the
     -- metadata of the document is edited or when the document's content does
     -- not meaningfully change (such as when link urls are updated to point to
     -- the new location of moved documents). This must always be after the
     -- created date.
-    , metaMigrated :: Maybe (Time.UTCTime, String)
+    , metaMigrated :: Maybe Time.Timestamp
     -- ^ The time the document was either transcribed from a physical medium
     -- into this website or copied into this website from an external source.
     -- This must always be after the created date.
@@ -112,7 +112,7 @@ metaLink :: Metadata -> Text
 metaLink Metadata{..} = Link.pathLink metaPath
 
 -- The most recent time the file was updated.
-metaUpdated :: Metadata -> (Time.UTCTime, String)
+metaUpdated :: Metadata -> Time.Timestamp
 metaUpdated Metadata{..} = fromMaybe metaCreated metaModified
 
 metaTypeIcon :: Metadata -> Text
@@ -130,7 +130,7 @@ data Crosspost =
   Crosspost
     { crosspostUrl :: Text
     , crosspostSite :: Text
-    , crosspostTime :: (Time.UTCTime, String)
+    , crosspostTime :: Time.Timestamp
     }
   deriving stock (Eq, Generic, Show)
 
@@ -179,7 +179,7 @@ parseMetadata inputPath pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) = do
   let
     checkTimeValidity mTime =
       case mTime of
-        Just time@(t, _) | t < fst metaCreated ->
+        Just time | time < metaCreated ->
           error
             (  "\"" <> T.pack inputPath <> "\""
             <> " has timestamp "

@@ -204,5 +204,5 @@ needImageDependencies dir pandoc = do
 
 listingSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
 listingSort =
-     comparing (Down . fmap fst . Pandoc.metaPublished)
-  <> comparing (Down . fst . Pandoc.metaUpdated)
+     comparing (Down . Pandoc.metaPublished)
+  <> comparing (Down . Pandoc.metaUpdated)

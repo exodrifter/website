@@ -40,7 +40,7 @@ toRssItem :: Pandoc.Metadata -> Either Text RSS.RSSItem
 toRssItem metadata@Pandoc.Metadata{..} = do
   let pubDate = fromMaybe metaCreated metaPublished
   Right (RSS.nullItem metaTitle)
-    { RSS.rssItemPubDate = Just (rfc822Format (fst pubDate))
+    { RSS.rssItemPubDate = Just (rfc822Format (Pandoc.timestampUtcTime pubDate))
     , RSS.rssItemLink = Just (Pandoc.metaLink metadata)
     , RSS.rssItemGuid = Just (RSS.nullGuid (Pandoc.metaLink metadata))
       { RSS.rssGuidPermanentURL = Just True
