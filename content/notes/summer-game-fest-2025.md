@@ -3,6 +3,8 @@ title: Summer Game Fest 2025
 created: 2025-06-07T01:16:23Z
 aliases:
 - Summer Game Fest 2025
+tags:
+- summer-game-fest
 ---
 
 # Summer Game Fest 2025

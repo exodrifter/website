@@ -4,4 +4,5 @@ aliases:
 - Minecraft
 tags:
 - minecraft
+- video-game
 ---

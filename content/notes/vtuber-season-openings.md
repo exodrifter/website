@@ -3,6 +3,8 @@ title: VTuber Season Openings
 created: 2025-07-07T06:18:44Z
 aliases:
 - VTuber Season Openings
+tags:
+- vtuber
 ---
 
 # VTuber Season Openings

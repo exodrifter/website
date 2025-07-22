@@ -4,5 +4,6 @@ aliases:
 - BSC
 - Better Software Conference
 tags:
+- annual-event
 - better-software-conference
 ---

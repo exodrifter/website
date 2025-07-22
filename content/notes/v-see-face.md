@@ -4,6 +4,8 @@ created: 2025-02-21T02:50:35Z
 aliases:
 - VSeeFace
 - VSF
+tags:
+- vtuber
 ---
 
 # VSeeFace

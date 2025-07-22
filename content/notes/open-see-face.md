@@ -1,6 +1,8 @@
 ---
 title: OpenSeeFace
 created: 2025-02-21T02:50:15Z
+tags:
+- vtuber
 ---
 
 # OpenSeeFace

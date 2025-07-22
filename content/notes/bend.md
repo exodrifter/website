@@ -3,6 +3,8 @@ title: Bend
 created: 2025-05-30T11:52:06Z
 aliases:
 - Bend
+tags:
+- programming-language
 ---
 
 # Bend
