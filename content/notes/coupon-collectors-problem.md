@@ -5,6 +5,7 @@ aliases:
 - Coupon Collector's Problem
 - coupon collector's problem
 tags:
+- competitive-programming
 - math
 ---
 

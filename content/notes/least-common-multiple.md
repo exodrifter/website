@@ -7,6 +7,7 @@ aliases:
 - Least Common Multiple
 - least common multiple
 tags:
+- competitive-programming
 - math
 ---
 
