@@ -3,6 +3,8 @@ title: Fun Math Games
 created: 2025-05-31T09:18:05Z
 aliases:
 - Fun Math Games
+tags:
+- math
 ---
 
 # Fun Math Games

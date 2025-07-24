@@ -5,6 +5,7 @@ aliases:
 - A Mathematician's Lament
 tags:
 - essay
+- math
 ---
 
 # A Mathematician's Lament
