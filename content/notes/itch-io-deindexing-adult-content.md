@@ -1,11 +1,12 @@
 ---
 title: itch.io mass deindexing of adult content
 created: 2025-07-24T14:21:41-07:00
+modified: 2025-07-24T23:22:16-07:00
 aliases:
-- itch.io mass deindexing of adult content
-- itch.io mass delisting of adult content
+  - itch.io mass deindexing of adult content
+  - itch.io mass delisting of adult content
 tags:
-- itch-io
+  - itch-io
 ---
 
 # itch.io mass deindexing of adult content
@@ -26,8 +27,11 @@ At 2025-07-24 06:07:43 UTC, itch.io posted an [official announcement](https://it
 
 At 2025-07-24 16:59:52 UTC, itch.io posted [a clarification](https://itch.io/post/13452559) for a community note on Twitter that they claimed was spreading misinformation. They said that deindexed pages are still accessible in libraries and that pages have not been removed from collections or libraries as part of the broader review. For pages that received a content notice, downloadable files of those games are still available in libraries if you had previously purchased the game or received a key for the game and the creator has not removed the page themselves. [^2]
 
+At 2025-07-25 03:13 UTC, Leaf posted a message in the direct action thread in the itch.io Discord server, saying "The open case we have with Stripe right now is probably most critical right now. They apparently are or will be making a determination on the eligibility of our entire platform soon. Do what you want with that information". [^6]
+
 [^1]: [20250724211409](../entries/20250724211409.md)
 [^2]: [20250724212007](../entries/20250724212007.md)
 [^3]: [20250724213052](../entries/20250724213052.md)
 [^4]: [20250724213916](../entries/20250724213916.md)
 [^5]: [itch.io was my favorite site](../blog/20250724073550.md)
+[^6]: [20250725062034](../entries/20250725062034.md)
