@@ -270,7 +270,6 @@ hr {
      that the entire table cell is exactly two grid cells tall.
 */
 table {
-    display: block;
     width: round(down, 100%, var(--grid-size));
     overflow-x: scroll;
     border-collapse: collapse;
