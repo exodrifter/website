@@ -1,7 +1,7 @@
 ---
 title: itch.io mass deindexing of adult content
 created: 2025-07-24T14:21:41-07:00
-modified: 2025-07-24T23:22:16-07:00
+modified: 2025-07-26T10:21:21-07:00
 aliases:
   - itch.io mass deindexing of adult content
   - itch.io mass delisting of adult content
@@ -29,9 +29,21 @@ At 2025-07-24 16:59:52 UTC, itch.io posted [a clarification](https://itch.io/pos
 
 At 2025-07-25 03:13 UTC, Leaf posted a message in the direct action thread in the itch.io Discord server, saying "The open case we have with Stripe right now is probably most critical right now. They apparently are or will be making a determination on the eligibility of our entire platform soon. Do what you want with that information". [^6]
 
+At 2025-07-26 11:22 UTC, user @papaira.bsky.social‬ posted [a tweet](https://bsky.app/profile/papaira.bsky.social/post/3luuh5fraek2q) noting that the NSFW policy had been quietly updated on itch.io. I am unable to find an official announcement about the policy change. The [new policy](https://itch.io/docs/creators/faq#is-adult-content-allowed) states that creators are responsible for ensuring their content meets the guidelines set forth by all payment processors your account uses, that violations of the policy will mean your account will become ineligible for payouts, and that the following content is now prohibited: [^7]
+
+- Non-consensual content (real or implied)
+- Underage or “barely legal” themes
+- Incest or pseudo-incest content
+- Bestiality or animal-related
+- Rape, coercion, or force-related
+- Sex trafficking implications
+- Revenge porn / voyeur / hidden cam
+- Fetish involving bodily waste or extreme harm (e.g., “scat,” “vomit”)
+
 [^1]: [20250724211409](../entries/20250724211409.md)
 [^2]: [20250724212007](../entries/20250724212007.md)
 [^3]: [20250724213052](../entries/20250724213052.md)
 [^4]: [20250724213916](../entries/20250724213916.md)
 [^5]: [itch.io was my favorite site](../blog/20250724073550.md)
 [^6]: [20250725062034](../entries/20250725062034.md)
+[^7]: [20250726170447](../entries/20250726170447.md)
