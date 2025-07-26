@@ -21,7 +21,7 @@ Before this event happened, itch.io had built a reputation for being one of the 
 
 At 2025-07-23 23:19 UTC, Leaf posted just "🫡" with no accompanying message in the official Discord channel. [^3]
 
-Around 2025-07-24 00:00 UTC, all adult games on itch.io had been delisted. [^3]
+Around 2025-07-24 00:00 UTC, all games with the `NSFW` tag on itch.io had been delisted. [^3] [^8]
 
 At 2025-07-24 06:07:43 UTC, itch.io posted an [official announcement](https://itch.io/updates/update-on-nsfw-content) claiming this happened because of Collective Shout's [open letter](https://www.collectiveshout.org/open-letter-to-payment-processors) and associated campaign to direct concerns about the nature of certain content found on Steam and itch.io. They claimed that it was not realistic to provide creators with advance notice and apologized for the abruptness of the changes. They did not confirm what kinds of content would be allowed or not, but said that they were conducting a review of all adult content. [^1]
 
@@ -47,3 +47,4 @@ At 2025-07-26 11:22 UTC, user @papaira.bsky.social‬ posted [a tweet](https://b
 [^5]: [itch.io was my favorite site](../blog/20250724073550.md)
 [^6]: [20250725062034](../entries/20250725062034.md)
 [^7]: [20250726170447](../entries/20250726170447.md)
+[^8]: [20250726175255](../entries/20250726175255.md)
