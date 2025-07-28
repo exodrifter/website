@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-07-27T20:58:31-07:00
+modified: 2025-07-28T08:51:59-07:00
 tags:
   - index
 ---
@@ -29,16 +29,10 @@ tags:
 
 # blog
 
-- **2025-07-27** - [no signal v1.3.2](blog/20250728034617.md)
-- **2025-07-27** - [no signal v1.3.1](blog/20250728032657.md)
-- **2025-07-27** - [no signal v1.3.0](blog/20250728015155.md)
-- **2025-07-26** - [no signal v1.2.0](blog/20250727015104.md)
+- **2025-07-28** - [no signal v1.4.0](blog/20250728153807.md)
 - **2025-07-24** - [itch.io was my favorite site](blog/20250724073550.md)
 - **2025-07-15** - [new website, and the Bad Shape](blog/20250715200219.md)
 - **2025-07-08** - [offkai recap and being myself](blog/20250707063429.md)
-- **2025-06-25** - [no signal release date](blog/20250625201455.md)
-- **2025-05-16** - [godotcon boston 2025](blog/20250516012109.md)
-- **2025-03-17** - [no signal dev hiatus](blog/20250317203824.md)
 
 [<i class="ri-rss-fill"></i> RSS](blog/index.xml)
 [See all posts...](blog/index.md)
