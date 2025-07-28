@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-07-27T20:33:58-07:00
+modified: 2025-07-27T20:58:31-07:00
 tags:
   - index
 ---
@@ -29,6 +29,7 @@ tags:
 
 # blog
 
+- **2025-07-27** - [no signal v1.3.2](blog/20250728034617.md)
 - **2025-07-27** - [no signal v1.3.1](blog/20250728032657.md)
 - **2025-07-27** - [no signal v1.3.0](blog/20250728015155.md)
 - **2025-07-26** - [no signal v1.2.0](blog/20250727015104.md)
