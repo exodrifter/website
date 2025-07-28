@@ -92,10 +92,10 @@ $endif$
 $if(meta.migrated)$
 migrated: <time datetime="$meta.migrated$">$meta.migrated$</time>
 $endif$</p>
-                $if(meta.crosspost)$
+                $if(meta.crossposts)$
                 <p class="meta">crossposts:
-$for(meta.crosspost)$
-  <time datetime="$meta.crosspost.time$">$meta.crosspost.time$</time> @ <a href="$meta.crosspost.url$">$meta.crosspost.site$</a>
+$for(meta.crossposts)$
+  <time datetime="$meta.crossposts.time$">$meta.crossposts.time$</time> @ <a href="$meta.crossposts.url$">$meta.crossposts.site$</a>
 $endfor$</p>
                 $endif$
                 $if(backlink)$
