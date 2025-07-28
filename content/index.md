@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-07-28T08:54:42-07:00
+modified: 2025-07-28T16:33:51-07:00
 tags:
   - index
 ---
@@ -66,6 +66,8 @@ tags:
 <div class="flex">
 
 [Centrochelys](http://www.brendanmcleod.dev/)
+
+[Dr Nostromo](http://www.drnostromo.com/)
 
 [Haskell for all](https://www.haskellforall.com/)
 
