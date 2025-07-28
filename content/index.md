@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-07-28T08:51:59-07:00
+modified: 2025-07-28T08:54:42-07:00
 tags:
   - index
 ---
@@ -39,9 +39,9 @@ tags:
 
 # press kits
 
-- _[no signal](press-kits/no-signal/index.md)_ (2024) - an escape room game about an isolated station and mysterious signals emitted by a black hole.
+- _[no signal](press-kits/no-signal/index.md)_ (2025) - an escape room game about an isolated station and mysterious signals emitted by a black hole.
 - _[voluntary commitment](press-kits/voluntary-commitment/index.md)_ (2024) - a role-playing game about being stuck against your will in a hospital.
-- _[Ultraprocessor Ribbon](press-kits/ultraprocessor-ribbon/index.md)_ (2024) - a 2D block breaking and visual novel erogame about two gay girls and hot robot sex.
+- _[Ultraprocessor Ribbon](press-kits/ultraprocessor-ribbon/index.md)_ (tbd) - a 2D block breaking and visual novel erogame about two gay girls and hot robot sex.
 
 [See all press kits...](press-kits/index.md)
 
