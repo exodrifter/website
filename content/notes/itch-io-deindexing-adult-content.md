@@ -1,7 +1,7 @@
 ---
 title: itch.io mass deindexing of adult content
 created: 2025-07-24T14:21:41-07:00
-modified: 2025-07-26T10:21:21-07:00
+modified: 2025-07-28T13:12:04-07:00
 aliases:
   - itch.io mass deindexing of adult content
   - itch.io mass delisting of adult content
@@ -40,6 +40,8 @@ At 2025-07-26 11:22 UTC, user @papaira.bsky.social‬ posted [a tweet](https://b
 - Revenge porn / voyeur / hidden cam
 - Fetish involving bodily waste or extreme harm (e.g., “scat,” “vomit”)
 
+At 2025-07-28 19:47 UTC, Leaf posted an announcement in the `#news` channel in the official itch.io discord server stating that an [addendum FAQ](https://itch.io/updates/update-on-nsfw-content#addendum-faq) had been added to their original blog post about NSFW content. In it, they explain why their response was greater than Steam's, that Stripe can no longer be used for 18+ content, and clarified again that no games were removed from people's collections or libraries. [^9]
+
 [^1]: [20250724211409](../entries/20250724211409.md)
 [^2]: [20250724212007](../entries/20250724212007.md)
 [^3]: [20250724213052](../entries/20250724213052.md)
@@ -48,3 +50,4 @@ At 2025-07-26 11:22 UTC, user @papaira.bsky.social‬ posted [a tweet](https://b
 [^6]: [20250725062034](../entries/20250725062034.md)
 [^7]: [20250726170447](../entries/20250726170447.md)
 [^8]: [20250726175255](../entries/20250726175255.md)
+[^9]: [20250728200632](../entries/20250728200632.md)
