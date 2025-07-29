@@ -278,6 +278,7 @@ table {
         border: solid 2px var(--bg2);
         padding: calc(var(--grid-size)/2 - 1px);
         vertical-align: top;
+        word-break: break-word;
     }
 
     /* For reasons unknown to me, even though we have no margin or padding,
