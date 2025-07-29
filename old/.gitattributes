@@ -1,0 +1,14 @@
+* text=auto
+
+*.css text
+*.js text
+*.php text
+
+.gitattributes text
+.gitignore text
+.htaccess text
+
+*.ico binary
+*.jpg binary
+*.png binary
+*.sqlite binary

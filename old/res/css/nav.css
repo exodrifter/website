@@ -1,0 +1,35 @@
+.nav {
+	z-index: 1;
+	width: 100%;
+	float: right;
+	list-style: none;
+	background-color: #23172F;
+	border-bottom: 3px solid #452F5A;
+	margin: 0 0 3em 0;
+}
+
+.nav img {
+	float: left;
+	width: 1em;
+	height: 1em;
+	margin: .2em .3em 0 0;
+}
+
+.nav li a {
+	font-family: 'Iceland', cursive;
+	text-decoration: none;
+	font-size: 1em;
+	color: #fff;
+	padding: .4em .5em;
+	display: block;
+	float: right;
+	transition: all 0.25s ease-in-out;
+}
+
+.nav li a:hover {
+	background-color: #452F5A;
+}
+
+.nav li a.selected {
+	background-color: #452F5A;
+}
