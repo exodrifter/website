@@ -1,4 +1,5 @@
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 
 -- Helpers for dealing with time.
 --
@@ -8,12 +9,16 @@ module Exo.Pandoc.Time
 ( Timestamp(..)
 , Resolution(..)
 , parseTime
-, formatTime
 ) where
 
 import qualified Data.Aeson as Aeson
 import qualified Data.Text as T
 import qualified Data.Time as Time
+import qualified Text.DocTemplates as DocTemplates
+
+--------------------------------------------------------------------------------
+-- Timestamp
+--------------------------------------------------------------------------------
 
 -- Source files have a variety of different resolutions and I would like to
 -- maintain that resolution when times are shown on the website. I don't want to
@@ -32,17 +37,31 @@ instance Ord Timestamp where
 instance Aeson.FromJSON Timestamp
 instance Aeson.ToJSON Timestamp
 
--- The highest resolution available for a timestamp.
-data Resolution =
-    Day
-  | Hour
-  | Minute
-  | Second
-  | Fraction
-  deriving stock (Eq, Generic, Show)
+instance DocTemplates.ToContext Text Timestamp where
+  toVal timestamp =
+    let
+      formatTime :: Resolution -> Timestamp -> Text
+      formatTime maxResolution Timestamp{..} =
+        T.pack
+          ( Time.formatTime
+              Time.defaultTimeLocale
+              (formatStr (min maxResolution timestampResolution))
+              timestampUtcTime
+          )
 
-instance Aeson.FromJSON Resolution
-instance Aeson.ToJSON Resolution
+      toClampedVal :: Resolution -> DocTemplates.Val Text
+      toClampedVal a = DocTemplates.toVal (formatTime a timestamp)
+
+      items = fromList
+        [ ("day", toClampedVal Day)
+        , ("hour", toClampedVal Hour)
+        , ("minute", toClampedVal Minute)
+        , ("second", toClampedVal Second)
+        , ("fraction", toClampedVal Fraction)
+        ]
+
+    in
+      DocTemplates.MapVal (DocTemplates.Context items)
 
 -- My notes have accumulated a variety of different time formats over the years,
 -- so this function tries several different formats until one of them works.
@@ -61,20 +80,31 @@ parseTime text =
       ("Cannot parse time \"" <> text <> "\"")
       (tryParse <$> timeFormats)
 
--- Formats a time for the website. All times are rendered in UTC in as much
--- detail as is available.
-formatTime :: Timestamp -> Text
-formatTime Timestamp{..} =
-  let
-    formatStr =
-      case timestampResolution of
-        Day -> "%Y-%m-%d"
-        Hour -> "%Y-%m-%d %H"
-        Minute -> "%Y-%m-%d %H:%M"
-        Second -> "%Y-%m-%d %H:%M:%S"
-        Fraction -> "%Y-%m-%d %H:%M:%S%Q"
-  in
-    T.pack (Time.formatTime Time.defaultTimeLocale formatStr timestampUtcTime)
+--------------------------------------------------------------------------------
+-- Resolution
+--------------------------------------------------------------------------------
+
+-- The resolution of a timestamp.
+data Resolution =
+    Day
+  | Hour
+  | Minute
+  | Second
+  | Fraction
+  deriving stock (Eq, Generic, Ord, Show)
+
+instance Aeson.FromJSON Resolution
+instance Aeson.ToJSON Resolution
+
+-- Returns the format string for the specified resolution.
+formatStr :: Resolution -> String
+formatStr resolution =
+  case resolution of
+    Day -> "%Y-%m-%d"
+    Hour -> "%Y-%m-%d %H"
+    Minute -> "%Y-%m-%d %H:%M"
+    Second -> "%Y-%m-%d %H:%M:%S"
+    Fraction -> "%Y-%m-%d %H:%M:%S%Q"
 
 -- The valid input time formats and their corresponding output formats.
 timeFormats :: [(String, Resolution)]
@@ -102,4 +132,3 @@ firstRightOr err results =
   case viaNonEmpty head (rights results) of
     Nothing -> Left err
     Just a -> Right a
-

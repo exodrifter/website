@@ -78,11 +78,11 @@ instance DocTemplates.ToContext Text Metadata where
       items = Map.fromList
         [ ("path", DocTemplates.toVal metaPath)
         , ("title", DocTemplates.toVal metaTitle)
-        , ("created", DocTemplates.toVal (Time.formatTime metaCreated))
-        , ("published", maybeToVal (Time.formatTime <$> metaPublished))
-        , ("modified", maybeToVal (Time.formatTime <$> metaModified))
-        , ("migrated", maybeToVal (Time.formatTime <$> metaMigrated))
-        , ("updated", DocTemplates.toVal (Time.formatTime (metaUpdated meta)))
+        , ("created", DocTemplates.toVal metaCreated)
+        , ("published", maybeToVal metaPublished)
+        , ("modified", maybeToVal metaModified)
+        , ("migrated", maybeToVal metaMigrated)
+        , ("updated", DocTemplates.toVal (metaUpdated meta))
         , ("outgoing", DocTemplates.toVal (T.pack <$> toList metaOutgoingLinks))
         , ("crossposts", DocTemplates.toVal metaCrossposts)
         , ("tags", DocTemplates.toVal metaTags)
@@ -143,7 +143,7 @@ instance DocTemplates.ToContext Text Crosspost where
       items = Map.fromList
         [ ("url", DocTemplates.toVal crosspostUrl)
         , ("site", DocTemplates.toVal crosspostSite)
-        , ("time", DocTemplates.toVal (Time.formatTime crosspostTime))
+        , ("time", DocTemplates.toVal crosspostTime)
         ]
     in
       DocTemplates.MapVal (DocTemplates.Context items)
@@ -183,7 +183,7 @@ parseMetadata inputPath pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) = do
           error
             (  "\"" <> T.pack inputPath <> "\""
             <> " has timestamp "
-            <> Time.formatTime time
+            <> show time
             <> " which is before the created timestamp."
             )
         _ ->

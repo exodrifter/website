@@ -62,9 +62,9 @@
                     <tr>
                         <td>
                             $if(list.file.published)$
-                            <time datetime="$list.file.published$">$list.file.published$</time>
+                            <time datetime="$list.file.published.fraction$">$list.file.published.minute$</time>
                             $else$
-                            <time datetime="$list.file.updated$">$list.file.updated$</time>
+                            <time datetime="$list.file.updated.fraction$">$list.file.updated.minute$</time>
                             $endif$
                         </td>
                         <td>
@@ -82,20 +82,20 @@
                 $if(meta.tags)$
                 <p class="meta">tags: $for(meta.tags)$<a href="/tags/$meta.tags$">$meta.tags$</a>$sep$, $endfor$</p>
                 $endif$
-                <p class="meta">created: <time datetime="$meta.created$">$meta.created$</time>
+                <p class="meta">created: <time datetime="$meta.created.fraction$">$meta.created.second$</time>
 $if(meta.published)$
-published: <time datetime="$meta.published$">$meta.published$</time>
+published: <time datetime="$meta.published.fraction$">$meta.published.second$</time>
 $endif$
 $if(meta.modified)$
-modified: <time datetime="$meta.modified$">$meta.modified$</time>
+modified: <time datetime="$meta.modified.fraction$">$meta.modified.second$</time>
 $endif$
 $if(meta.migrated)$
-migrated: <time datetime="$meta.migrated$">$meta.migrated$</time>
+migrated: <time datetime="$meta.migrated.fraction$">$meta.migrated.second$</time>
 $endif$</p>
                 $if(meta.crossposts)$
                 <p class="meta">crossposts:
 $for(meta.crossposts)$
-  <time datetime="$meta.crossposts.time$">$meta.crossposts.time$</time> @ <a href="$meta.crossposts.url$">$meta.crossposts.site$</a>
+  <time datetime="$meta.crossposts.time.fraction$">$meta.crossposts.time.second$</time> @ <a href="$meta.crossposts.url$">$meta.crossposts.site$</a>
 $endfor$</p>
                 $endif$
                 $if(backlink)$
