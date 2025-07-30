@@ -18,4 +18,4 @@ Minty Relaxation is a game that I made in under 72 hours with one other person f
 
 This is the first game I made in Flash. I spent most of my time changing how to game responded to your actions, tweaking physics, and programming the gameplay logic.
 
-The game was written in ActionScript using the Flixel library and was finished in April 2013. You can find the Ludum Dare submission page [url=http://www.ludumdare.com/compo/ludum-dare-26/?action=preview&uid=21625]here[/url].
+The game was written in ActionScript using the Flixel library and was finished in April 2013. You can find the Ludum Dare submission page [here](http://www.ludumdare.com/compo/ludum-dare-26/?action=preview&uid=21625).

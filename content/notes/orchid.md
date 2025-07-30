@@ -22,4 +22,4 @@ Orchid is a relatively minimal real time strategy game about taking over the wor
 
 I spent most of the time putting together the enemy AI and the overall game logic such as the control points on the map and resource income. William spent most of his time working on unit behaviour and combat mechanics. Jim made all of the images and music for the game.
 
-The game was written in C# using Unity3D and was finished on December 16, 2013. You can find the Ludum Dare submission page [url=http://www.ludumdare.com/compo/ludum-dare-28/?action=preview&uid=15471]here[/url].
+The game was written in C# using Unity3D and was finished on December 16, 2013. You can find the Ludum Dare submission page [here](http://www.ludumdare.com/compo/ludum-dare-28/?action=preview&uid=15471).
