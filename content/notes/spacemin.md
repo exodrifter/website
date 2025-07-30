@@ -5,8 +5,6 @@ migrated: 2025-07-30T05:48:39Z
 aliases:
 - Minty Relaxation
 tags:
-- actionscript 3
-- flixel
 - project
 ---
 

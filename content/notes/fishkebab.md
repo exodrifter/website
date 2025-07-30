@@ -6,7 +6,7 @@ aliases:
 - Fishkebab
 tags:
 - java
-- libgdx
+- lib-gdx
 - project
 ---
 

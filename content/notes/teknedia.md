@@ -5,8 +5,9 @@ migrated: 2025-07-30T05:48:39Z
 aliases:
 - Teknedia
 tags:
-- c++
+- cpp
 - project
+- teknedia
 ---
 
 # Teknedia

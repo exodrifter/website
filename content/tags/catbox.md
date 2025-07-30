@@ -4,4 +4,5 @@ aliases:
 - catbox
 tags:
 - catbox
+- project
 ---

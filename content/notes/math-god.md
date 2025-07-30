@@ -6,8 +6,9 @@ aliases:
 - Math God
 tags:
 - java
+- math-god
 - project
-- slick2d
+- slick-2d
 ---
 
 # Math God

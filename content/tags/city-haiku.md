@@ -4,4 +4,5 @@ aliases:
 - city haiku
 tags:
 - city-haiku
+- project
 ---

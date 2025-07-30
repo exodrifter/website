@@ -7,7 +7,7 @@ aliases:
 tags:
 - java
 - project
-- slick2d
+- slick-2d
 ---
 
 # Samurai Bloodlust

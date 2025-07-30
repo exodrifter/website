@@ -4,4 +4,5 @@ aliases:
 - Glass Bubble
 tags:
 - glass-bubble
+- project
 ---

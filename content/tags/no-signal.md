@@ -6,6 +6,7 @@ aliases:
 - lost contact
 tags:
 - no-signal
+- project
 - video-game
 ---
 

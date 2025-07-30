@@ -5,8 +5,9 @@ migrated: 2025-07-30T05:48:39Z
 aliases:
 - Asterble
 tags:
+- asterble
 - java
-- libgdx
+- lib-gdx
 - project
 ---
 

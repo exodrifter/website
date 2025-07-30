@@ -5,9 +5,9 @@ migrated: 2025-07-30T05:48:39Z
 aliases:
 - Teleport Man
 tags:
-- c#
+- c-sharp
 - project
-- unity3d
+- unity
 ---
 
 # Teleport Man

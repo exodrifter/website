@@ -4,4 +4,5 @@ aliases:
 - Asterble
 tags:
 - asterble
+- project
 ---

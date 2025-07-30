@@ -4,4 +4,5 @@ aliases:
 - Metro West
 tags:
 - metro-west
+- project
 ---

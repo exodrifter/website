@@ -5,6 +5,7 @@ aliases:
 - voluntary commitment
 - null
 tags:
+- project
 - voluntary-commitment
 ---
 

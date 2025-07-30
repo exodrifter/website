@@ -4,4 +4,5 @@ aliases:
 - Math God
 tags:
 - math-god
+- project
 ---

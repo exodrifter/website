@@ -4,4 +4,5 @@ aliases:
 - flambe
 tags:
 - flambe
+- project
 ---

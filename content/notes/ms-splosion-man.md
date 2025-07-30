@@ -6,6 +6,7 @@ aliases:
 - Ms. Splosion Man
 tags:
 - project
+- video-game
 ---
 
 # Ms. Splosion Man

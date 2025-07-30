@@ -6,8 +6,9 @@ aliases:
 - Tempus
 tags:
 - java
-- libgdx
+- lib-gdx
 - project
+- tempus
 ---
 
 # Tempus

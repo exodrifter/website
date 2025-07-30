@@ -5,8 +5,7 @@ migrated: 2025-07-30T05:48:39Z
 aliases:
 - Marzaders
 tags:
-- c++
-- ogre
+- cpp
 - project
 ---
 

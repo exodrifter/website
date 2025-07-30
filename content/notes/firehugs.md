@@ -5,9 +5,9 @@ migrated: 2025-07-30T05:48:39Z
 aliases:
 - The Rocky Behemoth
 tags:
-- c#
+- c-sharp
 - project
-- unity3d
+- unity
 ---
 
 # The Rocky Behemoth

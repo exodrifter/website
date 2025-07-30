@@ -5,9 +5,9 @@ migrated: 2025-07-30T05:48:39Z
 aliases:
 - "Coupling Cupid: Heart 2 Heart"
 tags:
-- c#
+- c-sharp
 - project
-- unity3d
+- unity
 ---
 
 # Coupling Cupid: Heart 2 Heart
