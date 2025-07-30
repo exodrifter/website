@@ -144,14 +144,15 @@ makeHtml TemplateArgs{..} template pandoc = do
       , writerExtensions = getDefaultExtensions "html"
       }
 
-    newPandoc = preparePandocForHTML referencedImages pandoc
+    newPandoc = preparePandocForHTML writerOptions referencedImages pandoc
   runPandoc (writeHtml5String writerOptions newPandoc)
 
 -- Does all of the transformations needed to prepare a Pandoc for being written
 -- to HTML.
-preparePandocForHTML :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
-preparePandocForHTML referencedImages =
+preparePandocForHTML :: WriterOptions -> Map Text Picture.DynamicImage -> Pandoc -> Pandoc
+preparePandocForHTML writerOptions referencedImages =
     embedImageRatios referencedImages
+  . convertFootnotes writerOptions
   . convertEntryReference
   . convertVideoEmbeds
 
@@ -214,6 +215,25 @@ convertEntryReference pandoc =
             ]
             target
         _ -> inline
+
+-- Converts footnotes into sidenotes.
+convertFootnotes :: WriterOptions -> Pandoc -> Pandoc
+convertFootnotes wOpts pandoc =
+  let
+    toHtml = runPure . writeHtml5String wOpts { writerTemplate = Nothing }
+    toRawHtml blocks =
+      case toHtml (Pandoc mempty blocks) of
+        Left _ -> stringify blocks -- TODO: Propogate error instead
+        Right a -> a
+  in
+    flip walk pandoc \inline ->
+      case inline of
+        Note inlines ->
+          RawInline
+            (Format "html")
+            ("<aside class=\"sidenote\">" <> toRawHtml inlines <> "</aside>")
+        _ ->
+          inline
 
 embedImageRatios :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
 embedImageRatios images =

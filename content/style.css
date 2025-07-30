@@ -31,6 +31,10 @@
 
 /* The body contains only two elements: the sidebar and the main div. */
 body {
+    display: flex;
+    flex-direction: row;
+    gap: var(--grid-size);
+
     max-width: /* Add the padding too, since we are using border-box sizing. */
         calc(var(--sidebar-size) + var(--main-size) + var(--grid-size)*3);
     min-height: calc(100vh - var(--grid-size)*2);
@@ -45,26 +49,13 @@ body {
     background-color: var(--bg1);
 }
 
-/* Instead of using media queries to reposition the sidebar, we use the
-    sidebar strategy from Every Layout.
-    See: https://every-layout.dev/layouts/sidebar/
-*/
-body {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--grid-size);
-}
-
 .sidebar {
     flex-basis: var(--sidebar-size);
-    flex-grow: 1;
 }
 
 .main {
-    flex-basis: 0;
-    flex-grow: 999999;
-    min-width: 66%;
-    max-width: var(--main-size);
+    width: 100%;
+    max-width: calc(100% - var(--sidebar-size) - var(--grid-size));
 }
 
 /* Generate the dot grid background, but only on the elements where content will
@@ -112,6 +103,54 @@ article > * + *, aside > * + *, blockquote > * + *, section > * + *,
         border-radius: calc(var(--grid-size)/4);
         font-family: 'Space Mono', monospace;
         font-size: calc(var(--grid-size)*2/3);
+    }
+}
+
+/* We want to render footnotes as sidenotes.
+*/
+.sidenote {
+    float: left;
+    clear: both;
+
+    position: relative;
+    right: calc(var(--sidebar-size) + var(--grid-size));
+    width: var(--sidebar-size);
+    margin-inline-end: calc(-1 * var(--sidebar-size));
+
+    color: var(--subtext);
+    text-align: right;
+}
+
+/* We don't actually render content in the sidebar directly. Instead, we float
+   elements into the space that the sidebar occupies. This allows us to do
+   sidenotes. However, we need to reposition the floated content on mobile
+   devices so it can be seen.
+
+   Unfortunately, we can't use variables in the media query. We want to switch
+   when the main content is less than twice the size of the sidebar.
+*/
+@media all and (max-width: 49.5rem) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar, .main {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .sidenote {
+        float: unset;
+        display: block;
+        position: initial;
+        width: round(down, 100%, var(--grid-size));
+        margin-inline-end: 0;
+        padding: calc(var(--grid-size)/2);
+
+        text-align: left;
+        color: var(--text);
+        background-color: var(--bg2);
+        border-radius: calc(var(--grid-size)*.3);
     }
 }
 
@@ -184,15 +223,6 @@ a {
 
     &:hover {
         color: var(--link-hover);
-    }
-}
-
-.footnote-ref > sup {
-    &::before {
-        content: "[";
-    }
-    &::after {
-        content: "]";
     }
 }
 
@@ -374,7 +404,6 @@ code {
     tab-size: 4;
 
     background-color: var(--bg2);
-    background-blend-mode: darken;
     border-radius: calc(var(--grid-size)*.3);
     padding: 0 calc(var(--grid-size)/4);
 }
