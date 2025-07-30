@@ -121,6 +121,7 @@ metaTypeIcon meta =
     "/":"albums":_ -> "ri-album-fill"
     "/":"blog":_ -> "ri-article-fill"
     "/":"entries":_ -> "ri-sticky-note-fill"
+    "/":"gallery":_ -> "ri-palette-fill"
     "/":"notes":_ -> "ri-booklet-fill"
     "/":"press-kits":_ -> "ri-pages-fill"
     "/":"tags":_ -> "ri-price-tag-3-fill"
