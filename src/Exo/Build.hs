@@ -49,10 +49,11 @@ wantWebsite = do
     -- Static files to copy.
     staticFiles =
       (outputDirectory </>) <$>
-        [ "keybase.txt"
+        [ "baskiv.ttf"
+        , "favicon.png"
+        , "keybase.txt"
         , "logo.svg"
         , "style.css"
-        , "baskiv.ttf"
         ]
 
   need . concat $
