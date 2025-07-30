@@ -15,6 +15,8 @@ tags:
 
 > A game of induction.
 
-Access is a short visual novel where you play as Knight, who is looking for a person named Ave. You have the special ability to read the minds of others, but this leads to interesting and unobvious consequences...
+Access is a short visual novel where you play as Knight, who is looking for a person named Ave. You have the special ability to read the minds of others, but this leads to interesting and unobvious consequences... [^1]
 
-This game was made for the EGaDS Narrative Game Jam in March 2015 in under 24 hours.
+This game was made for the EGaDS Narrative Game Jam in March 2015 in under 24 hours. [^1]
+
+[^1]: [20150330000000](../entries/20150330000000.md)

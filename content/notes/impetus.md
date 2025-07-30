@@ -14,10 +14,12 @@ tags:
 
 > You must work with an imp that adamantly believes it's the wizard.
 
-Impetus is a Global Game Jam 2014 submission made by a team of 4 people. The theme for 2014 was "We don't see things as they are, we see them as we are." We decided to incorporate the theme by making a cooperative two player game where one player sees a different environment than the other player.
+Impetus is a Global Game Jam 2014 submission made by a team of 4 people. The theme for 2014 was "We don't see things as they are, we see them as we are." We decided to incorporate the theme by making a cooperative two player game where one player sees a different environment than the other player. [^1]:
 
-We also wanted to avoid networking, and this is why our game has weird hardware constraints: You must play this game with two monitors. The reason for this is that we face the monitors opposite of each other and stretch the screen in windowed mode across both monitors in order to achieve the effect of two people playing together on the same computer and still have them see different screens.
+We also wanted to avoid networking, and this is why our game has weird hardware constraints: You must play this game with two monitors. The reason for this is that we face the monitors opposite of each other and stretch the screen in windowed mode across both monitors in order to achieve the effect of two people playing together on the same computer and still have them see different screens. [^1]:
 
-During the event I did a lot of random things from coding how levers worked to the code that selected the correct animation to play.
+During the event I did a lot of random things from coding how levers worked to the code that selected the correct animation to play. [^1]:
 
-You can find the Global Game Jam submission page [here](http://globalgamejam.org/2014/games/impetus).
+You can find the Global Game Jam submission page [here](http://globalgamejam.org/2014/games/impetus). [^1]:
+
+[^1]: [20140126203229](../entries/20140126203229.md)

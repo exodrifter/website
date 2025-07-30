@@ -15,8 +15,10 @@ tags:
 
 ![](https://www.youtube.com/watch?v=DM_0eAUNWNk)
 
-I performed quality assurance testing for Ms. Splosion Man, a sidescrolling 3D platforming game made by Twisted Pixel Games by filing new bugs and doing regression testing, among other things.
+I performed quality assurance testing for Ms. Splosion Man, a sidescrolling 3D platforming game made by Twisted Pixel Games by filing new bugs and doing regression testing, among other things. [^1]
 
-To be honest, I'm not really sure how much I can say about my work on this game (In fact, I'm not absolutely sure if I can use that image you see above. I believe it's covered under fair use, though.); however, I can say it was a very fun experience and I really enjoyed working with the folks over at Twisted Pixel Games.
+To be honest, I'm not really sure how much I can say about my work on this game (In fact, I'm not absolutely sure if I can use that image you see above. I believe it's covered under fair use, though.); however, I can say it was a very fun experience and I really enjoyed working with the folks over at Twisted Pixel Games. [^1]
 
-The game was released in April 2013, and you can get the game at a variety of places which are all linked to on the [official site](http://mssplosionman.com/).
+The game was released in April 2013, and you can get the game at a variety of places which are all linked to on the [official site](http://mssplosionman.com/). [^1]
+
+[^1]: [20130505191000](../entries/20130505191000.md)
