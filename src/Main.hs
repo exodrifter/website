@@ -11,10 +11,6 @@ import qualified Codec.Picture as Picture
 import qualified Data.Binary as Binary
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
-import qualified Data.ByteString as BS
-import qualified Data.Text.Encoding as TE
-import qualified Data.Time as Time
-import qualified Database.SQLite3 as SQLite
 import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
 
@@ -29,9 +25,6 @@ main = Build.runShake Build.wantWebsite $ do
 
   -- By default, if no commands are given, build the website.
   Build.action Build.wantWebsite
-
-  -- Temporary migration code
-  Build.phony "migrate" (liftIO runMigration)
 
   -- Copy static files.
   let
@@ -222,122 +215,3 @@ listingSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
 listingSort =
      comparing (Down . Pandoc.metaPublished)
   <> comparing (Down . Pandoc.metaUpdated)
-
-runMigration :: IO ()
-runMigration = do
-  let
-    query =
-      "SELECT\n\
-      \  games.shortname,\n\
-      \  games.name,\n\
-      \  games.'date',\n\
-      \  IFNULL(games.language, '') as 'language',\n\
-      \  IFNULL(games.engine, '') as 'engine',\n\
-      \  IFNULL(games.youtube, '') as 'youtube',\n\
-      \  IFNULL(games.description, '') as 'description',\n\
-      \  IFNULL(games.about, '') as 'about',\n\
-      \  IFNULL(sources.link, '') as 'link'\n\
-      \FROM games\n\
-      \LEFT JOIN sources ON sources.id_game = games.id_game"
-  SQLite.withDatabase "file:old/db/games.sqlite" \db -> do
-    SQLite.withStatement db query \st -> do
-      forResult_ st \d -> do
-        case d of
-          [ SQLite.SQLText shortname, SQLite.SQLText name, SQLite.SQLText date, SQLite.SQLText language, SQLite.SQLText engine, SQLite.SQLText youtube, SQLite.SQLText description, SQLite.SQLText about, SQLite.SQLText link ] ->
-            migratePost shortname name date language engine youtube description about link
-          _ ->
-            error "Unknown format"
-
-forResult_ :: SQLite.Statement -> ([SQLite.SQLData] -> IO ()) -> IO ()
-forResult_ statement fn = do
-  result <- SQLite.stepNoCB statement
-  case result of
-    SQLite.Row -> do
-      fn =<< SQLite.columns statement
-      forResult_ statement fn
-    SQLite.Done -> do
-      pure ()
-
-migratePost :: Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text -> IO ()
-migratePost _shortname name date language engine youtube description about link = do
-  let
-    locale = Time.defaultTimeLocale
-    parseTime = Time.parseTimeM False locale "%Y-%m-%d %H:%M:%S%Q" . T.unpack
-    isoFormat = T.pack . Time.formatTime locale "%Y-%m-%dT%H:%M:%SZ"
-    filenameFormat = T.pack . Time.formatTime locale "%Y%m%d%H%M%S"
-  migrated <- isoFormat <$> Time.getCurrentTime
-  (filename, created) <-
-    case parseTime date of
-      Just t -> pure (filenameFormat t, isoFormat t)
-      Nothing -> error "Invalid time format"
-
-  let
-    youtubeText =
-      if youtube == ""
-      then "**youtube:** n/a\n"
-      else "**youtube:**\n\n![](https://www.youtube.com/watch?v=" <> youtube <> ")\n\n"
-
-    convertSimpleBBCode =
-        T.replace "[s]" "~~"
-      . T.replace "[/s]" "~~"
-
-      . T.replace "[b]" "**"
-      . T.replace "[/b]" "**"
-
-      . T.replace "[i]" "*"
-      . T.replace "[/i]" "*"
-
-      . T.replace "[u]" "<u>"
-      . T.replace "[/u]" "</u>"
-
-      . T.replace "[pre]" "`"
-      . T.replace "[/pre]" "`"
-
-      . T.replace "[h1]" "# "
-      . T.replace "[/h1]" "\n"
-
-      . T.replace "[ul]\n" ""
-      . T.replace "[/ul]\n" ""
-      . T.replace "[*]" "- "
-
-      . T.replace "[youtube]" "![](https://youtube.com/watch?v="
-      . T.replace "[/youtube]" ")"
-
-      . T.replace "[code]" "```\n"
-      . T.replace "[code]\n" "```\n"
-      . T.replace "[/code]" "\n```"
-      . T.replace "\n[/code]" "\n```"
-
-      . T.replace "[quote]" "> "
-      . T.replace "[/quote]" ""
-
-      -- Drop these BBCodes
-      . T.replace "[center]" ""
-      . T.replace "[/center]" ""
-
-      -- Normalize line endings
-      . T.replace "\r\n" "\n"
-
-    doc =
-      "---\n\
-      \created: " <> created <> "\n\
-      \migrated: " <> migrated <> "\n\
-      \---\n\
-      \\n\
-      \This data was migrated from the games database from my old website circa 2015 which I used to generate pages describing my game. I'm not sure what the dates mean exactly. It could mean the day the project started or when the project was released, but they work well enough as the date I wrote the page so I've used it for the creation date of this entry.\n\
-      \\n\
-      \---\n\
-      \\n\
-      \**name:** " <> name <> "\n\
-      \**engine:** " <> (if engine == "" then "n/a" else engine) <> "\n\
-      \**language:** " <> (if language == "" then "n/a" else language) <> "\n\
-      \**source:** " <> (if link == "" then "n/a" else link) <> "\n\
-      \**description:** " <> description <> "\n"
-      <> youtubeText
-      <> "**about:**\n\n"
-      <> convertSimpleBBCode about
-      <> if "\n" `T.isSuffixOf` about then "" else "\n"
-
-  BS.writeFile
-    ("content/entries/" </> T.unpack filename -<.> "md")
-    (TE.encodeUtf8 doc)
