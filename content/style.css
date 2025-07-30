@@ -506,3 +506,19 @@ iframe {
         100% { outline-color: transparent; }
     }
 }
+
+/* Baskiv
+==============================================================================*/
+
+/* Baskiv is a language I made up when I was in high school when I was
+   interested in constructed languages, and I have some documents which use a
+   special font I made to render Baskiv characters.
+*/
+@font-face {
+  font-family: baskiv;
+  src: url('/baskiv.ttf');
+}
+
+.baskiv {
+    font-family: baskiv;
+}

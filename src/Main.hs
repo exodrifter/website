@@ -28,7 +28,16 @@ main = Build.runShake Build.wantWebsite $ do
 
   -- Copy static files.
   let
-    copyExtensions = [ "*.css", "*.gif", "*.mp4", "*.png", "*.jpg", "*.svg", "*.txt" ]
+    copyExtensions =
+      [ "*.css"
+      , "*.gif"
+      , "*.jpg"
+      , "*.mp4"
+      , "*.png"
+      , "*.svg"
+      , "*.ttf"
+      , "*.txt"
+      ]
   (Build.outputDirectory <//>) <$> copyExtensions |%> \out -> do
     let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
     Build.need [inputPath]

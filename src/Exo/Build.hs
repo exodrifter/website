@@ -52,6 +52,7 @@ wantWebsite = do
         [ "keybase.txt"
         , "logo.svg"
         , "style.css"
+        , "baskiv.ttf"
         ]
 
   need . concat $
