@@ -20,4 +20,4 @@ Ourbs is a Global Game Jam 2012 submission that was completed in under 48 hours 
 
 This game was written in Java using the LWJGL and Slick2D libraries and finished in January of 2012. You can find the Global Game Jam 2012 submission page [here](http://archive.globalgamejam.org/2012/ourbs). [^1]
 
-[^1]: [20120129165900](../entries/20120129165900.md)
+[^1]: [201201291659](../entries/201201291659.md)

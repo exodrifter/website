@@ -24,4 +24,4 @@ I created everything in the game except for the music, game over sound, and the 
 
 The game was written in C# using Unity3D and was finished in September 2013. [^1]
 
-[^1]: [20130929045300](../entries/20130929045300.md)
+[^1]: [201309290453](../entries/201309290453.md)

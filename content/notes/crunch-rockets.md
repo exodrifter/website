@@ -22,4 +22,4 @@ In order to play the game you’ll need to have Xbox controllers that you can pl
 
 The game was written in C# using Unity3D and finished in March of 2013. [^1]
 
-[^1]: [20130328102000](../entries/20130328102000.md)
+[^1]: [201303281020](../entries/201303281020.md)

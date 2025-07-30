@@ -25,4 +25,4 @@ Another game I made, [game=ourbs]Ourbs[/game], uses much of the same code and pr
 
 This game was written initially written in Java using the LWJGL and Slick2D libraries in version 5, but was later rewritten using libGDX instead of Slick2D in version 6. [^1]
 
-[^1]: [20130228230700](../entries/20130228230700.md)
+[^1]: [201302282307](../entries/201302282307.md)

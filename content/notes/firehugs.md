@@ -24,4 +24,4 @@ I created the procedural map generation script for the game, made a script to fr
 
 This game was written in C# using Unity3d and was finished on June 30, 2014. [^1]
 
-[^1]: [20140630000000](../entries/20140630000000.md)
+[^1]: [20140630](../entries/20140630.md)

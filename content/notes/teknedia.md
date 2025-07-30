@@ -20,4 +20,4 @@ Teknedia was very different from what I usually do; it’s in 3D, written in C++
 
 Teknedia is a first person, 3D platformer game for the PC where the goal is to make it to the end of the level as quickly as possible while avoiding all of the plentiful hazards along the way. The game is built from an engine made from scratch in C++ using open source libraries such as Boost, Bullet, Lua, and OpenGL. [^1]
 
-[^1]: [20120427164400](../entries/20120427164400.md)
+[^1]: [201204271644](../entries/201204271644.md)

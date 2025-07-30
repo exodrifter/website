@@ -21,4 +21,4 @@ To be honest, I'm not really sure how much I can say about my work on this game 
 
 The game was released in April 2013, and you can get the game at a variety of places which are all linked to on the [official site](http://mssplosionman.com/). [^1]
 
-[^1]: [20130505191000](../entries/20130505191000.md)
+[^1]: [201305051910](../entries/201305051910.md)

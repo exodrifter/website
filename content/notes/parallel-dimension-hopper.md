@@ -22,4 +22,4 @@ Here are some hints about the game that are not immediately obvious: [^1]
 -  You need 4 keys to exit the apartment building and win the game
 -  Keys do not disappear when you pick them up.
 
-[^1]: [20150503034300](../entries/20150503034300.md)
+[^1]: [201505030343](../entries/201505030343.md)

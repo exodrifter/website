@@ -25,4 +25,4 @@ After completing the game, I released the game along with the source code to the
 
 This game was written in Java using the LWJGL and Slick2D libraries and was finished near the end of 2011. [^1]
 
-[^1]: [20111111234400](../entries/20111111234400.md)
+[^1]: [201111112344](../entries/201111112344.md)

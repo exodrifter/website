@@ -20,4 +20,4 @@ Teleport Man is a rougelike platforming game where you play as an escaping genet
 
 This game was written in C# using Unity3D and was completed around the end of 2013. [^1]
 
-[^1]: [20131213013800](../entries/20131213013800.md)
+[^1]: [201312130138](../entries/201312130138.md)

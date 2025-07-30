@@ -26,4 +26,4 @@ This game was selected as a finalist for E3 College Game Competition 2014 and wa
 
 The official site for the game can be found [here](http://portofcallgame.com]here[/url] and our greenlight campaign can be found [url=http://steamcommunity.com/sharedfiles/filedetails/?id=269493674). [^1]
 
-[^1]: [20150828225000](../entries/20150828225000.md)
+[^1]: [201508282250](../entries/201508282250.md)

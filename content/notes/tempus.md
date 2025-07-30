@@ -21,4 +21,4 @@ In the summer of 2013 I created a really simple prototype to test out how combat
 
 Instructions for the prototype: Press R when a planet is selected to spawn ships and right click on a planet to send half of the troops from the selected planet. The player with the most points at the end of the game (when all planets are owned by one player) wins. [^1]
 
-[^1]: [20130630224200](../entries/20130630224200.md)
+[^1]: [201306302242](../entries/201306302242.md)

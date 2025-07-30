@@ -23,4 +23,4 @@ We wrote the code that held all of the parts together in C++ and it was finished
 
 If you download the game, you can build the game on Linux by executing "./buildit" inside of the build folder. This should work well on the computer science lab machines at UT unless the installed dependencies have been changed since spring 2013. [^1]
 
-[^1]: [20130513214100](../entries/20130513214100.md)
+[^1]: [201305132141](../entries/201305132141.md)

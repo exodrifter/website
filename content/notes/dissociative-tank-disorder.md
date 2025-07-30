@@ -24,4 +24,4 @@ I coordinated the game development efforts within the group and wrote most of th
 
 The game requires 4 Xbox controllers to play. The left analog stick is to move around, left and right bumper to rotate the turret, and A to shoot. [^1]
 
-[^1]: [20141116000000](../entries/20141116000000.md)
+[^1]: [20141116](../entries/20141116.md)

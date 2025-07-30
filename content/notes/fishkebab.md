@@ -20,4 +20,4 @@ The point of the game is to try to harpoon the greatest number of fish. Since th
 
 It was written in Java using the libGDX library and was finished in the Fall of 2013. [^1]
 
-[^1]: [20130801050700](../entries/20130801050700.md)
+[^1]: [201308010507](../entries/201308010507.md)

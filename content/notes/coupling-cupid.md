@@ -22,4 +22,4 @@ During the event I did a lot of miscellaneous things like parts of the UI, some 
 
 The game was written in C# using Unity3D and was finished in January of 2013. You can find the Global Game Jam submission page [here](http://2013.globalgamejam.org/2013/coupling-cupid-heart-2-heart). [^1]
 
-[^1]: [20130127223700](../entries/20130127223700.md)
+[^1]: [201301272237](../entries/201301272237.md)

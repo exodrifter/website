@@ -19,4 +19,4 @@ Access is a short visual novel where you play as Knight, who is looking for a pe
 
 This game was made for the EGaDS Narrative Game Jam in March 2015 in under 24 hours. [^1]
 
-[^1]: [20150330000000](../entries/20150330000000.md)
+[^1]: [20150330](../entries/20150330.md)

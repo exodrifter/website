@@ -24,4 +24,4 @@ Some of the artwork I did, specifically the samurai and the people, was based of
 
 This game was written in Java using the LWJGL and Slick2D libraries and was finished in 12 hours on November 3rd, 2012. [^1]
 
-[^1]: [20121104221200](../entries/20121104221200.md)
+[^1]: [201211042212](../entries/201211042212.md)

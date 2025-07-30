@@ -24,4 +24,4 @@ I created the script for the game and my friend made all of the artwork. All of 
 
 This game was written in Python using Ren'py and was finished on February 22, 2014. [^1]
 
-[^1]: [20140223010000](../entries/20140223010000.md)
+[^1]: [201402230100](../entries/201402230100.md)
