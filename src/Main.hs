@@ -259,38 +259,23 @@ forResult_ statement fn = do
       pure ()
 
 migratePost :: Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text -> IO ()
-migratePost shortname name date language engine youtube description about link = do
+migratePost _shortname name date language engine youtube description about link = do
   let
     locale = Time.defaultTimeLocale
     parseTime = Time.parseTimeM False locale "%Y-%m-%d %H:%M:%S%Q" . T.unpack
     isoFormat = T.pack . Time.formatTime locale "%Y-%m-%dT%H:%M:%SZ"
+    filenameFormat = T.pack . Time.formatTime locale "%Y%m%d%H%M%S"
   migrated <- isoFormat <$> Time.getCurrentTime
-  created <-
+  (filename, created) <-
     case parseTime date of
-      Just t -> pure (isoFormat t)
+      Just t -> pure (filenameFormat t, isoFormat t)
       Nothing -> error "Invalid time format"
 
   let
-    tags = sort $ filter (/= "")
-      [ T.replace "'" "-" (T.toLower engine)
-      , T.toLower language
-      , "project"
-      ]
-
-    escapedName =
-      if or (flip T.elem name <$> [':'])
-      then "\"" <> name <> "\""
-      else name
-
     youtubeText =
       if youtube == ""
-      then ""
-      else "![](https://www.youtube.com/watch?v=" <> youtube <> ")\n\n"
-
-    linkText =
-      if link == ""
-      then ""
-      else "source: " <> link <> "\n\n"
+      then "**youtube:** n/a\n"
+      else "**youtube:**\n\n![](https://www.youtube.com/watch?v=" <> youtube <> ")\n\n"
 
     convertSimpleBBCode =
         T.replace "[s]" "~~"
@@ -335,23 +320,24 @@ migratePost shortname name date language engine youtube description about link =
 
     doc =
       "---\n\
-      \title: " <> escapedName <> "\n\
       \created: " <> created <> "\n\
       \migrated: " <> migrated <> "\n\
-      \aliases:\n\
-      \- " <> escapedName <> "\n\
-      \tags:\n\
-      \- " <> T.intercalate "\n- " tags <> "\n\
       \---\n\
       \\n\
-      \# " <> name <> "\n\
+      \This data was migrated from the games database from my old website circa 2015 which I used to generate pages describing my game. I'm not sure what the dates mean exactly. It could mean the day the project started or when the project was released, but they work well enough as the date I wrote the page so I've used it for the creation date of this entry.\n\
       \\n\
-      \> " <> description <> "\n\n"
-      <> linkText
+      \---\n\
+      \\n\
+      \**name:** " <> name <> "\n\
+      \**engine:** " <> (if engine == "" then "n/a" else engine) <> "\n\
+      \**language:** " <> (if language == "" then "n/a" else language) <> "\n\
+      \**source:** " <> (if link == "" then "n/a" else link) <> "\n\
+      \**description:** " <> description <> "\n"
       <> youtubeText
+      <> "**about:**\n\n"
       <> convertSimpleBBCode about
       <> if "\n" `T.isSuffixOf` about then "" else "\n"
 
   BS.writeFile
-    ("content/notes/" </> T.unpack shortname -<.> "md")
+    ("content/entries/" </> T.unpack filename -<.> "md")
     (TE.encodeUtf8 doc)
