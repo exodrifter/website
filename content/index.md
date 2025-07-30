@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-07-28T16:33:51-07:00
+modified: 2025-07-30T05:43:51-07:00
 tags:
   - index
 ---
@@ -34,7 +34,6 @@ tags:
 - **2025-07-15** - [new website, and the Bad Shape](blog/20250715200219.md)
 - **2025-07-08** - [offkai recap and being myself](blog/20250707063429.md)
 
-[<i class="ri-rss-fill"></i> RSS](blog/index.xml)
 [See all posts...](blog/index.md)
 
 # press kits

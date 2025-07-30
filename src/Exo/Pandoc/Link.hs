@@ -2,7 +2,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 
 module Exo.Pandoc.Link
-( PathInfo(pathFile)
+( PathInfo(pathDirectory, pathFile)
 , pathInfoFromInput
 , pathInfoFromOutput
 

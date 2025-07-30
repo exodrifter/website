@@ -155,6 +155,17 @@ main = Build.runShake Build.wantWebsite $ do
           sortBy (comparing Pandoc.metaTitle)
       <$> traverse Build.getMetadata backlinkPaths
 
+    -- Generate RSS
+    let
+      metaPath = Pandoc.metaPath metadata
+    rssPath <-
+      case (Pandoc.pathDirectory metaPath, Pandoc.pathFile metaPath) of
+        (dir, "index") -> do
+          Build.need [ Build.outputDirectory </> dir </> "index.xml" ]
+          pure (Just ("/" </> dir </> "index.xml"))
+        _ ->
+          pure Nothing
+
     let args = Pandoc.TemplateArgs {..}
     template <- Build.buildTemplate (Build.contentDirectory </> "template.html")
     html <- Build.runEither (Pandoc.makeHtml args template pandoc)
@@ -163,14 +174,11 @@ main = Build.runShake Build.wantWebsite $ do
   -- Generate RSS feeds
   Build.outputDirectory <//> "*.xml" %> \out -> do
     let
+      inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
       canonicalPath = Build.dropDirectory1 out
       canonicalFolder = FilePath.takeDirectory canonicalPath
 
-    metas <- listFiles
-      canonicalFolder
-      (\p -> FilePath.takeFileName p /= "index.md")
-      listingSort
-
+    metas <- listFiles canonicalFolder (/= inputPath) listingSort
     feed <- Build.runEither (RSS.makeRss canonicalFolder metas)
     Build.writeFileChanged out (T.unpack feed)
 

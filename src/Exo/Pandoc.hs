@@ -103,6 +103,8 @@ data TemplateArgs = TemplateArgs
     -- ^ All of the backlinked files.
   , referencedImages :: Map Text Picture.DynamicImage
     -- ^ The images that this document references.
+  , rssPath :: Maybe FilePath
+    -- ^ The canonical path to the RSS feed associated with this page.
   , logoSource :: Text
     -- ^ This is the SVG source of the logo. We have to include this directly
     -- into the source of the generated HTML in order for the logo to respond to
@@ -131,6 +133,7 @@ makeHtml TemplateArgs{..} template pandoc = do
             ]
           )
         , ("backlink", DocTemplates.toVal backlinks)
+        , ("rss", maybe DocTemplates.NullVal DocTemplates.toVal (T.pack <$> rssPath))
         , ("logo", DocTemplates.toVal logoSource)
         ]
 

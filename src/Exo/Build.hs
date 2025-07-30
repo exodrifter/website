@@ -37,15 +37,6 @@ wantWebsite = do
       outputDirectory </> X.dropDirectory1 path -<.> "html"
     webpages = toOutputPath <$> sourceFiles
 
-    -- Feeds to generate.
-    feedFiles =
-      (outputDirectory </>) <$>
-        [ "index.xml"
-        , "blog/index.xml"
-        , "entries/index.xml"
-        , "notes/index.xml"
-        ]
-
     -- Static files to copy.
     staticFiles =
       (outputDirectory </>) <$>
@@ -58,7 +49,6 @@ wantWebsite = do
 
   need . concat $
     [ webpages
-    , feedFiles
     , staticFiles
     ]
 

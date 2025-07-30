@@ -34,6 +34,9 @@
                 $breadcrumb$
                 $sep$<p>/</p>
                 $endfor$
+                $if(rss)$
+                <a href="$rss$"><i class="ri-rss-fill"></i></a>
+                $endif$
             </nav>
 
             $if(body)$
