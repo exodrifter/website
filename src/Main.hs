@@ -11,6 +11,10 @@ import qualified Codec.Picture as Picture
 import qualified Data.Binary as Binary
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
+import qualified Data.ByteString as BS
+import qualified Data.Text.Encoding as TE
+import qualified Data.Time as Time
+import qualified Database.SQLite3 as SQLite
 import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
 
@@ -25,6 +29,9 @@ main = Build.runShake Build.wantWebsite $ do
 
   -- By default, if no commands are given, build the website.
   Build.action Build.wantWebsite
+
+  -- Temporary migration code
+  Build.phony "migrate" (liftIO runMigration)
 
   -- Copy static files.
   let
@@ -215,3 +222,136 @@ listingSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
 listingSort =
      comparing (Down . Pandoc.metaPublished)
   <> comparing (Down . Pandoc.metaUpdated)
+
+runMigration :: IO ()
+runMigration = do
+  let
+    query =
+      "SELECT\n\
+      \  games.shortname,\n\
+      \  games.name,\n\
+      \  games.'date',\n\
+      \  IFNULL(games.language, '') as 'language',\n\
+      \  IFNULL(games.engine, '') as 'engine',\n\
+      \  IFNULL(games.youtube, '') as 'youtube',\n\
+      \  IFNULL(games.description, '') as 'description',\n\
+      \  IFNULL(games.about, '') as 'about',\n\
+      \  IFNULL(sources.link, '') as 'link'\n\
+      \FROM games\n\
+      \LEFT JOIN sources ON sources.id_game = games.id_game"
+  SQLite.withDatabase "file:old/db/games.sqlite" \db -> do
+    SQLite.withStatement db query \st -> do
+      forResult_ st \d -> do
+        case d of
+          [ SQLite.SQLText shortname, SQLite.SQLText name, SQLite.SQLText date, SQLite.SQLText language, SQLite.SQLText engine, SQLite.SQLText youtube, SQLite.SQLText description, SQLite.SQLText about, SQLite.SQLText link ] ->
+            migratePost shortname name date language engine youtube description about link
+          _ ->
+            error "Unknown format"
+
+forResult_ :: SQLite.Statement -> ([SQLite.SQLData] -> IO ()) -> IO ()
+forResult_ statement fn = do
+  result <- SQLite.stepNoCB statement
+  case result of
+    SQLite.Row -> do
+      fn =<< SQLite.columns statement
+      forResult_ statement fn
+    SQLite.Done -> do
+      pure ()
+
+migratePost :: Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text -> IO ()
+migratePost shortname name date language engine youtube description about link = do
+  let
+    locale = Time.defaultTimeLocale
+    parseTime = Time.parseTimeM False locale "%Y-%m-%d %H:%M:%S%Q" . T.unpack
+    isoFormat = T.pack . Time.formatTime locale "%Y-%m-%dT%H:%M:%SZ"
+  migrated <- isoFormat <$> Time.getCurrentTime
+  created <-
+    case parseTime date of
+      Just t -> pure (isoFormat t)
+      Nothing -> error "Invalid time format"
+
+  let
+    tags = sort $ filter (/= "")
+      [ T.replace "'" "-" (T.toLower engine)
+      , T.toLower language
+      , "project"
+      ]
+
+    escapedName =
+      if or (flip T.elem name <$> [':'])
+      then "\"" <> name <> "\""
+      else name
+
+    youtubeText =
+      if youtube == ""
+      then ""
+      else "![](https://www.youtube.com/watch?v=" <> youtube <> ")\n\n"
+
+    linkText =
+      if link == ""
+      then ""
+      else "source: " <> link <> "\n\n"
+
+    convertSimpleBBCode =
+        T.replace "[s]" "~~"
+      . T.replace "[/s]" "~~"
+
+      . T.replace "[b]" "**"
+      . T.replace "[/b]" "**"
+
+      . T.replace "[i]" "*"
+      . T.replace "[/i]" "*"
+
+      . T.replace "[u]" "<u>"
+      . T.replace "[/u]" "</u>"
+
+      . T.replace "[pre]" "`"
+      . T.replace "[/pre]" "`"
+
+      . T.replace "[h1]" "# "
+      . T.replace "[/h1]" "\n"
+
+      . T.replace "[ul]\n" ""
+      . T.replace "[/ul]\n" ""
+      . T.replace "[*]" "- "
+
+      . T.replace "[youtube]" "![](https://youtube.com/watch?v="
+      . T.replace "[/youtube]" ")"
+
+      . T.replace "[code]" "```\n"
+      . T.replace "[code]\n" "```\n"
+      . T.replace "[/code]" "\n```"
+      . T.replace "\n[/code]" "\n```"
+
+      . T.replace "[quote]" "> "
+      . T.replace "[/quote]" ""
+
+      -- Drop these BBCodes
+      . T.replace "[center]" ""
+      . T.replace "[/center]" ""
+
+      -- Normalize line endings
+      . T.replace "\r\n" "\n"
+
+    doc =
+      "---\n\
+      \title: " <> escapedName <> "\n\
+      \created: " <> created <> "\n\
+      \migrated: " <> migrated <> "\n\
+      \aliases:\n\
+      \- " <> escapedName <> "\n\
+      \tags:\n\
+      \- " <> T.intercalate "\n- " tags <> "\n\
+      \---\n\
+      \\n\
+      \# " <> name <> "\n\
+      \\n\
+      \> " <> description <> "\n\n"
+      <> linkText
+      <> youtubeText
+      <> convertSimpleBBCode about
+      <> if "\n" `T.isSuffixOf` about then "" else "\n"
+
+  BS.writeFile
+    ("content/notes/" </> T.unpack shortname -<.> "md")
+    (TE.encodeUtf8 doc)

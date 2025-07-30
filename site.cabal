@@ -51,6 +51,7 @@ executable site
     , binary
     , containers
     , directory
+    , direct-sqlite
     , doctemplates
     , extra
     , feed
