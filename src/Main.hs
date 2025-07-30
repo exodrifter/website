@@ -11,6 +11,10 @@ import qualified Codec.Picture as Picture
 import qualified Data.Binary as Binary
 import qualified Data.Map.Strict as Map
 import qualified Data.Text as T
+import qualified Data.ByteString as BS
+import qualified Data.Text.Encoding as TE
+import qualified Data.Time as Time
+import qualified Database.SQLite3 as SQLite
 import qualified Network.URI as URI
 import qualified System.FilePath as FilePath
 
@@ -25,6 +29,9 @@ main = Build.runShake Build.wantWebsite $ do
 
   -- By default, if no commands are given, build the website.
   Build.action Build.wantWebsite
+
+  -- Temporary migration code
+  Build.phony "migrate" (liftIO runMigration)
 
   -- Copy static files.
   let
@@ -215,3 +222,135 @@ listingSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
 listingSort =
      comparing (Down . Pandoc.metaPublished)
   <> comparing (Down . Pandoc.metaUpdated)
+
+runMigration :: IO ()
+runMigration = do
+  let
+    query =
+      "SELECT\n\
+      \  posts.date,\n\
+      \  posts.title,\n\
+      \  posts.content,\n\
+      \  categories.name as 'category',\n\
+      \  (\n\
+      \    SELECT IFNULL(GROUP_CONCAT(tags.name),'')\n\
+      \    FROM tagpairs\n\
+      \    JOIN tags ON tags.id_tag = tagpairs.id_tag\n\
+      \    WHERE posts.id_post = tagpairs.id_post\n\
+      \    ORDER BY tags.name\n\
+      \  ) AS 'tags',\n\
+      \  IFNULL(ext_tumblr.id_tumblr, '') as 'tumblr'\n\
+      \FROM posts\n\
+      \JOIN categories ON posts.id_category = categories.id_category\n\
+      \LEFT JOIN ext_tumblr ON posts.id_post = ext_tumblr.id_post\n\
+      \ORDER BY posts.date ASC"
+  SQLite.withDatabase "file:old/db/posts.sqlite" \db -> do
+    SQLite.withStatement db query \st -> do
+      forResult_ st \d -> do
+        case d of
+          [ SQLite.SQLText date, SQLite.SQLText title, SQLite.SQLText content, SQLite.SQLText category, SQLite.SQLText tags, SQLite.SQLText tumblr ] ->
+            migratePost date title content category tags tumblr
+          _ ->
+            error "Unknown format"
+
+forResult_ :: SQLite.Statement -> ([SQLite.SQLData] -> IO ()) -> IO ()
+forResult_ statement fn = do
+  result <- SQLite.stepNoCB statement
+  case result of
+    SQLite.Row -> do
+      fn =<< SQLite.columns statement
+      forResult_ statement fn
+    SQLite.Done -> do
+      pure ()
+
+migratePost :: Text -> Text -> Text -> Text -> Text -> Text -> IO ()
+migratePost postTime title content category tags tumblr = do
+  let
+    locale = Time.defaultTimeLocale
+    parseTime = Time.parseTimeM False locale "%Y-%m-%d %H:%M:%S" . T.unpack
+    isoFormat = T.pack . Time.formatTime locale "%Y-%m-%dT%H:%M:%SZ"
+    filenameFormat = Time.formatTime locale "%Y%m%d%H%M%S"
+    crosspostFormat = T.pack . Time.formatTime locale "%Y-%m-%d"
+  migrated <- isoFormat <$> Time.getCurrentTime
+  (filename, created, crosspostTime) <-
+    case parseTime postTime of
+      Just t -> pure (filenameFormat t, isoFormat t, crosspostFormat t)
+      Nothing -> error "Invalid time format"
+
+  tags' <-
+    case sort (filter (/= "") (T.toLower category : T.splitOn "," tags)) of
+      [] -> error "No tags"
+      r -> pure r
+
+  let
+    escapedTitle =
+      if or (flip T.elem title <$> ['[', ':'])
+      then "\"" <> title <> "\""
+      else title
+
+    crossposts =
+      if tumblr == ""
+      then ""
+      else
+        "crossposts:\n\
+        \- url: https://dpek.tumblr.com/post/" <> tumblr <> "\n\
+        \  time: " <> crosspostTime <> "\n"
+
+    convertSimpleBBCode =
+        T.replace "[s]" "~~"
+      . T.replace "[/s]" "~~"
+
+      . T.replace "[b]" "**"
+      . T.replace "[/b]" "**"
+
+      . T.replace "[i]" "*"
+      . T.replace "[/i]" "*"
+
+      . T.replace "[u]" "<u>"
+      . T.replace "[/u]" "</u>"
+
+      . T.replace "[pre]" "`"
+      . T.replace "[/pre]" "`"
+
+      . T.replace "[h1]" "# "
+      . T.replace "[/h1]" "\n"
+
+      . T.replace "[ul]\n" ""
+      . T.replace "[/ul]\n" ""
+      . T.replace "[*]" "- "
+
+      . T.replace "[youtube]" "![](https://youtube.com/watch?v="
+      . T.replace "[/youtube]" ")"
+
+      . T.replace "[code]" "```\n"
+      . T.replace "[code]\n" "```\n"
+      . T.replace "[/code]" "\n```"
+      . T.replace "\n[/code]" "\n```"
+
+      . T.replace "[quote]" "> "
+      . T.replace "[/quote]" ""
+
+      -- Drop these BBCodes
+      . T.replace "[center]" ""
+      . T.replace "[/center]" ""
+
+      -- Normalize line endings
+      . T.replace "\r\n" "\n"
+
+    doc =
+      "---\n\
+      \title: " <> escapedTitle <> "\n\
+      \created: " <> created <> "\n\
+      \published: " <> created <> "\n\
+      \migrated: " <> migrated <> "\n\
+      \aliases:\n\
+      \- " <> escapedTitle <> "\n" <> crossposts <> "\
+      \tags:\n\
+      \- " <> T.intercalate "\n- " tags' <> "\n\
+      \---\n\
+      \\n" <> convertSimpleBBCode content
+      <> if "\n" `T.isSuffixOf` content then "" else "\n"
+
+  BS.writeFile
+    ("content/blog/" </> filename -<.> "md")
+    (TE.encodeUtf8 doc)
