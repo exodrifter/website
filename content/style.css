@@ -187,13 +187,17 @@ a {
     }
 }
 
-sup {
+.footnote-ref > sup {
     &::before {
         content: "[";
     }
     &::after {
         content: "]";
     }
+}
+
+sup {
+    display: inline-block;
 }
 
 ol, ul {

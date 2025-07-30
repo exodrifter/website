@@ -11,9 +11,11 @@ import Exo.Pandoc.Link as X
 import Exo.Pandoc.Meta as X
 import Exo.Pandoc.Time as X
 import Text.Pandoc as X
+import Text.Pandoc.Shared as X
 import Text.Pandoc.Walk as X
 import qualified Codec.Picture as Picture
 import qualified Data.Map as Map
+import qualified Data.Set as Set
 import qualified Data.Text as T
 import qualified Development.Shake.FilePath as FilePath
 import qualified Network.URI as URI
@@ -147,6 +149,7 @@ makeHtml TemplateArgs{..} template pandoc = do
 preparePandocForHTML :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
 preparePandocForHTML referencedImages =
     embedImageRatios referencedImages
+  . convertEntryReference
   . convertVideoEmbeds
 
 -- Pandoc doesn't have a type which represents embeds, so we need to convert
@@ -177,6 +180,37 @@ convertVideoEmbeds =
           _ -> inline
 
       _ -> inline
+
+-- Because of my note-taking style, a common pattern on the website is to
+-- reference an entry as a source for some information. These references are
+-- embedded as footnotes, but rendering them this way means that the user has to
+-- click twice to get to the entry. And, since we often re-use references in the
+-- same document, this can also make the footnote section very noisy due to a
+-- limitation in Pandoc's AST which causes them to be duplicated. Instead, it
+-- would be nice to inline the references.
+convertEntryReference :: Pandoc -> Pandoc
+convertEntryReference pandoc =
+  let
+    links =
+      flip query pandoc \inline ->
+        case inline of
+          Note [Para [l@(Link _ _ _)]] -> Set.singleton l
+          _ -> Set.empty
+    refs =
+      fromList (zip (toList links) (show <$> [1 :: Int ..]))
+  in
+    flip walk pandoc \inline ->
+      case inline of
+        Note [Para [l@(Link attr inlines target)]] ->
+          Link
+            attr
+            [ Superscript
+              [ RawInline (Format "html") "<i class=\"ri-triangle-fill\"></i>"
+              , Str (fromMaybe (stringify inlines) (Map.lookup l refs))
+              ]
+            ]
+            target
+        _ -> inline
 
 embedImageRatios :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
 embedImageRatios images =
