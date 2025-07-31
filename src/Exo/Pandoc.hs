@@ -12,6 +12,7 @@ import Exo.Pandoc.Meta as X
 import Exo.Pandoc.Time as X
 import Text.Pandoc as X
 import Text.Pandoc.Shared as X
+import Text.Pandoc.Writers.Shared as X
 import Text.Pandoc.Walk as X
 import qualified Codec.Picture as Picture
 import qualified Data.Map as Map
@@ -120,6 +121,8 @@ data TemplateArgs = TemplateArgs
 makeHtml :: TemplateArgs -> Template Text -> Pandoc -> Either Text Text
 makeHtml TemplateArgs{..} template pandoc = do
   let
+    maybeToVal = maybe DocTemplates.NullVal DocTemplates.toVal
+
     variables :: Map Text (DocTemplates.Val Text)
     variables = do
       Map.fromList
@@ -133,19 +136,44 @@ makeHtml TemplateArgs{..} template pandoc = do
             ]
           )
         , ("backlink", DocTemplates.toVal backlinks)
-        , ("rss", maybe DocTemplates.NullVal DocTemplates.toVal (T.pack <$> rssPath))
+        , ("rss", maybeToVal (T.pack <$> rssPath))
+        , ("toc", maybeToVal (makeToc pandoc))
         , ("logo", DocTemplates.toVal logoSource)
         ]
 
     writerOptions = def
       { writerTemplate = Just template
       , writerVariables = DocTemplates.toContext variables
-      , writerTableOfContents = True
       , writerExtensions = getDefaultExtensions "html"
       }
 
     newPandoc = preparePandocForHTML writerOptions referencedImages pandoc
   runPandoc (writeHtml5String writerOptions newPandoc)
+
+-- Generates an HTML table of contents for a Pandoc document, but only if there
+-- are two or more items.
+makeToc :: Pandoc -> Maybe Text
+makeToc (Pandoc m blocks) =
+  let
+    toc = toTableOfContents def blocks
+    toHtml = runPure . writeHtml5String def
+    html =
+      case toHtml (Pandoc m [toc]) of
+        Left _ -> Nothing -- TODO: Propogate error instead
+        Right a -> Just a
+
+    shouldMakeToc :: Bool -> Block -> Bool
+    shouldMakeToc topLevel t =
+      case t of
+        BulletList [] -> False
+        BulletList [b] -> not topLevel || any (shouldMakeToc False) b
+        BulletList _ -> True
+        _ -> False
+
+  in
+    if shouldMakeToc True toc
+    then html
+    else Nothing
 
 -- Does all of the transformations needed to prepare a Pandoc for being written
 -- to HTML.
