@@ -20,6 +20,7 @@ If you've been asked to playtest the game, please see the [playtesting steps](no
 
 | date | version | notes |
 |------|---------|-------|
+| <span class="timestamp">2025-07-30</span> || [20250731000658](../entries/20250731000658.md) |
 | <span class="timestamp">2025-07-28</span> | [v1.4.0](../blog/20250728153807.md) | [140541](../entries/20250728140541.md), [190332](../entries/20250728190332.md) |
 | <span class="timestamp">2025-07-27</span> | [v1.3.0](../blog/20250728015155.md), [v1.3.1](../blog/20250728032657.md), [v1.3.2](../blog/20250728034617.md) | [222531](../entries/20250727222531.md) |
 | <span class="timestamp">2025-07-26</span> | [v1.2.0](../blog/20250727015104.md) | [205113](../entries/20250726205113.md) |
