@@ -236,6 +236,7 @@ a {
 
 sup {
     display: inline-block;
+    padding-right: calc(var(--grid-size) * .25)
 }
 
 ol, ul {

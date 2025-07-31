@@ -15,8 +15,8 @@ import Text.Pandoc.Shared as X
 import Text.Pandoc.Writers.Shared as X
 import Text.Pandoc.Walk as X
 import qualified Codec.Picture as Picture
+import qualified Data.List.Extra as List
 import qualified Data.Map as Map
-import qualified Data.Set as Set
 import qualified Data.Text as T
 import qualified Development.Shake.FilePath as FilePath
 import qualified Network.URI as URI
@@ -226,10 +226,10 @@ convertEntryReference pandoc =
     links =
       flip query pandoc \inline ->
         case inline of
-          Note [Para [l@(Link _ _ _)]] -> Set.singleton l
-          _ -> Set.empty
+          Note [Para [l@(Link _ _ _)]] -> [l]
+          _ -> []
     refs =
-      fromList (zip (toList links) (show <$> [1 :: Int ..]))
+      fromList (zip (List.nubOrd links) (show <$> [1 :: Int ..]))
   in
     flip walk pandoc \inline ->
       case inline of
