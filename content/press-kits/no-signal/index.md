@@ -1,15 +1,15 @@
 ---
 title: no signal press kit
 created: 2024-02-28T18:42:17-06:00
-modified: 2025-07-12T10:48:43Z
+modified: 2025-08-01T11:43:55-07:00
 aliases:
-- no signal press kit
+  - no signal press kit
 permalink: /no-signal
 tags:
-- godot
-- no-signal
-- press-kit
-- science-fiction
+  - godot
+  - no-signal
+  - press-kit
+  - science-fiction
 ---
 
 # no signal
@@ -71,7 +71,7 @@ devlog ([playlist](https://www.youtube.com/playlist?list=PLd8SaP0bJwZK-WMlO0YxpJ
 
 vods ([link](https://vods.exodrifter.space/tag/lost-contact/))
 
-# images
+# screenshots
 
 ![](screen-1.png)
 
@@ -98,6 +98,10 @@ logo
 wordmark
 
 ![](wordmark.png)
+
+hero
+
+![](hero.png)
 
 # pamphlet
 

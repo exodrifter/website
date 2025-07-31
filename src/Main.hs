@@ -32,6 +32,7 @@ main = Build.runShake Build.wantWebsite $ do
       [ "*.css"
       , "*.gif"
       , "*.jpg"
+      , "*.json"
       , "*.mp4"
       , "*.png"
       , "*.svg"
@@ -108,9 +109,9 @@ main = Build.runShake Build.wantWebsite $ do
     Build.need [logoPath]
     logoSource <- Build.decodeByteString =<< readFileBS logoPath
 
-    -- Find image dependencies.
+    -- Find dependencies.
     let workingDirectory = Build.takeDirectory out
-    referencedImages <- needImageDependencies workingDirectory pandoc
+    referencedImages <- needDependencies workingDirectory pandoc
 
     -- Find tagged page dependencies.
     let
@@ -182,11 +183,11 @@ main = Build.runShake Build.wantWebsite $ do
     feed <- Build.runEither (RSS.makeRss canonicalFolder metas)
     Build.writeFileChanged out (T.unpack feed)
 
--- Marks every locally referenced image as needed.
-needImageDependencies :: FilePath
+-- Marks every locally referenced image and JSON file as needed.
+needDependencies :: FilePath
                       -> Pandoc.Pandoc
                       -> Build.Action (Map Text Picture.DynamicImage)
-needImageDependencies dir pandoc = do
+needDependencies dir pandoc = do
   -- Mark the images as needed.
   let
     extractUrl :: Pandoc.Inline -> [FilePath]
@@ -194,10 +195,17 @@ needImageDependencies dir pandoc = do
       case i of
 
         (Pandoc.Image _ _ (u,_)) ->
-          -- Ignore URIs
           case URI.parseURI (T.unpack u) of
+            Just _ -> [] -- Ignore URIs
             Nothing -> [T.unpack u]
-            Just _ -> []
+
+        (Pandoc.Link _ _ (u, _)) ->
+          case URI.parseURI (T.unpack u) of
+            Just _ -> [] -- Ignore URIs
+            Nothing
+              -- Just JSON files for now.
+              | ".json" `T.isSuffixOf` u -> [T.unpack u]
+              | otherwise -> []
 
         _ -> []
 
