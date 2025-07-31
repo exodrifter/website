@@ -4,6 +4,7 @@ aliases:
 - French
 tags:
 - french
+- language
 ---
 
 Notes on how to read and speak French.
