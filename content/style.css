@@ -85,7 +85,6 @@ article > * + *, aside > * + *, blockquote > * + *, section > * + *,
     display: block;
     width: var(--sidebar-size);
     height: calc(var(--grid-size)*4);
-    text-align: center;
 }
 
 /* Custom style for the search bar. */
@@ -106,17 +105,20 @@ article > * + *, aside > * + *, blockquote > * + *, section > * + *,
     }
 }
 
-/* We want to render footnotes as sidenotes.
+/* We want to render things like footnotes, the table of contents, and the logo
+   onto the side where the sidebar is. This puts floats those elements in the
+   sidebar when the screen is wide enough and inlines them otherwise.
 */
-.sidenote {
+.side, .sidenote {
     float: left;
     clear: both;
-
     position: relative;
     right: calc(var(--sidebar-size) + var(--grid-size));
     width: var(--sidebar-size);
     margin-inline-end: calc(-1 * var(--sidebar-size));
+}
 
+.sidenote {
     color: var(--subtext);
     text-align: right;
 }
@@ -134,19 +136,25 @@ article > * + *, aside > * + *, blockquote > * + *, section > * + *,
         flex-direction: column;
     }
 
-    .sidebar, .main {
+    .sidebar {
+        flex-basis: 0;
+    }
+
+    .main {
         width: 100%;
         max-width: 100%;
     }
 
-    .sidenote {
+    .side, .sidenote {
         float: unset;
         display: block;
         position: initial;
         width: round(down, 100%, var(--grid-size));
         margin-inline-end: 0;
-        padding: calc(var(--grid-size)/2);
+    }
 
+    .sidenote {
+        padding: calc(var(--grid-size)/2);
         text-align: left;
         color: var(--text);
         background-color: var(--bg2);
@@ -522,8 +530,8 @@ iframe {
 ==============================================================================*/
 
 @media all and (prefers-reduced-motion: no-preference) {
-    html, a, a:hover {
-        transition: all 0.5s;
+    a, a:hover {
+        transition: color 0.5s;
         scroll-behavior: smooth;
     }
 

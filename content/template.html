@@ -13,21 +13,17 @@
     </head>
     <body>
         <aside class="sidebar">
-            <a class="logo" href="/">$logo$</a>
+        </aside>
+        <div class="main">
+            <a class="logo side" href="/">$logo$</a>
+
             <!-- I need to implement search still.
             <div class="search">
                 <label><i class="ri-search-fill"></i></label>
                 <input type="text" placeholder="search...">
             </div>
             -->
-            $if(toc)$
-            <section>
-                <h1><i class="ri-list-unordered"></i> toc</h1>
-                $toc$
-            </section>
-            $endif$
-        </aside>
-        <div class="main">
+
             <nav>
                 <i class="ri-folder-fill"></i>
                 $for(breadcrumb)$
@@ -38,6 +34,13 @@
                 <a href="$rss$"><i class="ri-rss-fill"></i></a>
                 $endif$
             </nav>
+
+            $if(toc)$
+            <section class="side">
+                <h1><i class="ri-list-unordered"></i> toc</h1>
+                $toc$
+            </section>
+            $endif$
 
             $if(body)$
             <section id="_content">
