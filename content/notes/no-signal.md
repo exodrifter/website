@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2025-07-28T08:50:56-07:00
+modified: 2025-07-30T21:58:52-07:00
 aliases:
   - no signal logs
   - lost contact logs
@@ -10,13 +10,17 @@ tags:
   - no-signal
 ---
 
-# no signal logs
+# no signal
 
-These are the development notes for _no signal_. For more information, see the [press kit](../press-kits/no-signal/index.md).
+For more information, see the [press kit](../press-kits/no-signal/index.md).
 
-If you've been asked to playtest the game, please see the [playtesting steps](no-signal-playtesting-steps.md).
+Subpages:
+- [gameplay](no-signal-gameplay.md)
+- [playtesting steps](no-signal-playtesting-steps.md) (playtesting is no longer being done for _no signal_, but you can read it for reference purposes)
 
 # log
+
+These are the development notes for _no signal_.
 
 | date | version | notes |
 |------|---------|-------|
