@@ -121,6 +121,7 @@ article > * + *, aside > * + *, blockquote > * + *, section > * + *,
 .sidenote {
     color: var(--subtext);
     text-align: right;
+    text-wrap: balance;
 }
 
 /* We don't actually render content in the sidebar directly. Instead, we float
@@ -131,7 +132,7 @@ article > * + *, aside > * + *, blockquote > * + *, section > * + *,
    Unfortunately, we can't use variables in the media query. We want to switch
    when the main content is less than twice the size of the sidebar.
 */
-@media all and (max-width: 49.5rem) {
+@media all and (width < 49.5rem) {
     body {
         flex-direction: column;
     }
@@ -156,9 +157,21 @@ article > * + *, aside > * + *, blockquote > * + *, section > * + *,
     .sidenote {
         padding: calc(var(--grid-size)/2);
         text-align: left;
+        text-wrap: wrap;
         color: var(--text);
         background-color: var(--bg2);
         border-radius: calc(var(--grid-size)*.3);
+    }
+}
+
+/* The nav is the "first" element in the main page, but it will have a margin
+   due to the usual rules for adding space between elements even though the
+   logo that comes before it is floated to the side. This removes that extra
+   margin.
+*/
+@media all and (width >= 49.5rem) {
+    nav {
+        margin-top: 0 !important;
     }
 }
 
