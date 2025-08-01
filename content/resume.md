@@ -1,7 +1,7 @@
 ---
 title: resume
 created: 2024-09-16T00:56:40Z
-modified: 2025-07-31T21:57:56-07:00
+modified: 2025-07-31T21:59:12-07:00
 aliases:
   - resume
 ---
@@ -15,7 +15,7 @@ Experienced Software Engineer located in the San Francisco Bay Area with a demon
 # experience
 
 [^ei] **Indie Game Developer**
-- I extensively develop an escape room game called [no signal](press-kits/no-signal/index.md) live on [Twitch](https://twitch.tv/exodrifter_), where I answer questions and explain the development process to an audience.
+- Self-published a hard sci-fi point-and-click adventure game called [no signal](press-kits/no-signal/index.md). Most of it was developed live on [Twitch](https://twitch.tv/exodrifter_), where I answered questions and explained the development process to an audience.
 - Self-published an interactive fiction game named _[Gender Dysphoria](press-kits/gender-dysphoria/index.md)_ which uses a custom scripting language.
 - Worked with Iron Circus Games to make _[voluntary commitment](press-kits/voluntary-commitment/index.md)_ for a crowdfunded game bundle.
 
