@@ -253,15 +253,30 @@ convertFootnotes wOpts pandoc =
       case toHtml (Pandoc mempty blocks) of
         Left _ -> stringify blocks -- TODO: Propogate error instead
         Right a -> a
+
+    unnestNotes (Pandoc m blocks) =
+      let
+        mapBlock block =
+          case block of
+            -- Our sidenotes will be converted into asides, but asides cannot be
+            -- in <p> elements.
+            Para (n@(Note _):xs) -> [Plain [n], Para xs]
+            _ -> [block]
+      in
+        Pandoc m (concatMap mapBlock blocks)
+
+    makeSidenotes =
+      walk \inline ->
+        case inline of
+          Note inlines ->
+            RawInline
+              (Format "html")
+              ("<aside class=\"sidenote\">" <> toRawHtml inlines <> "</aside>")
+          _ ->
+            inline
+
   in
-    flip walk pandoc \inline ->
-      case inline of
-        Note inlines ->
-          RawInline
-            (Format "html")
-            ("<aside class=\"sidenote\">" <> toRawHtml inlines <> "</aside>")
-        _ ->
-          inline
+    makeSidenotes (unnestNotes pandoc)
 
 embedImageRatios :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
 embedImageRatios images =
