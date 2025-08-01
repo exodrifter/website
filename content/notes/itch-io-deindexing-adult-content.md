@@ -1,7 +1,7 @@
 ---
 title: itch.io mass deindexing of adult content
 created: 2025-07-24T14:21:41-07:00
-modified: 2025-07-29T12:48:14-07:00
+modified: 2025-07-31T18:06:22-07:00
 aliases:
   - itch.io mass deindexing of adult content
   - itch.io mass delisting of adult content
@@ -44,6 +44,8 @@ At 2025-07-27 22:08 UTC, Leaf posted an announcement about additional restrictio
 
 At 2025-07-28 19:47 UTC, Leaf posted an announcement in the `#news` channel in the official itch.io discord server stating that an [addendum FAQ](https://itch.io/updates/update-on-nsfw-content#addendum-faq) had been added to their original blog post about NSFW content. In it, they explain why their response was greater than Steam's, that Stripe can no longer be used for 18+ content, and clarified again that no games were removed from people's collections or libraries. [^9]
 
+At 2025-07-31 22:20:59 UTC, an official itch.io announcement was made that re-indexing will happen today for adult NSFW games that don't allow payments. They also announced a new “content warnings” system that all adult NSFW games must complete to be indexed. There will be a time window to complete this requirement to avoid going in and out of indexing. They also shared that Stripe confirmed they will not be able to support adult content that is "designed for sexual gratification" due to banking partners, though they hope to support adult content in the future. So, itch.io announced the intention to look for alternative payment processors. [^11]
+
 [^1]: [20250724211409](../entries/20250724211409.md)
 [^2]: [20250724212007](../entries/20250724212007.md)
 [^3]: [20250724213052](../entries/20250724213052.md)
@@ -54,3 +56,4 @@ At 2025-07-28 19:47 UTC, Leaf posted an announcement in the `#news` channel in t
 [^8]: [20250726175255](../entries/20250726175255.md)
 [^9]: [20250728200632](../entries/20250728200632.md)
 [^10]: [20250729193646](../entries/20250729193646.md)
+[^11]: [20250801005903](../entries/20250801005903.md)
