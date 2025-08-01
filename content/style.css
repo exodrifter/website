@@ -18,7 +18,7 @@
 :root {
     --grid-size: 1.5rem;
     --sidebar-size: calc(var(--grid-size)*10);
-    --main-size: calc(var(--grid-size)*32);
+    --main-size: calc(var(--grid-size)*28);
 
     color-scheme: light dark;
     --bg1: light-dark(hsl(240 4 92), hsl(240 4 8));
