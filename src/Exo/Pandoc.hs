@@ -137,6 +137,7 @@ makeHtml TemplateArgs{..} template pandoc = do
           )
         , ("backlink", DocTemplates.toVal backlinks)
         , ("rss", maybeToVal (T.pack <$> rssPath))
+        , ("feed", makeFeedLinks metadata)
         , ("toc", maybeToVal (makeToc pandoc))
         , ("logo", DocTemplates.toVal logoSource)
         ]
@@ -149,6 +150,39 @@ makeHtml TemplateArgs{..} template pandoc = do
 
     newPandoc = preparePandocForHTML writerOptions referencedImages pandoc
   runPandoc (writeHtml5String writerOptions newPandoc)
+
+makeFeedLinks :: Metadata -> DocTemplates.Val Text
+makeFeedLinks meta =
+  let
+    makeFeedLink :: Text -> Text -> FilePath -> DocTemplates.Val Text
+    makeFeedLink mimeType title url =
+      DocTemplates.toVal
+        ( fromList
+          [ ("mimeType", mimeType)
+          , ("title", title)
+          , ("url", T.pack url)
+          ] :: Map Text Text
+        )
+
+    makeRssLink = makeFeedLink "application/rss+xml"
+    folder = metaCanonicalFolder meta
+
+    everythingFeed = makeRssLink "everything feed" "/index.xml"
+    folderFeeds pieces =
+      case pieces of
+        [] -> []
+        ["/"] -> []
+        _:rest ->
+            makeRssLink
+              (T.pack (FilePath.joinPath (reverse pieces)) <> " feed")
+              (FilePath.joinPath (reverse pieces) </> "index.xml")
+          : folderFeeds rest
+
+  in
+    DocTemplates.toVal
+      (  folderFeeds (reverse (FilePath.splitDirectories folder))
+      <> [ everythingFeed ]
+      )
 
 -- Generates an HTML table of contents for a Pandoc document, but only if there
 -- are two or more items.
