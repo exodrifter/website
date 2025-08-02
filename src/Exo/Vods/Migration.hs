@@ -2,12 +2,9 @@ module Exo.Vods.Migration
 ( migrateVods
 ) where
 
-import Control.Monad.Catch (MonadThrow)
 import Data.Aeson ((.:), (.=))
-import Network.HTTP.Req ((/:), (=:))
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Encode.Pretty as Aeson
-import qualified Data.ByteString.Char8 as BS8
 import qualified Data.ByteString.Lazy as LBS
 import qualified Data.NonEmptyText as NET
 import qualified Data.Set as Set
@@ -17,33 +14,13 @@ import qualified Data.Text.Encoding as TE
 import qualified Data.Time as Time
 import qualified Data.Time.TimeSpan as TimeSpan
 import qualified Exo.Vods.Vimeo as Vimeo
-import qualified Network.HTTP.Client as HTTP
-import qualified Network.HTTP.Client.TLS as HTTP
-import qualified Network.HTTP.Req as Req
 import qualified Turtle
-
-toBS :: Text -> BS8.ByteString
-toBS = TE.encodeUtf8
 
 toLBS :: Text -> LBS.ByteString
 toLBS = LBS.fromStrict . TE.encodeUtf8
 
 fromLBS :: LBS.ByteString -> Text
 fromLBS = TE.decodeUtf8 . LBS.toStrict
-
---------------------------------------------------------------------------------
--- System Types
---------------------------------------------------------------------------------
-
-data Secrets =
-  Secrets
-    { accessToken :: ByteString
-    }
-
-instance Aeson.FromJSON Secrets where
-  parseJSON = Aeson.withObject "Secrets" $ \a ->
-    Secrets
-      <$> (toBS <$> a .: "access_token")
 
 --------------------------------------------------------------------------------
 -- Jekyll Types
@@ -159,58 +136,6 @@ instance Aeson.FromJSON ShortService where
 -- Logic
 --------------------------------------------------------------------------------
 
-newtype Migration a = Migration (ReaderT MigrationContext IO a)
-  deriving
-    ( Applicative
-    , Functor
-    , Monad
-    , MonadIO
-    , MonadReader MigrationContext
-    , MonadThrow
-    )
-
-data MigrationContext =
-  MigrationContext
-    { migrationSecrets :: Secrets
-    , migrationManager :: HTTP.Manager
-    }
-
-runMigration :: Migration a -> IO a
-runMigration (Migration migration) = do
-  context <-
-    MigrationContext
-      <$> expectJust "Cannot parse .env.json" (Aeson.decodeFileStrict ".env.json")
-      <*> HTTP.newManager HTTP.tlsManagerSettings
-  runReaderT migration context
-
-expectJust :: MonadIO io => Text -> io (Maybe a) -> io a
-expectJust message fn = do
-  ma <- fn
-  case ma of
-    Nothing -> die $ T.unpack message
-    Just a -> pure a
-
-getVideos :: Int -> Migration Vimeo.UserResult
-getVideos page = do
-  auth <- asks (accessToken . migrationSecrets)
-  let url = Req.https "api.vimeo.com" /: "users" /: "104901742" /: "videos"
-  response <- Req.runReq Req.defaultHttpConfig
-    . Req.req Req.GET url Req.NoReqBody Req.jsonResponse
-    $ Req.headerRedacted "Authorization" ("bearer " <> auth)
-    <> "fields" =: ("uri,name,description,duration,pictures.base_link,\
-                    \pictures.uri,parent_folder.name" :: Text)
-    <> "page" =: (show page :: Text)
-    <> "per_page" =: (100 :: Int)
-  pure $ Req.responseBody response
-
-getThumbnail :: Text -> Migration LBS.ByteString
-getThumbnail url = do
-  manager <- asks migrationManager
-  request <- HTTP.parseRequest $ T.unpack url
-  response <- liftIO $ flip HTTP.httpLbs manager $
-    request { HTTP.path = HTTP.path request <> "_640x360.jpg" }
-  pure $ HTTP.responseBody response
-
 parseTime :: (Time.ParseTime t, MonadFail m) => String -> Text -> m t
 parseTime fmt = Time.parseTimeM True Time.defaultTimeLocale fmt . T.unpack
 
@@ -218,41 +143,35 @@ formatTime :: Time.FormatTime t => String -> t -> Text
 formatTime fmt = T.pack . Time.formatTime Time.defaultTimeLocale fmt
 
 migrateVods :: IO ()
-migrateVods = runMigration $ do
-  page <- getVideos 1
-  traverse_ migrate (Vimeo.results page)
-  followPagination page
+migrateVods = do
+  context <- Vimeo.loadVimeoContext
+  videos <- Vimeo.runVimeo context Vimeo.getVideos
+  result <- traverse migrate videos
+  traverse_ (downloadThumbIfNeeded context) (catMaybes result)
 
-followPagination :: Vimeo.UserResult -> Migration ()
-followPagination page =
-  case Vimeo.nextPage $ Vimeo.pagingInfo page of
-    Nothing -> pure ()
-    Just _ -> do
-      next <- getVideos (Vimeo.currentPage page + 1)
-      traverse_ migrate (Vimeo.results next)
-      followPagination next
+extractServiceAndTime :: Vimeo.Video -> IO (T.Text, Time.ZonedTime)
+extractServiceAndTime video = do
+  case T.words (T.toLower (Vimeo.name video)) of
+    [service, _, day, time] ->
+      case parseTime "%F %T%z" (day <> " " <> time) of
+        Just zonedTime -> pure (service, zonedTime)
+        Nothing ->
+          die $ "Could not determine timezone for \""
+              <> T.unpack (Vimeo.name video) <> "\""
 
-migrate :: Vimeo.Video -> Migration ()
+    _ -> die $ "Could not parse name \"" <> T.unpack (Vimeo.name video) <> "\""
+
+migrate :: Vimeo.Video -> IO (Maybe (Vimeo.Video, Maybe Post))
 migrate video = do
   case Vimeo.folderName <$> Vimeo.parentFolder video of
     Just n | n == "Streams" -> do
-      migrate' video
+      Just <$> migrate' video
     _ ->
-      pure ()
+      pure Nothing
 
-migrate' :: Vimeo.Video -> Migration ()
+migrate' :: Vimeo.Video -> IO (Vimeo.Video, Maybe Post)
 migrate' video = do
-  (service, zonedTime) <-
-    case T.words (T.toLower (Vimeo.name video)) of
-      service:_:day:time:[] ->
-        case parseTime "%F %T%z" (day <> " " <> time) of
-          Just zonedTime -> pure (service, zonedTime)
-          Nothing ->
-            die $ "Could not determine timezone for \""
-               <> T.unpack (Vimeo.name video) <> "\""
-
-      _ -> die $ "Could not parse name \"" <> T.unpack (Vimeo.name video) <> "\""
-
+  (service, zonedTime) <- extractServiceAndTime video
   -- Try to load the old data
   let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
       dataPath = "vods/data/" <> fileName <> ".json"
@@ -295,11 +214,14 @@ migrate' video = do
   liftIO $ TIO.writeFile (T.unpack dataPath)
                          (fromLBS . Aeson.encodePretty $ newPost)
 
-  downloadThumbIfNeeded fileName video oldPost
+  pure (video, oldPost)
 
-downloadThumbIfNeeded :: Text -> Vimeo.Video -> Maybe Post -> Migration ()
-downloadThumbIfNeeded fileName video oldPost = do
-  let thumbPath = "vods/assets/thumbs/" <> fileName <> ".jpg"
+downloadThumbIfNeeded :: Vimeo.VimeoContext -> (Vimeo.Video, Maybe Post) -> IO ()
+downloadThumbIfNeeded context (video, oldPost) = do
+  (_, zonedTime) <- extractServiceAndTime video
+  let
+    fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
+    thumbPath = "vods/assets/thumbs/" <> fileName <> ".jpg"
   thumbExists <- Turtle.testpath (T.unpack thumbPath)
   case (thumbExists, Vimeo.pictureUri $ Vimeo.pictures video) of
 
@@ -315,20 +237,20 @@ downloadThumbIfNeeded fileName video oldPost = do
       case postThumbUri =<< oldPost of
 
         -- We don't have the thumbnail yet
-        Nothing -> downloadThumb video thumbPath
+        Nothing -> liftIO (downloadThumb context video thumbPath)
 
         -- Download the thumbnail only if it is different
         Just oldThumbUri
-          | oldThumbUri /= pUri -> downloadThumb video thumbPath
+          | oldThumbUri /= pUri -> liftIO (downloadThumb context video thumbPath)
           | otherwise -> pure ()
 
     -- We don't have the thumbnail yet
-    (False, Just _) -> downloadThumb video thumbPath
+    (False, Just _) -> liftIO (downloadThumb context video thumbPath)
 
-downloadThumb :: Vimeo.Video -> Text -> Migration ()
-downloadThumb video thumbPath = do
+downloadThumb :: Vimeo.VimeoContext -> Vimeo.Video -> Text -> IO ()
+downloadThumb context video thumbPath = do
   echo ("  Downloading thumb for " <> Vimeo.videoId video <> " to " <> thumbPath)
-  thumb <- getThumbnail (Vimeo.baseLink $ Vimeo.pictures video)
+  thumb <- Vimeo.runVimeo context (Vimeo.getThumbnail video)
   liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
 
 echo :: MonadIO m => Text -> m ()
