@@ -543,6 +543,41 @@ iframe {
     }
 }
 
+/* Unique style for project banners on the homepage. */
+.project-banner {
+    position: relative;
+    max-width: round(down, 100%, var(--grid-size));
+    min-height: calc(var(--grid-size) * 6);
+
+    a p:not(:has(img)) {
+        position: relative;
+        padding: var(--grid-size);
+        padding-top: calc(var(--grid-size) * 3);
+        z-index: 1;
+
+        font-size: calc(var(--grid-size)*1.2);
+        line-height: calc(var(--grid-size)*2);
+        color: black;
+
+        filter: invert(1);
+        mix-blend-mode: difference;
+    }
+
+    a img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(50%) blur(calc(var(--grid-size)/20));
+        transition: filter 0.5s;
+        clip-path: inset(0)
+    }
+
+    a:hover img {
+        filter: saturate(100%) blur(0);
+    }
+}
+
 /* Used when I want to layout elements horizontally. */
 .flex {
     display: flex;

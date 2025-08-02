@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-08-01T13:01:15-07:00
+modified: 2025-08-02T12:31:56-07:00
 tags:
   - index
 ---
@@ -27,7 +27,9 @@ tags:
 </div>
 </div>
 
-# blog
+[^blog]
+
+[^blog]: /[blog](blog/index.md)
 
 - **2025-08-01** - [one week after *no signal*](blog/20250731075133.md)
 - **2025-07-28** - [no signal v1.4.0](blog/20250728153807.md)
@@ -35,33 +37,53 @@ tags:
 - **2025-07-15** - [new website, and the Bad Shape](blog/20250715200219.md)
 - **2025-07-08** - [offkai recap and being myself](blog/20250707063429.md)
 
-[See all posts...](blog/index.md)
+[^press-kits]
 
-# press kits
+[^press-kits]: /[press-kits](press-kits/index.md)
 
-- _[no signal](press-kits/no-signal/index.md)_ (2025) - an escape room game about an isolated station and mysterious signals emitted by a black hole.
-- _[voluntary commitment](press-kits/voluntary-commitment/index.md)_ (2024) - a role-playing game about being stuck against your will in a hospital.
-- _[Ultraprocessor Ribbon](press-kits/ultraprocessor-ribbon/index.md)_ (tbd) - a 2D block breaking and visual novel erogame about two gay girls and hot robot sex.
+<div class="project-banner">
+<a href="press-kits/no-signal/index.html">
 
-[See all press kits...](press-kits/index.md)
+![](press-kits/no-signal/hero.png)
 
-# albums
+no signal
 
-- [future formant](albums/future-formant/index.md) (2025)
-- [lonely metro](albums/lonely-metro/index.md) (2023)
-- [cascade](albums/cascade/index.md) (2022)
+</a>
+</div>
 
-[See all albums...](albums/index.md)
+<div class="project-banner">
+<a href="press-kits/gender-dysphoria/index.html">
 
-# logs
+![](press-kits/gender-dysphoria/screen-6.png)
 
-- [no signal](notes/no-signal.md)
-- [Ultraprocessor Ribbon](notes/ultraprocessor-ribbon.md)
-- [music study](notes/music-study.md)
+Gender Dysphoria
 
-[See all logs...](tags/log.md)
+</a>
+</div>
 
-# coolzone
+<div class="project-banner">
+<a href="press-kits/teknedia/index.html">
+
+![](press-kits/teknedia/screen-3.jpg)
+
+Teknedia
+
+</a>
+</div>
+
+<div class="project-banner">
+<a href="press-kits/port-of-call/index.html">
+
+![](press-kits/port-of-call/screen-5.jpg)
+
+Port of Call
+
+</a>
+</div>
+
+[^coolzone]
+
+[^coolzone]: coolzone
 
 <div class="flex">
 

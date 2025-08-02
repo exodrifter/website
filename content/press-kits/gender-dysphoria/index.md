@@ -1,14 +1,14 @@
 ---
 title: Gender Dysphoria press kit
 created: 2024-02-28T19:31:09-06:00
-modified: 2025-07-12T10:46:55Z
+modified: 2025-08-02T12:50:49-07:00
 aliases:
-- Gender Dysphoria press kit
+  - Gender Dysphoria press kit
 permalink: /gender-dysphoria
 tags:
-- gender-dysphoria
-- press-kit
-- unity
+  - gender-dysphoria
+  - press-kit
+  - unity
 ---
 
 # Gender Dysphoria
@@ -65,6 +65,8 @@ vods ([link](https://vods.exodrifter.space/tag/))
 ![](screen-4.png)
 
 ![](screen-5.png)
+
+![](screen-6.png)
 
 # branding
 
