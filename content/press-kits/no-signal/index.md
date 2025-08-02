@@ -1,7 +1,7 @@
 ---
 title: no signal press kit
 created: 2024-02-28T18:42:17-06:00
-modified: 2025-08-01T11:43:55-07:00
+modified: 2025-08-02T14:10:33-07:00
 aliases:
   - no signal press kit
 permalink: /no-signal
@@ -87,15 +87,13 @@ vods ([link](https://vods.exodrifter.space/tag/lost-contact/))
 
 # branding
 
-icon
+icons
 
-![](icon.svg)
+![](icon-1.svg)
+
+![](icon-2.svg)
 
 logo
-
-![](logo.svg)
-
-wordmark
 
 ![](wordmark.png)
 
