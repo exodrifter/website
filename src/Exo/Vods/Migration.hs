@@ -31,9 +31,6 @@ toLBS = LBS.fromStrict . TE.encodeUtf8
 fromLBS :: LBS.ByteString -> Text
 fromLBS = TE.decodeUtf8 . LBS.toStrict
 
-showText :: Show a => a -> Text
-showText = T.pack . show
-
 --------------------------------------------------------------------------------
 -- System Types
 --------------------------------------------------------------------------------
@@ -230,62 +227,6 @@ instance Aeson.FromJSON ShortService where
       "youtube" -> pure YouTube
       _ -> fail "Unknown short service"
 
-postToText :: Post -> Text
-postToText p =
-     "---\n"
-  <> "title: \"" <> title <> "\"\n"
-  <> "date: \"" <> (formatTime "%FT%TZ" utcTime) <> "\"\n"
-  <> "header:\n"
-  <> "  teaser: \"" <> thumbPath <> "\"\n"
-  <> "categories:" <> (elements $ postCategories p)
-  <> "tags:" <> (elements $ postTags p)
-  <> "---\n"
-  <> videoEmbed (postVideoId p)
-  <> shortsText (postShorts p)
-  where
-    utcTime = Time.zonedTimeToUTC (postDate p)
-    title =
-      case postTitle p of
-        -- If there is no description, I didn't save the original title of the
-        -- stream if there was one. Default to the date instead.
-        Nothing -> encHtml $ formatTime "%F %T" utcTime
-        Just t -> encHtml $ NET.toText t
-    thumbPath = fromMaybe "/assets/images/missing.png" (postThumbPath p)
-    videoEmbed mId =
-      case mId of
-        Nothing -> "&nbsp;\n\n\
-                   \Unfortunately, this VOD has been lost to the sands of time."
-        Just i -> "{% include video id=\"" <> i <> "\" provider=\"vimeo\" %}\n"
-    shortsText shorts =
-      case shorts of
-        [] -> ""
-        _ -> "\nSee also:\n" <> T.intercalate "\n" (shortText <$> shorts)
-    shortText short =
-      "* " <> shortName short <> ": " <>
-      T.intercalate ", " (shortLink <$> shortLinks short)
-    shortLink link =
-      case shortLinkService link of
-        Twitch ->
-             "[Twitch](https://www.twitch.tv/exodrifter_/clip/"
-          <> shortLinkId link
-          <> ")"
-        YouTube ->
-             "[YouTube](https://www.youtube.com/watch?v="
-          <> shortLinkId link
-          <> ")"
-
-    elements arr =
-      case Set.toList arr of
-        [] -> " []\n"
-        xs -> "\n" <> (T.concat $ element <$> xs)
-    element a = "- \"" <> a <> "\"\n"
-
-encHtml :: Text -> Text
-encHtml =
-  -- There's a bug in the minimal mistakes theme which treats the pipe character
-  -- as table syntax for markdown only in some parts of the website.
-  T.replace "|" "&#124;"
-
 --------------------------------------------------------------------------------
 -- Logic
 --------------------------------------------------------------------------------
@@ -353,7 +294,6 @@ migrateVods = runMigration $ do
   page <- getVideos 1
   traverse_ migrate (results page)
   followPagination page
-  writePosts
 
 followPagination :: UserResult -> Migration ()
 followPagination page =
@@ -387,7 +327,7 @@ migrate' video = do
 
   -- Try to load the old data
   let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
-      dataPath = "data/" <> fileName <> ".json"
+      dataPath = "vods/data/" <> fileName <> ".json"
   postExists <- Turtle.testpath (T.unpack dataPath)
   oldPost <-
     if postExists
@@ -431,7 +371,7 @@ migrate' video = do
 
 downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
 downloadThumbIfNeeded fileName video oldPost = do
-  let thumbPath = "assets/thumbs/" <> fileName <> ".jpg"
+  let thumbPath = "vods/assets/thumbs/" <> fileName <> ".jpg"
   thumbExists <- Turtle.testpath (T.unpack thumbPath)
   case (thumbExists, pictureUri $ pictures video) of
 
@@ -462,28 +402,6 @@ downloadThumb video thumbPath = do
   echo ("  Downloading thumb for " <> videoId video <> " to " <> thumbPath)
   thumb <- getThumbnail (baseLink $ pictures video)
   liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
-
-writePosts :: Migration ()
-writePosts = do
-  let foldDuration = Turtle.Fold (<>) (TimeSpan.seconds 0) id
-  totalDuration <- Turtle.reduce foldDuration $ do
-    filepath <- Turtle.ls "data/"
-
-    t <- liftIO $ TIO.readFile filepath
-    p <- case Aeson.eitherDecode $ toLBS t of
-      Left reason -> die $ "Failed to read post; " <> reason
-      Right p -> pure p
-
-    -- Write the post down
-    let utcTime = Time.zonedTimeToUTC (postDate p)
-        fileName = formatTime "%Y-%m-%d-%H-%M-%S" utcTime
-        postPath = "_posts/" <> fileName <> ".md"
-    liftIO $ TIO.writeFile (T.unpack postPath)
-                           (postToText p)
-
-    pure $ postDuration p
-
-  echo ("Total duration: " <> showText (TimeSpan.toSeconds totalDuration))
 
 echo :: MonadIO m => Text -> m ()
 echo text = traverse_ Turtle.echo (Turtle.textToLines text)
