@@ -554,9 +554,12 @@ iframe {
 ==============================================================================*/
 
 @media all and (prefers-reduced-motion: no-preference) {
-    a, a:hover {
-        transition: color 0.5s;
+    html {
         scroll-behavior: smooth;
+    }
+
+    a {
+        transition: color 0.5s;
     }
 
     :target {
