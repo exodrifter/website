@@ -174,7 +174,7 @@ migrate' video = do
   (service, zonedTime) <- extractServiceAndTime video
   -- Try to load the old data
   let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
-      dataPath = "vods/data/" <> fileName <> ".json"
+      dataPath = "content/vods/" <> fileName <> ".json"
   postExists <- Turtle.testpath (T.unpack dataPath)
   oldPost <-
     if postExists
@@ -221,7 +221,7 @@ downloadThumbIfNeeded context (video, oldPost) = do
   (_, zonedTime) <- extractServiceAndTime video
   let
     fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
-    thumbPath = "vods/assets/thumbs/" <> fileName <> ".jpg"
+    thumbPath = "content/vods/" <> fileName <> ".jpg"
   thumbExists <- Turtle.testpath (T.unpack thumbPath)
   case (thumbExists, Vimeo.pictureUri $ Vimeo.pictures video) of
 
