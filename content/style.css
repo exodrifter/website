@@ -219,6 +219,16 @@ section > h1::after {
     outline: solid 0.1rem var(--subtext);
 }
 
+/* Used for special title headers that have a background image.
+*/
+.banner {
+    background-size: cover;
+    background-position: center;
+    min-height: calc(var(--grid-size) * 10);
+    padding: var(--grid-size);
+    padding-top: calc(var(--grid-size) * 7);
+}
+
 /* Headers are larger than the normal text, but even though each header level
    has a different size, we use the same line height so the content is aligned
    to the grid.

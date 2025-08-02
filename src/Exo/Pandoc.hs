@@ -214,6 +214,7 @@ makeToc (Pandoc m blocks) =
 preparePandocForHTML :: WriterOptions -> Map Text Picture.DynamicImage -> Pandoc -> Pandoc
 preparePandocForHTML writerOptions referencedImages =
     embedImageRatios referencedImages
+  . makeBanner
   . convertFootnotes writerOptions
   . convertEntryReference
   . convertVideoEmbeds
@@ -311,6 +312,23 @@ convertFootnotes wOpts pandoc =
 
   in
     makeSidenotes (unnestNotes pandoc)
+
+makeBanner :: Pandoc -> Pandoc
+makeBanner (Pandoc meta blocks) =
+  let
+    mkStyle url =
+         "background-image:"
+      <> "linear-gradient(transparent,var(--bg1)),"
+      <> "url(" <> url <> ")"
+  in
+    Pandoc meta
+      case blocks of
+        Figure _ _ [Plain [Image _ _ (u, _)]]:Header 1 (i, classes, attr) inlines:xs ->
+          Header 1 (i, "banner":classes, ("style",mkStyle u):attr) inlines : xs
+        Para [Image _ _ (u, _)]:Header 1 (i, classes, attr) inlines:xs ->
+          Header 1 (i, "banner":classes, ("style",mkStyle u):attr) inlines : xs
+        _ ->
+          blocks
 
 embedImageRatios :: Map Text Picture.DynamicImage -> Pandoc -> Pandoc
 embedImageRatios images =
