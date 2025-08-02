@@ -16,10 +16,10 @@ import qualified Data.Text.IO as TIO
 import qualified Data.Text.Encoding as TE
 import qualified Data.Time as Time
 import qualified Data.Time.TimeSpan as TimeSpan
+import qualified Exo.Vods.Vimeo as Vimeo
 import qualified Network.HTTP.Client as HTTP
 import qualified Network.HTTP.Client.TLS as HTTP
 import qualified Network.HTTP.Req as Req
-import qualified Safe
 import qualified Turtle
 
 toBS :: Text -> BS8.ByteString
@@ -44,78 +44,6 @@ instance Aeson.FromJSON Secrets where
   parseJSON = Aeson.withObject "Secrets" $ \a ->
     Secrets
       <$> (toBS <$> a .: "access_token")
-
---------------------------------------------------------------------------------
--- Vimeo Types
---------------------------------------------------------------------------------
-
-data UserResult =
-  UserResult
-    { currentPage :: Int
-    , pagingInfo :: Paging
-    , results :: [Video]
-    }
-
-instance Aeson.FromJSON UserResult where
-  parseJSON = Aeson.withObject "UserResult" $ \a ->
-    UserResult
-      <$> a .: "page"
-      <*> a .: "paging"
-      <*> a .: "data"
-
-data Paging =
-  Paging
-    { nextPage :: Maybe Text
-    }
-
-instance Aeson.FromJSON Paging where
-  parseJSON = Aeson.withObject "Paging" $ \a ->
-    Paging
-      <$> a .: "next"
-
-data Video =
-  Video
-    { videoId :: Text
-    , name :: Text
-    , description :: Maybe Text
-    , duration :: TimeSpan.TimeSpan
-    , pictures :: Pictures
-    , parentFolder :: Maybe Folder
-    }
-
-instance Aeson.FromJSON Video where
-  parseJSON = Aeson.withObject "Video" $ \a -> do
-    uri <- a .: "uri"
-    Video
-      <$> maybe (fail "Could not parse video id") pure
-                (Safe.lastMay . T.splitOn "/" $ uri)
-      <*> a .: "name"
-      <*> a .: "description"
-      <*> (TimeSpan.seconds <$> a .: "duration")
-      <*> a .: "pictures"
-      <*> a .: "parent_folder"
-
-data Pictures =
-  Pictures
-    { pictureUri :: Maybe Text
-    , baseLink :: Text
-    }
-
-instance Aeson.FromJSON Pictures where
-  parseJSON = Aeson.withObject "Pictures" $ \a -> do
-    Pictures
-      <$> a .: "uri"
-      <*> a .: "base_link"
-
-data Folder =
-  Folder
-    { folderName :: Text
-    }
-
-instance Aeson.FromJSON Folder where
-  parseJSON = Aeson.withObject "Folder" $ \a ->
-    Folder
-      <$> a .: "name"
 
 --------------------------------------------------------------------------------
 -- Jekyll Types
@@ -262,7 +190,7 @@ expectJust message fn = do
     Nothing -> die $ T.unpack message
     Just a -> pure a
 
-getVideos :: Int -> Migration UserResult
+getVideos :: Int -> Migration Vimeo.UserResult
 getVideos page = do
   auth <- asks (accessToken . migrationSecrets)
   let url = Req.https "api.vimeo.com" /: "users" /: "104901742" /: "videos"
@@ -292,38 +220,38 @@ formatTime fmt = T.pack . Time.formatTime Time.defaultTimeLocale fmt
 migrateVods :: IO ()
 migrateVods = runMigration $ do
   page <- getVideos 1
-  traverse_ migrate (results page)
+  traverse_ migrate (Vimeo.results page)
   followPagination page
 
-followPagination :: UserResult -> Migration ()
+followPagination :: Vimeo.UserResult -> Migration ()
 followPagination page =
-  case nextPage $ pagingInfo page of
+  case Vimeo.nextPage $ Vimeo.pagingInfo page of
     Nothing -> pure ()
     Just _ -> do
-      next <- getVideos (currentPage page + 1)
-      traverse_ migrate (results next)
+      next <- getVideos (Vimeo.currentPage page + 1)
+      traverse_ migrate (Vimeo.results next)
       followPagination next
 
-migrate :: Video -> Migration ()
+migrate :: Vimeo.Video -> Migration ()
 migrate video = do
-  case folderName <$> parentFolder video of
+  case Vimeo.folderName <$> Vimeo.parentFolder video of
     Just n | n == "Streams" -> do
       migrate' video
     _ ->
       pure ()
 
-migrate' :: Video -> Migration ()
+migrate' :: Vimeo.Video -> Migration ()
 migrate' video = do
   (service, zonedTime) <-
-    case T.words (T.toLower (name video)) of
+    case T.words (T.toLower (Vimeo.name video)) of
       service:_:day:time:[] ->
         case parseTime "%F %T%z" (day <> " " <> time) of
           Just zonedTime -> pure (service, zonedTime)
           Nothing ->
             die $ "Could not determine timezone for \""
-               <> T.unpack (name video) <> "\""
+               <> T.unpack (Vimeo.name video) <> "\""
 
-      _ -> die $ "Could not parse name \"" <> T.unpack (name video) <> "\""
+      _ -> die $ "Could not parse name \"" <> T.unpack (Vimeo.name video) <> "\""
 
   -- Try to load the old data
   let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
@@ -339,46 +267,46 @@ migrate' video = do
     else pure Nothing
 
   -- Update the post
-  let desc = NET.fromText =<< description video
+  let desc = NET.fromText =<< Vimeo.description video
       newPost =
         case oldPost of
           Just p ->
             p { postDate = zonedTime
-              , postDuration = duration video
+              , postDuration = Vimeo.duration video
               , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
-              , postThumbUri = pictureUri $ pictures video
+              , postThumbUri = Vimeo.pictureUri $ Vimeo.pictures video
               , postCategories = Set.insert service (postCategories p)
-              , postVideoId = Just $ videoId video
+              , postVideoId = Just $ Vimeo.videoId video
               }
           Nothing ->
             Post
               { postTitle = desc
               , postDate = zonedTime
-              , postDuration = duration video
+              , postDuration = Vimeo.duration video
               , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
-              , postThumbUri = pictureUri $ pictures video
+              , postThumbUri = Vimeo.pictureUri $ Vimeo.pictures video
               , postCategories = Set.singleton service
               , postTags = Set.empty
-              , postVideoId = Just $ videoId video
+              , postVideoId = Just $ Vimeo.videoId video
               , postShorts = []
               }
   when (oldPost /= Just newPost) $ do
-    echo ("Updating " <> videoId video <> " at " <> dataPath)
+    echo ("Updating " <> Vimeo.videoId video <> " at " <> dataPath)
   liftIO $ TIO.writeFile (T.unpack dataPath)
                          (fromLBS . Aeson.encodePretty $ newPost)
 
   downloadThumbIfNeeded fileName video oldPost
 
-downloadThumbIfNeeded :: Text -> Video -> Maybe Post -> Migration ()
+downloadThumbIfNeeded :: Text -> Vimeo.Video -> Maybe Post -> Migration ()
 downloadThumbIfNeeded fileName video oldPost = do
   let thumbPath = "vods/assets/thumbs/" <> fileName <> ".jpg"
   thumbExists <- Turtle.testpath (T.unpack thumbPath)
-  case (thumbExists, pictureUri $ pictures video) of
+  case (thumbExists, Vimeo.pictureUri $ Vimeo.pictures video) of
 
     -- Vimeo is sending us the default thumbnail and we have a thumbnail on
     -- disk. We don't delete the thumb in case the user wants to keep it.
     (True, Nothing) ->
-      echo ("  Warning: " <> videoId video <> " no longer has a thumbnail!")
+      echo ("  Warning: " <> Vimeo.videoId video <> " no longer has a thumbnail!")
 
     -- Don't download the default thumbnail from Vimeo
     (False, Nothing) -> pure ()
@@ -397,10 +325,10 @@ downloadThumbIfNeeded fileName video oldPost = do
     -- We don't have the thumbnail yet
     (False, Just _) -> downloadThumb video thumbPath
 
-downloadThumb :: Video -> Text -> Migration ()
+downloadThumb :: Vimeo.Video -> Text -> Migration ()
 downloadThumb video thumbPath = do
-  echo ("  Downloading thumb for " <> videoId video <> " to " <> thumbPath)
-  thumb <- getThumbnail (baseLink $ pictures video)
+  echo ("  Downloading thumb for " <> Vimeo.videoId video <> " to " <> thumbPath)
+  thumb <- getThumbnail (Vimeo.baseLink $ Vimeo.pictures video)
   liftIO $ LBS.writeFile (T.unpack thumbPath) thumb
 
 echo :: MonadIO m => Text -> m ()
