@@ -1,0 +1,19 @@
+{
+    "categories": [
+        "game development",
+        "twitch"
+    ],
+    "duration": 9520,
+    "shorts": [],
+    "tags": [
+        "code: gdscript",
+        "code: rust",
+        "flambe",
+        "godot"
+    ],
+    "thumbPath": "/assets/thumbs/2022-04-04-23-51-49.jpg",
+    "thumbUri": "/videos/696565684/pictures/1578422177",
+    "timestamp": "2022-04-04T18:51:49-05:00",
+    "title": "tidying up the code | making an inventory game in rust | what should my goal this month be?",
+    "videoId": "696565684"
+}

@@ -1,0 +1,39 @@
+{
+    "categories": [
+        "music production",
+        "twitch"
+    ],
+    "duration": 13716,
+    "shorts": [
+        {
+            "links": [
+                {
+                    "id": "PeppyEndearingBubbleteaEleGiggle-N10C3Tl60qT7M82Q",
+                    "service": "twitch"
+                }
+            ],
+            "name": "i have to drink all the water"
+        },
+        {
+            "links": [
+                {
+                    "id": "FrozenRamshackleTubersDAESuppy-dOOGqxikrrkKQ7DH",
+                    "service": "twitch"
+                }
+            ],
+            "name": "i want a sub"
+        }
+    ],
+    "tags": [
+        "fl studio",
+        "raided by: CAI_TAn",
+        "raided by: ShinyOlivia",
+        "raiding: earend",
+        "song: whale fall"
+    ],
+    "thumbPath": "/assets/thumbs/2023-08-11-01-43-29.jpg",
+    "thumbUri": "/videos/853749451/pictures/1709397524",
+    "timestamp": "2023-08-10T20:43:29-05:00",
+    "title": "mystery enchanted music making?",
+    "videoId": "853749451"
+}

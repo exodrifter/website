@@ -1,0 +1,138 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: vod archive
+title_separator: "|"
+description: >- # this means to ignore newlines until "baseurl:"
+  exodrifter's vod archive
+url: "https://vods.exodrifter.space"
+baseurl: ""
+repository: "exodrifter/exodrifter-vods"
+twitter_username: exodrifter
+github_username: exodrifter
+minimal_mistakes_skin: dark
+search: true
+logo: "/assets/images/logo.svg"
+date_format: "%F %T%z"
+
+# Build settings
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes
+
+# Outputting
+permalink: /:year/:month/:day/:hour:minute
+paginate: 8 # amount of posts to show
+paginate_path: /page:num/
+timezone: UTC
+
+# Lunr indexing settings
+lunr:
+  # JS files appear in search right now
+  # https://github.com/mmistakes/minimal-mistakes/pull/4000
+  search_within_pages: false
+
+include:
+  - _pages
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
+
+# Plugins (previously gems:)
+plugins:
+  - jekyll-archives
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-include-cache
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji
+
+author:
+  avatar : "/assets/images/avatar.jpg"
+  links:
+    - label: "website"
+      url: "https://exodrifter.space"
+    - label: "bandcamp"
+      icon: "fab fa-fw fa-bandcamp"
+      url: "https://music.exodrifter.space"
+    - label: "itch.io"
+      icon: "fab fa-fw fa-itch-io"
+      url: "https://exodrifter.itch.io"
+    - label: "ko-fi"
+      icon: "fas fa-mug-hot"
+      url: "https://ko-fi.com/exodrifter"
+    - label: "patreon"
+      icon: "fab fa-fw fa-patreon"
+      url: "https://patreon.com/exodrifter"
+    - label: "twitch"
+      icon: "fab fa-fw fa-twitch"
+      url: "https://www.twitch.tv/exodrifter_"
+
+footer:
+  links:
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      classes: wide
+      entries_layout: grid
+      author_profile: true
+      show_date: true
+
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      comments: false
+      read_time: false
+      related: false
+      share: false
+
+# jekyll-archives related settings
+category_archive:
+  type: jekyll-archives
+  path: /category/
+tag_archive:
+  type: jekyll-archives
+  path: /tag/
+jekyll-archives:
+  enabled:
+    - year
+    - categories
+    - tags
+  layouts:
+    year: year-listing
+    category: category-listing
+    tag: tag-listing
+  permalinks:
+    year: /:year/
+    category: /category/:name/
+    tag: /tag/:name/
+
+# Fixes Jekyll watch from failing locally
+# See: https://github.com/github/pages-gem/issues/399#issuecomment-301827749
+github: [metadata]
