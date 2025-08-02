@@ -51,7 +51,6 @@ executable site
     , relude ^>= 1.2.1.0
 
     , aeson
-    , aeson-pretty
     , binary
     , bytestring
     , containers
@@ -77,6 +76,7 @@ executable site
     , timespan
     , turtle
     , wai
+    , yaml
 
   mixins:
     base hiding (Prelude),

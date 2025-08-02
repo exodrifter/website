@@ -4,7 +4,6 @@ module Exo.Vods.Migration
 
 import Data.Aeson ((.:), (.=))
 import qualified Data.Aeson as Aeson
-import qualified Data.Aeson.Encode.Pretty as Aeson
 import qualified Data.ByteString.Lazy as LBS
 import qualified Data.NonEmptyText as NET
 import qualified Data.Set as Set
@@ -13,14 +12,12 @@ import qualified Data.Text.IO as TIO
 import qualified Data.Text.Encoding as TE
 import qualified Data.Time as Time
 import qualified Data.Time.TimeSpan as TimeSpan
+import qualified Data.Yaml as Yaml
 import qualified Exo.Vods.Vimeo as Vimeo
 import qualified Turtle
 
 toLBS :: Text -> LBS.ByteString
 toLBS = LBS.fromStrict . TE.encodeUtf8
-
-fromLBS :: LBS.ByteString -> Text
-fromLBS = TE.decodeUtf8 . LBS.toStrict
 
 --------------------------------------------------------------------------------
 -- Jekyll Types
@@ -211,8 +208,11 @@ migrate' video = do
               }
   when (oldPost /= Just newPost) $ do
     echo ("Updating " <> Vimeo.videoId video <> " at " <> dataPath)
-  liftIO $ TIO.writeFile (T.unpack dataPath)
-                         (fromLBS . Aeson.encodePretty $ newPost)
+
+  let
+    mdPath = T.unpack ("content/vods/" <> fileName <> ".md")
+    content = "---\n" <> TE.decodeUtf8 (Yaml.encode newPost) <> "---\n"
+  liftIO (TIO.writeFile mdPath content)
 
   pure (video, oldPost)
 
