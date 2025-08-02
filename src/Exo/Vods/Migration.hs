@@ -1,24 +1,6 @@
-#!/usr/bin/env stack
-{- stack runghc
-    --resolver lts-21.1
-    --package aeson
-    --package aeson-pretty
-    --package bytestring
-    --package containers
-    --package non-empty-text
-    --package relude
-    --package req
-    --package safe
-    --package text
-    --package timespan
-    --package turtle
-    --package tz
--}
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# OPTIONS_GHC -Wall #-}
-
-import Relude
+module Exo.Vods.Migration
+( migrateVods
+) where
 
 import Control.Monad.Catch (MonadThrow)
 import Data.Aeson ((.:), (.=))
@@ -328,7 +310,7 @@ runMigration :: Migration a -> IO a
 runMigration (Migration migration) = do
   context <-
     MigrationContext
-      <$> expectJust "Cannot parse env.json" (Aeson.decodeFileStrict "env.json")
+      <$> expectJust "Cannot parse .env.json" (Aeson.decodeFileStrict ".env.json")
       <*> HTTP.newManager HTTP.tlsManagerSettings
   runReaderT migration context
 
@@ -366,8 +348,8 @@ parseTime fmt = Time.parseTimeM True Time.defaultTimeLocale fmt . T.unpack
 formatTime :: Time.FormatTime t => String -> t -> Text
 formatTime fmt = T.pack . Time.formatTime Time.defaultTimeLocale fmt
 
-main :: IO ()
-main = runMigration $ do
+migrateVods :: IO ()
+migrateVods = runMigration $ do
   page <- getVideos 1
   traverse_ migrate (results page)
   followPagination page

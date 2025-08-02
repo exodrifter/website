@@ -40,6 +40,8 @@ executable site
     Exo.Pandoc.Link
     Exo.Pandoc.Meta
     Exo.Pandoc.Time
+    Exo.Vods
+    Exo.Vods.Migration
     Exo.RSS
     Exo.Scotty
 
@@ -48,22 +50,32 @@ executable site
     , relude ^>= 1.2.1.0
 
     , aeson
+    , aeson-pretty
     , binary
+    , bytestring
     , containers
     , directory
     , doctemplates
+    , exceptions
     , extra
     , feed
     , filepath
+    , http-client
+    , http-client-tls
     , JuicyPixels
     , mime-types
     , network-uri
+    , non-empty-text
     , pandoc
     , pandoc-types
+    , req
+    , safe
     , scotty
     , shake
     , text
     , time
+    , timespan
+    , turtle
     , wai
 
   mixins:

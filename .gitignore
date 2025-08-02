@@ -1,8 +1,13 @@
+# Obsidian
 /content/.trash/*
 /content/.obsidian/*
 !/content/.obsidian/app.json
 !/content/.obsidian/core-plugins.json
 
+# Build
 /dist-newstyle/
 /.shake/
 /_site/
+
+# Secrets
+/.env.json

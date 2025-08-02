@@ -5,6 +5,7 @@ module Main
 import Exo.Build ((<//>), (</>), (-<.>), (|%>), (%>))
 import qualified Exo.Build as Build
 import qualified Exo.Pandoc as Pandoc
+import qualified Exo.Vods as Vods
 import qualified Exo.RSS as RSS
 
 import qualified Codec.Picture as Picture
@@ -25,6 +26,9 @@ main = Build.runShake Build.wantWebsite $ do
 
   -- By default, if no commands are given, build the website.
   Build.action Build.wantWebsite
+
+  -- Vimeo VOD migration
+  Build.phony "migrateVods" (liftIO Vods.migrateVods)
 
   -- Copy static files.
   let
