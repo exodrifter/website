@@ -10,7 +10,6 @@ import Data.Aeson ((.:))
 import qualified Data.Aeson as Aeson
 import qualified Data.Text as T
 import qualified Data.Time.TimeSpan as TimeSpan
-import qualified Safe
 
 data UserResult =
   UserResult
@@ -51,7 +50,7 @@ instance Aeson.FromJSON Video where
     uri <- a .: "uri"
     Video
       <$> maybe (fail "Could not parse video id") pure
-                (Safe.lastMay . T.splitOn "/" $ uri)
+                (viaNonEmpty last . T.splitOn "/" $ uri)
       <*> a .: "name"
       <*> a .: "description"
       <*> (TimeSpan.seconds <$> a .: "duration")

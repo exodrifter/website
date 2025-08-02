@@ -70,7 +70,6 @@ executable site
     , pandoc
     , pandoc-types
     , req
-    , safe
     , scotty
     , shake
     , text
