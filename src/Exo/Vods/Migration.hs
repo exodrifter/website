@@ -203,6 +203,7 @@ migrate' video = do
               , postThumbUri = Vimeo.pictureUri $ Vimeo.pictures video
               , postCategories = Set.insert service (postCategories p)
               , postVideoId = Just $ Vimeo.videoId video
+              , postTags = fromList (migrateTag <$> toList (postTags p))
               }
           Nothing ->
             Post
@@ -224,6 +225,18 @@ migrate' video = do
   liftIO (TIO.writeFile dataPath content)
 
   pure (video, oldPost)
+
+migrateTag :: Text -> Text
+migrateTag =
+    (\t -> if t == "lost-contact" then "no-signal" else t)
+  . (\t -> if "raid" `T.isPrefixOf` t then t else T.toLower t)
+  . T.replace "game-" ""
+  . T.replace "code-" ""
+  . T.replace "language-" ""
+  . T.replace "'" ""
+  . T.replace "," ""
+  . T.replace ":-" "-"
+  . T.replace " " "-"
 
 downloadThumbIfNeeded :: Vimeo.VimeoContext -> (Vimeo.Video, Maybe Post) -> IO ()
 downloadThumbIfNeeded context (video, oldPost) = do
