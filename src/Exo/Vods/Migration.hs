@@ -3,6 +3,7 @@ module Exo.Vods.Migration
 ) where
 
 import Data.Aeson ((.:), (.=))
+import System.FilePath((</>), (-<.>))
 import qualified Data.Aeson as Aeson
 import qualified Data.Attoparsec.Text as Atto
 import qualified Data.ByteString.Lazy as LBS
@@ -16,6 +17,7 @@ import qualified Data.Time.TimeSpan as TimeSpan
 import qualified Data.Yaml as Yaml
 import qualified Exo.Vods.Vimeo as Vimeo
 import qualified Turtle
+import qualified System.Directory as Directory
 
 --------------------------------------------------------------------------------
 -- Jekyll Types
@@ -136,8 +138,30 @@ migrateVods :: IO ()
 migrateVods = do
   context <- Vimeo.loadVimeoContext
   videos <- Vimeo.runVimeo context Vimeo.getVideos
-  result <- traverse migrate videos
-  traverse_ (downloadThumbIfNeeded context) (catMaybes result)
+  result <- catMaybes <$> traverse migrate videos
+  traverse_ (downloadThumbIfNeeded context) result
+
+  let allTags = Set.unions (postTags <$> mapMaybe snd result)
+  traverse_ createMissingTag allTags
+
+createMissingTag :: Text -> IO ()
+createMissingTag tag = do
+  now <- Time.getCurrentTime
+
+  let
+    path = "content/tags" </> T.unpack tag -<.> ".md"
+    created =
+      Time.formatTime Time.defaultTimeLocale "%Y-%m-%dT%H:%M:%SZ" now
+
+  exists <- Directory.doesFileExist path
+  unless exists do
+    TIO.writeFile path
+      ( "---\n\
+        \created: " <> T.pack created <> "\n\
+        \tags:\n\
+        \- " <> tag <> "\n\
+        \---\n"
+      )
 
 extractServiceAndTime :: Vimeo.Video -> IO (T.Text, Time.ZonedTime)
 extractServiceAndTime video = do
