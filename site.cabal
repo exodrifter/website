@@ -51,6 +51,7 @@ executable site
     , relude ^>= 1.2.1.0
 
     , aeson
+    , attoparsec
     , binary
     , bytestring
     , containers

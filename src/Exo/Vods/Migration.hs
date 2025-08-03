@@ -4,6 +4,7 @@ module Exo.Vods.Migration
 
 import Data.Aeson ((.:), (.=))
 import qualified Data.Aeson as Aeson
+import qualified Data.Attoparsec.Text as Atto
 import qualified Data.ByteString.Lazy as LBS
 import qualified Data.NonEmptyText as NET
 import qualified Data.Set as Set
@@ -15,9 +16,6 @@ import qualified Data.Time.TimeSpan as TimeSpan
 import qualified Data.Yaml as Yaml
 import qualified Exo.Vods.Vimeo as Vimeo
 import qualified Turtle
-
-toLBS :: Text -> LBS.ByteString
-toLBS = LBS.fromStrict . TE.encodeUtf8
 
 --------------------------------------------------------------------------------
 -- Jekyll Types
@@ -166,20 +164,32 @@ migrate video = do
     _ ->
       pure Nothing
 
+splitFrontmatter :: Atto.Parser (Text, Text)
+splitFrontmatter = do
+  let delimiter = Atto.string "---" >> Atto.endOfLine
+  frontMatter <- delimiter *> Atto.manyTill Atto.anyChar delimiter
+  rest <- Atto.takeText
+  Atto.endOfInput
+  pure (T.pack frontMatter, rest)
+
 migrate' :: Vimeo.Video -> IO (Vimeo.Video, Maybe Post)
 migrate' video = do
   (service, zonedTime) <- extractServiceAndTime video
   -- Try to load the old data
-  let fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
-      dataPath = "content/vods/" <> fileName <> ".json"
-  postExists <- Turtle.testpath (T.unpack dataPath)
+  let fileName = formatTime "%Y%m%d%H%M%S" $ Time.zonedTimeToUTC zonedTime
+      dataPath = "content/vods/" <> T.unpack fileName <> ".md"
+  postExists <- Turtle.testpath dataPath
   oldPost <-
     if postExists
     then do
-      t <- liftIO $ TIO.readFile (T.unpack dataPath)
-      case Aeson.eitherDecode $ toLBS t of
-        Left reason -> die $ "Failed to read post; " <> reason
-        Right p -> pure $ Just p
+      t <- liftIO $ TIO.readFile dataPath
+      case Atto.parseOnly splitFrontmatter t of
+        Left err ->
+          die err
+        Right (frontMatter, _markdown) ->
+          case Yaml.decodeEither' (TE.encodeUtf8 frontMatter) of
+            Left reason -> die ("Failed to read post; " <> displayException reason)
+            Right p -> pure (Just p)
     else pure Nothing
 
   -- Update the post
@@ -207,12 +217,11 @@ migrate' video = do
               , postShorts = []
               }
   when (oldPost /= Just newPost) $ do
-    echo ("Updating " <> Vimeo.videoId video <> " at " <> dataPath)
+    echo ("Updating " <> Vimeo.videoId video <> " at " <> T.pack dataPath)
 
   let
-    mdPath = T.unpack ("content/vods/" <> fileName <> ".md")
     content = "---\n" <> TE.decodeUtf8 (Yaml.encode newPost) <> "---\n"
-  liftIO (TIO.writeFile mdPath content)
+  liftIO (TIO.writeFile dataPath content)
 
   pure (video, oldPost)
 
@@ -220,7 +229,7 @@ downloadThumbIfNeeded :: Vimeo.VimeoContext -> (Vimeo.Video, Maybe Post) -> IO (
 downloadThumbIfNeeded context (video, oldPost) = do
   (_, zonedTime) <- extractServiceAndTime video
   let
-    fileName = formatTime "%Y-%m-%d-%H-%M-%S" $ Time.zonedTimeToUTC zonedTime
+    fileName = formatTime "%Y%m%d%H%M%S" $ Time.zonedTimeToUTC zonedTime
     thumbPath = "content/vods/" <> fileName <> ".jpg"
   thumbExists <- Turtle.testpath (T.unpack thumbPath)
   case (thumbExists, Vimeo.pictureUri $ Vimeo.pictures video) of
