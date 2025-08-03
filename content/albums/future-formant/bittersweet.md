@@ -1,30 +1,23 @@
 ---
 title: bittersweet
-published: 2024-08-01T18:19:18Z
 created: 2024-08-01T18:19:18Z
+published: 2024-08-01T18:19:18Z
 migrated: 2025-02-05T17:45:22-06:00
+modified: 2025-08-03T22:48:43-07:00
 aliases:
-- bittersweet
+  - bittersweet
 crossposts:
-- url: https://soundcloud.com/exodrifter/bittersweet
-  time: 2024-08-01T18:19:18Z
-- url: https://music.exodrifter.space/track/bittersweet
-  time: 2025-01-22
+  - url: https://soundcloud.com/exodrifter/bittersweet
+    time: 2024-08-01T18:19:18Z
+  - url: https://music.exodrifter.space/track/bittersweet
+    time: 2025-01-22
+tags:
+  - song-bittersweet
 ---
 
 # bittersweet
 
-<div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/bittersweet">Bandcamp</a></div>
-<div><i class="ri-soundcloud-2-fill"></i> <a href="https://soundcloud.com/exodrifter/bittersweet">Soundcloud</a></div>
-<div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-bittersweet">vods</a></div>
-</div>
-
-<div style="width: 50%;">
-
 ![The cover art for bittersweet, which is a picture of a sun setting over forested hills. The text 786f7e is overlaid ontop.](bittersweet.png)
-
-</div>
 
 <iframe style="border: 0; width: 100%; max-width: 700px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=253081176/size=small/bgcol=ffffff/linkcol=0687f5/track=2964576184/transparent=true/" seamless><a href="https://music.exodrifter.space/album/future-formant">future formant by exodrifter</a></iframe>
 

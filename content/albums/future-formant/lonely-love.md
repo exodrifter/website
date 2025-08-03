@@ -1,30 +1,23 @@
 ---
 title: lonely love
-published: 2024-03-05T06:56:32Z
 created: 2024-03-05T06:56:32Z
+published: 2024-03-05T06:56:32Z
 migrated: 2025-02-05T17:45:22-06:00
+modified: 2025-08-03T22:48:13-07:00
 aliases:
-- lonely love
+  - lonely love
 crossposts:
-- url: https://soundcloud.com/exodrifter/lonely-love
-  time: 2024-03-05T06:56:32Z
-- url: https://music.exodrifter.space/track/lonely-love
-  time: 2025-01-22
+  - url: https://soundcloud.com/exodrifter/lonely-love
+    time: 2024-03-05T06:56:32Z
+  - url: https://music.exodrifter.space/track/lonely-love
+    time: 2025-01-22
+tags:
+  - song-lonely-love
 ---
 
 # lonely love
 
-<div class="flex">
-<div><i class="ri-store-2-fill"></i> <a href="https://music.exodrifter.space/track/lonely-love">Bandcamp</a></div>
-<div><i class="ri-soundcloud-2-fill"></i> <a href="https://soundcloud.com/exodrifter/lonely-love">Soundcloud</a></div>
-<div><i class="ri-video-fill"></i> <a href="https://vods.exodrifter.space/tag/song-lonely-love">vods</a></div>
-</div>
-
-<div style="width: 50%;">
-
 ![The cover art for lonely love, which is a picture of an aircraft gangway that has been repeated multiple times to give the illusion of a hallway that is much longer than is actually is. The text 786f7e is overlaid ontop.](lonely-love.png)
-
-</div>
 
 <iframe style="border: 0; width: 100%; max-width: 700px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=253081176/size=small/bgcol=ffffff/linkcol=0687f5/track=4107904221/transparent=true/" seamless><a href="https://music.exodrifter.space/album/future-formant">future formant by exodrifter</a></iframe>
 
