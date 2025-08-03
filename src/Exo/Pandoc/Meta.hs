@@ -125,6 +125,7 @@ metaTypeIcon meta =
     "/":"notes":_ -> "ri-booklet-fill"
     "/":"press-kits":_ -> "ri-pages-fill"
     "/":"tags":_ -> "ri-price-tag-3-fill"
+    "/":"vods":_ -> "ri-vidicon-fill"
     _ -> "ri-booklet-fill"
 
 data Crosspost =
