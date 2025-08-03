@@ -26,7 +26,6 @@ data Post =
     { postTitle :: Maybe NET.NonEmptyText
     , postDate :: Time.ZonedTime
     , postDuration :: TimeSpan.TimeSpan
-    , postThumbPath :: Maybe Text
     , postThumbUri :: Maybe Text
     , postCategories :: Set Text
     , postTags :: Set Text
@@ -39,7 +38,6 @@ instance Eq Post where
        postTitle l == postTitle r
     && Time.zonedTimeToUTC (postDate l) == Time.zonedTimeToUTC (postDate r)
     && postDuration l == postDuration r
-    && postThumbPath l == postThumbPath r
     && postThumbUri l == postThumbUri r
     && postCategories l == postCategories r
     && postTags l == postTags r
@@ -50,28 +48,25 @@ instance Aeson.ToJSON Post where
   toJSON p =
     Aeson.object
       [ "title" .= (NET.toText <$> postTitle p)
-      , "timestamp" .= postDate p
-      , "duration" .= (TimeSpan.toSeconds $ postDuration p)
-      , "thumbPath" .= postThumbPath p
-      , "thumbUri" .= postThumbUri p
-      , "categories" .= postCategories p
+      , "created" .= postDate p
+      , "videoDuration" .= TimeSpan.toSeconds (postDuration p)
+      , "videoThumbId" .= postThumbUri p
       , "tags" .= postTags p
       , "videoId" .= postVideoId p
-      , "shorts" .= postShorts p
+      , "videoShorts" .= postShorts p
       ]
 
 instance Aeson.FromJSON Post where
   parseJSON = Aeson.withObject "Post" $ \a ->
     Post
       <$> ((NET.fromText =<<) <$> a .: "title")
-      <*> a .: "timestamp"
-      <*> (TimeSpan.seconds <$> a .: "duration")
-      <*> a .: "thumbPath"
-      <*> a .: "thumbUri"
-      <*> a .: "categories"
+      <*> (a .: "created" <|> a .: "timestamp")
+      <*> (TimeSpan.seconds <$> (a .: "videoDuration" <|> a .: "duration"))
+      <*> (a .: "videoThumbId" <|> a .: "thumbUri")
+      <*> (a .: "categories" <|> pure Set.empty)
       <*> a .: "tags"
       <*> a .: "videoId"
-      <*> a .: "shorts"
+      <*> (a .: "videoShorts" <|> a .: "shorts")
 
 data Short =
   Short
@@ -199,21 +194,19 @@ migrate' video = do
           Just p ->
             p { postDate = zonedTime
               , postDuration = Vimeo.duration video
-              , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
               , postThumbUri = Vimeo.pictureUri $ Vimeo.pictures video
-              , postCategories = Set.insert service (postCategories p)
+              , postCategories = Set.empty
               , postVideoId = Just $ Vimeo.videoId video
-              , postTags = fromList (migrateTag <$> toList (postTags p))
+              , postTags = fromList (migrateTag <$> toList (postTags p) <> toList (postCategories p) <> [service])
               }
           Nothing ->
             Post
               { postTitle = desc
               , postDate = zonedTime
               , postDuration = Vimeo.duration video
-              , postThumbPath = Just $ "/assets/thumbs/" <> fileName <> ".jpg"
               , postThumbUri = Vimeo.pictureUri $ Vimeo.pictures video
-              , postCategories = Set.singleton service
-              , postTags = Set.empty
+              , postCategories = Set.empty
+              , postTags = Set.singleton service
               , postVideoId = Just $ Vimeo.videoId video
               , postShorts = []
               }
