@@ -2,7 +2,7 @@ module Exo.Vods.Migration
 ( migrateVods
 ) where
 
-import Data.Aeson ((.:), (.=))
+import Data.Aeson ((.:), (.:?), (.=))
 import System.FilePath((</>), (-<.>))
 import qualified Data.Aeson as Aeson
 import qualified Data.Attoparsec.Text as Atto
@@ -48,20 +48,20 @@ instance Eq Post where
 
 instance Aeson.ToJSON Post where
   toJSON p =
-    Aeson.object
-      [ "title" .= (NET.toText <$> postTitle p)
-      , "created" .= postDate p
-      , "videoDuration" .= TimeSpan.toSeconds (postDuration p)
-      , "videoThumbId" .= postThumbUri p
-      , "tags" .= postTags p
-      , "videoId" .= postVideoId p
-      , "videoShorts" .= postShorts p
+    Aeson.object . catMaybes $
+      [ ("title" .=) . NET.toText <$> postTitle p
+      , Just ("created" .= postDate p)
+      , Just ("videoDuration" .= TimeSpan.toSeconds (postDuration p))
+      , Just ("videoThumbId" .= postThumbUri p)
+      , Just ("tags" .= postTags p)
+      , Just ("videoId" .= postVideoId p)
+      , Just ("videoShorts" .= postShorts p)
       ]
 
 instance Aeson.FromJSON Post where
   parseJSON = Aeson.withObject "Post" $ \a ->
     Post
-      <$> ((NET.fromText =<<) <$> a .: "title")
+      <$> ((NET.fromText =<<) <$> a .:? "title")
       <*> (a .: "created" <|> a .: "timestamp")
       <*> (TimeSpan.seconds <$> (a .: "videoDuration" <|> a .: "duration"))
       <*> (a .: "videoThumbId" <|> a .: "thumbUri")
