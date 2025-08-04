@@ -3,7 +3,6 @@ module Exo.Vods.Migration
 ) where
 
 import Data.Aeson ((.:), (.:?), (.=))
-import System.FilePath((</>), (-<.>))
 import qualified Data.Aeson as Aeson
 import qualified Data.Attoparsec.Text as Atto
 import qualified Data.ByteString.Lazy as LBS
@@ -17,7 +16,6 @@ import qualified Data.Time.TimeSpan as TimeSpan
 import qualified Data.Yaml as Yaml
 import qualified Exo.Vods.Vimeo as Vimeo
 import qualified Turtle
-import qualified System.Directory as Directory
 
 --------------------------------------------------------------------------------
 -- Jekyll Types
@@ -29,7 +27,6 @@ data Post =
     , postDate :: Time.ZonedTime
     , postDuration :: TimeSpan.TimeSpan
     , postThumbUri :: Maybe Text
-    , postCategories :: Set Text
     , postTags :: Set Text
     , postVideoId :: Maybe Text
     , postShorts :: [Short]
@@ -41,7 +38,6 @@ instance Eq Post where
     && Time.zonedTimeToUTC (postDate l) == Time.zonedTimeToUTC (postDate r)
     && postDuration l == postDuration r
     && postThumbUri l == postThumbUri r
-    && postCategories l == postCategories r
     && postTags l == postTags r
     && postVideoId l == postVideoId r
     && postShorts l == postShorts r
@@ -65,7 +61,6 @@ instance Aeson.FromJSON Post where
       <*> (a .: "created" <|> a .: "timestamp")
       <*> (TimeSpan.seconds <$> (a .: "videoDuration" <|> a .: "duration"))
       <*> (a .: "videoThumbId" <|> a .: "thumbUri")
-      <*> (a .: "categories" <|> pure Set.empty)
       <*> a .: "tags"
       <*> a .: "videoId"
       <*> (a .: "videoShorts" <|> a .: "shorts")
@@ -141,28 +136,6 @@ migrateVods = do
   result <- catMaybes <$> traverse migrate videos
   traverse_ (downloadThumbIfNeeded context) result
 
-  let allTags = Set.unions (postTags <$> mapMaybe snd result)
-  traverse_ createMissingTag allTags
-
-createMissingTag :: Text -> IO ()
-createMissingTag tag = do
-  now <- Time.getCurrentTime
-
-  let
-    path = "content/tags" </> T.unpack tag -<.> ".md"
-    created =
-      Time.formatTime Time.defaultTimeLocale "%Y-%m-%dT%H:%M:%SZ" now
-
-  exists <- Directory.doesFileExist path
-  unless exists do
-    TIO.writeFile path
-      ( "---\n\
-        \created: " <> T.pack created <> "\n\
-        \tags:\n\
-        \- " <> tag <> "\n\
-        \---\n"
-      )
-
 extractServiceAndTime :: Vimeo.Video -> IO (T.Text, Time.ZonedTime)
 extractServiceAndTime video = do
   case T.words (T.toLower (Vimeo.name video)) of
@@ -219,9 +192,7 @@ migrate' video = do
             p { postDate = zonedTime
               , postDuration = Vimeo.duration video
               , postThumbUri = Vimeo.pictureUri $ Vimeo.pictures video
-              , postCategories = Set.empty
               , postVideoId = Just $ Vimeo.videoId video
-              , postTags = fromList (migrateTag <$> toList (postTags p) <> toList (postCategories p) <> [service])
               }
           Nothing ->
             Post
@@ -229,7 +200,6 @@ migrate' video = do
               , postDate = zonedTime
               , postDuration = Vimeo.duration video
               , postThumbUri = Vimeo.pictureUri $ Vimeo.pictures video
-              , postCategories = Set.empty
               , postTags = Set.singleton service
               , postVideoId = Just $ Vimeo.videoId video
               , postShorts = []
@@ -242,18 +212,6 @@ migrate' video = do
   liftIO (TIO.writeFile dataPath content)
 
   pure (video, oldPost)
-
-migrateTag :: Text -> Text
-migrateTag =
-    (\t -> if t == "lost-contact" then "no-signal" else t)
-  . (\t -> if "raid" `T.isPrefixOf` t then t else T.toLower t)
-  . T.replace "game-" ""
-  . T.replace "code-" ""
-  . T.replace "language-" ""
-  . T.replace "'" ""
-  . T.replace "," ""
-  . T.replace ":-" "-"
-  . T.replace " " "-"
 
 downloadThumbIfNeeded :: Vimeo.VimeoContext -> (Vimeo.Video, Maybe Post) -> IO ()
 downloadThumbIfNeeded context (video, oldPost) = do
