@@ -1,7 +1,7 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-08-02T12:31:56-07:00
+modified: 2025-08-04T14:01:53-07:00
 tags:
   - index
 ---
@@ -20,7 +20,7 @@ tags:
 
 <i class="ri-twitch-fill"></i> [Twitch](https://www.twitch.tv/exodrifter_)
 
-<i class="ri-user-fill"></i> [About me...](about.md)
+<i class="ri-user-fill"></i> [About...](about.md)
 
 </div>
 
