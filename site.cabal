@@ -40,6 +40,8 @@ executable site
     Exo.Pandoc.Link
     Exo.Pandoc.Meta
     Exo.Pandoc.Time
+    Exo.Parser
+    Exo.Parser.Frontmatter
     Exo.Vods
     Exo.Vods.Migration
     Exo.Vods.Vimeo

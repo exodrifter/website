@@ -4,7 +4,6 @@ module Exo.Vods.Migration
 
 import Data.Aeson ((.:), (.:?), (.=))
 import qualified Data.Aeson as Aeson
-import qualified Data.Attoparsec.Text as Atto
 import qualified Data.ByteString.Lazy as LBS
 import qualified Data.NonEmptyText as NET
 import qualified Data.Set as Set
@@ -14,6 +13,7 @@ import qualified Data.Text.IO as TIO
 import qualified Data.Time as Time
 import qualified Data.Time.TimeSpan as TimeSpan
 import qualified Data.Yaml as Yaml
+import qualified Exo.Parser as Parser
 import qualified Exo.Vods.Vimeo as Vimeo
 import qualified Turtle
 
@@ -156,14 +156,6 @@ migrate video = do
     _ ->
       pure Nothing
 
-splitFrontmatter :: Atto.Parser (Text, Text)
-splitFrontmatter = do
-  let delimiter = Atto.string "---" >> Atto.endOfLine
-  frontMatter <- delimiter *> Atto.manyTill Atto.anyChar delimiter
-  rest <- Atto.takeText
-  Atto.endOfInput
-  pure (T.pack frontMatter, rest)
-
 migrate' :: Vimeo.Video -> IO (Vimeo.Video, Maybe Post)
 migrate' video = do
   (service, zonedTime) <- extractServiceAndTime video
@@ -171,18 +163,12 @@ migrate' video = do
   let fileName = formatTime "%Y%m%d%H%M%S" $ Time.zonedTimeToUTC zonedTime
       dataPath = "content/vods/" <> T.unpack fileName <> ".md"
   postExists <- Turtle.testpath dataPath
-  oldPost <-
+  (oldPost, _markdown) <-
     if postExists
     then do
       t <- liftIO $ TIO.readFile dataPath
-      case Atto.parseOnly splitFrontmatter t of
-        Left err ->
-          die err
-        Right (frontMatter, _markdown) ->
-          case Yaml.decodeEither' (TE.encodeUtf8 frontMatter) of
-            Left reason -> die ("Failed to read post; " <> displayException reason)
-            Right p -> pure (Just p)
-    else pure Nothing
+      Parser.parseFrontmatter t
+    else pure (Nothing, "")
 
   -- Update the post
   let desc = NET.fromText =<< Vimeo.description video
