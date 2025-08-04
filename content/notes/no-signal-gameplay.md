@@ -1,18 +1,19 @@
 ---
 title: no signal gameplay
 created: 2025-07-30T21:52:30-07:00
+modified: 2025-08-03T22:02:09-07:00
 aliases:
-- no signal gameplay
+  - no signal gameplay
 tags:
-- no-signal
+  - no-signal
 ---
 
 # no signal gameplay
 
 List of gameplay footage for [no signal](no-signal.md) that I have watched: [^a]
 
-| VOD                             | Streamed (UTC)    | Uploaded (UTC)       |
-|---------------------------------|-------------------|----------------------|
+| VOD                              | Streamed (UTC)    | Uploaded (UTC)       |
+|----------------------------------|-------------------|----------------------|
 | [Sandi Maree][1] [^2]            | n/a               | 2025-07-21T20:00:17Z |
 | [FragginGamin (1)][2] [^1]       | 2025-07-16T19:02Z | 2025-07-25T14:30:05Z |
 | FragginGamin (2) [^1]            | 2025-07-24T18:16Z | n/a                  |
@@ -39,11 +40,19 @@ List of gameplay footage for [no signal](no-signal.md) that I have watched: [^a]
 | earend [^1]                      | 2025-07-30T18:23Z | n/a                  |
 | PGComai (3) [^1]                 | 2025-07-30T22:03Z | n/a                  |
 | keraion [^1]                     | 2025-07-31T01:49Z | n/a                  |
+| PGComai (4) [^3]                 | 2025-07-31T22:03Z | n/a                  |
+| MyriadMinds [^3]                 | 2025-07-31T17:02Z | n/a                  |
+| finisfine [^3]                   | 2025-07-31T22:37Z | n/a                  |
+| lunarequest [^3]                 | 2025-08-01T17:32Z | n/a                  |
+| LittleWitchAuz (2) [^3]          | 2025-08-01T02:00Z | n/a                  |
+| HypnotiK_Games [^3]              | 2025-08-03T06:53Z | n/a                  |
+| InternetRain [^3]                | 2025-08-04T12:33Z | n/a                  |
 
 [^a]: Twitch stream times from [SullyGnome](https://sullygnome.com) and YouTube upload times from [mattw.io](https://mattw.io/youtube-metadata/).
 
 [^1]: [20250731040909](../entries/20250731040909.md)
 [^2]: [20250731045955](../entries/20250731045955.md)
+[^3]: [20250804044818](../entries/20250804044818.md)
 
 [1]: https://www.youtube.com/watch?v=TpydstQMYdY
 [2]: https://www.youtube.com/watch?v=55smJNi1CMA
