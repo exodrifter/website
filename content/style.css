@@ -503,9 +503,14 @@ code span.wa { font-style: italic; } /* Warning */
 }
 
 /* Embeds */
-iframe {
-    width: 100%;
-    height: calc(var(--grid-size) * 18)
+p:has(> iframe) {
+    container-type: inline-size;
+
+    iframe {
+        width: 100%;
+        height: round(up, calc(100cqi / (16 / 9)), var(--grid-size));
+        color-scheme: auto; /* Needed for transparent iframes. */
+    }
 }
 
 /* Manually-applied styles

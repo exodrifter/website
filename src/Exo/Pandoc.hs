@@ -381,6 +381,7 @@ makeYoutubeEmbed v =
   "<iframe src=\"https://www.youtube.com/embed/" <> v <> "\" \
     \title=\"YouTube video player\" \
     \frameborder=\"0\" \
+    \allowtransparency=\"true\"\
     \allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" \
     \referrerpolicy=\"strict-origin-when-cross-origin\" \
     \allowfullscreen>\
@@ -393,6 +394,7 @@ makeVimeoEmbed :: Text -> Text
 makeVimeoEmbed v =
   "<iframe src=\"https://player.vimeo.com/video/" <> v <> "?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" \
     \frameborder=\"0\" \
+    \allowtransparency=\"true\"\
     \allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share\" \
     \title=\"Vimeo video player\">\
   \</iframe>\

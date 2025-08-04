@@ -13,6 +13,9 @@ module Exo.Pandoc.Meta
 , metaLink
 , metaUpdated
 , metaTypeIcon
+
+, getMetaStrings
+, getMetaString
 ) where
 
 import qualified Data.Aeson as Aeson
@@ -160,10 +163,13 @@ parseMetadata inputPath pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) = do
 
   -- Title
   let baseName = Link.pathFile metaPath
-  metaTitle <- lookupMetaString "title" meta <> pure (T.pack baseName)
+  metaTitle <-
+    if Map.member "title" meta
+    then getMetaString "title" meta
+    else pure (T.pack baseName)
 
   -- Times
-  let extractTime k = Time.parseTime <=< lookupMetaString k
+  let extractTime k = Time.parseTime <=< getMetaString k
   metaCreated <- extractTime "created" meta
   metaPublished <-
     if Map.member "published" meta
@@ -194,7 +200,10 @@ parseMetadata inputPath pandoc@(Pandoc.Pandoc (Pandoc.Meta meta) _) = do
 
   let metaOutgoingLinks = parseOutgoingLinks metaPath pandoc
   metaCrossposts <- parseCrossposts meta
-  metaTags <- lookupMetaStrings "tags" meta <> pure []
+  metaTags <-
+    if Map.member "tags" meta
+    then getMetaStrings "tags" meta
+    else pure []
   pure Metadata {..}
 
 parseCrossposts :: Map Text Pandoc.MetaValue -> Either Text [Crosspost]
@@ -223,9 +232,9 @@ parseCrosspost :: Pandoc.MetaValue -> Either Text Crosspost
 parseCrosspost v =
   case v of
     Pandoc.MetaMap m -> do
-      crosspostUrl <- lookupMetaString "url" m
-      crosspostSite <- extractSite =<< lookupMetaString "url" m
-      crosspostTime <- Time.parseTime =<< lookupMetaString "time" m
+      crosspostUrl <- getMetaString "url" m
+      crosspostSite <- extractSite =<< getMetaString "url" m
+      crosspostTime <- Time.parseTime =<< getMetaString "time" m
       pure Crosspost {..}
     _ -> Left "\"crosspost\" metadata list item is not a map!"
 
@@ -259,23 +268,23 @@ extractSite text = do
 -- Meta Helpers
 --------------------------------------------------------------------------------
 
-lookupMetaStrings :: Text -> Map Text Pandoc.MetaValue -> Either Text [Text]
-lookupMetaStrings key meta =
+getMetaStrings :: Monad m => Text -> Map Text Pandoc.MetaValue -> m [Text]
+getMetaStrings key meta =
   case Map.lookup key meta of
-    Just (Pandoc.MetaString text) -> Right [text]
-    Just (Pandoc.MetaInlines inlines) -> Right (Pandoc.stringify <$> inlines)
-    Just (Pandoc.MetaList inlines) -> Right (Pandoc.stringify <$> inlines)
+    Just (Pandoc.MetaString text) -> pure [text]
+    Just (Pandoc.MetaInlines inlines) -> pure (Pandoc.stringify <$> inlines)
+    Just (Pandoc.MetaList inlines) -> pure (Pandoc.stringify <$> inlines)
     Just _ ->
-      Left ("Key \"" <> key <> "\" is not a list of strings!")
+      error ("Key \"" <> key <> "\" is not a list of strings!")
     _ ->
-      Left ("Key \"" <> key <> "\" does not exist!")
+      error ("Key \"" <> key <> "\" does not exist!")
 
-lookupMetaString :: Text -> Map Text Pandoc.MetaValue -> Either Text Text
-lookupMetaString key meta =
+getMetaString :: Monad m => Text -> Map Text Pandoc.MetaValue -> m Text
+getMetaString key meta =
   case Map.lookup key meta of
-    Just (Pandoc.MetaString text) -> Right text
-    Just (Pandoc.MetaInlines inlines) -> Right (Pandoc.stringify inlines)
+    Just (Pandoc.MetaString text) -> pure text
+    Just (Pandoc.MetaInlines inlines) -> pure (Pandoc.stringify inlines)
     Just _ ->
-      Left ("Key \"" <> key <> "\" is not a string!")
+      error ("Key \"" <> key <> "\" is not a string!")
     _ ->
-      Left ("Key \"" <> key <> "\" does not exist!")
+      error ("Key \"" <> key <> "\" does not exist!")

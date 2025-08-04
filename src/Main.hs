@@ -105,9 +105,18 @@ main = Build.runShake Build.wantWebsite $ do
   -- Generate website pages.
   Build.outputDirectory <//> "*.html" %> \out -> do
     let inputPath = Pandoc.pathInput (Pandoc.pathInfoFromOutput out)
-    pandoc <- Build.getPandoc inputPath
     metadata <- Build.getMetadata inputPath
     commitHash <- Build.getCommitHash inputPath
+
+    -- If this is a VOD, replace the content of the file with generated content.
+    let
+      fileName = FilePath.takeBaseName inputPath
+      canonicalPath = Pandoc.metaCanonicalPath metadata
+    pandoc <- do
+      p <- Build.getPandoc inputPath
+      if fileName == "index" || not ("/vods/" `isPrefixOf` canonicalPath)
+      then pure p
+      else replaceWithVodBody p
 
     let logoPath = Build.contentDirectory </> "logo.svg"
     Build.need [logoPath]
@@ -125,7 +134,6 @@ main = Build.runShake Build.wantWebsite $ do
 
     -- If this is an index, list other files in the directory.
     let
-      fileName = FilePath.takeBaseName inputPath
       inputFolderPath = FilePath.takeDirectory inputPath
     indexListing <-
       if fileName == "index"
@@ -154,7 +162,6 @@ main = Build.runShake Build.wantWebsite $ do
     -- Find all of the backlinks.
     allBacklinks <- getBacklinks ()
     let
-      canonicalPath = Pandoc.metaCanonicalPath metadata
       backlinkPaths = fromMaybe [] (Map.lookup canonicalPath allBacklinks)
     backlinks <-
           sortBy (comparing Pandoc.metaTitle)
@@ -235,3 +242,23 @@ listingSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
 listingSort =
      comparing (Down . Pandoc.metaPublished)
   <> comparing (Down . Pandoc.metaUpdated)
+
+replaceWithVodBody :: Monad m => Pandoc.Pandoc -> m Pandoc.Pandoc
+replaceWithVodBody (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
+  title <-
+    if Map.member "title" meta
+    then do
+      t <- Pandoc.getMetaString "title" meta
+      pure [Pandoc.Para [Pandoc.Strong [Pandoc.Str t]]]
+    else pure []
+  videoId <- Pandoc.getMetaString "videoId" meta
+
+  let
+    generated =
+      [ Pandoc.Para
+        [ Pandoc.Image ("", [], []) [] ("https://vimeo.com/" <> videoId , "")
+        ]
+      ]
+      <> title
+
+  pure (Pandoc.Pandoc (Pandoc.Meta meta) generated)
