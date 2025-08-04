@@ -1,7 +1,7 @@
 ---
 title: no signal press kit
 created: 2024-02-28T18:42:17-06:00
-modified: 2025-08-02T14:10:33-07:00
+modified: 2025-08-04T01:23:20-07:00
 aliases:
   - no signal press kit
 permalink: /no-signal
@@ -68,8 +68,6 @@ devlog ([playlist](https://www.youtube.com/playlist?list=PLd8SaP0bJwZK-WMlO0YxpJ
 - [lost contact devlog 8](../../blog/20240212031904.md)
 - [lost contact devlog 9](../../blog/20240221200148.md)
 - [lost contact devlog 10](../../blog/20240225175931.md)
-
-vods ([link](https://vods.exodrifter.space/tag/lost-contact/))
 
 # screenshots
 

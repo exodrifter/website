@@ -1,14 +1,14 @@
 ---
 title: voluntary commitment press kit
 created: 2024-09-15T14:18:54-05:00
-modified: 2025-07-12T10:52:49Z
+modified: 2025-08-04T01:23:23-07:00
 aliases:
-- voluntary commitment press kit
+  - voluntary commitment press kit
 permalink: /voluntary-commitment
 tags:
-- godot
-- press-kit
-- voluntary-commitment
+  - godot
+  - press-kit
+  - voluntary-commitment
 ---
 
 # voluntary commitment
@@ -50,8 +50,6 @@ In early 2023, Iron Circus Comics and Indiepocalypse partnered to create a colle
 backerkit trailer ([link](https://www.youtube.com/watch?v=dB1KTTKYbag))
 
 ![](https://www.youtube.com/watch?v=dB1KTTKYbag)
-
-vods ([link](https://vods.exodrifter.space/tag/null/))
 
 # images
 

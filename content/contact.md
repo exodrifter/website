@@ -44,6 +44,4 @@ These are all of my social media links. Please note that I am not generally acti
 
 <i class="ri-twitter-fill"></i> [Twitter](https://twitter.com/exodrifter)
 
-<i class="ri-video-fill"></i> [vods](https://vods.exodrifter.space)
-
 </div>

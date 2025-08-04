@@ -1,7 +1,7 @@
 ---
 title: Gender Dysphoria press kit
 created: 2024-02-28T19:31:09-06:00
-modified: 2025-08-02T12:50:49-07:00
+modified: 2025-08-04T01:22:59-07:00
 aliases:
   - Gender Dysphoria press kit
 permalink: /gender-dysphoria
@@ -51,8 +51,6 @@ i was trying to be a full-time indie developer for the first time in my life at 
 trailer ([link](https://www.youtube.com/watch?v=ZJO9Rm3nxmw))
 
 ![](https://www.youtube.com/watch?v=ZJO9Rm3nxmw)
-
-vods ([link](https://vods.exodrifter.space/tag/))
 
 # images
 
