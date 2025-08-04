@@ -9,8 +9,8 @@ import qualified Data.ByteString.Lazy as LBS
 import qualified Data.NonEmptyText as NET
 import qualified Data.Set as Set
 import qualified Data.Text as T
-import qualified Data.Text.IO as TIO
 import qualified Data.Text.Encoding as TE
+import qualified Data.Text.IO as TIO
 import qualified Data.Time as Time
 import qualified Data.Time.TimeSpan as TimeSpan
 import qualified Data.Yaml as Yaml
@@ -208,7 +208,14 @@ migrate' video = do
     echo ("Updating " <> Vimeo.videoId video <> " at " <> T.pack dataPath)
 
   let
-    content = "---\n" <> TE.decodeUtf8 (Yaml.encode newPost) <> "---\n"
+    thumbEmbed =
+      case postThumbUri newPost of
+        Just _ -> "\n![](" <> fileName <> ".jpg)\n"
+        Nothing -> ""
+    content = "---\n"
+           <> TE.decodeUtf8 (Yaml.encode newPost)
+           <> "---\n"
+           <> thumbEmbed
   liftIO (TIO.writeFile dataPath content)
 
   pure (video, oldPost)
