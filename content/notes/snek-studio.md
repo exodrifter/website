@@ -4,6 +4,7 @@ created: 2024-11-26T18:30:25Z
 aliases:
 - SnekStudio logs
 tags:
+- snek-studio
 - vtuber
 ---
 
