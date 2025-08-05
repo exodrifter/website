@@ -40,7 +40,7 @@ Tier list: [^1]
 
 | Date | Book Club | Notes |
 |---|---|---|
-| <span class="timestamp">2025-05-16</span> | Healthpotion | [20250516043401](../entries/20250516043401.md) |
+| <time>2025-05-16</time> | Healthpotion | [20250516043401](../entries/20250516043401.md) |
 
 [^1]: [20250515033434](../entries/20250515033434.md)
 [^2]: [20250516022937](../entries/20250516022937.md)

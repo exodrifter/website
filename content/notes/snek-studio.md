@@ -15,4 +15,4 @@ A log of my notes while learning and working on [SnekStudio](https://github.com/
 
 | date | notes |
 |------|-------|
-| <span class="timestamp">2024-11-26</span> | [182208](../entries/20241126182208.md) |
+| <time>2024-11-26</time> | [182208](../entries/20241126182208.md) |

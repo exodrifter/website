@@ -31,11 +31,11 @@ tags:
 
 [^blog]: /[blog](blog/index.md)
 
-- **2025-08-01** - [one week after *no signal*](blog/20250731075133.md)
-- **2025-07-28** - [no signal v1.4.0](blog/20250728153807.md)
-- **2025-07-24** - [itch.io was my favorite site](blog/20250724073550.md)
-- **2025-07-15** - [new website, and the Bad Shape](blog/20250715200219.md)
-- **2025-07-08** - [offkai recap and being myself](blog/20250707063429.md)
+- **<time>2025-08-01</time>** - [one week after *no signal*](blog/20250731075133.md)
+- **<time>2025-07-28</time>** - [no signal v1.4.0](blog/20250728153807.md)
+- **<time>2025-07-24</time>** - [itch.io was my favorite site](blog/20250724073550.md)
+- **<time>2025-07-15</time>** - [new website, and the Bad Shape](blog/20250715200219.md)
+- **<time>2025-07-08</time>** - [offkai recap and being myself](blog/20250707063429.md)
 
 [^press-kits]
 

@@ -17,5 +17,5 @@ These are the development notes for _Ultraprocessor Ribbon_. For more informatio
 
 | date | version | notes |
 |------|---------|-------|
-| <span class="timestamp">2024-06-16</span> || [174856](../entries/20240616174856.md), [212133](../entries/20240616212133.md) |
-| <span class="timestamp">2024-03-26</span> || [2131](../entries/202403262131.md) |
+| <time>2024-06-16</time> || [174856](../entries/20240616174856.md), [212133](../entries/20240616212133.md) |
+| <time>2024-03-26</time> || [2131](../entries/202403262131.md) |

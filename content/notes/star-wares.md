@@ -18,5 +18,5 @@ These are the development notes for _star wares_, a space logistics game.
 
 | date | version | notes |
 |------|---------|-------|
-| <span class="timestamp">2024-11-25</span> || [192903](../entries/20241125192903.md) |
-| <span class="timestamp">2024-11-06</span> || [003249](../entries/20241106003249.md) |
+| <time>2024-11-25</time> || [192903](../entries/20241125192903.md) |
+| <time>2024-11-06</time> || [003249](../entries/20241106003249.md) |

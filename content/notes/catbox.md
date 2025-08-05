@@ -17,4 +17,4 @@ These are the development notes for _catbox_.
 
 | date | version | notes |
 |------|---------|-------|
-| <span class="timestamp">2024-09-28</span> || [190850](../entries/20240928190850.md), [193630](../entries/20240928193630.md) |
+| <time>2024-09-28</time> || [190850](../entries/20240928190850.md), [193630](../entries/20240928193630.md) |
