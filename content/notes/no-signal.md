@@ -1,7 +1,7 @@
 ---
 title: no signal logs
 created: 2023-05-27T10:23:24Z
-modified: 2025-08-03T22:02:14-07:00
+modified: 2025-08-04T23:37:32-07:00
 aliases:
   - no signal logs
   - lost contact logs
@@ -24,8 +24,9 @@ These are the development notes for _no signal_.
 
 | date | version | notes |
 |------|---------|-------|
+| <span class="timestamp">2025-08-04</span> || [20250804221953](../entries/20250804221953.md) |
 | <span class="timestamp">2025-08-03</span> || [20250803161809](../entries/20250803161809.md) |
-| <span class="timestamp">2025-08-01</span> || [20250801060211](../entries/20250801235159.md) |
+| <span class="timestamp">2025-08-01</span> || [20250801235159](../entries/20250801235159.md) |
 | <span class="timestamp">2025-07-31</span> || [20250801060211](../entries/20250801060211.md) |
 | <span class="timestamp">2025-07-30</span> || [20250731000658](../entries/20250731000658.md) |
 | <span class="timestamp">2025-07-28</span> | [v1.4.0](../blog/20250728153807.md) | [140541](../entries/20250728140541.md), [190332](../entries/20250728190332.md) |

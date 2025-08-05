@@ -1,7 +1,7 @@
 ---
 title: no signal gameplay
 created: 2025-07-30T21:52:30-07:00
-modified: 2025-08-03T22:02:09-07:00
+modified: 2025-08-04T23:36:12-07:00
 aliases:
   - no signal gameplay
 tags:
@@ -47,12 +47,20 @@ List of gameplay footage for [no signal](no-signal.md) that I have watched: [^a]
 | LittleWitchAuz (2) [^3]          | 2025-08-01T02:00Z | n/a                  |
 | HypnotiK_Games [^3]              | 2025-08-03T06:53Z | n/a                  |
 | InternetRain [^3]                | 2025-08-04T12:33Z | n/a                  |
+| HypnotiK_Games (2) [^4]          | 2025-08-04T06:56Z | n/a                  |
+| ArielAriaVT [^4]                 | 2025-08-04T16:54Z | n/a                  |
+| lunarequest (2) [^4]             | 2025-08-04T17:33Z | n/a                  |
+| YukieVT [^4]                     | 2025-08-04T19:15Z | n/a                  |
+| deaf_icarus [^4]                 | 2025-08-04T21:20Z | n/a                  |
+| InternetRain (2) [^4]            | 2025-08-04T23:43Z | n/a                  |
+| OwenAeon (3) [^4]                | 2025-08-05T00:00Z | n/a                  |
 
 [^a]: Twitch stream times from [SullyGnome](https://sullygnome.com) and YouTube upload times from [mattw.io](https://mattw.io/youtube-metadata/).
 
 [^1]: [20250731040909](../entries/20250731040909.md)
 [^2]: [20250731045955](../entries/20250731045955.md)
 [^3]: [20250804044818](../entries/20250804044818.md)
+[^4]: [20250804221953](../entries/20250804221953.md)
 
 [1]: https://www.youtube.com/watch?v=TpydstQMYdY
 [2]: https://www.youtube.com/watch?v=55smJNi1CMA
