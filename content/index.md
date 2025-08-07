@@ -33,7 +33,7 @@ tags:
 
 [^blog]: /[blog](blog/index.md)
 
-- **<time>2025-08-07</time>** - [no signal v1.5.2](entries/20250807074855.md)
+- **<time>2025-08-07</time>** - [no signal v1.5.3](blog/20250807225537.md)
 - **<time>2025-08-01</time>** - [one week after *no signal*](blog/20250731075133.md)
 - **<time>2025-07-24</time>** - [itch.io was my favorite site](blog/20250724073550.md)
 - **<time>2025-07-15</time>** - [new website, and the Bad Shape](blog/20250715200219.md)
