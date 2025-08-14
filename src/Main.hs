@@ -190,7 +190,7 @@ main = Build.runShake Build.wantWebsite $ do
       canonicalPath = Build.dropDirectory1 out
       canonicalFolder = FilePath.takeDirectory canonicalPath
 
-    metas <- listFiles canonicalFolder (/= inputPath) indexSort
+    metas <- listFiles canonicalFolder (/= inputPath -<.> ".md") indexSort
     feed <- Build.runEither (RSS.makeRss canonicalFolder metas)
     Build.writeFileChanged out (T.unpack feed)
 
