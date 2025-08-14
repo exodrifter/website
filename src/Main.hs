@@ -145,7 +145,7 @@ main = Build.runShake Build.wantWebsite $ do
             if FilePath.takeBaseName p == "index"
             then FilePath.takeDirectory (FilePath.takeDirectory p) == inputFolderPath
             else FilePath.takeDirectory p == inputFolderPath
-        listFiles "." isImmediate listingSort
+        listFiles "." isImmediate indexSort
       else pure []
 
     -- If this is a tag, list other files with this tag.
@@ -156,7 +156,7 @@ main = Build.runShake Build.wantWebsite $ do
         tagMap <- getTagMap ()
         case Map.lookup tag tagMap of
           Nothing -> error ("Tag " <> tag <> " has no tagged pages!")
-          Just a -> sortBy listingSort <$> traverse Build.getMetadata a
+          Just a -> sortBy tagSort <$> traverse Build.getMetadata a
       else pure []
 
     -- Find all of the backlinks.
@@ -190,7 +190,7 @@ main = Build.runShake Build.wantWebsite $ do
       canonicalPath = Build.dropDirectory1 out
       canonicalFolder = FilePath.takeDirectory canonicalPath
 
-    metas <- listFiles canonicalFolder (/= inputPath) listingSort
+    metas <- listFiles canonicalFolder (/= inputPath) indexSort
     feed <- Build.runEither (RSS.makeRss canonicalFolder metas)
     Build.writeFileChanged out (T.unpack feed)
 
@@ -238,10 +238,11 @@ needDependencies dir pandoc = do
         Right i -> pure (T.pack url, i)
   Map.fromList . catMaybes <$> traverse maybeGetImage urls
 
-listingSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
-listingSort =
-     comparing (Down . Pandoc.metaPublished)
-  <> comparing (Down . Pandoc.metaUpdated)
+indexSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
+indexSort = comparing (Down . Pandoc.metaPublished) <> tagSort
+
+tagSort :: Pandoc.Metadata -> Pandoc.Metadata -> Ordering
+tagSort = comparing (Down . Pandoc.metaUpdated)
 
 replaceWithVodBody :: Monad m => Pandoc.Pandoc -> m Pandoc.Pandoc
 replaceWithVodBody (Pandoc.Pandoc (Pandoc.Meta meta) _) = do
