@@ -21,7 +21,7 @@ yes | - | [CreaseVT](https://www.twitch.tv/CreaseVT) | [Shadow of the Eggtree](h
 no | - | [DeveloperEzra](https://www.twitch.tv/developerezra) | [EzDialogue](https://github.com/real-ezTheDev/GodotEzDialoguePlugin) [^2]
 no | - | [earend](https://www.twitch.tv/earend) | [Bear Defense Situation](https://store.steampowered.com/app/3778320/Bear_Defence_Situation/) [^3]
 yes | no | [exodrifter_](https://www.twitch.tv/exodrifter_) | [no signal](https://exodrifter.itch.io/lost-contact) [^1]
-yes | - | [ExpiredPopsicle](https://www.twitch.tv/expiredpopsicle) | Stream overlay in Godot, FPS gamedev [^1]
+yes | - | [KiriArtemisVT](https://www.twitch.tv/KiriArtemisVT) | Stream overlay in Godot, FPS gamedev [^1]
 no | - | [Falinere](https://www.twitch.tv/falinere) | [Falinere Fantasy](https://store.steampowered.com/app/1976930/Falinere_Fantasy/) [^5]
 yes | - | [fatalvampire](https://www.twitch.tv/fatalvampire) | Monster taming game [^1]
 yes | - | [FixItFreb](https://www.twitch.tv/fixitfreb) | [DungeonTubers](https://fixitfreb.itch.io/dungeontubers), Porting [Beepobox](https://fixitfreb.itch.io/beepo-box) to Godot [^1]
