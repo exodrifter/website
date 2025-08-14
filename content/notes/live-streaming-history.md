@@ -1,7 +1,7 @@
 ---
 title: Live Streaming History
 created: 2024-05-27T09:34:47Z
-modified: 2025-07-30T17:54:53-07:00
+modified: 2025-08-14T09:33:14-07:00
 aliases:
   - live streaming history
 ---
@@ -14,7 +14,7 @@ aliases:
 | 2019-04-12 | First recorded Picarto stream [^4] |
 | 2019-09-12 | First recorded Twitch stream [^5] |
 | 2022-02-27 | Became Twitch Affiliate [^6] |
-| 2023-01-08 | [VOD website](https://vods.exodrifter.space) launched. [^7] |
+| 2023-01-08 | [VOD website](vod-website.md) launched. [^7] |
 | TBA | [V3 Model Debut](exodrifter-v3.md) |
 
 [^1]: [202211261732](../entries/202211261732.md)
