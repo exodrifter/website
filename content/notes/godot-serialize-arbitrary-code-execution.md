@@ -2,7 +2,7 @@
 title: Arbitrary Code Execution in Godot serialization
 created: 2024-06-19T00:12:54Z
 modified: 2024-10-28T04:35:27Z
-alias:
+aliases:
 - Arbitrary Code Execution in Godot serialization
 tags:
 - godot

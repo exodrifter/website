@@ -2,7 +2,7 @@
 title: inbox
 created: 2024-07-24T20:16:46Z
 modified: 2025-07-22T02:25:42-07:00
-alias:
+aliases:
   - Inbox
 ---
 
