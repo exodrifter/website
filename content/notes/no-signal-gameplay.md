@@ -1,7 +1,7 @@
 ---
 title: no signal gameplay
 created: 2025-07-30T21:52:30-07:00
-modified: 2025-08-04T23:36:12-07:00
+modified: 2025-08-17T22:54:19-07:00
 aliases:
   - no signal gameplay
 tags:
@@ -16,6 +16,7 @@ List of gameplay footage for [no signal](no-signal.md) that I have watched: [^a]
 |----------------------------------|-------------------|----------------------|
 | [Sandi Maree][1] [^2]            | n/a               | 2025-07-21T20:00:17Z |
 | [FragginGamin (1)][2] [^1]       | 2025-07-16T19:02Z | 2025-07-25T14:30:05Z |
+| stevieraedrawn [^5]              | 2025-07-22T13:47Z | n/a                  |
 | FragginGamin (2) [^1]            | 2025-07-24T18:16Z | n/a                  |
 | [Trui][3] [^2]                   | n/a               | 2025-07-25T15:00:31Z |
 | [QuanticFlux][4] [^2]            | n/a               | 2025-07-25T18:15:11Z |
@@ -54,6 +55,12 @@ List of gameplay footage for [no signal](no-signal.md) that I have watched: [^a]
 | deaf_icarus [^4]                 | 2025-08-04T21:20Z | n/a                  |
 | InternetRain (2) [^4]            | 2025-08-04T23:43Z | n/a                  |
 | OwenAeon (3) [^4]                | 2025-08-05T00:00Z | n/a                  |
+| LainVT (2) [^5]                  | 2025-08-06T16:58Z | n/a                  |
+| Valkeryias [^5]                  | 2025-08-09T12:03Z | n/a                  |
+| ZenTractor [^5]                  | 2025-08-12T10:02Z | n/a                  |
+| SariFaun [^5]                    | 2025-08-15T21:02Z | n/a                  |
+| ZenTractor (2) [^5]              | 2025-08-16T10:00Z | n/a                  |
+| Outfrost [^5]                    | 2025-08-17T21:47Z | n/a                  |
 
 [^a]: Twitch stream times from [SullyGnome](https://sullygnome.com) and YouTube upload times from [mattw.io](https://mattw.io/youtube-metadata/).
 
@@ -61,6 +68,7 @@ List of gameplay footage for [no signal](no-signal.md) that I have watched: [^a]
 [^2]: [20250731045955](../entries/20250731045955.md)
 [^3]: [20250804044818](../entries/20250804044818.md)
 [^4]: [20250804221953](../entries/20250804221953.md)
+[^5]: [20250818051852](../entries/20250818051852.md)
 
 [1]: https://www.youtube.com/watch?v=TpydstQMYdY
 [2]: https://www.youtube.com/watch?v=55smJNi1CMA
