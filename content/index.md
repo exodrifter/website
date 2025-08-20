@@ -1,9 +1,9 @@
 ---
 title: exodrifter
 created: 2024-09-19T23:54:07Z
-modified: 2025-08-07T00:54:01-07:00
+modified: 2025-08-20T15:11:16-07:00
 aliases:
-  -  home
+  - home
 tags:
   - index
 ---
@@ -33,6 +33,7 @@ tags:
 
 [^blog]: /[blog](blog/index.md)
 
+- **<time>2025-08-20</time>** - [delta h con made me depressed as hell](blog/20250820182107.md)
 - **<time>2025-08-07</time>** - [no signal v1.5.3](blog/20250807225537.md)
 - **<time>2025-08-01</time>** - [one week after *no signal*](blog/20250731075133.md)
 - **<time>2025-07-24</time>** - [itch.io was my favorite site](blog/20250724073550.md)

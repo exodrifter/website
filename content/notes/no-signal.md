@@ -1,10 +1,10 @@
 ---
-title: no signal logs
+title: no signal
 created: 2023-05-27T10:23:24Z
-modified: 2025-08-17T17:16:25-07:00
+modified: 2025-08-20T12:09:47-07:00
 aliases:
-  - no signal logs
-  - lost contact logs
+  - no signal
+  - lost contact
 tags:
   - log
   - no-signal
@@ -12,7 +12,9 @@ tags:
 
 # no signal
 
-For more information, see the [press kit](../press-kits/no-signal/index.md).
+_**no signal**_ is a hard sci-fi point-and-click adventure game where you explore an abandoned space station orbiting a black hole. You control PGEIST, a ghost-like entity that can move through furniture, while following messages left by the long-gone staff to learn the outcome of the research team and discover the secrets they left behind.
+
+It is available on [itch.io](https://exodrifter.itch.io/lost-contact) and [Steam](https://store.steampowered.com/app/2840590/no_signal). For more information, see the [press kit](../press-kits/no-signal/index.md).
 
 Subpages:
 - [gameplay](no-signal-gameplay.md)
