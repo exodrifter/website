@@ -386,7 +386,7 @@ li:has(label > input[type="checkbox"]) {
     pointer-events: none;
 }
 
-li:has(label > input[type="checkbox"]:checked) {
+label:has(input[type="checkbox"]:checked) {
     color: var(--subtext);
 }
 
