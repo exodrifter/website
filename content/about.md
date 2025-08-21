@@ -1,9 +1,9 @@
 ---
 title: about
 created: 2024-09-15T05:39:01Z
-modified: 2025-08-04T13:58:10-07:00
+modified: 2025-08-20T22:13:21-07:00
 aliases:
-- about
+  - about
 ---
 
 # about me
@@ -12,7 +12,7 @@ aliases:
 
 ![](blog/avatar.png)
 
-I'm **exodrifter** (she/her), a Cambodian American indie game developer, vtuber, functional programmer, and musician based in Austin, Texas. I love yuri, space, and heavy board games. Making games that connect with people in emotional and meaningful ways is my passion.
+I'm **exodrifter** (she/her), a Cambodian American indie game developer, vtuber, functional programmer, and musician currently based in the San Francisco Bay Area. I love yuri, space, and heavy board games. Making games that connect with people in emotional and meaningful ways is my passion.
 
 </div>
 
