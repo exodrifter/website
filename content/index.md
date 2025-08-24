@@ -33,8 +33,8 @@ tags:
 
 [^blog]: /[blog](blog/index.md)
 
+- **<time>2025-08-24</time>** - [no signal v1.6.0](blog/20250824015555.md)
 - **<time>2025-08-20</time>** - [delta h con made me depressed as hell](blog/20250820182107.md)
-- **<time>2025-08-07</time>** - [no signal v1.5.3](blog/20250807225537.md)
 - **<time>2025-08-01</time>** - [one week after *no signal*](blog/20250731075133.md)
 - **<time>2025-07-24</time>** - [itch.io was my favorite site](blog/20250724073550.md)
 - **<time>2025-07-15</time>** - [new website, and the Bad Shape](blog/20250715200219.md)
