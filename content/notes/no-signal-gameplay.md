@@ -1,7 +1,7 @@
 ---
 title: no signal gameplay
 created: 2025-07-30T21:52:30-07:00
-modified: 2025-08-18T22:27:39-07:00
+modified: 2025-08-24T23:35:14-07:00
 aliases:
   - no signal gameplay
 tags:
@@ -62,6 +62,11 @@ List of gameplay footage for [no signal](no-signal.md) that I have watched: [^a]
 | ZenTractor (2) [^5]              | 2025-08-16T10:00Z | n/a                  |
 | Outfrost [^5]                    | 2025-08-17T21:47Z | n/a                  |
 | CreaseVT [^6]                    | 2025-08-19T01:07Z | n/a                  |
+| Grandbuh (2) [^7]                | 2025-08-21T23:29Z | n/a                  |
+| SpeedTixi [^7]                   | 2025-08-20T12:37Z | n/a                  |
+| Outfrost (2) [^7]                | 2025-08-20T22:09Z | n/a                  |
+| ZenTractor (3) [^7]              | 2025-08-23T10:00Z | n/a                  |
+| Outfrost (3) [^7]                | 2025-08-24T22:18Z | n/a                  |
 
 [^a]: Twitch stream times from [SullyGnome](https://sullygnome.com) and YouTube upload times from [mattw.io](https://mattw.io/youtube-metadata/).
 
@@ -71,6 +76,7 @@ List of gameplay footage for [no signal](no-signal.md) that I have watched: [^a]
 [^4]: [20250804221953](../entries/20250804221953.md)
 [^5]: [20250818051852](../entries/20250818051852.md)
 [^6]: [20250819052438](../entries/20250819052438.md)
+[^7]: [20250825055151](../entries/20250825055151.md)
 
 [1]: https://www.youtube.com/watch?v=TpydstQMYdY
 [2]: https://www.youtube.com/watch?v=55smJNi1CMA
